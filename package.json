@@ -20,8 +20,9 @@
     "url": "git+https://github.com/insacjs/insacjs.com.git"
   },
   "keywords": [
-    "web",
-    "app"
+    "insac",
+    "insacjs",
+    "framework"
   ],
   "author": "Wilmer Alex Quispe Quispe <q.wilmer.alex@gmail.com>",
   "bugs": {
