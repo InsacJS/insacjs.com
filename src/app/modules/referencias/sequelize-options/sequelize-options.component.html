@@ -1,0 +1,310 @@
+<article class="markdown-body">
+
+<h1 id="sequelize-options"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="sequelize-options" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Sequelize Options</h1>
+<p>Sequelize es un potente Framework ORM de NodeJS, utilizado para realizar consultas y operaciones con la base de datos. Estas consultas se crean definiendo un objeto que contiene todos los parámetros de la consulta.</p>
+<p>Esta librería se encarga de construir el objeto <code>options</code> que utiliza sequelize para realizar consultas, a partir de un objeto <code>query</code> que incluye algunos filtros básicos y la instancia de un modelo Sequelize <code>model</code> para tomar en cuenta solamente los atributos definidos dentro del modelo.</p>
+<p>Aprovechando que se utiliza Sequelize para definir los modelos, también es posible filtrar un resultado, utilizando un objeto de tipo <code>FieldGroup</code>.</p>
+<h2 id="caracteristicas"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="caracteristicas" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Características</h2>
+<ul>
+<li>Es posible crear este objeto utilizando la query que se envía en la URL de una petición.</li>
+<li>Es posible forzar a que los atributos sean parte de un modelo Sequelize.</li>
+<li>Es posible indicar que se inlcuya de manera obligatoria todas las claves primarias y foráneas.</li>
+<li>Se puede filtrar un resultado, utilizando como base un objeto de tipo <code>FieldGroup</code>.</li>
+</ul>
+<h2 id="funcion-create"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="funcion-create" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Función <code>create</code></h2>
+<table>
+<thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>options</code></td>
+<td>Opciones de consulta.</td>
+</tr>
+<tr>
+<td><code>options.query</code></td>
+<td>Objeto que contiene los filtros de la consulta.</td>
+</tr>
+<tr>
+<td><code>options.query.fields</code></td>
+<td>Cadena de texto que contiene los atributos.</td>
+</tr>
+<tr>
+<td><code>options.query.limit</code></td>
+<td>Cantidad de registros a devolver por página.</td>
+</tr>
+<tr>
+<td><code>options.query.page</code></td>
+<td>Número de página.</td>
+</tr>
+<tr>
+<td><code>options.query.order</code></td>
+<td>Nombre del atributo de ordenación.</td>
+</tr>
+<tr>
+<td><code>options.query.col</code></td>
+<td>Nombre del atributo que se utilizará para identificar registros distintos.</td>
+</tr>
+<tr>
+<td><code>options.query.distinct</code></td>
+<td>Indica si se devolverá solamente los registros que sean distintos tomando como base el atributo <code>query.col</code>.</td>
+</tr>
+<tr>
+<td><code>options.output</code></td>
+<td>Objeto de tipo <code>FieldGroup</code> que contiene los atributos.</td>
+</tr>
+<tr>
+<td><code>options.model</code></td>
+<td>Instancia de un modelo Sequelize.</td>
+</tr>
+<tr>
+<td><code>options.keys</code></td>
+<td>Indica si se incluirán las claves primarias y foráneas.</td>
+</tr>
+<tr>
+<td><code>options.plain</code></td>
+<td>Indica si se devolverá un objeto plano.</td>
+</tr>
+</tbody>
+</table>
+<p>Para crear el objeto <code>options.output</code>, se recomienda utilizar la librería <a href="https://github.com/insacjs/field-creator">field-creator</a>.</p>
+<h2 id="funcion-filter"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="funcion-filter" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Función <code>filter</code></h2>
+<table>
+<thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td>Objeto o lista de objetos cuyas propieades serán filtradas.</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>Opciones de consulta.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="propiedad-optionsquery"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="propiedad-optionsquery" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Propiedad <code>options.query</code></h2>
+<table>
+<thead>
+<tr>
+<th>Filtro</th>
+<th>Descripción</th>
+<th>Valor por defecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fields</code></td>
+<td>Campos que serán devueltos en el resultado.</td>
+<td><code>ALL</code></td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>Cantidad de registros por página.</td>
+<td><code>50</code></td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>Número de página.</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>Ordena el resultado (<code>field</code>, <code>-field</code>)</td>
+<td><code>&lt;ninguno&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;field&gt;</code></td>
+<td>Consulta simple (<code>field=valor</code>)</td>
+<td><code>&lt;ninguno&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="filtro-fields"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="filtro-fields" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Filtro <code>fields</code></h2>
+<p>Todos los campos.</p>
+<ul>
+<li><code>/personas</code></li>
+<li><code>/personas?fields=all</code></li>
+</ul>
+<p>Todos los campos. Incluyendo a los objetos.</p>
+<ul>
+<li><code>/personas?fields=ALL</code></li>
+</ul>
+<p>Todos los campos, excluyendo algunos.</p>
+<ul>
+<li><code>/personas?fields=-_fecha_creacion,-_fecha_modificacion</code></li>
+<li><code>/personas?fields=-id,-ci</code></li>
+</ul>
+<p>Incluyendo objetos.</p>
+<ul>
+<li><code>/personas?fields=usuario()</code></li>
+<li><code>/personas?fields=usuario(id,username)</code></li>
+<li><code>/personas?fields=usuario(roles(rol()))</code></li>
+</ul>
+<p>Incluyendo consultas. <strong>[ required = false ]</strong></p>
+<ul>
+<li><code>/personas?fields=id,nombre=john</code></li>
+<li><code>/personas?fields=id,usuario(roles(estado=ACTIVO))</code></li>
+</ul>
+<p>Al incluir este tipo de filtros, si el objeto no cumple con la condición, el valor de este campo será <code>undefined</code>.</p>
+<h2 id="filtro-field"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="filtro-field" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Filtro <code>&lt;field&gt;</code></h2>
+<p>Incluyendo consultas. <strong>[ required = true ]</strong></p>
+<ul>
+<li><code>/personas?id=1</code></li>
+<li><code>/personas?id=1,2,3</code></li>
+<li><code>/personas?nombre=john</code></li>
+<li><code>/personas?usuario.username=admin</code></li>
+<li><code>/personas?usuario.roles.estado=ACTIVO</code></li>
+</ul>
+<p>Al incluir este tipo de filtros, si el objeto no cumple con la condición, el registro al que pertenece este campo no será incluido en el resultado.</p>
+<h2 id="filtros-limit-y-page"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="filtros-limit-y-page" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Filtros <code>limit</code> y <code>page</code></h2>
+<p>Devuelve una cierta cantidad de registros, indicando el número de página.</p>
+<ul>
+<li><code>/personas?limit=50&amp;page=1</code></li>
+</ul>
+<h2 id="filtro-order"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="filtro-order" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Filtro <code>order</code></h2>
+<p>Devuelve una lista ordenada de forma ascendente <code>field</code> o descendente <code>-field</code>.</p>
+<ul>
+<li><code>/personas?order=id</code></li>
+<li><code>/personas?order=-ci</code></li>
+<li><code>/personas?order=nombre,paterno,materno</code></li>
+<li><code>/personas?order=-_fecha_creacion,-_fecha_modificacion</code></li>
+</ul>
+<h2 id="instalacion"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="instalacion" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Instalación</h2>
+<p>Para instalar sobre un proyecto, ejecutar el siguiente comando:</p>
+<p>$ <code>npm install --save sequelize-options</code></p>
+<h2 id="ejemplo-1-construir-el-output"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="ejemplo-1-construir-el-output" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Ejemplo 1. Construir el output.</h2>
+<p>Objeto de entrada (query) y un modelo de salida (output).</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> &#123; Options &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize-options'</span>)
+<span class="hljs-keyword">const</span> &#123; Field, THIS &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">'field-creator'</span>)
+
+<span class="hljs-keyword">const</span> AUTOR = sequelize.define(<span class="hljs-string">'autor'</span>, &#123;
+  <span class="hljs-attr">id_autor</span> : Field.ID(),
+  <span class="hljs-attr">nombre</span>   : Field.STRING(),
+  <span class="hljs-attr">ci</span>       : Field.INTEGER(),
+  <span class="hljs-attr">telefono</span> : Field.INTEGER()
+&#125;)
+
+<span class="hljs-keyword">const</span> LIBRO = sequelize.define(<span class="hljs-string">'libro'</span>, &#123;
+  <span class="hljs-attr">id_libro</span> : Field.ID(),
+  <span class="hljs-attr">titulo</span>   : Field.STRING(),
+  <span class="hljs-attr">precio</span>   : Field.FLOAT()
+&#125;)
+
+AUTOR.hasMany(LIBRO, &#123; <span class="hljs-attr">as</span>: <span class="hljs-string">'libros'</span>, <span class="hljs-attr">foreignKey</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">'fid_autor'</span> &#125; &#125;)
+LIBRO.belongsTo(AUTOR, &#123; <span class="hljs-attr">as</span>: <span class="hljs-string">'autor'</span>, <span class="hljs-attr">foreignKey</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">'fid_autor'</span>, <span class="hljs-attr">targetKey</span>: <span class="hljs-string">'id_autor'</span> &#125; &#125;)
+
+<span class="hljs-keyword">const</span> QUERY = &#123;
+  <span class="hljs-attr">fields</span> : <span class="hljs-string">'titulo,precio,autor(nombre,ci,telefono)'</span>,
+  <span class="hljs-attr">order</span>  : <span class="hljs-string">'-autor.nombre'</span>,
+  <span class="hljs-attr">limit</span>  : <span class="hljs-number">50</span>,
+  <span class="hljs-attr">page</span>   : <span class="hljs-number">1</span>
+&#125;
+
+<span class="hljs-keyword">const</span> OUTPUT = Field.group(LIBRO, [&#123;
+  <span class="hljs-attr">id_libro</span> : THIS(),
+  <span class="hljs-attr">titulo</span>   : THIS(),
+  <span class="hljs-attr">precio</span>   : THIS(),
+  <span class="hljs-attr">autor</span>    : &#123;
+    <span class="hljs-attr">id_autor</span> : THIS(),
+    <span class="hljs-attr">nombre</span>   : THIS()
+  &#125;
+&#125;])
+
+<span class="hljs-keyword">const</span> options = Options.create(&#123; <span class="hljs-attr">query</span>: QUERY, <span class="hljs-attr">output</span>: OUTPUT &#125;)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(options, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>))
+<span class="hljs-comment">// &#123;</span>
+<span class="hljs-comment">//   "attributes": [</span>
+<span class="hljs-comment">//     "titulo",</span>
+<span class="hljs-comment">//     "precio"</span>
+<span class="hljs-comment">//   ],</span>
+<span class="hljs-comment">//   "include": [</span>
+<span class="hljs-comment">//     &#123;</span>
+<span class="hljs-comment">//       "attributes": [</span>
+<span class="hljs-comment">//         "nombre"</span>
+<span class="hljs-comment">//       ],</span>
+<span class="hljs-comment">//       "association": "autor"</span>
+<span class="hljs-comment">//     &#125;</span>
+<span class="hljs-comment">//   ],</span>
+<span class="hljs-comment">//   "limit": 50,</span>
+<span class="hljs-comment">//   "offset": 0,</span>
+<span class="hljs-comment">//   "order": [</span>
+<span class="hljs-comment">//     [</span>
+<span class="hljs-comment">//       "autor",</span>
+<span class="hljs-comment">//       "nombre",</span>
+<span class="hljs-comment">//       "DESC"</span>
+<span class="hljs-comment">//     ]</span>
+<span class="hljs-comment">//   ]</span>
+<span class="hljs-comment">// &#125;</span>
+</code></pre>
+<h2 id="ejemplo-2-filtrar-un-resultado"><a class="anchor" routerLink="/referencias/sequelize-options" fragment="ejemplo-2-filtrar-un-resultado" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Ejemplo 2. Filtrar un resultado.</h2>
+<p>Puede filtrar los campos de un objeto.</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> DATA = [
+  &#123;
+    <span class="hljs-attr">id_libro</span> : <span class="hljs-number">1</span>,
+    <span class="hljs-attr">titulo</span>   : <span class="hljs-string">'El gato negro'</span>,
+    <span class="hljs-attr">precio</span>   : <span class="hljs-number">11.99</span>,
+    <span class="hljs-attr">autor</span>    : &#123;
+      <span class="hljs-attr">id_autor</span> : <span class="hljs-number">1</span>,
+      <span class="hljs-attr">nombre</span>   : <span class="hljs-string">'Edgar Allan Poe'</span>,
+      <span class="hljs-attr">ci</span>       : <span class="hljs-number">64857683</span>,
+      <span class="hljs-attr">telefono</span> : <span class="hljs-number">78849484</span>
+    &#125;
+  &#125;,
+  &#123;
+    <span class="hljs-attr">id_libro</span> : <span class="hljs-number">2</span>,
+    <span class="hljs-attr">titulo</span>   : <span class="hljs-string">'El cuervo'</span>,
+    <span class="hljs-attr">precio</span>   : <span class="hljs-number">15.99</span>,
+    <span class="hljs-attr">autor</span>    : &#123;
+      <span class="hljs-attr">id_autor</span> : <span class="hljs-number">2</span>,
+      <span class="hljs-attr">nombre</span>   : <span class="hljs-string">'Edgar Allan Poe'</span>,
+      <span class="hljs-attr">ci</span>       : <span class="hljs-number">64857683</span>,
+      <span class="hljs-attr">telefono</span> : <span class="hljs-number">78849484</span>
+    &#125;
+  &#125;
+]
+
+<span class="hljs-keyword">const</span> result = Options.filter(DATA, &#123; <span class="hljs-attr">query</span>: QUERY, <span class="hljs-attr">output</span>: OUTPUT &#125;)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(result, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>))
+<span class="hljs-comment">// [</span>
+<span class="hljs-comment">//   &#123;</span>
+<span class="hljs-comment">//     "titulo": "El gato negro",</span>
+<span class="hljs-comment">//     "precio": 11.99,</span>
+<span class="hljs-comment">//     "autor": &#123;</span>
+<span class="hljs-comment">//       "nombre": "Edgar Allan Poe"</span>
+<span class="hljs-comment">//     &#125;</span>
+<span class="hljs-comment">//   &#125;,</span>
+<span class="hljs-comment">//   &#123;</span>
+<span class="hljs-comment">//     "titulo": "El cuervo",</span>
+<span class="hljs-comment">//     "precio": 15.99,</span>
+<span class="hljs-comment">//     "autor": &#123;</span>
+<span class="hljs-comment">//       "nombre": "Edgar Allan Poe"</span>
+<span class="hljs-comment">//     &#125;</span>
+<span class="hljs-comment">//   &#125;</span>
+<span class="hljs-comment">// ]</span>
+</code></pre>
+<p>También podemos desplazar los atributos de los submodelos dentro del objeto raiz.</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> resultPlain = Options.filter(DATA, &#123; <span class="hljs-attr">query</span>: QUERY, <span class="hljs-attr">output</span>: OUTPUT, <span class="hljs-attr">plain</span>: <span class="hljs-literal">true</span> &#125;)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(resultPlain, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>))
+<span class="hljs-comment">// [</span>
+<span class="hljs-comment">//   &#123;</span>
+<span class="hljs-comment">//     "titulo": "El gato negro",</span>
+<span class="hljs-comment">//     "precio": 11.99,</span>
+<span class="hljs-comment">//     "autor.nombre": "Edgar Allan Poe"</span>
+<span class="hljs-comment">//   &#125;,</span>
+<span class="hljs-comment">//   &#123;</span>
+<span class="hljs-comment">//     "titulo": "El cuervo",</span>
+<span class="hljs-comment">//     "precio": 15.99,</span>
+<span class="hljs-comment">//     "autor.nombre": "Edgar Allan Poe"</span>
+<span class="hljs-comment">//   &#125;</span>
+<span class="hljs-comment">// ]</span>
+</code></pre>
+
+</article>

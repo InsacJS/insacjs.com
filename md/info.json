@@ -1,0 +1,29 @@
+{
+  "secciones": [
+    {
+      "name"   : "Tutoriales",
+      "folder" : "tutoriales",
+      "icon"   : "flash_on",
+      "capitulos": [
+        { "file": "introduccion",           "name": "1. Introducción" },
+        { "file": "estructura-de-proyecto", "name": "2. Estructura de proyecto" },
+        { "file": "hola-mundo",             "name": "3. Hola Mundo" },
+        { "file": "mi-primer-proyecto",     "name": "4. Mi primer proyecto" }
+      ]
+    },
+    {
+      "name"   : "Referencias",
+      "folder" : "referencias",
+      "icon"   : "library_books",
+      "capitulos": [
+        { "file": "insac-cli",            "name": "1. Insac CLI" },
+        { "file": "field-creator",        "name": "2. Field Creator" },
+        { "file": "apidoc-creator",       "name": "3. Apidoc Creator" },
+        { "file": "input-data-validator", "name": "4. Input Data Validator" },
+        { "file": "sequelize-options",    "name": "5. Sequelize Options" },
+        { "file": "response-handler",     "name": "6. Response Handler" },
+        { "file": "seed-creator",         "name": "7. Seed Creator" }
+      ]
+    }
+  ]
+}

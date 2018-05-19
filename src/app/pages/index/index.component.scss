@@ -1,0 +1,86 @@
+@import '../../../styles';
+
+.drawer-container {
+  background-color: inherit;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 65px;
+}
+
+.drawer {
+  min-width: 200px;
+  border-right: solid lightgrey 1px;
+}
+
+.menu-top {
+  background-color: inherit;
+  width: 100%;
+  padding: 10px;
+  position: fixed;
+  z-index: 10;
+}
+
+.logo {
+  background-image: url('assets/img/logo-512.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 50px;
+  height: 150px;
+}
+
+.sub {
+  color: white;
+  text-align: center;
+  padding: 0 50px 0 50px;
+}
+
+@media (max-width: 767px) {
+  .sub {
+    font-size: 24px;
+  }
+}
+
+.active {
+  background-color: mat-color($primary);
+  color: white;
+}
+
+.drawer-toggle {
+  color: white;
+}
+
+.titulo-principal {
+  color: white;
+  font-family: roboto;
+  font-weight: bold;
+  padding: 8px;
+  white-space: nowrap;
+  margin-left: 40px;
+}
+
+.link {
+  border-radius: 0px;
+  border-bottom: solid lightgrey 1px;
+}
+
+.footer {
+  color: white;
+  font-weight: 100px;
+  padding: 10px;
+  text-align: right;
+  padding-right: 50px;
+}
+
+.paragraph {
+  color: white;
+}
+
+.container {
+  min-height: 100px;
+}

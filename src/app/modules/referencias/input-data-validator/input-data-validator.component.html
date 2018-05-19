@@ -1,0 +1,146 @@
+<article class="markdown-body">
+
+<h1 id="input-data-validator"><a class="anchor" routerLink="/referencias/input-data-validator" fragment="input-data-validator" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Input Data validator</h1>
+<p>Existen varias herramientas para validar los datos de entrada, sin embargo, cuando se trabaja con un ORM como Sequelize se definen modelos cuyos atributos tienen un tipo de dato definido y en algunos casos un validador, sería interesante poder reutilizar estos atributos evitando de esa forma una doble implementación.</p>
+<p>Input Data Validator es un validador que crea esquemas de validación utilizando objetos de tipo <code>FieldGroup</code> los cuales se crean con la librería <code>field-creator</code>. Esta librería crea estos objetos a partir de modelos Sequelize, por lo que solamente será necesario incluir los validadores dentro de los modelos.</p>
+<h2 id="caracteristicas"><a class="anchor" routerLink="/referencias/input-data-validator" fragment="caracteristicas" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Características</h2>
+<ul>
+<li>Crea un middleware para validar los datos de entrada, utilizando objetos de tipo <code>FieldGroup</code>.</li>
+<li>Es posible indicar si se eliminarán los datos de entrada que no hayan sido definidos en el esquema de validación. Por defecto se eliminan en el caso del body.</li>
+</ul>
+<h2 id="esquema-de-validacion"><a class="anchor" routerLink="/referencias/input-data-validator" fragment="esquema-de-validacion" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Esquema de validación</h2>
+<p>Un esquema de validación, es un objeto que tiene las propiedades <code>headers</code>, <code>params</code>, <code>query</code> y <code>body</code>, los cuales son objetos de tipo <code>FieldGroup</code>.</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> INPUT = &#123;
+  <span class="hljs-attr">headers</span> : Field.group(LIBRO, &#123; ... &#125;),
+  <span class="hljs-attr">params</span>  : Field.group(LIBRO, &#123; ... &#125;),
+  <span class="hljs-attr">query</span>   : Field.group(LIBRO, &#123; ... &#125;),
+  <span class="hljs-attr">body</span>    : Field.group(LIBRO, &#123; ... &#125;)
+&#125;
+</code></pre>
+<p>Para crear el objeto <code>input</code>, se recomienda utilizar la librería <a href="https://github.com/insacjs/field-creator">field-creator</a>.</p>
+<h2 id="middleware-de-validacion"><a class="anchor" routerLink="/referencias/input-data-validator" fragment="middleware-de-validacion" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Middleware de validación</h2>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> &#123; Validator &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">'input-data-validator'</span>)
+
+<span class="hljs-keyword">const</span> app = express()
+<span class="hljs-keyword">const</span> LIBRO = sequelize.define(<span class="hljs-string">'libro'</span>, &#123; ... &#125;)
+
+<span class="hljs-keyword">const</span> INPUT = &#123;
+  <span class="hljs-attr">body</span>: Field.group(LIBRO, &#123;
+    <span class="hljs-attr">titulo</span> : THIS(&#123; <span class="hljs-attr">alowNull</span>: <span class="hljs-literal">false</span> &#125;),
+    <span class="hljs-attr">precio</span> : THIS(&#123; <span class="hljs-attr">alowNull</span>: <span class="hljs-literal">false</span> &#125;)
+  &#125;)
+&#125;
+
+app.post(<span class="hljs-string">'/libros'</span>, Validator.validate(INPUT), (req, res, next) =&gt; &#123;
+  <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">201</span>).json(&#123; <span class="hljs-attr">status</span>: <span class="hljs-string">'OK'</span>, <span class="hljs-attr">data</span>: req.body &#125;)
+&#125;)
+
+<span class="hljs-comment">// Para capturar los errores de validación.</span>
+app.use(<span class="hljs-function">(<span class="hljs-params">err, req, res, next</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">if</span> (err.name === <span class="hljs-string">'InputDataValidationError'</span>) &#123;
+    <span class="hljs-comment">// Error de validación</span>
+  &#125;
+&#125;)
+
+app.listen(<span class="hljs-number">4000</span>)
+</code></pre>
+<h2 id="formato-del-objeto-validationerror"><a class="anchor" routerLink="/referencias/input-data-validator" fragment="formato-del-objeto-validationerror" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Formato del objeto <code>ValidationError</code></h2>
+<table>
+<thead>
+<tr>
+<th>Propiedad</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>Nombre del error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td>Lista de errores.</td>
+</tr>
+<tr>
+<td><code>errors.path</code></td>
+<td>Ruta del campo.</td>
+</tr>
+<tr>
+<td><code>errors.value</code></td>
+<td>Valor actual del campo.</td>
+</tr>
+<tr>
+<td><code>errors.msg</code></td>
+<td>Mensaje de error.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="instalacion"><a class="anchor" routerLink="/referencias/input-data-validator" fragment="instalacion" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Instalación</h2>
+<p>Para instalar sobre un proyecto, ejecutar el siguiente comando:</p>
+<p>$ <code>npm install --save input-data-validator</code></p>
+<h2 id="ejemplo"><a class="anchor" routerLink="/referencias/input-data-validator" fragment="ejemplo" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Ejemplo</h2>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> &#123; Validator &#125;   = <span class="hljs-built_in">require</span>(<span class="hljs-string">'input-data-validator'</span>)
+<span class="hljs-keyword">const</span> &#123; Field, THIS &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">'field-creator'</span>)
+<span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>)
+
+<span class="hljs-keyword">const</span> LIBRO = sequelize.define(<span class="hljs-string">'libro'</span>, &#123;
+  <span class="hljs-attr">id</span>     : Field.ID(),
+  <span class="hljs-attr">titulo</span> : Field.STRING(&#123; <span class="hljs-attr">allowNull</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">allowNullMsg</span>: <span class="hljs-string">`Se requiere el título.`</span> &#125;),
+  <span class="hljs-attr">precio</span> : Field.FLOAT(&#123; <span class="hljs-attr">validate</span>: &#123; <span class="hljs-attr">min</span>: &#123; <span class="hljs-attr">args</span>: [<span class="hljs-number">0</span>], <span class="hljs-attr">msg</span>: <span class="hljs-string">`El precio debe ser mayor o igual a 0.`</span> &#125; &#125; &#125;)
+&#125;)
+
+<span class="hljs-keyword">const</span> INPUT = &#123;
+  <span class="hljs-attr">body</span>: Field.group(LIBRO, &#123;
+    <span class="hljs-attr">titulo</span> : THIS(),
+    <span class="hljs-attr">precio</span> : THIS()
+  &#125;)
+&#125;
+
+<span class="hljs-keyword">const</span> app = express()
+
+app.post(<span class="hljs-string">'/libros'</span>, Validator.validate(INPUT), (req, res, next) =&gt; &#123;
+  res.status(<span class="hljs-number">201</span>).json(&#123; <span class="hljs-attr">status</span>: <span class="hljs-string">'OK'</span>, <span class="hljs-attr">data</span>: req.body &#125;)
+&#125;)
+
+app.use(<span class="hljs-function">(<span class="hljs-params">err, req, res, next</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">if</span> (err.name === <span class="hljs-string">'InputDataValidationError'</span>) &#123;
+    <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).json(&#123; <span class="hljs-attr">status</span>: <span class="hljs-string">'FAIL'</span>, <span class="hljs-attr">error</span>: err &#125;)
+  &#125;
+  <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">500</span>).json(&#123; <span class="hljs-attr">status</span>: <span class="hljs-string">'FAIL'</span>, <span class="hljs-attr">error</span>: err &#125;)
+&#125;)
+
+app.listen(<span class="hljs-number">4000</span>)
+</code></pre>
+<h3 id="resultado-con-datos-validos"><a class="anchor" routerLink="/referencias/input-data-validator" fragment="resultado-con-datos-validos" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Resultado con datos válidos.</h3>
+<p><code>curl -H &quot;Content-Type: application/json&quot; -X POST -d '&#123; &quot;id&quot;: 123, &quot;titulo&quot;: &quot;El cuervo&quot;, &quot;precio&quot;: 11.99 &#125;' http://localhost:4000/libros</code></p>
+<pre><code class="hljs language-json">&#123;
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"OK"</span>,
+  <span class="hljs-attr">"data"</span>: &#123;
+    <span class="hljs-attr">"titulo"</span>: <span class="hljs-string">"El cuervo"</span>,
+    <span class="hljs-attr">"precio"</span>: <span class="hljs-number">11.99</span>
+  &#125;
+&#125;
+</code></pre>
+<h3 id="resultado-con-datos-invalidos"><a class="anchor" routerLink="/referencias/input-data-validator" fragment="resultado-con-datos-invalidos" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Resultado con datos inválidos.</h3>
+<p><code>curl -H &quot;Content-Type: application/json&quot; -X POST -d '&#123; &quot;precio&quot;: -124 &#125;' http://localhost:4000/libros</code></p>
+<pre><code class="hljs language-json">&#123;
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"FAIL"</span>,
+  <span class="hljs-attr">"error"</span>: &#123;
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"InputDataValidationError"</span>,
+    <span class="hljs-attr">"errors"</span>: [
+      &#123;
+        <span class="hljs-attr">"path"</span>: <span class="hljs-string">"body.titulo"</span>,
+        <span class="hljs-attr">"value"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"msg"</span>: <span class="hljs-string">"Se requiere el título."</span>
+      &#125;,
+      &#123;
+        <span class="hljs-attr">"path"</span>: <span class="hljs-string">"body.precio"</span>,
+        <span class="hljs-attr">"value"</span>: <span class="hljs-number">-124</span>,
+        <span class="hljs-attr">"msg"</span>: <span class="hljs-string">"El precio debe ser mayor o igual a 0."</span>
+      &#125;
+    ]
+  &#125;
+&#125;
+</code></pre>
+
+</article>
