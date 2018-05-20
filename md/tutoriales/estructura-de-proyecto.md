@@ -35,6 +35,7 @@ blog
  │     └─ mocha.opts
  ├─ .eslintrc.js
  ├─ .gitignore
+ ├─ .insac.js
  ├─ ecosystem.json
  ├─ example.ecosystem.json
  ├─ index.js
@@ -170,8 +171,9 @@ A continuación se describen los diferentes tipos de módulos que existen:
 
 Es el módulo base del que heredan el resto de los módulos. Especializado en crear funciones que pueden ser utilizadas en otros módulos.
 
-Existen tareas que se requieren en casi todos los módulos, para esto podemos crear el módulo `UTIL` cuya estructura sería la siguiente:
+La clase `Module` contiene las funciones `onSetup` y `onStart` los cuales se ejecutan con los siguientes comandos `npm run setup` y `npm run start`.
 
+Por ejemplo, existen tareas que se requieren en casi todos los módulos, para esto podemos crear el módulo `UTIL` cuya estructura sería la siguiente:
 
 ```txt
 ├─ src
@@ -216,8 +218,9 @@ module.exports = (app) => {
 
 Es el módulo principal de la aplicación. Especializado en crear recursos.
 
+Cuando se instala un módulo de este tipo, se crea un **nuevo esquema de base de datos** dedicado para aquellas tablas que se creen dentro del módulo, esto lo gestiona Sequelize, por lo que no habrá que preocuparse por las consultas, las cuales se realizan de la misma forma en la que se harían sin esquemas.
 
-Para un módulo `API` que contiene el recurso `libro`, la estructura sería la siguiente:
+Por ejemplo, para un módulo `API` que contiene el recurso `libro`, la estructura sería la siguiente:
 
 ```txt
 ├─ src
@@ -259,11 +262,11 @@ module.exports = (app) => {
 
 ### Carpeta `src/modules/API/dao`
 
-Contiene todos los DAO asociados a los modelos.
+Contiene todos los DAO asociados a los modelos. Un DAO (Data Access Object) maneja la conexión con la base de datos para obtener y guardar los datos.
 
-Un DAO (Data Access Object) maneja la conexión con la fuente de datos para obtener y guardar los datos.
+Cualquier consulta u operación con la base de datos, debe realizarse a través de estos ficheros y NO directamente desde los modelos.
 
-Un DAO siempre realiza operaciones atómicas contra la base de datos.
+Un DAO siempre realiza operaciones atómicas contra la base de datos, las transacciones deben declararse en los controladores.
 
 ### Archivo `src/modules/API/dao/libro.dao.js`
 
@@ -289,7 +292,7 @@ module.exports = (app) => {
 
 ### Carpeta `src/modules/API/models`
 
-Contiene todos los modelos que hacen referencia a una tabla de la base de datos.
+Contiene los modelos que representan a las tabla de la base de datos. Un modelo siempre estará asociado a un esquema de base de datos.
 
 El framework utiliza `Sequelize` para crear los modelos y realizar consultas a la base de datos.
 
@@ -346,9 +349,15 @@ Aqui se definen los recursos que ofrece el módulo. Un recurso esta conformado p
 [PUT]    /api/v1/libros/:id_libro/restore ... restore
 ```
 
-A continuación se describe el flujo de una petición:
+### Flujo de una petición
 
 Una ruta `ROUTE` recibe los datos de entrada `INPUT`, verifica que la información proporcionada sea válida y suficiente para continuar con el proceso `MIDDLEWARE`, realiza las tareas correspondientes `CONTROLLER` y finalmente devuelve el resultado `OUTPUT`.
+
+```txt
+┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐
+│    ROUTE   │ --> │    INPUT   │ --> │ MIDDLEWARE │ --> │ CONTROLLER │ --> │   OUTPUT   │
+└────────────┘     └────────────┘     └────────────┘     └────────────┘     └────────────┘
+```
 
 Todo este flujo se describe en varios ficheros cuya extensión define el estado en el que se encuentra. Por ejemplo, para el recurso `libros` se tendrían los siguientes ficheros:
 
@@ -470,6 +479,20 @@ Contiene las reglas de validación de código.
 
 Contiene todos los archivos que serán ignorados por git al momento de subir los cambios al repositorio.
 
+### Archivo `.insac.js`
+
+Contiene información que utiliza el framework para organizar el proyecto.
+
+```js
+const path = require('path')
+
+exports.PATH = {
+  modules : path.resolve(__dirname, 'src/modules'),
+  config  : path.resolve(__dirname, 'src/config'),
+  hooks   : path.resolve(__dirname, 'src/hooks')
+}
+```
+
 ### Archivo `ecosystem.json`
 
 Este archivo es el que utiliza `PM2` para ejecutar aplicaciónes en producción.
@@ -484,7 +507,45 @@ Es el punto de entrada a la aplicación.
 
 ### Archivo `package.json`
 
-Archivo utilizado por el gestor de paquetes de node `NPM`. Contiene información básica de la aplicación y toads las dependencias que esta reqioere.
+Archivo utilizado por el gestor de paquetes de node `NPM`. Contiene información básica de la aplicación y todas las dependencias que esta requiere. También incluye todos los comandos de instalación y ejecución de la aplicación.
+
+```json
+{
+  "name": "app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-response": "RESPONSE_LOG=true node index.js",
+    "start-sql": "SQL_LOG=true node index.js",
+    "start-prod": "NODE_ENV=production APIDOC=false node index.js",
+    "setup": "SETUP=true node index.js",
+    "setup-prod": "NODE_ENV=production SETUP=true node index.js",
+    "lint": "eslint index.js src/",
+    "test": "npm run test-unit && npm run test-integration",
+    "test-unit": "NODE_ENV=test && mocha --recursive test/unit",
+    "test-integration": "NODE_ENV=test && mocha --recursive test/integration"
+  },
+  "dependencies": {
+    "moment": "^2.21.0",
+    "insac": "^2.0.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.19.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^5.1.1"
+  },
+  "engines": {
+    "node": ">=9.5.0"
+  }
+}
+```
+
 
 ### Archivo `README.md`
 

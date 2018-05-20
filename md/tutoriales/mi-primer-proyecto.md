@@ -47,6 +47,7 @@ blog
  │     └─ mocha.opts
  ├─ .eslintrc.js
  ├─ .gitignore
+ ├─ .insac.js
  ├─ ecosystem.json
  ├─ example.ecosystem.json
  ├─ index.js
@@ -185,6 +186,10 @@ module.exports = (sequelize, Sequelize) => {
   // │ id_libro    │ N  ┌────┤ id_autor    | 1  ┌────┤ id_persona  │
   // │ fid_autor   │<───┘    │ fid_persona │<───┘    │             │
   // └─────────────┘         └─────────────┘         └─────────────┘
+  //
+  // const LIBRO   = app.API.models.libro
+  // const AUTOR   = app.API.models.autor
+  // const PERSONA = app.API.models.persona
   //
   // LIBRO.belongsTo(AUTOR, { as: 'autor',  foreignKey: { name: 'fid_autor', targetKey: 'id_autor' } })
   // AUTOR.hasMany(LIBRO,   { as: 'libros', foreignKey: { name: 'fid_autor' } })

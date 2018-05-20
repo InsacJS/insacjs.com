@@ -1,10 +1,14 @@
 # Hola mundo
 
+Este es un pequeño ejemplo para ver el funcionamiento del framework.
+
 ## Instalación
 
 `npm install insac --save`
 
 ## Estructura básica
+
+Crear los siguientes archivos y ubicarlos como se muestra a continuación.
 
 ```txt
 app
@@ -48,9 +52,9 @@ module.exports = (app) => {
   const ROUTE = {}
 
   ROUTE.get = {
-    path: '/welcome',
-    method: 'get',
-    description: 'Muestra un mensaje de bienvenida.'
+    path        : '/welcome',
+    method      : 'get',
+    description : 'Muestra un mensaje de bienvenida.'
   }
 
   return ROUTE

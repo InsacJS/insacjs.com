@@ -32,6 +32,7 @@
  │     └─ mocha.opts
  ├─ .eslintrc.js
  ├─ .gitignore
+ ├─ .insac.js
  ├─ ecosystem.json
  ├─ example.ecosystem.json
  ├─ index.js
@@ -131,7 +132,8 @@ exports.SERVER = &#123;
 <p>A continuación se describen los diferentes tipos de módulos que existen:</p>
 <h3 id="modulo-de-tipo-module"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="modulo-de-tipo-module" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> - Módulo de tipo <code>MODULE</code></h3>
 <p>Es el módulo base del que heredan el resto de los módulos. Especializado en crear funciones que pueden ser utilizadas en otros módulos.</p>
-<p>Existen tareas que se requieren en casi todos los módulos, para esto podemos crear el módulo <code>UTIL</code> cuya estructura sería la siguiente:</p>
+<p>La clase <code>Module</code> contiene las funciones <code>onSetup</code> y <code>onStart</code> los cuales se ejecutan con los siguientes comandos <code>npm run setup</code> y <code>npm run start</code>.</p>
+<p>Por ejemplo, existen tareas que se requieren en casi todos los módulos, para esto podemos crear el módulo <code>UTIL</code> cuya estructura sería la siguiente:</p>
 <pre><code class="hljs language-txt">├─ src
       ├─ modules
             └─ UTIL
@@ -163,7 +165,8 @@ exports.SERVER = &#123;
 </code></pre>
 <h3 id="modulo-de-tipo-resource"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="modulo-de-tipo-resource" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> - Módulo de tipo <code>RESOURCE</code></h3>
 <p>Es el módulo principal de la aplicación. Especializado en crear recursos.</p>
-<p>Para un módulo <code>API</code> que contiene el recurso <code>libro</code>, la estructura sería la siguiente:</p>
+<p>Cuando se instala un módulo de este tipo, se crea un <strong>nuevo esquema de base de datos</strong> dedicado para aquellas tablas que se creen dentro del módulo, esto lo gestiona Sequelize, por lo que no habrá que preocuparse por las consultas, las cuales se realizan de la misma forma en la que se harían sin esquemas.</p>
+<p>Por ejemplo, para un módulo <code>API</code> que contiene el recurso <code>libro</code>, la estructura sería la siguiente:</p>
 <pre><code class="hljs language-txt">├─ src
       ├─ modules
             └─ API
@@ -197,9 +200,9 @@ exports.SERVER = &#123;
 &#125;
 </code></pre>
 <h3 id="carpeta-srcmodulesapidao"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="carpeta-srcmodulesapidao" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Carpeta <code>src/modules/API/dao</code></h3>
-<p>Contiene todos los DAO asociados a los modelos.</p>
-<p>Un DAO (Data Access Object) maneja la conexión con la fuente de datos para obtener y guardar los datos.</p>
-<p>Un DAO siempre realiza operaciones atómicas contra la base de datos.</p>
+<p>Contiene todos los DAO asociados a los modelos. Un DAO (Data Access Object) maneja la conexión con la base de datos para obtener y guardar los datos.</p>
+<p>Cualquier consulta u operación con la base de datos, debe realizarse a través de estos ficheros y NO directamente desde los modelos.</p>
+<p>Un DAO siempre realiza operaciones atómicas contra la base de datos, las transacciones deben declararse en los controladores.</p>
 <h3 id="archivo-srcmodulesapidaolibrodaojs"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="archivo-srcmodulesapidaolibrodaojs" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Archivo <code>src/modules/API/dao/libro.dao.js</code></h3>
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> &#123; Dao &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">'insac'</span>)
 
@@ -220,7 +223,7 @@ exports.SERVER = &#123;
 &#125;
 </code></pre>
 <h3 id="carpeta-srcmodulesapimodels"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="carpeta-srcmodulesapimodels" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Carpeta <code>src/modules/API/models</code></h3>
-<p>Contiene todos los modelos que hacen referencia a una tabla de la base de datos.</p>
+<p>Contiene los modelos que representan a las tabla de la base de datos. Un modelo siempre estará asociado a un esquema de base de datos.</p>
 <p>El framework utiliza <code>Sequelize</code> para crear los modelos y realizar consultas a la base de datos.</p>
 <h3 id="archivo-srcmodulesapimodelslibromodeljs"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="archivo-srcmodulesapimodelslibromodeljs" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Archivo <code>src/modules/API/models/libro.model.js</code></h3>
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> &#123; Field &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">'insac'</span>)
@@ -268,8 +271,12 @@ exports.SERVER = &#123;
 [DELETE] /api/v1/libros/:id_libro ........... destroy
 [PUT]    /api/v1/libros/:id_libro/restore ... restore
 </code></pre>
-<p>A continuación se describe el flujo de una petición:</p>
+<h3 id="flujo-de-una-peticion"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="flujo-de-una-peticion" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Flujo de una petición</h3>
 <p>Una ruta <code>ROUTE</code> recibe los datos de entrada <code>INPUT</code>, verifica que la información proporcionada sea válida y suficiente para continuar con el proceso <code>MIDDLEWARE</code>, realiza las tareas correspondientes <code>CONTROLLER</code> y finalmente devuelve el resultado <code>OUTPUT</code>.</p>
+<pre><code class="hljs language-txt">┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐
+│    ROUTE   │ --&gt; │    INPUT   │ --&gt; │ MIDDLEWARE │ --&gt; │ CONTROLLER │ --&gt; │   OUTPUT   │
+└────────────┘     └────────────┘     └────────────┘     └────────────┘     └────────────┘
+</code></pre>
 <p>Todo este flujo se describe en varios ficheros cuya extensión define el estado en el que se encuentra. Por ejemplo, para el recurso <code>libros</code> se tendrían los siguientes ficheros:</p>
 <pre><code class="hljs language-txt">libros
    ├─ libro.controller.js
@@ -361,6 +368,16 @@ exports.SERVER = &#123;
 <p>Contiene las reglas de validación de código.</p>
 <h3 id="archivo-gitignore"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="archivo-gitignore" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Archivo <code>.gitignore</code></h3>
 <p>Contiene todos los archivos que serán ignorados por git al momento de subir los cambios al repositorio.</p>
+<h3 id="archivo-insacjs"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="archivo-insacjs" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Archivo <code>.insac.js</code></h3>
+<p>Contiene información que utiliza el framework para organizar el proyecto.</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>)
+
+exports.PATH = &#123;
+  <span class="hljs-attr">modules</span> : path.resolve(__dirname, <span class="hljs-string">'src/modules'</span>),
+  <span class="hljs-attr">config</span>  : path.resolve(__dirname, <span class="hljs-string">'src/config'</span>),
+  <span class="hljs-attr">hooks</span>   : path.resolve(__dirname, <span class="hljs-string">'src/hooks'</span>)
+&#125;
+</code></pre>
 <h3 id="archivo-ecosystemjson"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="archivo-ecosystemjson" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Archivo <code>ecosystem.json</code></h3>
 <p>Este archivo es el que utiliza <code>PM2</code> para ejecutar aplicaciónes en producción.</p>
 <p>Contiene los parametros de configuración de la aplicación.</p>
@@ -368,7 +385,42 @@ exports.SERVER = &#123;
 <h3 id="archivo-indexjs"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="archivo-indexjs" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Archivo <code>index.js</code></h3>
 <p>Es el punto de entrada a la aplicación.</p>
 <h3 id="archivo-packagejson"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="archivo-packagejson" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Archivo <code>package.json</code></h3>
-<p>Archivo utilizado por el gestor de paquetes de node <code>NPM</code>. Contiene información básica de la aplicación y toads las dependencias que esta reqioere.</p>
+<p>Archivo utilizado por el gestor de paquetes de node <code>NPM</code>. Contiene información básica de la aplicación y todas las dependencias que esta requiere. También incluye todos los comandos de instalación y ejecución de la aplicación.</p>
+<pre><code class="hljs language-json">&#123;
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"app"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0"</span>,
+  <span class="hljs-attr">"main"</span>: <span class="hljs-string">"index.js"</span>,
+  <span class="hljs-attr">"scripts"</span>: &#123;
+    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"node index.js"</span>,
+    <span class="hljs-attr">"start-response"</span>: <span class="hljs-string">"RESPONSE_LOG=true node index.js"</span>,
+    <span class="hljs-attr">"start-sql"</span>: <span class="hljs-string">"SQL_LOG=true node index.js"</span>,
+    <span class="hljs-attr">"start-prod"</span>: <span class="hljs-string">"NODE_ENV=production APIDOC=false node index.js"</span>,
+    <span class="hljs-attr">"setup"</span>: <span class="hljs-string">"SETUP=true node index.js"</span>,
+    <span class="hljs-attr">"setup-prod"</span>: <span class="hljs-string">"NODE_ENV=production SETUP=true node index.js"</span>,
+    <span class="hljs-attr">"lint"</span>: <span class="hljs-string">"eslint index.js src/"</span>,
+    <span class="hljs-attr">"test"</span>: <span class="hljs-string">"npm run test-unit &amp;&amp; npm run test-integration"</span>,
+    <span class="hljs-attr">"test-unit"</span>: <span class="hljs-string">"NODE_ENV=test &amp;&amp; mocha --recursive test/unit"</span>,
+    <span class="hljs-attr">"test-integration"</span>: <span class="hljs-string">"NODE_ENV=test &amp;&amp; mocha --recursive test/integration"</span>
+  &#125;,
+  <span class="hljs-attr">"dependencies"</span>: &#123;
+    <span class="hljs-attr">"moment"</span>: <span class="hljs-string">"^2.21.0"</span>,
+    <span class="hljs-attr">"insac"</span>: <span class="hljs-string">"^2.0.4"</span>
+  &#125;,
+  <span class="hljs-attr">"devDependencies"</span>: &#123;
+    <span class="hljs-attr">"chai"</span>: <span class="hljs-string">"^4.1.2"</span>,
+    <span class="hljs-attr">"eslint"</span>: <span class="hljs-string">"^4.19.0"</span>,
+    <span class="hljs-attr">"eslint-config-standard"</span>: <span class="hljs-string">"^11.0.0"</span>,
+    <span class="hljs-attr">"eslint-plugin-import"</span>: <span class="hljs-string">"^2.9.0"</span>,
+    <span class="hljs-attr">"eslint-plugin-node"</span>: <span class="hljs-string">"^6.0.1"</span>,
+    <span class="hljs-attr">"eslint-plugin-promise"</span>: <span class="hljs-string">"^3.7.0"</span>,
+    <span class="hljs-attr">"eslint-plugin-standard"</span>: <span class="hljs-string">"^3.0.1"</span>,
+    <span class="hljs-attr">"mocha"</span>: <span class="hljs-string">"^5.1.1"</span>
+  &#125;,
+  <span class="hljs-attr">"engines"</span>: &#123;
+    <span class="hljs-attr">"node"</span>: <span class="hljs-string">"&gt;=9.5.0"</span>
+  &#125;
+&#125;
+</code></pre>
 <h3 id="archivo-readmemd"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="archivo-readmemd" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Archivo <code>README.md</code></h3>
 <p>Contiene información acerca de la aplicación, requerimientos mínimos, guía de instalación, referencias, etc.</p>
 <h3 id="archivo-yarnlock"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="archivo-yarnlock" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Archivo <code>yarn.lock</code></h3>

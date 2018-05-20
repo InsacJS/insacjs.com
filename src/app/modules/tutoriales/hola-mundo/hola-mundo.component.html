@@ -1,9 +1,11 @@
 <article class="markdown-body">
 
 <h1 id="hola-mundo"><a class="anchor" routerLink="/tutoriales/hola-mundo" fragment="hola-mundo" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Hola mundo</h1>
+<p>Este es un pequeño ejemplo para ver el funcionamiento del framework.</p>
 <h2 id="instalacion"><a class="anchor" routerLink="/tutoriales/hola-mundo" fragment="instalacion" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Instalación</h2>
 <p><code>npm install insac --save</code></p>
 <h2 id="estructura-basica"><a class="anchor" routerLink="/tutoriales/hola-mundo" fragment="estructura-basica" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Estructura básica</h2>
+<p>Crear los siguientes archivos y ubicarlos como se muestra a continuación.</p>
 <pre><code class="hljs language-txt">app
  ├─ api
  │     ├─ resources
@@ -36,9 +38,9 @@ service.init()
   <span class="hljs-keyword">const</span> ROUTE = &#123;&#125;
 
   ROUTE.get = &#123;
-    <span class="hljs-attr">path</span>: <span class="hljs-string">'/welcome'</span>,
-    <span class="hljs-attr">method</span>: <span class="hljs-string">'get'</span>,
-    <span class="hljs-attr">description</span>: <span class="hljs-string">'Muestra un mensaje de bienvenida.'</span>
+    <span class="hljs-attr">path</span>        : <span class="hljs-string">'/welcome'</span>,
+    <span class="hljs-attr">method</span>      : <span class="hljs-string">'get'</span>,
+    <span class="hljs-attr">description</span> : <span class="hljs-string">'Muestra un mensaje de bienvenida.'</span>
   &#125;
 
   <span class="hljs-keyword">return</span> ROUTE

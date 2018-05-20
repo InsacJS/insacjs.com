@@ -39,6 +39,7 @@ yarn install
  │     └─ mocha.opts
  ├─ .eslintrc.js
  ├─ .gitignore
+ ├─ .insac.js
  ├─ ecosystem.json
  ├─ example.ecosystem.json
  ├─ index.js
@@ -158,6 +159,10 @@ insac add:model post --fields titulo,fecha:DATE,descripcion:TEXT -e
   <span class="hljs-comment">// │ id_libro    │ N  ┌────┤ id_autor    | 1  ┌────┤ id_persona  │</span>
   <span class="hljs-comment">// │ fid_autor   │&lt;───┘    │ fid_persona │&lt;───┘    │             │</span>
   <span class="hljs-comment">// └─────────────┘         └─────────────┘         └─────────────┘</span>
+  <span class="hljs-comment">//</span>
+  <span class="hljs-comment">// const LIBRO   = app.API.models.libro</span>
+  <span class="hljs-comment">// const AUTOR   = app.API.models.autor</span>
+  <span class="hljs-comment">// const PERSONA = app.API.models.persona</span>
   <span class="hljs-comment">//</span>
   <span class="hljs-comment">// LIBRO.belongsTo(AUTOR, &#123; as: 'autor',  foreignKey: &#123; name: 'fid_autor', targetKey: 'id_autor' &#125; &#125;)</span>
   <span class="hljs-comment">// AUTOR.hasMany(LIBRO,   &#123; as: 'libros', foreignKey: &#123; name: 'fid_autor' &#125; &#125;)</span>
