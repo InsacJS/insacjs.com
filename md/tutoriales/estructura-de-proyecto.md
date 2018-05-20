@@ -22,15 +22,15 @@ blog
  │     └─ app.log
  ├─ src
  │     ├─ config
- │     |     ├─ app.config.js
- │     |     └─ example.app.config.js
+ │     │     ├─ app.config.js
+ │     │     └─ example.app.config.js
  │     ├─ modules
  │     └─ app.js
  ├─ test
  │     ├─ integration
- │     |     └─ Example.spec.js
+ │     │     └─ Example.spec.js
  │     ├─ unit
- │     |     └─ Example.spec.js
+ │     │     └─ Example.spec.js
  │     ├─ helpers.js
  │     └─ mocha.opts
  ├─ .eslintrc.js
@@ -180,7 +180,7 @@ Por ejemplo, existen tareas que se requieren en casi todos los módulos, para es
       ├─ modules
             └─ UTIL
                   ├─ tasks
-                  |     └─ util.task.js
+                  │     └─ util.task.js
                   └─ util.module.js
 ```
 
@@ -227,22 +227,22 @@ Por ejemplo, para un módulo `API` que contiene el recurso `libro`, la estructur
       ├─ modules
             └─ API
                   ├─ dao
-                  |     └─ libro.dao.js
+                  │     └─ libro.dao.js
                   ├─ models
-                  |     └─ libro.model.js
+                  │     └─ libro.model.js
                   ├─ resources
-                  |     └─ api
-                  |           └─ v1
-                  |                 └─ libros
-                  |                       ├─ libro.controller.js
-                  |                       ├─ libro.input.js
-                  |                       ├─ libro.middleware.js
-                  |                       ├─ libro.output.js
-                  |                       └─ libro.route.js
+                  │     └─ api
+                  │           └─ v1
+                  │                 └─ libros
+                  │                       ├─ libro.controller.js
+                  │                       ├─ libro.input.js
+                  │                       ├─ libro.middleware.js
+                  │                       ├─ libro.output.js
+                  │                       └─ libro.route.js
                   ├─ seeders
-                  |     ├─ prod
-                  |     |     └─ libro.seed.js
-                  |     └─ libro.seed.js
+                  │     ├─ prod
+                  │     │     └─ libro.seed.js
+                  │     └─ libro.seed.js
                   └─ api.module.js
 ```
 
@@ -354,9 +354,9 @@ Aqui se definen los recursos que ofrece el módulo. Un recurso esta conformado p
 Una ruta `ROUTE` recibe los datos de entrada `INPUT`, verifica que la información proporcionada sea válida y suficiente para continuar con el proceso `MIDDLEWARE`, realiza las tareas correspondientes `CONTROLLER` y finalmente devuelve el resultado `OUTPUT`.
 
 ```txt
-┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐
-│    ROUTE   │ --> │    INPUT   │ --> │ MIDDLEWARE │ --> │ CONTROLLER │ --> │   OUTPUT   │
-└────────────┘     └────────────┘     └────────────┘     └────────────┘     └────────────┘
+┌───────────┐     ┌───────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐
+│   ROUTE   │ --> │   INPUT   │ --> │ MIDDLEWARE │ --> │ CONTROLLER │ --> │   OUTPUT   │
+└───────────┘     └───────────┘     └────────────┘     └────────────┘     └────────────┘
 ```
 
 Todo este flujo se describe en varios ficheros cuya extensión define el estado en el que se encuentra. Por ejemplo, para el recurso `libros` se tendrían los siguientes ficheros:

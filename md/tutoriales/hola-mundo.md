@@ -14,12 +14,12 @@ Crear los siguientes archivos y ubicarlos como se muestra a continuación.
 app
  ├─ api
  │     ├─ resources
- │     |   └─ welcome
- │     |         ├─ welcome.controller.js
- │     |         ├─ welcome.input.js
- │     |         ├─ welcome.middleware.js
- │     |         ├─ welcome.output.js
- │     |         └─ welcome.route.js
+ │     │   └─ welcome
+ │     │         ├─ welcome.controller.js
+ │     │         ├─ welcome.input.js
+ │     │         ├─ welcome.middleware.js
+ │     │         ├─ welcome.output.js
+ │     │         └─ welcome.route.js
  │     └─ api.module.js
  ├─ index.js
  └─ package.json

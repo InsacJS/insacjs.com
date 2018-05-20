@@ -26,15 +26,15 @@ yarn install
  │     └─ app.log
  ├─ src
  │     ├─ config
- │     |     └─ app.config.js
- │     |     └─ example.app.config.js
+ │     │     └─ app.config.js
+ │     │     └─ example.app.config.js
  │     ├─ modules
  │     └─ app.js
  ├─ test
  │     ├─ integration
- │     |     └─ Example.spec.js
+ │     │     └─ Example.spec.js
  │     ├─ unit
- │     |     └─ Example.spec.js
+ │     │     └─ Example.spec.js
  │     ├─ helpers.js
  │     └─ mocha.opts
  ├─ .eslintrc.js
@@ -57,14 +57,14 @@ yarn install
                    ├─ models
                    ├─ resources
                    ├─ seeders
-                   |     └─ prod
+                   │     └─ prod
                    └─ api.module.js
 </code></pre>
 <p>Creación de modelos <code>persona</code> y <code>post</code>, en base al siguiente diagrama:</p>
 <pre><code class="hljs language-txt">  ┌───────────────┐         ┌───────────────┐
-  │    PERSONA    │         │     POST      |
+  │    PERSONA    │         │     POST      │
   ├───────────────┤ 1       ├───────────────┤
-  │ id_persona    ├────┐    │ id_post       |
+  │ id_persona    ├────┐    │ id_post       │
   │ nombre        │    │    │ titulo        │
   │ telefono      │    │    │ fecha         │
   │ email         │    │  N │ descripcion   │
@@ -154,9 +154,9 @@ insac add:model post --fields titulo,fecha:DATE,descripcion:TEXT -e
   <span class="hljs-comment">// Ejemplo.-</span>
   <span class="hljs-comment">//</span>
   <span class="hljs-comment">// ┌─────────────┐         ┌─────────────┐         ┌─────────────┐</span>
-  <span class="hljs-comment">// │    LIBRO    │         │    AUTOR    |         │   PERSONA   │</span>
+  <span class="hljs-comment">// │    LIBRO    │         │    AUTOR    │         │   PERSONA   │</span>
   <span class="hljs-comment">// ├─────────────┤       1 ├─────────────┤       1 ├─────────────┤</span>
-  <span class="hljs-comment">// │ id_libro    │ N  ┌────┤ id_autor    | 1  ┌────┤ id_persona  │</span>
+  <span class="hljs-comment">// │ id_libro    │ N  ┌────┤ id_autor    │ 1  ┌────┤ id_persona  │</span>
   <span class="hljs-comment">// │ fid_autor   │&lt;───┘    │ fid_persona │&lt;───┘    │             │</span>
   <span class="hljs-comment">// └─────────────┘         └─────────────┘         └─────────────┘</span>
   <span class="hljs-comment">//</span>
@@ -186,30 +186,30 @@ insac gen:resource api/v1/posts -m post --level 2
       ├─ modules
             └─ API
                   ├─ dao
-                  |     ├─ persona.dao.js
-                  |     └─ post.dao.js
+                  │     ├─ persona.dao.js
+                  │     └─ post.dao.js
                   ├─ models
-                  |     ├─ persona.model.js
-                  |     └─ post.model.js
+                  │     ├─ persona.model.js
+                  │     └─ post.model.js
                   ├─ resources
-                  |     └─ api
-                  |           └─ v1
-                  |                 ├─ personas
-                  |                 |     ├─ persona.controller.js
-                  |                 |     ├─ persona.input.js
-                  |                 |     ├─ persona.middleware.js
-                  |                 |     ├─ persona.output.js
-                  |                 |     └─ persona.route.js
-                  |                 └─ posts
-                  |                       ├─ post.controller.js
-                  |                       ├─ post.input.js
-                  |                       ├─ post.middleware.js
-                  |                       ├─ post.output.js
-                  |                       └─ post.route.js
+                  │     └─ api
+                  │           └─ v1
+                  │                 ├─ personas
+                  │                 │     ├─ persona.controller.js
+                  │                 │     ├─ persona.input.js
+                  │                 │     ├─ persona.middleware.js
+                  │                 │     ├─ persona.output.js
+                  │                 │     └─ persona.route.js
+                  │                 └─ posts
+                  │                       ├─ post.controller.js
+                  │                       ├─ post.input.js
+                  │                       ├─ post.middleware.js
+                  │                       ├─ post.output.js
+                  │                       └─ post.route.js
                   ├─ seeders
-                  |     ├─ prod
-                  |     ├─ persona.seed.js
-                  |     └─ post.seed.js
+                  │     ├─ prod
+                  │     ├─ persona.seed.js
+                  │     └─ post.seed.js
                   └─ api.module.js
 </code></pre>
 <p>Listo, ya podemos instalar y ejecutar la aplicación, para esto debemos actualizar los datos de configuración de la base de datos y del servidor los cuales se encuentran en el archivo <code>app.config.js</code>.</p>

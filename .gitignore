@@ -44,4 +44,4 @@ testem.log
 Thumbs.db
 
 # Carpetas autogeneradas
-src/app/modules
+/src/app/modules

@@ -34,15 +34,15 @@ blog
  │     └─ app.log
  ├─ src
  │     ├─ config
- │     |     └─ app.config.js
- │     |     └─ example.app.config.js
+ │     │     └─ app.config.js
+ │     │     └─ example.app.config.js
  │     ├─ modules
  │     └─ app.js
  ├─ test
  │     ├─ integration
- │     |     └─ Example.spec.js
+ │     │     └─ Example.spec.js
  │     ├─ unit
- │     |     └─ Example.spec.js
+ │     │     └─ Example.spec.js
  │     ├─ helpers.js
  │     └─ mocha.opts
  ├─ .eslintrc.js
@@ -70,7 +70,7 @@ Esto nos generará la siguiente carpeta:
                    ├─ models
                    ├─ resources
                    ├─ seeders
-                   |     └─ prod
+                   │     └─ prod
                    └─ api.module.js
 ```
 
@@ -78,9 +78,9 @@ Creación de modelos `persona` y `post`, en base al siguiente diagrama:
 
 ```txt
   ┌───────────────┐         ┌───────────────┐
-  │    PERSONA    │         │     POST      |
+  │    PERSONA    │         │     POST      │
   ├───────────────┤ 1       ├───────────────┤
-  │ id_persona    ├────┐    │ id_post       |
+  │ id_persona    ├────┐    │ id_post       │
   │ nombre        │    │    │ titulo        │
   │ telefono      │    │    │ fecha         │
   │ email         │    │  N │ descripcion   │
@@ -181,9 +181,9 @@ module.exports = (sequelize, Sequelize) => {
   // Ejemplo.-
   //
   // ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
-  // │    LIBRO    │         │    AUTOR    |         │   PERSONA   │
+  // │    LIBRO    │         │    AUTOR    │         │   PERSONA   │
   // ├─────────────┤       1 ├─────────────┤       1 ├─────────────┤
-  // │ id_libro    │ N  ┌────┤ id_autor    | 1  ┌────┤ id_persona  │
+  // │ id_libro    │ N  ┌────┤ id_autor    │ 1  ┌────┤ id_persona  │
   // │ fid_autor   │<───┘    │ fid_persona │<───┘    │             │
   // └─────────────┘         └─────────────┘         └─────────────┘
   //
@@ -222,30 +222,30 @@ La estructura del modulo queda de la siguiente forma:
       ├─ modules
             └─ API
                   ├─ dao
-                  |     ├─ persona.dao.js
-                  |     └─ post.dao.js
+                  │     ├─ persona.dao.js
+                  │     └─ post.dao.js
                   ├─ models
-                  |     ├─ persona.model.js
-                  |     └─ post.model.js
+                  │     ├─ persona.model.js
+                  │     └─ post.model.js
                   ├─ resources
-                  |     └─ api
-                  |           └─ v1
-                  |                 ├─ personas
-                  |                 |     ├─ persona.controller.js
-                  |                 |     ├─ persona.input.js
-                  |                 |     ├─ persona.middleware.js
-                  |                 |     ├─ persona.output.js
-                  |                 |     └─ persona.route.js
-                  |                 └─ posts
-                  |                       ├─ post.controller.js
-                  |                       ├─ post.input.js
-                  |                       ├─ post.middleware.js
-                  |                       ├─ post.output.js
-                  |                       └─ post.route.js
+                  │     └─ api
+                  │           └─ v1
+                  │                 ├─ personas
+                  │                 │     ├─ persona.controller.js
+                  │                 │     ├─ persona.input.js
+                  │                 │     ├─ persona.middleware.js
+                  │                 │     ├─ persona.output.js
+                  │                 │     └─ persona.route.js
+                  │                 └─ posts
+                  │                       ├─ post.controller.js
+                  │                       ├─ post.input.js
+                  │                       ├─ post.middleware.js
+                  │                       ├─ post.output.js
+                  │                       └─ post.route.js
                   ├─ seeders
-                  |     ├─ prod
-                  |     ├─ persona.seed.js
-                  |     └─ post.seed.js
+                  │     ├─ prod
+                  │     ├─ persona.seed.js
+                  │     └─ post.seed.js
                   └─ api.module.js
 ```
 
