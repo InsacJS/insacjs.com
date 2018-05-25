@@ -10,7 +10,7 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button routerLink="/index" mat-menu-item><mat-icon>home</mat-icon> Inicio</button>
+        <button routerLink="/" mat-menu-item><mat-icon>home</mat-icon> Inicio</button>
         <button routerLink="/tutoriales/introduccion" mat-menu-item><mat-icon>flash_on</mat-icon> Tutoriales</button>
         <button routerLink="/referencias/apidoc-creator" mat-menu-item><mat-icon>library_books</mat-icon> Referencias</button>
         <a href="https://github.com/insacjs" target="_blank" mat-menu-item><svg viewBox="0 0 512 512" style="margin-right:15px;color:grey" focusable="false" height="25px">
@@ -19,7 +19,7 @@
       </mat-menu>
     </div>
     <div fxLayout="row" fxLayoutAlign="start start" fxShow fxHide.xs="true">
-      <button routerLink="/index" mat-button style="color:white"><mat-icon>home</mat-icon> Inicio</button>
+      <button routerLink="/" mat-button style="color:white"><mat-icon>home</mat-icon> Inicio</button>
       <button routerLink="/tutoriales/introduccion" [routerLinkActive]="['active']" mat-button style="color:white"><mat-icon>flash_on</mat-icon> Tutoriales</button>
       <button routerLink="/referencias/apidoc-creator" [routerLinkActive]="['active']" mat-button style="color:white"><mat-icon>library_books</mat-icon> Referencias</button>
       <a href="https://github.com/insacjs" target="_blank" mat-button style="color:white"><svg viewBox="0 0 512 512" focusable="false" height="25px">
