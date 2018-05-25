@@ -24,6 +24,9 @@ blog
  │     ├─ config
  │     │     ├─ app.config.js
  │     │     └─ example.app.config.js
+ │     ├─ hooks
+ │     │     ├─ custom.after.hook.js
+ │     │     └─ custom.before.hook.js
  │     ├─ modules
  │     └─ app.js
  ├─ test
@@ -40,7 +43,7 @@ blog
  ├─ example.ecosystem.json
  ├─ index.js
  ├─ package.json
- ├─ README.md
+ └─ README.md
  └─ yarn.lock
 ```
 
@@ -161,6 +164,50 @@ exports.SERVER = {
 
 Al igual que la carpeta `certs`, cuando se trabaja con `GIT`, estos archivos no se guardan en el repositorio, en su lugar se subiran los archivos que contengan la palabra `example`.
 
+### Carpeta `src/hooks`
+
+Contiene los ficheros que realizan operaciones antes y después de instalar o inicializar los módulos del sistema.
+
+### Carpeta `src/hooks/custom.after.hook.js`
+
+Contiene las tareas que se realizan **después** de cargar los módulos, puede utilizarse para controlar errores.
+
+```js
+module.exports = (app) => {
+  // |======================================================================|
+  // |-- TAREAS A REALIZAR DESPUÉS DE INSTALAR O INICIALIZAR LOS MÓDULOS ---|
+  // |======================================================================|
+
+  // Ejemplo.- Envía un mensaje por correo electrónico al equipo de soporte.
+  //
+  // app.use((err, req, res, next) => {
+  //   if (err && (err.code === 500)) {
+  //     app.MAIL.send.error500(req, err)
+  //   }
+  //   return next(err)
+  // })
+}
+```
+
+### Carpeta `src/hooks/custom.before.hook.js`
+
+Contiene las tareas que se realizan **antes** de cargar los módulos. Puede utilizarse para cargar middlewares globales.
+
+```js
+module.exports = (app) => {
+  // |======================================================================|
+  // |--- TAREAS A REALIZAR ANTES DE INSTALAR O INICIALIZAR LOS MÓDULOS ----|
+  // |======================================================================|
+
+  // Ejemplo.- Muestra información de una petición.
+  //
+  // app.use((req, res, next) => {
+  //   console.log(req.id, req.method, req.originalUrl)
+  //   return next()
+  // })
+}
+```
+
 ### Carpeta `src/modules`
 
 El proyecto se organiza mediante módulos, cada módulo se encarga de una tarea específica dentro de la aplicación.
@@ -179,8 +226,8 @@ Por ejemplo, existen tareas que se requieren en casi todos los módulos, para es
 ├─ src
       ├─ modules
             └─ UTIL
-                  ├─ tasks
-                  │     └─ util.task.js
+                  ├─ services
+                  │     └─ util.service.js
                   └─ util.module.js
 ```
 
@@ -196,11 +243,11 @@ module.exports = (app) => {
 }
 ```
 
-### Carpeta `src/modules/UTIL/tasks`
+### Carpeta `src/modules/UTIL/services`
 
-Contiene todas las tareas que puede realizar el módulo y que pueden ser accedidas desde cualquier módulo.
+Contiene todas las tareas que puede realizar el módulo y pueden ser ejecutadas desde otros módulos.
 
-### Archivo `src/modules/UTIL/tasks/util.task.js`
+### Archivo `src/modules/UTIL/services/util.service.js`
 
 ```js
 module.exports = (app) => {
@@ -451,6 +498,63 @@ module.exports = (app) => {
 
 Los ficheros que se encuentren en esta carpeta, serán instalados únicamente en entornos de producción `production`.
 
+### - Módulo de tipo `SENDGRID_MAIL`
+
+Este módulo, se utiliza para enviar mensajes por correo electrónico con el servidor SMTP que ofrece SendGrid. Se requiere una cuenta registrada en [https://sendgrid.com](https://sendgrid.com) para obtener el `APIKEY` que se utiliza para enviar los mensajes.
+
+La estructura del módulo, es la siguiente:
+
+```txt
+├─ src
+      ├─ modules
+            └─ EMAIL
+                  ├─ emails
+                  │     └─ welcome
+                  |           ├─ welcome.html
+                  │           └─ welcome.mail.js
+                  └─ email.module.js
+```
+
+### Archivo `src/modules/EMAIL/email.module.js`
+
+```js
+const { SendGridMailModule } = require('insac')
+
+module.exports = (app) => {
+  const CONFIG = app.config.EMAIL
+
+  return new SendGridMailModule(CONFIG)
+}
+```
+
+También se requiere la siguiente configuración en el archivo `app.config.js`.
+
+```js
+exports.EMAIL = {
+  sendGridApiKey : '<SENDGRID_APIKEY>',
+  systemName     : 'Nombre del sistema',
+  systemEmail    : 'system@example.com'
+}
+```
+
+### Carpeta `src/modules/UTIL/services`
+
+Contiene todas las tareas que puede realizar el módulo y pueden ser ejecutadas desde otros módulos.
+
+### Archivo `src/modules/UTIL/services/util.service.js`
+
+```js
+module.exports = (app) => {
+  const UTIL = {}
+
+  UTIL.log = (message) => {
+    console.log(message)
+  }
+
+  return UTIL
+}
+```
+
 ### Carpeta `test`
 
 Contiene todas las pruebas necesarias que garantizan el correcto funcionamiento del sistema.
@@ -511,7 +615,7 @@ Archivo utilizado por el gestor de paquetes de node `NPM`. Contiene información
 
 ```json
 {
-  "name": "app",
+  "name": "sistema",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -521,24 +625,23 @@ Archivo utilizado por el gestor de paquetes de node `NPM`. Contiene información
     "start-prod": "NODE_ENV=production APIDOC=false node index.js",
     "setup": "SETUP=true node index.js",
     "setup-prod": "NODE_ENV=production SETUP=true node index.js",
-    "lint": "eslint index.js src/",
+    "lint": "\"node_modules/.bin/eslint\" index.js src/",
     "test": "npm run test-unit && npm run test-integration",
-    "test-unit": "NODE_ENV=test && mocha --recursive test/unit",
-    "test-integration": "NODE_ENV=test && mocha --recursive test/integration"
+    "test-unit": "NODE_ENV=test \"node_modules/.bin/mocha\" --recursive test/unit",
+    "test-integration": "NODE_ENV=test \"node_modules/.bin/mocha\" --recursive test/integration"
   },
   "dependencies": {
-    "moment": "^2.21.0",
-    "insac": "^2.0.4"
+    "insac": "^2.1.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "eslint": "^4.19.0",
+    "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
-    "mocha": "^5.1.1"
+    "mocha": "^5.2.0"
   },
   "engines": {
     "node": ">=9.5.0"
@@ -546,6 +649,24 @@ Archivo utilizado por el gestor de paquetes de node `NPM`. Contiene información
 }
 ```
 
+Para ejecutar los scripts en Sistemas Operativos Windows, reemplazar la propiedad `scripts` con la siguiente información:
+
+```json
+{
+  "scripts": {
+    "start": "node index.js",
+    "start-response": "set RESPONSE_LOG=true&&node index.js",
+    "start-sql": "set SQL_LOG=true&&node index.js",
+    "start-prod": "set NODE_ENV=production&&set APIDOC=false&&node index.js",
+    "setup": "set SETUP=true&&node index.js",
+    "setup-prod": "set NODE_ENV=production&&set SETUP=true&&node index.js",
+    "lint": "\"node_modules/.bin/eslint\" index.js src",
+    "test": "npm run test-unit && npm run test-integration",
+    "test-unit": "set NODE_ENV=test&&\"node_modules/.bin/mocha\" --recursive test/unit",
+    "test-integration": "set NODE_ENV=test&&\"node_modules/.bin/mocha\" --recursive test/integration"
+  }
+}
+```
 
 ### Archivo `README.md`
 

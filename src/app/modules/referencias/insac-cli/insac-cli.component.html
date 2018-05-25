@@ -22,22 +22,23 @@
 |===   I N S A C  -  C L I   ===|
 |===============================|
 
-Insac     : v2.0.0
-Insac-cli : v2.0.0
+insac     : v2.1.0
+insac-cli : v2.1.0
 
 Modo de uso: insac [comando] [opciones]
 
   Comandos:
 
     new &lt;name&gt; [description]  Crea un nuevo proyecto.
-    add:module &lt;name&gt;         Crea un nuevo módulo.
-    add:model &lt;name&gt;          Crea un nuevo modelo.
-    add:dao                   Crea un nuevo dao.
-    add:seed                  Crea un nuevo seed.
-    add:resource &lt;name&gt;       Crea un nuevo recurso.
-    add:route &lt;key&gt;           Crea una nueva ruta.
 
-    gen:resource &lt;name&gt;       Crea un recurso con el código autogenerado.
+    add:module &lt;name&gt;         Adiciona un nuevo módulo.
+    add:model &lt;name&gt;          Adiciona un nuevo modelo.
+    add:dao                   Adiciona un nuevo dao.
+    add:seed                  Adiciona un nuevo seed.
+    add:resource &lt;name&gt;       Adiciona un nuevo recurso.
+    add:route &lt;key&gt;           Adiciona una nueva ruta.
+
+    gen:resource &lt;name&gt;       Genera un recurso (CRUD) con el código autogenerado.
 
   Opciones:
 
@@ -50,9 +51,9 @@ Modo de uso: insac [comando] [opciones]
     -m, --model &lt;value&gt;       Nombre del modelo.
     -r, --resource &lt;value&gt;    Nombre del recurso.
 
-    -t, --<span class="hljs-built_in">type</span> &lt;value&gt;        Tipo de modulo, ruta o servicio.
+    -t, --<span class="hljs-built_in">type</span> &lt;value&gt;        Tipo de modulo o ruta.
                                 - MODULOS   : RESOURCE (default), SENDGRID_MAIL, MODULE.
-                                - RUTAS     : get (default), getId, create, update, destroy, restore.
+                                - RUTAS     : all (default), get, getId, create, update, destroy, restore.
 
     --fields &lt;value&gt;          Atributos de un modelo separados por comas y el tipo de dato por dos puntos.
                                 - Tipos: STRING (default), INTEGER, FLOAT, BOOLEAN, DATE.

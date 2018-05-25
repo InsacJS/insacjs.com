@@ -34,8 +34,11 @@ blog
  │     └─ app.log
  ├─ src
  │     ├─ config
- │     │     └─ app.config.js
+ │     │     ├─ app.config.js
  │     │     └─ example.app.config.js
+ │     ├─ hooks
+ │     │     ├─ custom.after.hook.js
+ │     │     └─ custom.before.hook.js
  │     ├─ modules
  │     └─ app.js
  ├─ test
@@ -52,7 +55,7 @@ blog
  ├─ example.ecosystem.json
  ├─ index.js
  ├─ package.json
- ├─ README.md
+ └─ README.md
  └─ yarn.lock
 ```
 
