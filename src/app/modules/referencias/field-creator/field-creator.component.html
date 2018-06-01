@@ -15,64 +15,79 @@
 <tr>
 <th>Tipo</th>
 <th>Descripción</th>
+<th>Validadores por defecto</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>ID</code></td>
 <td>Clave primaria.</td>
+<td>isInt: <code>true</code>, min: <code>1</code>, max: <code>2147483647</code></td>
 </tr>
 <tr>
 <td><code>STRING</code></td>
 <td>Cadena de texto.</td>
+<td>len: <code>[0, LENGHT]</code></td>
 </tr>
 <tr>
 <td><code>TEXT</code></td>
 <td>Bloque de texto.</td>
+<td>len: <code>[0, 2147483647]</code></td>
 </tr>
 <tr>
 <td><code>INTEGER</code></td>
 <td>Número entero.</td>
+<td>isInt: <code>true</code>, min: <code>0</code>, max: <code>2147483647</code></td>
 </tr>
 <tr>
 <td><code>FLOAT</code></td>
 <td>Número en coma flotante.</td>
+<td>isFloat: <code>true</code>, min: <code>0</code>, max: <code>1E+308</code></td>
 </tr>
 <tr>
 <td><code>BOOLEAN</code></td>
 <td>Valor booleano.</td>
+<td>isBoolean: <code>true</code></td>
 </tr>
 <tr>
 <td><code>DATE</code></td>
 <td>Fecha (día y hora).</td>
+<td>isDate: <code>true</code></td>
 </tr>
 <tr>
 <td><code>DATEONLY</code></td>
 <td>Solamente fecha.</td>
+<td>isDate: <code>true</code></td>
 </tr>
 <tr>
 <td><code>TIME</code></td>
 <td>Solamente hora.</td>
+<td>isTime: <code>custom</code></td>
 </tr>
 <tr>
 <td><code>JSON</code></td>
 <td>Objeto de tipo JSON.</td>
+<td>isJson: <code>custom</code></td>
 </tr>
 <tr>
 <td><code>JSONB</code></td>
 <td>Objeto de tipo JSONB.</td>
+<td>isJson: <code>custom</code></td>
 </tr>
 <tr>
 <td><code>UUID</code></td>
 <td>Código de tipo UUID.</td>
+<td>isUUID: <code>4</code></td>
 </tr>
 <tr>
 <td><code>ENUM</code></td>
 <td>Tipo enumerado.</td>
+<td>isIn: <code>[VALUES]</code></td>
 </tr>
 <tr>
 <td><code>ARRAY</code></td>
 <td>Lista de valores.</td>
+<td>isArray: <code>custom</code></td>
 </tr>
 </tbody>
 </table>
@@ -138,8 +153,71 @@
   <span class="hljs-attr">comment</span>       : <span class="hljs-string">'Identificador único.'</span>,
   <span class="hljs-attr">uniqueMsg</span>     : <span class="hljs-string">'El campo ID debe ser único.'</span>,
   <span class="hljs-attr">allowNullMsg</span>  : <span class="hljs-string">'El campo ID es requerido.'</span>,
-  <span class="hljs-attr">validate</span>      : &#123; <span class="hljs-attr">min</span>: &#123; <span class="hljs-attr">args</span>: [<span class="hljs-number">1</span>], <span class="hljs-attr">msg</span>: <span class="hljs-string">'Debe ser mayor o igual a 1.'</span> &#125; &#125;,
+  <span class="hljs-attr">validate</span>      : &#123; <span class="hljs-attr">min</span>: &#123; <span class="hljs-attr">args</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">msg</span>: <span class="hljs-string">'Debe ser mayor o igual a 1.'</span> &#125; &#125;,
 &#125;)
+</code></pre>
+<h2 id="propiedad-validate"><a class="anchor" routerLink="/referencias/field-creator" fragment="propiedad-validate" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Propiedad validate</h2>
+<p>Un validador puede tener uno de los siguientes formatos:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">min</span>: <span class="hljs-number">10</span> &#125;
+<span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">min</span>: &#123; <span class="hljs-attr">args</span>: <span class="hljs-number">10</span> &#125; &#125;
+<span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">min</span>: &#123; <span class="hljs-attr">args</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">msg</span>: <span class="hljs-string">'Mensaje de error personalizado.'</span> &#125; &#125;
+
+<span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">len</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">5</span>] &#125;
+<span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">len</span>: &#123; <span class="hljs-attr">args</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">5</span>] &#125; &#125;
+<span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">len</span>: &#123; <span class="hljs-attr">args</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">5</span>], <span class="hljs-attr">msg</span>: <span class="hljs-string">'Mensaje de error personalizado.'</span> &#125; &#125;
+
+<span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">isIn</span>: [[<span class="hljs-string">'A'</span>, <span class="hljs-string">'B'</span>]] &#125;
+<span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">isIn</span>: &#123; <span class="hljs-attr">args</span>: [[<span class="hljs-string">'A'</span>, <span class="hljs-string">'B'</span>]] &#125; &#125;
+<span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">isIn</span>: &#123; <span class="hljs-attr">args</span>: [[<span class="hljs-string">'A'</span>, <span class="hljs-string">'B'</span>]], <span class="hljs-attr">msg</span>: <span class="hljs-string">'Mensaje de error personalizado.'</span> &#125; &#125;
+</code></pre>
+<p>Cuando se trata de validadores booleanos, son válidos los siguientes formatos:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">isEmail</span>: <span class="hljs-literal">true</span> &#125;
+<span class="hljs-keyword">const</span> validate = &#123; <span class="hljs-attr">isEmail</span>: &#123; <span class="hljs-attr">msg</span>: <span class="hljs-string">'Mensaje de error personalizado.'</span> &#125; &#125;
+</code></pre>
+<p>Para validadores personalizados:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> validate = &#123;
+  <span class="hljs-attr">esNumeroPar</span>: <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">parseInt</span>(value) % <span class="hljs-number">2</span> !== <span class="hljs-number">0</span>) &#123;
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`Debe ser un número par.`</span>)
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<h2 id="lista-de-validadores"><a class="anchor" routerLink="/referencias/field-creator" fragment="lista-de-validadores" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Lista de validadores</h2>
+<p>A continuación se muestra una lista de opciones de la propiedad <code>validate</code>. Puede encontrar más información en: <a href="http://docs.sequelizejs.com/manual/tutorial/models-definition.html#validations">http://docs.sequelizejs.com/manual/tutorial/models-definition.html#validations</a></p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> validate = &#123;
+  <span class="hljs-attr">is</span>             : [<span class="hljs-string">'^[a-z]+$'</span>, <span class="hljs-string">'i'</span>],
+  <span class="hljs-attr">is</span>             : <span class="hljs-regexp">/^[a-z]+$/i</span>,      
+  <span class="hljs-attr">not</span>            : [<span class="hljs-string">'[a-z]'</span>, <span class="hljs-string">'i'</span>],   
+  <span class="hljs-attr">isEmail</span>        : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isUrl</span>          : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isIP</span>           : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isIPv4</span>         : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isIPv6</span>         : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isAlpha</span>        : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isAlphanumeric</span> : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isNumeric</span>      : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isInt</span>          : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isFloat</span>        : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isDecimal</span>      : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isLowercase</span>    : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isUppercase</span>    : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isNull</span>         : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">notEmpty</span>       : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">equals</span>         : <span class="hljs-string">'ABC123'</span>,   
+  <span class="hljs-attr">contains</span>       : <span class="hljs-string">'def'</span>,      
+  <span class="hljs-attr">notContains</span>    : <span class="hljs-string">'def'</span>,      
+  <span class="hljs-attr">notIn</span>          : [[<span class="hljs-string">'A'</span>, <span class="hljs-string">'B'</span>]],     
+  <span class="hljs-attr">isIn</span>           : [[<span class="hljs-string">'A'</span>, <span class="hljs-string">'B'</span>]],     
+  <span class="hljs-attr">len</span>            : [<span class="hljs-number">2</span>, <span class="hljs-number">5</span>],           
+  <span class="hljs-attr">isUUID</span>         : <span class="hljs-number">4</span>,                
+  <span class="hljs-attr">isDate</span>         : <span class="hljs-literal">true</span>,             
+  <span class="hljs-attr">isAfter</span>        : <span class="hljs-string">'2010-05-30'</span>,
+  <span class="hljs-attr">isBefore</span>       : <span class="hljs-string">'2020-05-30'</span>,
+  <span class="hljs-attr">min</span>            : <span class="hljs-number">10</span>,                
+  <span class="hljs-attr">max</span>            : <span class="hljs-number">12</span>,               
+  <span class="hljs-attr">isCreditCard</span>   : <span class="hljs-literal">true</span>,            
+&#125;
 </code></pre>
 <h2 id="funcion-clone"><a class="anchor" routerLink="/referencias/field-creator" fragment="funcion-clone" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Función <code>CLONE</code></h2>
 <p>Crea una copia a partir de otro atributo, modificando algunas de sus propiedades si fuera necesario.</p>
@@ -206,23 +284,23 @@ AUTOR.hasMany(LIBRO, &#123; <span class="hljs-attr">as</span>: <span class="hljs
     <span class="hljs-attr">autoIncrement</span> : <span class="hljs-literal">true</span>,
     <span class="hljs-attr">allowNull</span>     : <span class="hljs-literal">false</span>,
     <span class="hljs-attr">validate</span>      : &#123;
-      <span class="hljs-attr">isInt</span> : &#123; <span class="hljs-attr">args</span>: [<span class="hljs-literal">true</span>] &#125;,
-      <span class="hljs-attr">min</span>   : &#123; <span class="hljs-attr">args</span>: [<span class="hljs-number">1</span>] &#125;,
-      <span class="hljs-attr">max</span>   : &#123; <span class="hljs-attr">args</span>: [<span class="hljs-number">2147483647</span>] &#125;
+      <span class="hljs-attr">isInt</span> : <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">min</span>   : <span class="hljs-number">1</span>,
+      <span class="hljs-attr">max</span>   : <span class="hljs-number">2147483647</span>
     &#125;
   &#125;,
   <span class="hljs-attr">titulo</span>: &#123;
     <span class="hljs-attr">type</span>: Sequelize.STRING(<span class="hljs-number">10</span>),
     <span class="hljs-attr">validate</span>: &#123;
-      <span class="hljs-attr">len</span>: &#123; <span class="hljs-attr">args</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">10</span>] &#125;
+      <span class="hljs-attr">len</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">10</span>]
     &#125;
   &#125;,
   <span class="hljs-attr">precio</span>: &#123;
-    <span class="hljs-attr">type</span>: Sequelize.INTEGER(),
+    <span class="hljs-attr">type</span>: Sequelize.FLOAT(),
     <span class="hljs-attr">validate</span>: &#123;
-      <span class="hljs-attr">isFloat</span> : &#123; <span class="hljs-attr">args</span>: [<span class="hljs-literal">true</span>] &#125;,
-      <span class="hljs-attr">min</span>     : &#123; <span class="hljs-attr">args</span>: [<span class="hljs-number">0</span>] &#125;,
-      <span class="hljs-attr">max</span>     : &#123; <span class="hljs-attr">args</span>: [<span class="hljs-number">1E+308</span>] &#125;
+      <span class="hljs-attr">isFloat</span> : <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">min</span>     : <span class="hljs-number">0</span>,
+      <span class="hljs-attr">max</span>     : <span class="hljs-number">1E+308</span>
     &#125;
   &#125;
 &#125;)
