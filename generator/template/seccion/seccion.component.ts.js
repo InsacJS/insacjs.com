@@ -25,8 +25,8 @@ module.exports = (data) => {
   let result = ``
 
   result += `// Libraries
-import { Component, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
+import { Component, OnInit, AfterViewInit } from '@angular/core'
+import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router'
 
 @Component({
   selector    : 'app-${_section}',
@@ -35,10 +35,25 @@ import { Router } from '@angular/router'
 })
 export class ${Section}Component implements OnInit {
   menuItems = []
+  loading   = false
 
   constructor (
     private router: Router
   ) {}
+
+  ngAfterViewInit() {
+    this.router.events.subscribe((event) => {
+      if(event instanceof NavigationStart) {
+        this.loading = true
+      }
+      else if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel
+      ) {
+        this.loading = false
+      }
+    })
+  }
 
   addMenuItem (ROUTE) {
     for (let i in this.menuItems) {

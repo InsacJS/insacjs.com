@@ -43,9 +43,9 @@ A continuación de describen las diferentes tecnologías y herramientas con las 
 ``` js
 const { Insac } = require('insac')
 
-const app = new Insac()
+const service = new Insac()
 
-app.addModule('API')
+service.addModule('API')
 
-app.init()
+service.init()
 ```

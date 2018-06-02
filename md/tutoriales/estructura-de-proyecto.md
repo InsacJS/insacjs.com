@@ -19,7 +19,6 @@ blog
  ├─ public
  │     └─ apidoc
  ├─ logs
- │     └─ app.log
  ├─ src
  │     ├─ config
  │     │     ├─ app.config.js
@@ -75,11 +74,7 @@ Esta carpeta se crea automáticamente y contiene la documentación del servicio 
 
 ### Carpeta `logs`
 
-Aqui es donde se almacenan todos los logs del sistema.
-
-### Archivo `logs/app.log`
-
-Contiene el registro de todas aquellas peticiones que terminaron con algún error `400`, en especial los errores internos del servidor `500`.
+Aquí es donde se almacenan todos los logs del sistema.
 
 ### Carpeta `src`
 
@@ -148,7 +143,7 @@ exports.SERVER = {
     'preflightContinue'            : true,
     'Access-Control-Allow-Headers' : 'Authorization,Content-Type,Content-Length'
   },
-  ssl: {
+  options: {
     key  : fs.readFileSync(path.resolve(process.cwd(), 'certs/privateKey.pem')),
     cert : fs.readFileSync(path.resolve(process.cwd(), 'certs/publicKey.pem'))
   },
@@ -175,7 +170,7 @@ Contiene las tareas que se realizan **después** de cargar los módulos, puede u
 ```js
 module.exports = (app) => {
   // |======================================================================|
-  // |-- TAREAS A REALIZAR DESPUÉS DE INSTALAR O INICIALIZAR LOS MÓDULOS ---|
+  // |----------- TAREAS A REALIZAR DESPUÉS DE CARGAR LOS MÓDULOS ----------|
   // |======================================================================|
 
   // Ejemplo.- Envía un mensaje por correo electrónico al equipo de soporte.
@@ -196,7 +191,7 @@ Contiene las tareas que se realizan **antes** de cargar los módulos. Puede util
 ```js
 module.exports = (app) => {
   // |======================================================================|
-  // |--- TAREAS A REALIZAR ANTES DE INSTALAR O INICIALIZAR LOS MÓDULOS ----|
+  // |----------- TAREAS A REALIZAR ANTES DE CARGAR LOS MÓDULOS ------------|
   // |======================================================================|
 
   // Ejemplo.- Muestra información de una petición.
@@ -253,8 +248,8 @@ Contiene todas las tareas que puede realizar el módulo y pueden ser ejecutadas 
 module.exports = (app) => {
   const UTIL = {}
 
-  UTIL.log = (message) => {
-    console.log(message)
+  UTIL.log = (obj) => {
+    console.log(require('util').inspect(obj, { depth: null }))
   }
 
   return UTIL
@@ -537,24 +532,6 @@ exports.EMAIL = {
 }
 ```
 
-### Carpeta `src/modules/UTIL/services`
-
-Contiene todas las tareas que puede realizar el módulo y pueden ser ejecutadas desde otros módulos.
-
-### Archivo `src/modules/UTIL/services/util.service.js`
-
-```js
-module.exports = (app) => {
-  const UTIL = {}
-
-  UTIL.log = (message) => {
-    console.log(message)
-  }
-
-  return UTIL
-}
-```
-
 ### Carpeta `test`
 
 Contiene todas las pruebas necesarias que garantizan el correcto funcionamiento del sistema.
@@ -593,7 +570,25 @@ const path = require('path')
 exports.PATH = {
   modules : path.resolve(__dirname, 'src/modules'),
   config  : path.resolve(__dirname, 'src/config'),
-  hooks   : path.resolve(__dirname, 'src/hooks')
+  hooks   : path.resolve(__dirname, 'src/hooks'),
+  logs    : path.resolve(__dirname, 'logs')
+}
+
+exports.APIDOC = {
+  title    : 'Apidoc',
+  name     : 'Documentación'
+}
+
+exports.LOGGER = {
+  console: {
+    timestamp : true,
+    reqId     : true
+  },
+  file: {
+    maxsize  : 5242880,
+    maxFiles : 5,
+    levels   : ['error', 'warn']
+  }
 }
 ```
 

@@ -17,7 +17,8 @@ module.exports = (data) => {
   }
 
   let result = ``
-  result += `<div class="menu-top" fxLayout="row">
+  result += `<mat-progress-bar color="primary" [mode]="loading ? 'indeterminate' : 'determinate'" value="100"></mat-progress-bar>
+  <div class="menu-top" fxLayout="row">
   <div fxLayout="column" fxFlex="20%" fxLayoutAlign="center start">
     <div fxLayout="row" fxLayoutAlign="end end">
       <span class="titulo-principal">Insac JS</span>
@@ -52,7 +53,12 @@ ${items2}      <a href="https://github.com/insacjs" target="_blank" mat-button s
     </div>
   </mat-drawer>
   <mat-drawer-content>
-    <router-outlet></router-outlet>
+    <div [hidden]="!loading">
+      <h1 class="title-loader">Cargando ...</h1>
+    </div>
+    <div [hidden]="loading" class="router-output">
+      <router-outlet></router-outlet>
+    </div>
     <div class="footer">
       <span class="mat-body-1">&copy; 2018 Insac JS</span>
     </div>
