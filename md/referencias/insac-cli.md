@@ -25,8 +25,8 @@ $ insac --help
 |===   I N S A C  -  C L I   ===|
 |===============================|
 
-insac     : v2.1.0
-insac-cli : v2.1.0
+insac     : v2.1.10
+insac-cli : v2.1.5
 
 Modo de uso: insac [comando] [opciones]
 
@@ -59,24 +59,29 @@ Modo de uso: insac [comando] [opciones]
                                 - RUTAS     : all (default), get, getId, create, update, destroy, restore.
 
     --fields <value>          Atributos de un modelo separados por comas y el tipo de dato por dos puntos.
-                                - Tipos: STRING (default), INTEGER, FLOAT, BOOLEAN, DATE.
+                                - Tipos: STRING (default), INTEGER, FLOAT, BOOLEAN, DATE. [opcional]
 
-    --level <value>           Nivel de submodelos a incluir en el componente OUTPUT [opcional].
-    --method <value>          Propiedad method de una ruta [opcional].
-    --path <value>            Propiedad path de una ruta [opcional].
-    --description <value>     Propiedad description de una ruta [opcional].
+    --level <value>           Nivel de submodelos a incluir en el componente OUTPUT. [opcional]
+    --method <value>          Propiedad method de una ruta. [opcional]
+    --path <value>            Propiedad path de una ruta. [opcional]
+    --description <value>     Propiedad description de una ruta. [opcional]
 
-  Ejemplos:
+  Ejemplo:
 
-    insac new academico "Sistema de información."
-
-    insac add:module central
+    insac new blog
+    insac add:module api
     insac add:model libro --fields titulo,cantidad:INTEGER,precio:FLOAT
     insac add:seed -m libro
+    insac gen:resource api/v1/libros -m libro
+
+  Ejemplo para crear un nuevo recurso:
+
     insac add:resource api/v1/libros -m libro
     insac add:resource api/v1/custom
+
+  Ejemplo para adicionar rutas a un recurso existente:
+
     insac add:route listar -r api/v1/libros -m libro
     insac add:route welcome -r api/v1/custom
 
-    insac gen:resource api/v2/libros -m libro --level 3
 ```

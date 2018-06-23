@@ -122,7 +122,7 @@ const path = require('path')
 exports.DATABASE = {
   username : process.env.DB_USER || 'postgres',
   password : process.env.DB_PASS || 'postgres',
-  database : process.env.DB_NAME || 'postgres',
+  database : process.env.DB_NAME || '_example',
   params   : {
     dialect : 'postgres',
     host    : process.env.DB_HOST_NAME || '127.0.0.1',
@@ -587,7 +587,7 @@ exports.LOGGER = {
   file: {
     maxsize  : 5242880,
     maxFiles : 5,
-    levels   : ['error', 'warn']
+    levels   : ['error', 'warn'] // error, warn, info, trace, notice
   }
 }
 ```
@@ -610,23 +610,22 @@ Archivo utilizado por el gestor de paquetes de node `NPM`. Contiene información
 
 ```json
 {
-  "name": "sistema",
+  "name": "app",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start-response": "RESPONSE_LOG=true node index.js",
     "start-sql": "SQL_LOG=true node index.js",
     "start-prod": "NODE_ENV=production APIDOC=false node index.js",
-    "setup": "SETUP=true node index.js",
-    "setup-prod": "NODE_ENV=production SETUP=true node index.js",
+    "setup": "SETUP=true START=false node index.js",
+    "setup-prod": "NODE_ENV=production SETUP=true START=false node index.js",
     "lint": "\"node_modules/.bin/eslint\" index.js src/",
     "test": "npm run test-unit && npm run test-integration",
-    "test-unit": "NODE_ENV=test \"node_modules/.bin/mocha\" --recursive test/unit",
-    "test-integration": "NODE_ENV=test \"node_modules/.bin/mocha\" --recursive test/integration"
+    "test-unit": "NODE_ENV=test \"node_modules/.bin/mocha\" --recursive \"./test/unit/{,/**/}*.spec.js\"",
+    "test-integration": "NODE_ENV=test \"node_modules/.bin/mocha\" --recursive \"./test/integration/{,/**/}*.spec.js\""
   },
   "dependencies": {
-    "insac": "^2.1.0"
+    "insac": "^2.1.10"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -639,7 +638,7 @@ Archivo utilizado por el gestor de paquetes de node `NPM`. Contiene información
     "mocha": "^5.2.0"
   },
   "engines": {
-    "node": ">=9.5.0"
+    "node": ">=8.0.0"
   }
 }
 ```
@@ -650,15 +649,14 @@ Para ejecutar los scripts en Sistemas Operativos Windows, reemplazar la propieda
 {
   "scripts": {
     "start": "node index.js",
-    "start-response": "set RESPONSE_LOG=true&&node index.js",
     "start-sql": "set SQL_LOG=true&&node index.js",
     "start-prod": "set NODE_ENV=production&&set APIDOC=false&&node index.js",
-    "setup": "set SETUP=true&&node index.js",
-    "setup-prod": "set NODE_ENV=production&&set SETUP=true&&node index.js",
+    "setup": "set SETUP=true&&set START=false&&node index.js",
+    "setup-prod": "set NODE_ENV=production&&set SETUP=true&&set START=false&&node index.js",
     "lint": "\"node_modules/.bin/eslint\" index.js src",
     "test": "npm run test-unit && npm run test-integration",
-    "test-unit": "set NODE_ENV=test&&\"node_modules/.bin/mocha\" --recursive test/unit",
-    "test-integration": "set NODE_ENV=test&&\"node_modules/.bin/mocha\" --recursive test/integration"
+    "test-unit": "set NODE_ENV=test&&\"node_modules/.bin/mocha\" --recursive \"./test/unit/{,/**/}*.spec.js\"",
+    "test-integration": "set NODE_ENV=test&&\"node_modules/.bin/mocha\" --recursive \"./test/integration/{,/**/}*.spec.js\""
   }
 }
 ```

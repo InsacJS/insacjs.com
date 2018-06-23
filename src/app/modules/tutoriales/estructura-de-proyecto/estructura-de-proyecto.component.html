@@ -92,7 +92,7 @@ service.init()
 exports.DATABASE = &#123;
   <span class="hljs-attr">username</span> : process.env.DB_USER || <span class="hljs-string">'postgres'</span>,
   <span class="hljs-attr">password</span> : process.env.DB_PASS || <span class="hljs-string">'postgres'</span>,
-  <span class="hljs-attr">database</span> : process.env.DB_NAME || <span class="hljs-string">'postgres'</span>,
+  <span class="hljs-attr">database</span> : process.env.DB_NAME || <span class="hljs-string">'_example'</span>,
   <span class="hljs-attr">params</span>   : &#123;
     <span class="hljs-attr">dialect</span> : <span class="hljs-string">'postgres'</span>,
     <span class="hljs-attr">host</span>    : process.env.DB_HOST_NAME || <span class="hljs-string">'127.0.0.1'</span>,
@@ -454,7 +454,7 @@ exports.LOGGER = &#123;
   <span class="hljs-attr">file</span>: &#123;
     <span class="hljs-attr">maxsize</span>  : <span class="hljs-number">5242880</span>,
     <span class="hljs-attr">maxFiles</span> : <span class="hljs-number">5</span>,
-    <span class="hljs-attr">levels</span>   : [<span class="hljs-string">'error'</span>, <span class="hljs-string">'warn'</span>]
+    <span class="hljs-attr">levels</span>   : [<span class="hljs-string">'error'</span>, <span class="hljs-string">'warn'</span>] <span class="hljs-comment">// error, warn, info, trace, notice</span>
   &#125;
 &#125;
 </code></pre>
@@ -467,23 +467,22 @@ exports.LOGGER = &#123;
 <h3 id="archivo-packagejson"><a class="anchor" routerLink="/tutoriales/estructura-de-proyecto" fragment="archivo-packagejson" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Archivo <code>package.json</code></h3>
 <p>Archivo utilizado por el gestor de paquetes de node <code>NPM</code>. Contiene información básica de la aplicación y todas las dependencias que esta requiere. También incluye todos los comandos de instalación y ejecución de la aplicación.</p>
 <pre><code class="hljs language-json">&#123;
-  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"sistema"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"app"</span>,
   <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0"</span>,
   <span class="hljs-attr">"main"</span>: <span class="hljs-string">"index.js"</span>,
   <span class="hljs-attr">"scripts"</span>: &#123;
     <span class="hljs-attr">"start"</span>: <span class="hljs-string">"node index.js"</span>,
-    <span class="hljs-attr">"start-response"</span>: <span class="hljs-string">"RESPONSE_LOG=true node index.js"</span>,
     <span class="hljs-attr">"start-sql"</span>: <span class="hljs-string">"SQL_LOG=true node index.js"</span>,
     <span class="hljs-attr">"start-prod"</span>: <span class="hljs-string">"NODE_ENV=production APIDOC=false node index.js"</span>,
-    <span class="hljs-attr">"setup"</span>: <span class="hljs-string">"SETUP=true node index.js"</span>,
-    <span class="hljs-attr">"setup-prod"</span>: <span class="hljs-string">"NODE_ENV=production SETUP=true node index.js"</span>,
+    <span class="hljs-attr">"setup"</span>: <span class="hljs-string">"SETUP=true START=false node index.js"</span>,
+    <span class="hljs-attr">"setup-prod"</span>: <span class="hljs-string">"NODE_ENV=production SETUP=true START=false node index.js"</span>,
     <span class="hljs-attr">"lint"</span>: <span class="hljs-string">"\"node_modules/.bin/eslint\" index.js src/"</span>,
     <span class="hljs-attr">"test"</span>: <span class="hljs-string">"npm run test-unit &amp;&amp; npm run test-integration"</span>,
-    <span class="hljs-attr">"test-unit"</span>: <span class="hljs-string">"NODE_ENV=test \"node_modules/.bin/mocha\" --recursive test/unit"</span>,
-    <span class="hljs-attr">"test-integration"</span>: <span class="hljs-string">"NODE_ENV=test \"node_modules/.bin/mocha\" --recursive test/integration"</span>
+    <span class="hljs-attr">"test-unit"</span>: <span class="hljs-string">"NODE_ENV=test \"node_modules/.bin/mocha\" --recursive \"./test/unit/&#123;,/**/&#125;*.spec.js\""</span>,
+    <span class="hljs-attr">"test-integration"</span>: <span class="hljs-string">"NODE_ENV=test \"node_modules/.bin/mocha\" --recursive \"./test/integration/&#123;,/**/&#125;*.spec.js\""</span>
   &#125;,
   <span class="hljs-attr">"dependencies"</span>: &#123;
-    <span class="hljs-attr">"insac"</span>: <span class="hljs-string">"^2.1.0"</span>
+    <span class="hljs-attr">"insac"</span>: <span class="hljs-string">"^2.1.10"</span>
   &#125;,
   <span class="hljs-attr">"devDependencies"</span>: &#123;
     <span class="hljs-attr">"chai"</span>: <span class="hljs-string">"^4.1.2"</span>,
@@ -496,7 +495,7 @@ exports.LOGGER = &#123;
     <span class="hljs-attr">"mocha"</span>: <span class="hljs-string">"^5.2.0"</span>
   &#125;,
   <span class="hljs-attr">"engines"</span>: &#123;
-    <span class="hljs-attr">"node"</span>: <span class="hljs-string">"&gt;=9.5.0"</span>
+    <span class="hljs-attr">"node"</span>: <span class="hljs-string">"&gt;=8.0.0"</span>
   &#125;
 &#125;
 </code></pre>
@@ -504,15 +503,14 @@ exports.LOGGER = &#123;
 <pre><code class="hljs language-json">&#123;
   <span class="hljs-attr">"scripts"</span>: &#123;
     <span class="hljs-attr">"start"</span>: <span class="hljs-string">"node index.js"</span>,
-    <span class="hljs-attr">"start-response"</span>: <span class="hljs-string">"set RESPONSE_LOG=true&amp;&amp;node index.js"</span>,
     <span class="hljs-attr">"start-sql"</span>: <span class="hljs-string">"set SQL_LOG=true&amp;&amp;node index.js"</span>,
     <span class="hljs-attr">"start-prod"</span>: <span class="hljs-string">"set NODE_ENV=production&amp;&amp;set APIDOC=false&amp;&amp;node index.js"</span>,
-    <span class="hljs-attr">"setup"</span>: <span class="hljs-string">"set SETUP=true&amp;&amp;node index.js"</span>,
-    <span class="hljs-attr">"setup-prod"</span>: <span class="hljs-string">"set NODE_ENV=production&amp;&amp;set SETUP=true&amp;&amp;node index.js"</span>,
+    <span class="hljs-attr">"setup"</span>: <span class="hljs-string">"set SETUP=true&amp;&amp;set START=false&amp;&amp;node index.js"</span>,
+    <span class="hljs-attr">"setup-prod"</span>: <span class="hljs-string">"set NODE_ENV=production&amp;&amp;set SETUP=true&amp;&amp;set START=false&amp;&amp;node index.js"</span>,
     <span class="hljs-attr">"lint"</span>: <span class="hljs-string">"\"node_modules/.bin/eslint\" index.js src"</span>,
     <span class="hljs-attr">"test"</span>: <span class="hljs-string">"npm run test-unit &amp;&amp; npm run test-integration"</span>,
-    <span class="hljs-attr">"test-unit"</span>: <span class="hljs-string">"set NODE_ENV=test&amp;&amp;\"node_modules/.bin/mocha\" --recursive test/unit"</span>,
-    <span class="hljs-attr">"test-integration"</span>: <span class="hljs-string">"set NODE_ENV=test&amp;&amp;\"node_modules/.bin/mocha\" --recursive test/integration"</span>
+    <span class="hljs-attr">"test-unit"</span>: <span class="hljs-string">"set NODE_ENV=test&amp;&amp;\"node_modules/.bin/mocha\" --recursive \"./test/unit/&#123;,/**/&#125;*.spec.js\""</span>,
+    <span class="hljs-attr">"test-integration"</span>: <span class="hljs-string">"set NODE_ENV=test&amp;&amp;\"node_modules/.bin/mocha\" --recursive \"./test/integration/&#123;,/**/&#125;*.spec.js\""</span>
   &#125;
 &#125;
 </code></pre>

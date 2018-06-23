@@ -16,7 +16,7 @@ A continuación de describen las diferentes tecnologías y herramientas con las 
 
 | Nombre      | Versión | Descripción                                                    |
 |-------------|---------|----------------------------------------------------------------|
-| `NodeJS`    | 9.5     | Entorno de programación de JavaScript.                         |
+| `NodeJS`    | 8.0     | Entorno de programación de JavaScript.                         |
 | `Express`   | 4.16    | Framework de NodeJS.                                           |
 | `Sequelize` | 4.37    | Framework ORM de NodeJS.                                       |
 | `Yarn`      | 1.7     | Manejador de dependencias.                                     |

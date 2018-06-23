@@ -1,11 +1,12 @@
 # Mi Primer Proyecto
 
-Para crear este proyecto, se utilizará la herramienta de línea de comandos `insac-cli` y el manejador de paquetes `yarn`.
+Para crear este proyecto, se utilizará la herramienta de línea de comandos `insac-cli` y opcionalmente el manejador de paquetes `yarn`.
 
 ## Instalación
 
 ```bash
-npm install -g insac-cli yarn
+npm install -g insac-cli
+npm install -g yarn
 ```
 
 ## Creación del proyecto
@@ -13,7 +14,6 @@ npm install -g insac-cli yarn
 ```bash
 insac new blog
 cd blog
-yarn install
 ```
 
 ## Estructura inicial del proyecto
@@ -40,6 +40,10 @@ blog
  │     │     ├─ custom.after.hook.js
  │     │     └─ custom.before.hook.js
  │     ├─ modules
+ │     │     └─ UTIL
+ │     │           ├─ services
+ │     │           │     └─ util.service.js
+ │     │           └─ util.module.js
  │     └─ app.js
  ├─ test
  │     ├─ integration
@@ -54,6 +58,7 @@ blog
  ├─ ecosystem.json
  ├─ example.ecosystem.json
  ├─ index.js
+ ├─ package-lock.json
  ├─ package.json
  └─ README.md
  └─ yarn.lock
@@ -77,7 +82,7 @@ Esto nos generará la siguiente carpeta:
                    └─ api.module.js
 ```
 
-Creación de modelos `persona` y `post`, en base al siguiente diagrama:
+Creación de los modelos `persona` y `post`, en base al siguiente diagrama:
 
 ```txt
   ┌───────────────┐         ┌───────────────┐
@@ -91,7 +96,7 @@ Creación de modelos `persona` y `post`, en base al siguiente diagrama:
   └───────────────┘         └───────────────┘
 ```
 
-Creación de los modelos. Los DAO se generan de manera automática.
+Los DAO se generan de manera automática.
 
 ```bash
 insac add:model persona --fields nombre,telefono,email
@@ -106,7 +111,7 @@ Hasta aquí, ya se tienen los archivos con la configuración básica, realizando
 Archivo `persona.model.js`
 
 ```js
-const { Field } = require(insac)
+const { Field } = require('insac')
 
 module.exports = (sequelize, Sequelize) => {
   const MODEL = sequelize.define('persona', {
@@ -144,7 +149,7 @@ module.exports = (sequelize, Sequelize) => {
 Archivo `post.model.js`
 
 ```js
-const { Field } = require(insac)
+const { Field } = require('insac')
 
 module.exports = (sequelize, Sequelize) => {
   const MODEL = sequelize.define('post', {
@@ -259,19 +264,24 @@ Una vez que se hayan establecido las credenciales de acceso a la base de datos, 
 `yarn setup`
 
 ```bash
-$ SETUP=true node index.js
+$ yarn setup
+yarn run v1.7.0
+warning package.json: No license field
+$ SETUP=true START=false node index.js
 
  |===============================================|
  |======   I N S A C   F R A M E W O R K   ======|
  |===============================================|
 
+
  |===============================================|
  |---------   INSTALANDO   APLICACIÓN   ---------|
  |===============================================|
 
- - CREATE DATABASE blog ✓
+ Modo: development
 
- - CREATE SCHEMA api ✓
+
+ Módulo UTIL ...
 
  Módulo API ...
 
@@ -281,12 +291,17 @@ $ SETUP=true node index.js
  - CREATE TABLE persona ✓
  - CREATE TABLE post ✓
 
- - SEED persona ✓
- - SEED post ✓
+ - SEED persona ...
 
- API ✓
+ - INSERT persona (id_persona: 1) ..... [1/1] ✓
+
+ - SEED post ...
+
+ - INSERT post (id_post: 1) ..... [1/1] ✓
 
  - Instalación finalizada correctamente.
+
+Done in 1.16s.
 ```
 
 Ahora ejecutamos la aplicación:
@@ -294,15 +309,25 @@ Ahora ejecutamos la aplicación:
 `yarn start`
 
 ```bash
+$ yarn start
+yarn run v1.7.0
+warning package.json: No license field
 $ node index.js
 
  |===============================================|
  |======   I N S A C   F R A M E W O R K   ======|
  |===============================================|
 
+
  |===============================================|
  |-------   INICIALIZANDO   APLICACIÓN   --------|
  |===============================================|
+
+ Modo: development
+
+ Módulo UTIL ...
+
+ - [service] log
 
  Módulo API ...
 
@@ -320,13 +345,20 @@ $ node index.js
  [DELETE] /api/v1/posts/:id_post ........... destroy
  [PUT]    /api/v1/posts/:id_post/restore ... restore
 
+ CREATE APIDOC ✓
 
- API ✓
-
- Crear APIDOC ✓
-
- Servicio activo en modo development
+ - Aplicación inicializada exitosamente.
 
  - [service] http://localhost:4000
  - [apidoc]  http://localhost:4000/apidoc
 ```
+
+Lo que nos dará como resultado:
+
+Página de bienvenida `http://localhost:4000`
+
+![Insac Welcome](assets/img/welcome.png)
+
+Apidoc `http://localhost:4000/apidoc`
+
+![Insac APIDOC](assets/img/apidoc.png)

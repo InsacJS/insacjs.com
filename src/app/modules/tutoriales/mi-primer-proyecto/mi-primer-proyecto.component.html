@@ -1,14 +1,14 @@
 <article class="markdown-body">
 
 <h1 id="mi-primer-proyecto"><a class="anchor" routerLink="/tutoriales/mi-primer-proyecto" fragment="mi-primer-proyecto" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Mi Primer Proyecto</h1>
-<p>Para crear este proyecto, se utilizará la herramienta de línea de comandos <code>insac-cli</code> y el manejador de paquetes <code>yarn</code>.</p>
+<p>Para crear este proyecto, se utilizará la herramienta de línea de comandos <code>insac-cli</code> y opcionalmente el manejador de paquetes <code>yarn</code>.</p>
 <h2 id="instalacion"><a class="anchor" routerLink="/tutoriales/mi-primer-proyecto" fragment="instalacion" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Instalación</h2>
-<pre><code class="hljs language-bash">npm install -g insac-cli yarn
+<pre><code class="hljs language-bash">npm install -g insac-cli
+npm install -g yarn
 </code></pre>
 <h2 id="creacion-del-proyecto"><a class="anchor" routerLink="/tutoriales/mi-primer-proyecto" fragment="creacion-del-proyecto" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Creación del proyecto</h2>
 <pre><code class="hljs language-bash">insac new blog
 <span class="hljs-built_in">cd</span> blog
-yarn install
 </code></pre>
 <h2 id="estructura-inicial-del-proyecto"><a class="anchor" routerLink="/tutoriales/mi-primer-proyecto" fragment="estructura-inicial-del-proyecto" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Estructura inicial del proyecto</h2>
 <pre><code class="hljs language-txt">blog
@@ -32,6 +32,10 @@ yarn install
  │     │     ├─ custom.after.hook.js
  │     │     └─ custom.before.hook.js
  │     ├─ modules
+ │     │     └─ UTIL
+ │     │           ├─ services
+ │     │           │     └─ util.service.js
+ │     │           └─ util.module.js
  │     └─ app.js
  ├─ test
  │     ├─ integration
@@ -46,6 +50,7 @@ yarn install
  ├─ ecosystem.json
  ├─ example.ecosystem.json
  ├─ index.js
+ ├─ package-lock.json
  ├─ package.json
  └─ README.md
  └─ yarn.lock
@@ -63,7 +68,7 @@ yarn install
                    │     └─ prod
                    └─ api.module.js
 </code></pre>
-<p>Creación de modelos <code>persona</code> y <code>post</code>, en base al siguiente diagrama:</p>
+<p>Creación de los modelos <code>persona</code> y <code>post</code>, en base al siguiente diagrama:</p>
 <pre><code class="hljs language-txt">  ┌───────────────┐         ┌───────────────┐
   │    PERSONA    │         │     POST      │
   ├───────────────┤ 1       ├───────────────┤
@@ -74,7 +79,7 @@ yarn install
   │               │    └───&gt;│ fid_autor     │
   └───────────────┘         └───────────────┘
 </code></pre>
-<p>Creación de los modelos. Los DAO se generan de manera automática.</p>
+<p>Los DAO se generan de manera automática.</p>
 <pre><code class="hljs language-bash">insac add:model persona --fields nombre,telefono,email
 
 insac add:model post --fields titulo,fecha:DATE,descripcion:TEXT -e
@@ -82,7 +87,7 @@ insac add:model post --fields titulo,fecha:DATE,descripcion:TEXT -e
 <p>El flag <code>-e</code> incluye dentro del modelo un ejemplo de asociación.</p>
 <p>Hasta aquí, ya se tienen los archivos con la configuración básica, realizando algunas modificaciones, tenemos lo siguiente:</p>
 <p>Archivo <code>persona.model.js</code></p>
-<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> &#123; Field &#125; = <span class="hljs-built_in">require</span>(insac)
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> &#123; Field &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">'insac'</span>)
 
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function">(<span class="hljs-params">sequelize, Sequelize</span>) =&gt;</span> &#123;
   <span class="hljs-keyword">const</span> MODEL = sequelize.define(<span class="hljs-string">'persona'</span>, &#123;
@@ -117,7 +122,7 @@ insac add:model post --fields titulo,fecha:DATE,descripcion:TEXT -e
 &#125;
 </code></pre>
 <p>Archivo <code>post.model.js</code></p>
-<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> &#123; Field &#125; = <span class="hljs-built_in">require</span>(insac)
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> &#123; Field &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">'insac'</span>)
 
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function">(<span class="hljs-params">sequelize, Sequelize</span>) =&gt;</span> &#123;
   <span class="hljs-keyword">const</span> MODEL = sequelize.define(<span class="hljs-string">'post'</span>, &#123;
@@ -218,19 +223,24 @@ insac gen:resource api/v1/posts -m post --level 2
 <p>Listo, ya podemos instalar y ejecutar la aplicación, para esto debemos actualizar los datos de configuración de la base de datos y del servidor los cuales se encuentran en el archivo <code>app.config.js</code>.</p>
 <p>Una vez que se hayan establecido las credenciales de acceso a la base de datos, procedemos con la instalación.</p>
 <p><code>yarn setup</code></p>
-<pre><code class="hljs language-bash">$ SETUP=<span class="hljs-literal">true</span> node index.js
+<pre><code class="hljs language-bash">$ yarn setup
+yarn run v1.7.0
+warning package.json: No license field
+$ SETUP=<span class="hljs-literal">true</span> START=<span class="hljs-literal">false</span> node index.js
 
  |===============================================|
  |======   I N S A C   F R A M E W O R K   ======|
  |===============================================|
 
+
  |===============================================|
  |---------   INSTALANDO   APLICACIÓN   ---------|
  |===============================================|
 
- - CREATE DATABASE blog ✓
+ Modo: development
 
- - CREATE SCHEMA api ✓
+
+ Módulo UTIL ...
 
  Módulo API ...
 
@@ -240,24 +250,39 @@ insac gen:resource api/v1/posts -m post --level 2
  - CREATE TABLE persona ✓
  - CREATE TABLE post ✓
 
- - SEED persona ✓
- - SEED post ✓
+ - SEED persona ...
 
- API ✓
+ - INSERT persona (id_persona: 1) ..... [1/1] ✓
+
+ - SEED post ...
+
+ - INSERT post (id_post: 1) ..... [1/1] ✓
 
  - Instalación finalizada correctamente.
+
+Done <span class="hljs-keyword">in</span> 1.16s.
 </code></pre>
 <p>Ahora ejecutamos la aplicación:</p>
 <p><code>yarn start</code></p>
-<pre><code class="hljs language-bash">$ node index.js
+<pre><code class="hljs language-bash">$ yarn start
+yarn run v1.7.0
+warning package.json: No license field
+$ node index.js
 
  |===============================================|
  |======   I N S A C   F R A M E W O R K   ======|
  |===============================================|
 
+
  |===============================================|
  |-------   INICIALIZANDO   APLICACIÓN   --------|
  |===============================================|
+
+ Modo: development
+
+ Módulo UTIL ...
+
+ - [service] <span class="hljs-built_in">log</span>
 
  Módulo API ...
 
@@ -275,15 +300,17 @@ insac gen:resource api/v1/posts -m post --level 2
  [DELETE] /api/v1/posts/:id_post ........... destroy
  [PUT]    /api/v1/posts/:id_post/restore ... restore
 
+ CREATE APIDOC ✓
 
- API ✓
-
- Crear APIDOC ✓
-
- Servicio activo en modo development
+ - Aplicación inicializada exitosamente.
 
  - [service] http://localhost:4000
  - [apidoc]  http://localhost:4000/apidoc
 </code></pre>
+<p>Lo que nos dará como resultado:</p>
+<p>Página de bienvenida <code>http://localhost:4000</code></p>
+<p><img src="assets/img/welcome.png" alt="Insac Welcome"></p>
+<p>Apidoc <code>http://localhost:4000/apidoc</code></p>
+<p><img src="assets/img/apidoc.png" alt="Insac APIDOC"></p>
 
 </article>
