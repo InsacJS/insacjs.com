@@ -34,6 +34,22 @@
   height: 150px;
 }
 
+.animacion-container {
+  text-align: center;
+}
+
+.animation-image {
+  opacity: 0.9 !important;
+  filter: alpha(opacity=90) !important; /* For IE8 and earlier */
+  max-width: 1028px;
+  background-color: black;
+  padding: 20px;
+  border-radius: 20px;
+  width: calc(100% -40px);
+  width: -moz-calc(100% - 40px);
+  width: -webkit-calc(100% - 40px);
+}
+
 .title {
   font-size: 38px;
 }
@@ -46,7 +62,11 @@ code {
   font-size: 32px;
   background-color: #00000055;
   padding: 10px;
-  margin: 15px;
+  border-radius: 10px;
+}
+
+.code {
+  margin-bottom: 30px;
 }
 
 @media (max-width: 767px) {
