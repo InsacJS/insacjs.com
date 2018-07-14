@@ -65,6 +65,15 @@ export class ${Section}Component implements OnInit {
   ngOnInit() {
 ${items}
   }
+
+  onClick (drawer) {
+    if (drawer.mode === 'over') { drawer.close() }
+  }
+
+  isLargeScreen() {
+    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+    return width > 720
+  }
 }`
   return result
 }

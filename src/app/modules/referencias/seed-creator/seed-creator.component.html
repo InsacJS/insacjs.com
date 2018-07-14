@@ -11,18 +11,21 @@
 <li>Las claves primarias son opcionales siempre y cuando sean <strong>autoincrementables</strong>.</li>
 <li>La inserción es <strong>secuencial</strong>, por lo tanto, al insertar el segundo
 segistro es posible enviar los resultados del primer registro.</li>
+<li>Se puede <strong>restringir</strong> la inserción de registros mediante los esquemas.</li>
 </ul>
-<h1 id="instalacion"><a class="anchor" routerLink="/referencias/seed-creator" fragment="instalacion" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Instalación</h1>
+<h2 id="instalacion"><a class="anchor" routerLink="/referencias/seed-creator" fragment="instalacion" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Instalación</h2>
 <p>Para instalar sobre un proyecto, ejecutar el siguiente comando:</p>
 <p>$ <code>npm install --save seed-creator</code></p>
 <h2 id="ejemplo"><a class="anchor" routerLink="/referencias/seed-creator" fragment="ejemplo" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Ejemplo</h2>
 <p>Inserción de registros en las tablas relacionadas <code>libro</code> y <code>autor</code>, desde un solo fichero.</p>
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> Seed = <span class="hljs-built_in">require</span>(<span class="hljs-string">'seed-creator'</span>)
 
-<span class="hljs-keyword">const</span> LIBRO = sequelize.define(<span class="hljs-string">'libro'</span>, &#123; .. &#125;)
-<span class="hljs-keyword">const</span> AUTOR = sequelize.define(<span class="hljs-string">'autor'</span>, &#123; .. &#125;)
+<span class="hljs-keyword">const</span> LIBRO = sequelize.define(<span class="hljs-string">'libro'</span>, &#123; ... &#125;, &#123; <span class="hljs-attr">schema</span>: <span class="hljs-string">'uno'</span> &#125;)
+<span class="hljs-keyword">const</span> AUTOR = sequelize.define(<span class="hljs-string">'autor'</span>, &#123; ... &#125;, &#123; <span class="hljs-attr">schema</span>: <span class="hljs-string">'dos'</span> &#125;)
 
 LIBRO.belongsTo(AUTOR, &#123; <span class="hljs-attr">as</span>: <span class="hljs-string">'autor'</span>, <span class="hljs-attr">foreignKey</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">'fid_autor'</span>, <span class="hljs-attr">targetKey</span>: <span class="hljs-string">'id_autor'</span> &#125; &#125;)
+
+<span class="hljs-keyword">const</span> options = &#123; <span class="hljs-attr">schemas</span>: [<span class="hljs-string">'uno'</span>, <span class="hljs-string">'dos'</span>] &#125;
 
 Seed.create(LIBRO, [
   &#123;
@@ -38,7 +41,7 @@ Seed.create(LIBRO, [
     <span class="hljs-attr">precio</span>    : <span class="hljs-number">15.99</span>,
     <span class="hljs-attr">fid_autor</span> : <span class="hljs-number">10</span>
   &#125;
-])
+], options)
 </code></pre>
 
 </article>

@@ -43,4 +43,13 @@ export class TutorialesComponent implements OnInit {
     this.addMenuItem({ path: '/tutoriales/mi-primer-proyecto', name: '4. Mi primer proyecto', fragment: 'mi-primer-proyecto' })
 
   }
+
+  onClick (drawer) {
+    if (drawer.mode === 'over') { drawer.close() }
+  }
+
+  isLargeScreen() {
+    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+    return width > 720
+  }
 }

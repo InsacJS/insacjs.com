@@ -46,4 +46,13 @@ export class ReferenciasComponent implements OnInit {
     this.addMenuItem({ path: '/referencias/seed-creator', name: '7. Seed Creator', fragment: 'seed-creator' })
 
   }
+
+  onClick (drawer) {
+    if (drawer.mode === 'over') { drawer.close() }
+  }
+
+  isLargeScreen() {
+    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+    return width > 720
+  }
 }

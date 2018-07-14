@@ -32,9 +32,9 @@
 
 <button class="drawer-toggle" type="button" mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
 <mat-drawer-container class="drawer-container">
-  <mat-drawer class="drawer" #drawer mode="side" opened="true">
+  <mat-drawer class="drawer" #drawer [mode]="isLargeScreen() ? 'side' : 'over'" [opened]="isLargeScreen()">
     <div fxLayout="column">
-      <button *ngFor="let menuItem of menuItems" class="link" [routerLink]="menuItem.path" [fragment]="menuItem.fragment" mat-button [routerLinkActive]="['active']">{{menuItem.name}}</button>
+      <button *ngFor="let menuItem of menuItems" class="link" (click)="onClick(drawer)" [routerLink]="menuItem.path" [fragment]="menuItem.fragment" mat-button [routerLinkActive]="['active']">{{menuItem.name}}</button>
     </div>
   </mat-drawer>
   <mat-drawer-content>

@@ -62,6 +62,10 @@
 <td><code>permissions</code></td>
 <td>Lista de todos los roles que pueden acceder al recurso.</td>
 </tr>
+<tr>
+<td><code>sampleRequest</code></td>
+<td>Dirección URL de la ruta para probar una petición.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="propiedades-input-y-output"><a class="anchor" routerLink="/referencias/apidoc-creator" fragment="propiedades-input-y-output" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a> Propiedades <code>input</code> y <code>output</code></h2>
@@ -139,19 +143,19 @@ Representa a una obra literaria.
   * @apiGroup Libro
   * @apiDescription Crea un libro.
   * @apiVersion 1.0.0
-  * @apiParam (Input - body) &#123;String&#125; titulo Título del libro. &lt;br&gt;&lt;strong&gt;len: &lt;/strong&gt;&lt;code&gt;0,255&lt;/code&gt;
-  * @apiParam (Input - body) &#123;Float&#125; precio Precio del libro. [Bs] &lt;br&gt;&lt;strong&gt;isFloat: &lt;/strong&gt;&lt;code&gt;true&lt;/code&gt;, ...
-  * @apiParam (Input - body) &#123;Enum&#125; estado Estado del registro. &lt;br&gt;&lt;strong&gt;isIn: &lt;/strong&gt;&lt;code&gt;ACTIVO,INACTIVO&lt;/code&gt;
+  * @apiParam (Datos de entrada - body) &#123;String&#125; titulo Título del libro. &lt;br&gt;&lt;strong&gt;len: &lt;/strong&gt;&lt;code&gt;0,255&lt;/code&gt;
+  * @apiParam (Datos de entrada - body) &#123;Float&#125; precio Precio del libro. [Bs] &lt;br&gt;&lt;strong&gt;isFloat: &lt;/strong&gt;&lt;code&gt;true&lt;/code&gt;, &lt;strong&gt;min: &lt;/strong&gt;&lt;code&gt;0&lt;/code&gt;, &lt;strong&gt;max: &lt;/strong&gt;&lt;code&gt;1e+308&lt;/code&gt;
+  * @apiParam (Datos de entrada - body) &#123;Enum&#125; estado Estado del registro. &lt;br&gt;&lt;strong&gt;isIn: &lt;/strong&gt;&lt;code&gt;ACTIVO,INACTIVO&lt;/code&gt;
   * @apiParamExample &#123;json&#125; Ejemplo Petición
   * &#123;
   *   "titulo": "El gato negro",
   *   "precio": 12.99,
   *   "estado": "ACTIVO"
   * &#125;
-  * @apiSuccess (Output - body) &#123;Integer&#125; [id] ID del libro.
-  * @apiSuccess (Output - body) &#123;String&#125; [titulo] Título del libro.
-  * @apiSuccess (Output - body) &#123;Float&#125; [precio] Precio del libro. [Bs]
-  * @apiSuccess (Output - body) &#123;Enum&#125; [estado] Estado del registro.
+  * @apiSuccess (Respuesta - body) &#123;Integer&#125; [id] ID del libro.
+  * @apiSuccess (Respuesta - body) &#123;String&#125; [titulo] Título del libro.
+  * @apiSuccess (Respuesta - body) &#123;Float&#125; [precio] Precio del libro. [Bs]
+  * @apiSuccess (Respuesta - body) &#123;Enum&#125; [estado] Estado del registro.
   * @apiSuccessExample &#123;json&#125; Respuesta Exitosa: 200 Ok
   * HTTP/1.1 200 Ok
   * &#123;
