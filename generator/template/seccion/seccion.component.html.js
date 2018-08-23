@@ -1,19 +1,19 @@
 const _ = require('lodash')
 
-module.exports = (data) => {
-
+module.exports = (info, data) => {
   let items1 = ``
   let items2 = ``
+  const SECTION = data.name.toUpperCase()
 
-  for (let i in data.secciones) {
-    const _section  = data.secciones[i].folder
-    const _cap = data.secciones[i].capitulos[0].file
-    const icon = data.secciones[i].icon
-    const name = data.secciones[i].name
+  for (let i in info.secciones) {
+    const _section  = info.secciones[i].folder
+    const _cap = info.secciones[i].capitulos[0].file
+    const icon = info.secciones[i].icon
+    const name = info.secciones[i].name
     const section = _.camelCase(_section)
     const Section = _.upperFirst(section)
     items1 += `        <button routerLink="/${_section}/${_cap}" mat-menu-item><mat-icon>${icon}</mat-icon> ${name}</button>\n`
-    items2 += `        <button routerLink="/${_section}/${_cap}" [routerLinkActive]="['active']" mat-button style="color:white"><mat-icon>${icon}</mat-icon> ${name}</button>\n`
+    items2 += `        <button routerLink="/${_section}/${_cap}" mat-button style="color:white"><mat-icon>${icon}</mat-icon> ${name}</button>\n`
   }
 
   let result = ``
@@ -49,6 +49,7 @@ ${items2}      <a href="https://github.com/insacjs" target="_blank" mat-button s
 <mat-drawer-container class="drawer-container">
   <mat-drawer class="drawer" #drawer [mode]="isLargeScreen() ? 'side' : 'over'" [opened]="isLargeScreen()">
     <div fxLayout="column">
+      <div class="menu-title">${SECTION}</div>
       <button *ngFor="let menuItem of menuItems" class="link" (click)="onClick(drawer)" [routerLink]="menuItem.path" [fragment]="menuItem.fragment" mat-button [routerLinkActive]="['active']">{{menuItem.name}}</button>
     </div>
   </mat-drawer>

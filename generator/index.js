@@ -108,7 +108,7 @@ for (let i in info.secciones) {
 
   // seccion.component.html
   filePath = path.resolve(SECTION_PATH, `${_section}.component.html`)
-  result = require('./template/seccion/seccion.component.html.js')(info)
+  result = require('./template/seccion/seccion.component.html.js')(info, data)
   util.writeFile(filePath, result)
   console.log(`Created ${filePath}`)
 }
