@@ -15,15 +15,15 @@ export class AppComponent {
 
   ngOnInit () {
     this.router.events.subscribe(s => {
-      if (s instanceof NavigationEnd) {
-        const tree = this.router.parseUrl(this.router.url)
-        if (tree.fragment) {
-          const element = document.querySelector("#" + tree.fragment)
-          if (element) {
-            element.scrollIntoView(true)
+      try {
+        if (s instanceof NavigationEnd) {
+          const tree = this.router.parseUrl(this.router.url)
+          if (tree.fragment) {
+            const element = document.querySelector("#" + tree.fragment)
+            if (element) { element.scrollIntoView(true) }
           }
         }
-      }
+      } catch (e) {}
     })
   }
 }

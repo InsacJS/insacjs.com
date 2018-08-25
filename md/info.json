@@ -5,10 +5,10 @@
       "folder" : "tutoriales",
       "icon"   : "flash_on",
       "capitulos": [
-        { "file": "introduccion",           "name": "1. Introducción" },
-        { "file": "estructura-de-proyecto", "name": "2. Estructura de proyecto" },
-        { "file": "hola-mundo",             "name": "3. Hola Mundo" },
-        { "file": "mi-primer-proyecto",     "name": "4. Mi primer proyecto" }
+        { "file": "introduccion",            "name": "Introducción" },
+        { "file": "estructura-del-proyecto", "name": "Estructura del proyecto" },
+        { "file": "hola-mundo",              "name": "Hola Mundo" },
+        { "file": "mi-primer-proyecto",      "name": "Mi primer proyecto" }
       ]
     },
     {
@@ -16,13 +16,17 @@
       "folder" : "referencias",
       "icon"   : "library_books",
       "capitulos": [
-        { "file": "insac-cli",            "name": "1. Insac CLI" },
-        { "file": "field-creator",        "name": "2. Field Creator" },
-        { "file": "apidoc-creator",       "name": "3. Apidoc Creator" },
-        { "file": "input-data-validator", "name": "4. Input Data Validator" },
-        { "file": "sequelize-options",    "name": "5. Sequelize Options" },
-        { "file": "response-handler",     "name": "6. Response Handler" },
-        { "file": "seed-creator",         "name": "7. Seed Creator" }
+        { "file": "config",      "name": "Carpeta config" },
+        { "file": "dao",         "name": "Carpeta dao" },
+        { "file": "hooks",       "name": "Carpeta hooks" },
+        { "file": "models",      "name": "Carpeta models" },
+        { "file": "modules",     "name": "Carpeta modules" },
+        { "file": "resource",    "name": "Carpeta resource" },
+        { "file": "seeders",     "name": "Carpeta seeders" },
+        { "file": "tools",       "name": "Carpeta tools" },
+        { "file": "component",   "name": "Carpetas personalizadas" },
+        { "file": "field",       "name": "Clase Field" },
+        { "file": "env",         "name": "Variables de entorno" }
       ]
     }
   ]

@@ -38,16 +38,32 @@ for (let i in info.secciones) {
     const _cap = capitulo.file
 
     let MARKDOWN = md.render(fs.readFileSync(path.resolve(MD_PATH, `${_section}/${_cap}.md`)).toString())
+    MARKDOWN = MARKDOWN.replace(/{/g, '&#123;')
+    MARKDOWN = MARKDOWN.replace(/}/g, '&#125;')
+
     const anchors = []
-    while(MARKDOWN.indexOf('{') !== -1) { MARKDOWN = MARKDOWN.replace('{', '&#123;') }
-    while(MARKDOWN.indexOf('}') !== -1) { MARKDOWN = MARKDOWN.replace('}', '&#125;') }
     while(MARKDOWN.indexOf('<a class="anchor" href="#') !== -1) {
       const a = MARKDOWN.indexOf('<a class="anchor" href="#') + 25
       const b = MARKDOWN.substr(a).indexOf('"')
-      const link = MARKDOWN.substr(a, b)
-      anchors.push(link)
-      MARKDOWN = MARKDOWN.replace(`<a class="anchor" href="#${link}"`, `<a class="anchor" routerLink="/${_section}/${_cap}" fragment="${link}"`)
+      const OLD_ANCHOR_NAME = MARKDOWN.substr(a, b)
+      const NEW_ANCHOR_NAME = normalizeName(OLD_ANCHOR_NAME)
+      MARKDOWN = MARKDOWN.replace(`id="${OLD_ANCHOR_NAME}"`, `id="${NEW_ANCHOR_NAME}"`)
+      anchors.push(NEW_ANCHOR_NAME)
+      const OLD_HREF = `href="#${OLD_ANCHOR_NAME}"`
+      const NEW_HREF = `routerLink="/${_section}/${_cap}" fragment="${NEW_ANCHOR_NAME}"`
+      MARKDOWN = MARKDOWN.replace(`<a class="anchor" ${OLD_HREF}`, `<a class="anchor" ${NEW_HREF}`)
     }
+
+    while(MARKDOWN.indexOf('<a href="#title-') !== -1) {
+      const a = MARKDOWN.indexOf('<a href="#title-') + 16
+      const b = MARKDOWN.substr(a).indexOf('"')
+      const anchorPosition = MARKDOWN.substr(a, b)
+      const OLD_HREF = `href="#title-${anchorPosition}"`
+      const anchor   = anchors[parseInt(anchorPosition) - 1]
+      const NEW_HREF = `routerLink="/${_section}/${_cap}" fragment="${anchor}"`
+      MARKDOWN = MARKDOWN.replace(`<a ${OLD_HREF}`, `<a ${NEW_HREF}`)
+    }
+
     capitulo.markdown = MARKDOWN
     capitulo.anchors = anchors
 
@@ -55,60 +71,74 @@ for (let i in info.secciones) {
     filePath = path.resolve(SECTION_PATH, `${_cap}/${_cap}.routes.ts`)
     result = require('./template/seccion/capitulo/capitulo.routes.ts.js')(capitulo)
     util.writeFile(filePath, result)
-    console.log(`Created ${filePath}`)
+    createInfo(filePath)
 
     // capitulo.module.ts
     filePath = path.resolve(SECTION_PATH, `${_cap}/${_cap}.module.ts`)
     result = require('./template/seccion/capitulo/capitulo.module.ts.js')(capitulo)
     util.writeFile(filePath, result)
-    console.log(`Created ${filePath}`)
+    createInfo(filePath)
 
     // capitulo.component.html
     filePath = path.resolve(SECTION_PATH, `${_cap}/${_cap}.component.html`)
     result = require('./template/seccion/capitulo/capitulo.component.html.js')(capitulo)
     util.writeFile(filePath, result)
-    console.log(`Created ${filePath}`)
+    createInfo(filePath)
 
     // seccion.component.scss
     let target = path.resolve(SECTION_PATH, `${_cap}/${_cap}.component.scss`)
     let source = path.resolve(__dirname, './template/seccion/capitulo/capitulo.component.scss')
     util.copyFile(source, target)
-    console.log(`Created ${filePath}`)
+    createInfo(filePath)
 
     // capitulo.component.ts
     filePath = path.resolve(SECTION_PATH, `${_cap}/${_cap}.component.ts`)
     result = require('./template/seccion/capitulo/capitulo.component.ts.js')(capitulo)
     util.writeFile(filePath, result)
-    console.log(`Created ${filePath}`)
+    createInfo(filePath)
   }
 
   // seccion.routes.ts
   filePath = path.resolve(SECTION_PATH, `${_section}.routes.ts`)
   result = require('./template/seccion/seccion.routes.ts.js')(data)
   util.writeFile(filePath, result)
-  console.log(`Created ${filePath}`)
+  createInfo(filePath)
 
   // seccion.module.ts
   filePath = path.resolve(SECTION_PATH, `${_section}.module.ts`)
   result = require('./template/seccion/seccion.module.ts.js')(data)
   util.writeFile(filePath, result)
-  console.log(`Created ${filePath}`)
+  createInfo(filePath)
 
   // seccion.component.ts
   filePath = path.resolve(SECTION_PATH, `${_section}.component.ts`)
   result = require('./template/seccion/seccion.component.ts.js')(data)
   util.writeFile(filePath, result)
-  console.log(`Created ${filePath}`)
+  createInfo(filePath)
 
   // seccion.component.scss
   let target = path.resolve(SECTION_PATH, `${_section}.component.scss`)
   let source = path.resolve(__dirname, './template/seccion/seccion.component.scss')
   util.copyFile(source, target)
-  console.log(`Created ${filePath}`)
+  createInfo(filePath)
 
   // seccion.component.html
   filePath = path.resolve(SECTION_PATH, `${_section}.component.html`)
   result = require('./template/seccion/seccion.component.html.js')(info, data)
   util.writeFile(filePath, result)
-  console.log(`Created ${filePath}`)
+  createInfo(filePath)
+}
+
+function createInfo (filePath) {
+  console.log(` [creado] ${filePath.replace(process.cwd(), '')}`)
+}
+
+function normalizeName (name) {
+  const firstCharacter = name.substr(0, 1)
+  if (!(/[a-z]/.test(firstCharacter))) {
+    const newName = `section-${name}`
+    console.log(" [modificado]", name, ' => ', newName);
+    return newName
+  }
+  return name
 }

@@ -1,117 +1,111 @@
+
 # Hola mundo
 
-Este es un pequeño ejemplo para ver el funcionamiento del framework.
+Para preparar un proyecto básico, desde la terminal ejecuta los siguientes comandos:
 
-## Instalación
+```bash
+# Crea la carpeta del proyecto
+$ mkdir app
+$ cd app
 
-`npm install insac --save`
+# Inicializa el gestor de paquetes de Node.
+$ npm init
 
-## Estructura básica
+# Instala el framework
+$ npm install --save insac
+```
 
-Crear los siguientes archivos y ubicarlos como se muestra a continuación.
+Posteriormente, deberá crear algunos archivos con la siguiente estructura:
 
 ```txt
 app
- ├─ api
- │     ├─ resources
- │     │   └─ welcome
- │     │         ├─ welcome.controller.js
- │     │         ├─ welcome.input.js
- │     │         ├─ welcome.middleware.js
- │     │         ├─ welcome.output.js
- │     │         └─ welcome.route.js
- │     └─ api.module.js
- ├─ index.js
- └─ package.json
+   ├─ src
+   │     └─ modules
+   │             └─ API
+   │                   ├─ resources
+   │                   │      └─ welcome
+   │                   │            ├─ welcome.controller.js
+   │                   │            ├─ welcome.input.js
+   │                   │            ├─ welcome.output.js
+   │                   │            └─ welcome.route.js
+   │                   └─ api.module.js
+   ├─ node_modules
+   ├─ index.js
+   └─ package.json
 ```
 
-Archivo `ìndex.js`
+Y el siguiente contenido:
 
+### `api.module.js`
 ```js
-const { Insac } = require('insac')
-
-const service = new Insac()
-service.addModule('api')
-service.init()
-```
-
-Archivo `api.module.js`
-
-```js
-const { ResourceModule } = require('insac')
+const { Module } = require('insac')
 
 module.exports = (app) => {
-  return new ResourceModule(app.config.API)
+  return new Module(app.config.API)
 }
 ```
 
-Archivo `welcome.route.js`
-
+### `welcome.route.js`
 ```js
 module.exports = (app) => {
   const ROUTE = {}
 
-  ROUTE.get = {
-    path        : '/welcome',
-    method      : 'get',
-    description : 'Muestra un mensaje de bienvenida.'
+  ROUTE.hello = {
+    path   : '/welcome/hello/:name',
+    method : 'get'
   }
 
   return ROUTE
 }
 ```
 
-Archivo `welcome.input.js`
-
+### `welcome.input.js`
 ```js
 const { Field } = require('insac')
 
 module.exports = (app) => {
   const INPUT = {}
 
-  INPUT.get = null
+  INPUT.hello = {
+    params: {
+      name: Field.STRING({ allowNull: false })
+    },
+    query: {
+      number: Field.INTEGER({ allowNull: false })
+    }
+  }
 
   return INPUT
 }
 ```
 
-Archivo `welcome.output.js`
-
+### `welcome.output.js`
 ```js
 const { Field } = require('insac')
 
 module.exports = (app) => {
   const OUTPUT = {}
 
-  OUTPUT.get = {
-    msg: Field.TEXT({ comment: 'Mensaje.', example: 'Hola!!!' })
+  OUTPUT.hello = {
+    message : Field.STRING(),
+    number  : Field.INTEGER()
   }
 
   return OUTPUT
 }
 ```
 
-Archivo `welcome.middleware.js`
-
-```js
-module.exports = (app) => {
-  const MIDDLEWARE = {}
-
-  MIDDLEWARE.get = null
-
-  return MIDDLEWARE
-}
-```
-
-Archivo `welcome.controller.js`
-
+### `welcome.controller.js`
 ```js
 module.exports = (app) => {
   const CONTROLLER = {}
 
-  CONTROLLER.get = async (req, res, next) => {
+  CONTROLLER.hello = async (req, res, next) => {
     try {
-      return res.success200({ msg: 'Hola mundo!!!' })
+      const NAME   = req.params.name
+      const NUMBER = req.query.number
+      const RESULT = { message: `Hola ${NAME}!!!`, number: NUMBER }
+      res.success200(RESULT, 'Mensaje enviado exitosamente.')
     } catch (err) { return next(err) }
   }
 
@@ -119,6 +113,93 @@ module.exports = (app) => {
 }
 ```
 
-## Ejecución
+### `index.js`
+```js
+const { Insac } = require('insac')
 
-`node index.js`
+const service = new Insac()
+
+service.addModule('api')
+
+service.init().catch(e => {
+  console.log(e)
+  process.exit(1)
+})
+
+module.exports = service
+```
+
+Después, ejecuta la aplicación:
+
+```bash
+$ node index.js
+
+=====================================   
+  ---------------------------------     
+    I N S A C   F R A M E W O R K       
+  =================================     
+-------------------------------------   
+
+            Versión 3.0.0               
+
+
+Sistema : App
+Versión : 1.0.0
+Entorno : development
+
+
+[archivo] /src/modules/API/api.module.js ✓
+
+
+CONFIGURACIÓN INICIAL
+=====================
+
+[archivo] app.before.hook.js (default) ✓
+
+Módulo API ...
+
+
+CARGANDO APLICACIÓN
+===================
+
+
+Módulo API ...
+
+[archivo] /src/modules/API/resources/welcome/welcome.route.js ✓
+[archivo] /src/modules/API/resources/welcome/welcome.input.js ✓
+[archivo] /src/modules/API/resources/welcome/welcome.output.js ✓
+[archivo] /src/modules/API/resources/welcome/welcome.middleware.js ✓
+[archivo] /src/modules/API/resources/welcome/welcome.controller.js ✓
+
+[ruta] GET    /hello/:name ... hello ✓
+
+
+CONFIGURACIÓN FINAL
+===================
+
+[archivo] app.after.hook.js (default) ✓
+
+[apidoc] Módulo API ... ✓
+
+
+La aplicación ha sido cargada con éxito.  
+
+
+EJECUTANDO APLICACIÓN
+=====================
+
+[SERVICIO] http://localhost:4000 ✓
+[APIDOC]   http://localhost:4000/apidoc/API ✓
+```
+
+### `http://localhost:4000`
+
+![Captura 1](./assets/img/captura01.png)
+
+### `http://localhost:4000/apidoc/API`
+
+![Captura 2](./assets/img/captura02.png)
+
+![Captura 3](./assets/img/captura03.png)
+
+![Captura 4](./assets/img/captura04.png)

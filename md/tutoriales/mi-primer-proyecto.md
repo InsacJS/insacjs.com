@@ -1,49 +1,77 @@
 # Mi Primer Proyecto
 
-Para crear este proyecto, se utilizará la herramienta de línea de comandos `insac-cli` y opcionalmente el manejador de paquetes `yarn`.
-
-## Instalación
+Para este proyecto, se utilizará la herramienta `insac-cli`.
 
 ```bash
 npm install -g insac-cli
-npm install -g yarn
 ```
 
-## Creación del proyecto
+## Procedimiento
+
+1.  [Creación del proyecto](#title-3)
+
+  ```bash
+  insac new blog
+  ```
+
+2. [Adición de un módulo](#title-4)
+
+  ```bash
+  insac add:module api
+  ```
+
+3. [Adición de modelos](#title-5)
+
+  ```bash
+  insac add:model persona --fields nombre,telefono,email
+  insac add:model post --fields titulo,fecha:DATE,descripcion:TEXT -e
+  ```
+
+4. [Adición de seeders](#title-6)
+
+  ```bash
+  insac add:seed persona
+  insac add:seed post
+  ```
+
+5. [Generación de recursos CRUD](#title-7)
+
+  ```bash
+  insac gen:resource api/v1/personas -m persona --output-depth 2
+  insac gen:resource api/v1/posts -m post --output-depth 2
+  ```
+
+6. [Instalación de la aplicación](#title-8)
+
+  ```bash
+  npm run setup
+  ```
+
+7. [Despliegue de la aplicación](#title-9)
+
+  ```bash
+  npm run start
+  ```
+
+## 1. Creación del proyecto
 
 ```bash
-insac new blog
-cd blog
+$ insac new blog
+$ cd blog
 ```
 
-## Estructura inicial del proyecto
+Estructura inicial del proyecto:
 
 ```txt
 blog
- ├─ certs
- │     ├─ example.privateKey.pem
- │     ├─ example.publicKey.pem
- │     ├─ example.server.csr
- │     ├─ privateKey.pem
- │     ├─ publicKey.pem
- │     └─ README.md
+ ├─ .git
  ├─ node_modules
- ├─ public
- │     └─ apidoc
- ├─ logs
- │     └─ app.log
  ├─ src
  │     ├─ config
- │     │     ├─ app.config.js
- │     │     └─ example.app.config.js
- │     ├─ hooks
- │     │     ├─ custom.after.hook.js
- │     │     └─ custom.before.hook.js
- │     ├─ modules
- │     │     └─ UTIL
- │     │           ├─ services
- │     │           │     └─ util.service.js
- │     │           └─ util.module.js
+ │     │     ├─ database.config.js
+ │     │     ├─ database.config.js.example
+ │     │     ├─ server.config.js
+ │     │     └─ server.config.js.example
  │     └─ app.js
  ├─ test
  │     ├─ integration
@@ -54,35 +82,28 @@ blog
  │     └─ mocha.opts
  ├─ .eslintrc.js
  ├─ .gitignore
- ├─ .insac.js
- ├─ ecosystem.json
- ├─ example.ecosystem.json
  ├─ index.js
- ├─ package-lock.json
  ├─ package.json
  └─ README.md
  └─ yarn.lock
 ```
 
-Adicion de un nuevo módulo
+## 2. Adición de un módulo
 
-`insac add:module api`
-
-Esto nos generará la siguiente carpeta:
+```bash
+$ insac add:module api
+```
 
 ```txt
  ├─ src
        ├─ modules
              └─ API
-                   ├─ dao
-                   ├─ models
-                   ├─ resources
-                   ├─ seeders
-                   │     └─ prod
                    └─ api.module.js
 ```
 
-Creación de los modelos `persona` y `post`, en base al siguiente diagrama:
+## 3. Adición de modelos
+
+Se utilizarán los modelos `persona` y `post`, según el siguiente diagrama:
 
 ```txt
   ┌───────────────┐         ┌───────────────┐
@@ -96,17 +117,20 @@ Creación de los modelos `persona` y `post`, en base al siguiente diagrama:
   └───────────────┘         └───────────────┘
 ```
 
-Los DAO se generan de manera automática.
-
 ```bash
 insac add:model persona --fields nombre,telefono,email
-
-insac add:model post --fields titulo,fecha:DATE,descripcion:TEXT -e
+insac add:model post --fields titulo,fecha:DATE,descripcion:TEXT
 ```
 
-El flag `-e` incluye dentro del modelo un ejemplo de asociación.
-
-Hasta aquí, ya se tienen los archivos con la configuración básica, realizando algunas modificaciones, tenemos lo siguiente:
+```txt
+API
+   ├─ dao
+   │     ├─ persona.dao.js
+   │     └─ post.dao.js
+   └─ models
+         ├─ persona.model.js
+         └─ post.model.js
+```
 
 Archivo `persona.model.js`
 
@@ -126,14 +150,18 @@ module.exports = (sequelize, Sequelize) => {
       comment : 'Número de telefono o celular.',
       example : '78885768'
     }),
-    email                 : Field.EMAIL,
-    _estado               : Field.STATUS,
-    _usuario_creacion     : Field.CREATED_USER,
-    _usuario_modificacion : Field.UPDATED_USER,
-    _usuario_eliminacion  : Field.DELETED_USER,
-    _fecha_creacion       : Field.CREATED_AT,
-    _fecha_modificacion   : Field.UPDATED_AT,
-    _fecha_eliminacion    : Field.DELETED_AT
+    email: Field.STRING({
+      comment  : 'Dirección de correo electrónico.',
+      example  : 'example@gmail.com',
+      validate : { isEmail: true }
+    }),
+    _estado               : Field.STATUS(),
+    _usuario_creacion     : Field.CREATED_USER(),
+    _usuario_modificacion : Field.UPDATED_USER(),
+    _usuario_eliminacion  : Field.DELETED_USER(),
+    _fecha_creacion       : Field.CREATED_AT(),
+    _fecha_modificacion   : Field.UPDATED_AT(),
+    _fecha_eliminacion    : Field.DELETED_AT()
   }, {
     schema: 'api'
   })
@@ -167,13 +195,13 @@ module.exports = (sequelize, Sequelize) => {
       comment : 'Contenido del post.',
       example : 'La inteligencia artificial ...'
     }),
-    _estado               : Field.STATUS,
-    _usuario_creacion     : Field.CREATED_USER,
-    _usuario_modificacion : Field.UPDATED_USER,
-    _usuario_eliminacion  : Field.DELETED_USER,
-    _fecha_creacion       : Field.CREATED_AT,
-    _fecha_modificacion   : Field.UPDATED_AT,
-    _fecha_eliminacion    : Field.DELETED_AT
+    _estado               : Field.STATUS(),
+    _usuario_creacion     : Field.CREATED_USER(),
+    _usuario_modificacion : Field.UPDATED_USER(),
+    _usuario_eliminacion  : Field.DELETED_USER(),
+    _fecha_creacion       : Field.CREATED_AT(),
+    _fecha_modificacion   : Field.UPDATED_AT(),
+    _fecha_eliminacion    : Field.DELETED_AT()
   }, {
     schema: 'api'
   })
@@ -186,179 +214,216 @@ module.exports = (sequelize, Sequelize) => {
     PERSONA.hasMany(POST,   { as: 'posts', foreignKey: { name: 'fid_autor' } })
   }
 
-  // Ejemplo.-
-  //
-  // ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
-  // │    LIBRO    │         │    AUTOR    │         │   PERSONA   │
-  // ├─────────────┤       1 ├─────────────┤       1 ├─────────────┤
-  // │ id_libro    │ N  ┌────┤ id_autor    │ 1  ┌────┤ id_persona  │
-  // │ fid_autor   │<───┘    │ fid_persona │<───┘    │             │
-  // └─────────────┘         └─────────────┘         └─────────────┘
-  //
-  // const LIBRO   = app.API.models.libro
-  // const AUTOR   = app.API.models.autor
-  // const PERSONA = app.API.models.persona
-  //
-  // LIBRO.belongsTo(AUTOR, { as: 'autor',  foreignKey: { name: 'fid_autor', targetKey: 'id_autor' } })
-  // AUTOR.hasMany(LIBRO,   { as: 'libros', foreignKey: { name: 'fid_autor' } })
-  //
-  // AUTOR.belongsTo(PERSONA, { as: 'persona', foreignKey: { name: 'fid_persona', targetKey: 'id_persona', allowNull: false } })
-  // PERSONA.hasOne(AUTOR,    { as: 'autor',   foreignKey: { name: 'fid_persona' } })
-
   return MODEL
 }
 ```
 
-Podemos crear algunos seeders para insertar algunos datos por defecto en la base de datos:
+## 4. Adición de seeders
 
 ```bash
-insac add:seed -m persona
-insac add:seed -m post
+insac add:seed persona
+insac add:seed post
 ```
-
-Ahora, procedemos la generación de un CRUD básico.
-
-```bash
-insac gen:resource api/v1/personas -m persona --level 2
-insac gen:resource api/v1/posts -m post --level 2
-```
-
-La estructura del modulo queda de la siguiente forma:
 
 ```txt
-├─ src
-      ├─ modules
-            └─ API
-                  ├─ dao
-                  │     ├─ persona.dao.js
-                  │     └─ post.dao.js
-                  ├─ models
-                  │     ├─ persona.model.js
-                  │     └─ post.model.js
-                  ├─ resources
-                  │     └─ api
-                  │           └─ v1
-                  │                 ├─ personas
-                  │                 │     ├─ persona.controller.js
-                  │                 │     ├─ persona.input.js
-                  │                 │     ├─ persona.middleware.js
-                  │                 │     ├─ persona.output.js
-                  │                 │     └─ persona.route.js
-                  │                 └─ posts
-                  │                       ├─ post.controller.js
-                  │                       ├─ post.input.js
-                  │                       ├─ post.middleware.js
-                  │                       ├─ post.output.js
-                  │                       └─ post.route.js
-                  ├─ seeders
-                  │     ├─ prod
-                  │     ├─ persona.seed.js
-                  │     └─ post.seed.js
-                  └─ api.module.js
+API
+   └─ seeders
+         ├─ persona.seed.js
+         └─ post.seed.js
 ```
 
-Listo, ya podemos instalar y ejecutar la aplicación, para esto debemos actualizar los datos de configuración de la base de datos y del servidor los cuales se encuentran en el archivo `app.config.js`.
-
-Una vez que se hayan establecido las credenciales de acceso a la base de datos, procedemos con la instalación.
-
-`yarn setup`
+## 5. Generación de recursos CRUD
 
 ```bash
-$ yarn setup
-yarn run v1.7.0
-warning package.json: No license field
-$ SETUP=true START=false node index.js
+insac gen:resource api/v1/personas -m persona --output-depth 2
+insac gen:resource api/v1/posts -m post --output-depth 2
+```
 
- |===============================================|
- |======   I N S A C   F R A M E W O R K   ======|
- |===============================================|
+```txt
+API
+  ├─ resources
+        └─ api
+              └─ v1
+                    ├─ personas
+                    │     ├─ persona.controller.js
+                    │     ├─ persona.input.js
+                    │     ├─ persona.middleware.js
+                    │     ├─ persona.output.js
+                    │     └─ persona.route.js
+                    └─ posts
+                          ├─ post.controller.js
+                          ├─ post.input.js
+                          ├─ post.middleware.js
+                          ├─ post.output.js
+                          └─ post.route.js
+```
+
+## 6. Instalación de la aplicación
+
+Actualizar los valores de configuración de la base de datos:
+
+Archivo: `src/config/database.config.js`
+
+Después de configurar la base de datos:
+
+```bash
+$ npm run setup
+> SETUP=true START=false node index.js
+
+   =====================================   
+     ---------------------------------     
+       I N S A C   F R A M E W O R K       
+     =================================     
+   -------------------------------------   
+
+               Versión 3.0.0               
 
 
- |===============================================|
- |---------   INSTALANDO   APLICACIÓN   ---------|
- |===============================================|
-
- Modo: development
+ Sistema : Blog
+ Versión : 1.0.0
+ Entorno : development
 
 
- Módulo UTIL ...
+ [archivo] /src/modules/API/api.module.js ✓
+
+
+ CONFIGURACIÓN INICIAL
+ =====================
+
+ [archivo] app.before.hook.js (default) ✓
 
  Módulo API ...
 
- - DROP TABLE persona ✓
- - DROP TABLE post ✓
-
- - CREATE TABLE persona ✓
- - CREATE TABLE post ✓
-
- - SEED persona ...
-
- - INSERT persona (id_persona: 1) ..... [1/1] ✓
-
- - SEED post ...
-
- - INSERT post (id_post: 1) ..... [1/1] ✓
-
- - Instalación finalizada correctamente.
-
-Done in 1.16s.
-```
-
-Ahora ejecutamos la aplicación:
-
-`yarn start`
-
-```bash
-$ yarn start
-yarn run v1.7.0
-warning package.json: No license field
-$ node index.js
-
- |===============================================|
- |======   I N S A C   F R A M E W O R K   ======|
- |===============================================|
+ [archivo] /src/modules/API/models/persona.model.js ✓
+ [archivo] /src/modules/API/models/post.model.js ✓
 
 
- |===============================================|
- |-------   INICIALIZANDO   APLICACIÓN   --------|
- |===============================================|
+ INSTALANDO APLICACIÓN
+ =====================
 
- Modo: development
+ CREATE DATABASE _example ... ✓
 
- Módulo UTIL ...
-
- - [service] log
 
  Módulo API ...
 
- [GET]    /api/v1/personas ....................... get
- [GET]    /api/v1/personas/:id_persona ........... getId
- [POST]   /api/v1/personas ....................... create
- [PUT]    /api/v1/personas/:id_persona ........... update
- [DELETE] /api/v1/personas/:id_persona ........... destroy
- [PUT]    /api/v1/personas/:id_persona/restore ... restore
+ CREATE SCHEMA api ... ✓
 
- [GET]    /api/v1/posts .................... get
- [GET]    /api/v1/posts/:id_post ........... getId
- [POST]   /api/v1/posts .................... create
- [PUT]    /api/v1/posts/:id_post ........... update
- [DELETE] /api/v1/posts/:id_post ........... destroy
- [PUT]    /api/v1/posts/:id_post/restore ... restore
+ DROP TABLE api.persona ... ✓
+ DROP TABLE api.post ...... ✓
 
- CREATE APIDOC ✓
+ CREATE TABLE api.persona ... ✓
+ CREATE TABLE api.post ...... ✓
 
- - Aplicación inicializada exitosamente.
+ [archivo] /src/modules/API/seeders/persona.seed.js ✓
 
- - [service] http://localhost:4000
- - [apidoc]  http://localhost:4000/apidoc
+ BULK INSERT api.persona [1 registros] ...
+
+ INSERT persona.seed.js  (Se insertaron 1 registros en 0.02 seg.) ✓
+
+ [archivo] /src/modules/API/seeders/post.seed.js ✓
+
+ BULK INSERT api.post [1 registros] ...
+
+ INSERT post.seed.js ... (Se insertaron 1 registros en 0.008 seg.) ✓
+
+
+ La aplicación ha sido instalada con éxito.  
 ```
 
-Lo que nos dará como resultado:
+## 7. Despliegue de la aplicación
 
-Página de bienvenida `http://localhost:4000`
+```bash
+$ npm run start
+> node index.js
+
+   =====================================   
+     ---------------------------------     
+       I N S A C   F R A M E W O R K       
+     =================================     
+   -------------------------------------   
+
+               Versión 3.0.0               
+
+
+ Sistema : Blog
+ Versión : 1.0.0
+ Entorno : development
+
+
+ [archivo] /src/modules/API/api.module.js ✓
+
+
+ CONFIGURACIÓN INICIAL
+ =====================
+
+ [archivo] app.before.hook.js (default) ✓
+
+ Módulo API ...
+
+ [archivo] /src/modules/API/models/persona.model.js ✓
+ [archivo] /src/modules/API/models/post.model.js ✓
+
+
+ CARGANDO APLICACIÓN
+ ===================
+
+
+ Módulo API ...
+
+ [archivo] /src/modules/API/dao/persona.dao.js ✓
+ [archivo] /src/modules/API/dao/post.dao.js ✓
+
+ [archivo] /src/modules/API/resources/api/v1/personas/personas.route.js ✓
+ [archivo] /src/modules/API/resources/api/v1/personas/personas.input.js ✓
+ [archivo] /src/modules/API/resources/api/v1/personas/personas.output.js ✓
+ [archivo] /src/modules/API/resources/api/v1/personas/personas.middleware.js ✓
+ [archivo] /src/modules/API/resources/api/v1/personas/personas.controller.js ✓
+
+ [ruta] GET    /api/v1/personas ....................... get ✓
+ [ruta] GET    /api/v1/personas/:id_persona ........... getId ✓
+ [ruta] POST   /api/v1/personas ....................... create ✓
+ [ruta] PUT    /api/v1/personas/:id_persona ........... update ✓
+ [ruta] DELETE /api/v1/personas/:id_persona ........... destroy ✓
+ [ruta] PUT    /api/v1/personas/:id_persona/restore ... restore ✓
+
+ [archivo] /src/modules/API/resources/api/v1/posts/posts.route.js ✓
+ [archivo] /src/modules/API/resources/api/v1/posts/posts.input.js ✓
+ [archivo] /src/modules/API/resources/api/v1/posts/posts.output.js ✓
+ [archivo] /src/modules/API/resources/api/v1/posts/posts.middleware.js ✓
+ [archivo] /src/modules/API/resources/api/v1/posts/posts.controller.js ✓
+
+ [ruta] GET    /api/v1/posts .................... get ✓
+ [ruta] GET    /api/v1/posts/:id_post ........... getId ✓
+ [ruta] POST   /api/v1/posts .................... create ✓
+ [ruta] PUT    /api/v1/posts/:id_post ........... update ✓
+ [ruta] DELETE /api/v1/posts/:id_post ........... destroy ✓
+ [ruta] PUT    /api/v1/posts/:id_post/restore ... restore ✓
+
+
+ CONFIGURACIÓN FINAL
+ ===================
+
+ [archivo] app.after.hook.js (default) ✓
+
+ [apidoc] Módulo API ... ✓
+
+
+ La aplicación ha sido cargada con éxito.  
+
+
+ EJECUTANDO APLICACIÓN
+ =====================
+
+ [SERVICIO] http://localhost:4000 ✓
+ [APIDOC]   http://localhost:4000/apidoc/API ✓
+```
+
+Resultado:
+
+## `http://localhost:4000`
 
 ![Insac Welcome](assets/img/welcome.png)
 
-Apidoc `http://localhost:4000/apidoc`
+## `http://localhost:4000/apidoc/API`
 
 ![Insac APIDOC](assets/img/apidoc.png)
