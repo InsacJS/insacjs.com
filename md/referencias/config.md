@@ -1,6 +1,6 @@
 # Carpeta `config`
 
-Contiene archivos con extensión `.config.js`. Estos valores también pueden ser modificados utilizando [Variables de entorno](./referencias/env#variables-de-entorno), dando prioridad a estas últimas.
+Contiene archivos con extensión `.config.js`. Algunos valores pueden ser modificados utilizando [Variables de entorno](./referencias/env#variables-de-entorno), dando prioridad a estas últimas.
 
 ## Configuración global
 

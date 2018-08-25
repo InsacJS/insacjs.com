@@ -8,7 +8,7 @@ const { Module } = require('insac')
 module.exports = (app) => {
   const API = new Module(app.config.API)
 
-  // Adiciona carpetas personalizadas
+  // Adiciona Componentes personalizados
   API.addComponent('mails', '.mail.js')
   API.addComponent('reports', '.report.js')
   API.addComponent('services', '.service.js')
@@ -59,7 +59,7 @@ module.exports = (app) => {
                    └─ auth.module.js
 ```
 
-## Carpetas predefinidas
+## Carpetas preconfiguradas
 
 - [config](./referencias/config)
 - [dao](./referencias/dao)
@@ -69,12 +69,14 @@ module.exports = (app) => {
 - [seeders](./referencias/seeders)
 - [tools](./referencias/tools)
 
-## Carpetas personalizadas
+## Componentes personalizados
+
+Un componente personalizado es aquella carpeta cuyo contenido es gestionado por si mismo a partir de un fichero base.
 
 Para Acceder al contenido de estos ficheros, se sigue el siguiente patron:
 
 ```js
-const RESULT = await app.MODULE_NAME.dirName.fileName.myFunction()
+const RESULT = await app.MODULE_NAME.dirName.fileName.myAsyncFunction()
 ```
 
-Puede encontrar mas información de este tipo de componentes en [Carpetas personalizadas](./referencias/component)
+Puede encontrar mas información de este tipo de componentes en [Componentes personalizados](./referencias/component)

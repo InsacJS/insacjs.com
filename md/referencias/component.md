@@ -1,6 +1,6 @@
-# Carpetas personalizadas.
+# Componentes personalizados.
 
-Una carpeta personalizada, tiene la caracteristica de estar asociado a un tipo de fichero específico el cual se encarga de gestionar su propio espacio de trabajo.
+Un componente personalizada es una carpeta que tiene la caracteristica de estar asociado a un tipo de fichero específico el cual se encarga de gestionar su propio espacio de trabajo.
 
 ```txt
 app
@@ -23,7 +23,7 @@ Ejemplo.- Archivo `send.mail.js`
 module.exports = (app) => {
   const SEND = {}
 
-  SEND.recordarPassword = () => {
+  SEND.recordarPassword = async () => {
     // TODO
   }
 
@@ -37,7 +37,7 @@ Ejemplo.- Archivo `usuario.report.js`
 module.exports = (app) => {
   const USUARIO = {}
 
-  USUARIO.crearReporteGeneral = () => {
+  USUARIO.crearReporteGeneral = async () => {
     // TODO
   }
 
@@ -51,7 +51,7 @@ Ejemplo.- Archivo `authServer.service.js`
 module.exports = (app) => {
   const AUTH_SERVER = {}
 
-  AUTH_SERVER.autenticar = () => {
+  AUTH_SERVER.autenticar = async () => {
     // TODO
   }
 
@@ -65,7 +65,7 @@ Ejemplo.- Archivo `local.storage.js`
 module.exports = (app) => {
   const LOCAL = {}
 
-  LOCAL.guardarArchivo = () => {
+  LOCAL.guardarArchivo = async () => {
     // TODO
   }
 
@@ -73,7 +73,7 @@ module.exports = (app) => {
 }
 ```
 
-Adición de un componente personalizado a un módulo:
+Adición de compoentes personalizados a un módulo:
 
 ```js
 const { Module } = require('insac')

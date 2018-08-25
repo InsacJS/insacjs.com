@@ -1,4 +1,4 @@
-## Carpeta `dao`
+# Carpeta `dao`
 
 Contiene los archivos con extensión `.dao.js`.
 

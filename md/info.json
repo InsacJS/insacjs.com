@@ -24,7 +24,13 @@
         { "file": "resource",    "name": "Carpeta resource" },
         { "file": "seeders",     "name": "Carpeta seeders" },
         { "file": "tools",       "name": "Carpeta tools" },
-        { "file": "component",   "name": "Carpetas personalizadas" },
+        { "file": "component",   "name": "Componentes personalizados" },
+        { "file": "app",         "name": "Archivo app" },
+        { "file": "route",       "name": "Archivo route" },
+        { "file": "input",       "name": "Archivo input" },
+        { "file": "output",      "name": "Archivo output" },
+        { "file": "middleware",  "name": "Archivo middleware" },
+        { "file": "controller",  "name": "Archivo controller" },
         { "file": "field",       "name": "Clase Field" },
         { "file": "env",         "name": "Variables de entorno" }
       ]
