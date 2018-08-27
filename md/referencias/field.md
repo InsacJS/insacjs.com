@@ -26,9 +26,21 @@ const { Field, THIS } = require('insac')]
 
 ## Tipos de datos predefinidos
 
-| Tipo       | Descripción                        | Validadores por defecto                          | Ejemplo                |
-| ---------- | ---------------------------------- | ------------------------------------------------ | ---------------------- |
-| `ID`       | Clave primaria.                    | `isInt: true`, `min: 1`, `max: 2147483647` | `Field.ID(props)`      |
+| Tipo           | Descripción                                 | Validadores por defecto                      | Ejemplo                     |
+| -------------- | ------------------------------------------- | -------------------------------------------- | --------------------------- |
+| `ID`           | Clave primaria autoincrementable.           | `isInt: true`, `min: 1`, `max: 2147483647`   | `Field.ID(props)`           |
+| `CREATED_AT`   | Fecha de creación del registro.             | `isDate: true`                               | `Field.CREATED_AT(props)`   |
+| `UPDATED_AT`   | Fecha de modificación del registro.         | `isDate: true`                               | `Field.UPDATED_AT(props)`   |
+| `DELETED_AT`   | Fecha de eliminación del registro.          | `isDate: true`                               | `Field.DELETED_AT(props)`   |
+| `DELETED_AT`   | Fecha de eliminación del registro.          | `isDate: true`                               | `Field.DELETED_AT(props)`   |
+| `CREATED_USER` | ID del usuario que crea el registro.        | `isInt: true`, `min: 0`, `max: 2147483647`   | `Field.CREATED_USER(props)` |
+| `UPDATED_USER` | ID del usuario que modifica el registro.    | `isInt: true`, `min: 0`, `max: 2147483647`   | `Field.UPDATED_USER(props)` |
+| `DELETED_USER` | ID del usuario que elimina el registro.     | `isInt: true`, `min: 0`, `max: 2147483647`   | `Field.DELETED_USER(props)` |
+| `STATUS`       | Estado en el que se encuentra el registro.  | `isIn: ['ACTIVO', 'INACTIVO, 'ELIMINADO]`    | `Field.STATUS(props)`       |
+| `FIELDS`       | Campos a devolver en el resultado.          | `len: [0, 255]`                              | `Field.FIELDS(props)`       |
+| `ORDER`        | Orden en el que se devolverá el resultado.  | `len: [0, 255]`                              | `Field.ORDER(props)`        |
+| `LIMIT`        | Límite de registros por página.             | `isInt: true`, `min: 1`, `max: 2147483647`   | `Field.LIMIT(props)`        |
+| `PAGE`         | Número de página de una lista de registros. | `isInt: true`, `min: 1`, `max: 2147483647`   | `Field.PAGE(props)`         |
 
 ## Propiedades de un atributo
 
@@ -102,41 +114,41 @@ const validate = {
 
 ## Lista de validadores
 
-A continuación se muestra una lista de opciones de la propiedad `validate`. Puede encontrar más información en: [http://docs.sequelizejs.com/manual/tutorial/models-definition.html#validations](http://docs.sequelizejs.com/manual/tutorial/models-definition.html#validations)
+A continuación se muestra una lista de opciones de la propiedad `validate` que utiliza Sequelize.
 
 ```js
 const validate = {
-  is             : ['^[a-z]+$', 'i'],
-  is             : /^[a-z]+$/i,      
-  not            : ['[a-z]', 'i'],   
-  isEmail        : true,             
-  isUrl          : true,             
-  isIP           : true,             
-  isIPv4         : true,             
-  isIPv6         : true,             
-  isAlpha        : true,             
-  isAlphanumeric : true,             
-  isNumeric      : true,             
-  isInt          : true,             
-  isFloat        : true,             
-  isDecimal      : true,             
-  isLowercase    : true,             
-  isUppercase    : true,             
-  isNull         : true,             
-  notEmpty       : true,             
-  equals         : 'ABC123',         
-  contains       : 'def',            
-  notContains    : 'def',            
-  notIn          : [['A', 'B']],     
-  isIn           : [['A', 'B']],     
-  len            : [2, 5],           
-  isUUID         : 4,                
-  isDate         : true,             
-  isAfter        : '2010-05-30',     
-  isBefore       : '2020-05-30',     
-  min            : 10,               
-  max            : 12,               
-  isCreditCard   : true,             
+  is             : ['^[a-z]+$', 'i'],  // Es igual
+  is             : /^[a-z]+$/i,        // Es igual
+  not            : ['[a-z]', 'i'],     // No es igual
+  isEmail        : true,               // Es una dirección Email
+  isUrl          : true,               // Es una dirección URL
+  isIP           : true,               // Es un número IP
+  isIPv4         : true,               // Es un numero IP versión 4
+  isIPv6         : true,               // Es un numero IP versión 6
+  isAlpha        : true,               // Es un texto que solo tiene letras
+  isAlphanumeric : true,               // Es un texto que solo tiene letras y números
+  isNumeric      : true,               // Es un texto que solo tiene números
+  isInt          : true,               // Es un número entero
+  isFloat        : true,               // Es un número en coma flotante
+  isDecimal      : true,               // Es un número decimal
+  isLowercase    : true,               // Es un texto solo con letras minúsculas
+  isUppercase    : true,               // Es un texto solo con letras mayúsculas
+  isNull         : true,               // Es un valor nulo
+  notEmpty       : true,               // No es un texto vacío
+  equals         : 'ABC123',           // Es igual a
+  contains       : 'def',              // Contiene a
+  notContains    : 'def',              // No contiene a
+  notIn          : [['A', 'B']],       // No se encuentra entre los valores
+  isIn           : [['A', 'B']],       // Se encuentra entre los valores
+  len            : [2, 5],             // Longitud mínima y máxima del texto
+  isUUID         : 4,                  // Es un código UUID
+  isDate         : true,               // Es una fecha
+  isAfter        : '2010-05-30',       // Es una fecha después de
+  isBefore       : '2020-05-30',       // Es una fecha antes de
+  min            : 10,                 // Es un número con un valor mínimo de
+  max            : 12,                 // Es un número con un valor máximo de
+  isCreditCard   : true,               // Es el código de una tarjeta de crédito
 }
 ```
 
