@@ -34,8 +34,9 @@ process.env.DB_TZ   // TIMEZONE de la base de datos.                  Ej.- proce
 ## LOGGER
 
 ```js
-process.env.COLORS // Hablita los colores de los logs. Ej.- process.env.COLORS = 'true'
-process.env.LOGGER // Habilita los logs.               Ej.- process.env.LOGGER = 'true'
+process.env.COLORS    // Hablita los colores de los logs. Ej.- process.env.COLORS    = 'true'
+process.env.LOGGER    // Habilita los logs.               Ej.- process.env.LOGGER    = 'true'
+process.env.LOG_LEVEL // Nivel de logs de la consola.     Ej.- process.env.LOG_LEVEL = 'silly'
 ```
 
 ## APIDOC

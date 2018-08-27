@@ -106,3 +106,9 @@ MODEL.associate = (app) => {
   AUTOR.hasMany(LIBRO,   { as: 'libros', foreignKey: { name: 'fid_autor' } })
 }
 ```
+
+## Referencias externas
+
+Puede encontrar mas información acerca de la definición de modelos en el siguiente enlace:
+
+- [Sequelize - Model definition](http://docs.sequelizejs.com/manual/tutorial/models-definition.html)

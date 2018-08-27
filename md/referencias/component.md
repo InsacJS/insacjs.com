@@ -1,4 +1,4 @@
-# Componentes personalizados.
+# Componentes personalizados
 
 Un componente personalizada es una carpeta que tiene la caracteristica de estar asociado a un tipo de fichero específico el cual se encarga de gestionar su propio espacio de trabajo.
 

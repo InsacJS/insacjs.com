@@ -10,24 +10,24 @@ module.exports = async (app) => {
 }
 ```
 
-## Hooks globales
+## Hooks a nivel de aplicación
 
-Estos archivos se ejecutan antes y después de instalar y/o cargar la aplicación.
+Estos archivos se ejecutan antes (before) y después (after) de instalar y/o cargar la aplicación.
 
 ```txt
-blog
- ├─ src
-       ├─ hooks
-             ├─ app.after.hook.js
-             └─ app.before.hook.js
+app
+  ├─ src
+        ├─ hooks
+              ├─ app.after.hook.js
+              └─ app.before.hook.js
 ```
 
-## Hooks locales
+## Hooks a nivel de los módulos
 
-Estos archivos se ejecutan antes y después de instalar y/o cargar el módulo.
+Estos archivos se ejecutan antes (before) y después (after) de instalar y/o cargar el módulo.
 
 ```txt
-blog
+app
   ├─ src
         ├─ modules
               ├─ AUTH

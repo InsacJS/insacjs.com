@@ -89,7 +89,7 @@ for (let i in info.secciones) {
     let target = path.resolve(SECTION_PATH, `${_cap}/${_cap}.component.scss`)
     let source = path.resolve(__dirname, './template/seccion/capitulo/capitulo.component.scss')
     util.copyFile(source, target)
-    createInfo(filePath)
+    createInfo(target)
 
     // capitulo.component.ts
     filePath = path.resolve(SECTION_PATH, `${_cap}/${_cap}.component.ts`)
@@ -120,7 +120,7 @@ for (let i in info.secciones) {
   let target = path.resolve(SECTION_PATH, `${_section}.component.scss`)
   let source = path.resolve(__dirname, './template/seccion/seccion.component.scss')
   util.copyFile(source, target)
-  createInfo(filePath)
+  createInfo(target)
 
   // seccion.component.html
   filePath = path.resolve(SECTION_PATH, `${_section}.component.html`)

@@ -8,7 +8,7 @@ const { Module } = require('insac')
 module.exports = (app) => {
   const API = new Module(app.config.API)
 
-  // Adiciona Componentes personalizados
+  // Componentes personalizados
   API.addComponent('mails', '.mail.js')
   API.addComponent('reports', '.report.js')
   API.addComponent('services', '.service.js')
@@ -21,42 +21,43 @@ module.exports = (app) => {
 ## Estructura básica de un módulo:
 
 ```txt
- ├─ src
-       ├─ modules
-             ├─ AUTH
-                   ├─ config
-                   │     ├─ auth.config.js
-                   │     └─ auth.config.js.example
-                   ├─ dao
-                   │     └─ usuario.dao.js
-                   ├─ hooks
-                   │     ├─ auth.after.hook.js
-                   │     └─ auth.before.hook.js
-                   ├─ mails
-                   │     └─ send.mail.js
-                   ├─ models
-                   │     └─ usuario.model.js
-                   ├─ reports
-                   │     └─ usuario.report.js
-                   ├─ resources
-                   │     └─ auth
-                   │            └─ account
-                   │                 ├─ account.controller.js
-                   │                 ├─ account.input.js
-                   │                 ├─ account.middleware.js
-                   │                 ├─ account.output.js
-                   │                 └─ account.route.js
-                   ├─ seeders
-                   │     ├─ production
-                   │     │      └─ usuario.seed.js
-                   │     └─ usuario.seed.js
-                   ├─ services
-                   │     └─ authServer.service.js
-                   ├─ storage
-                   │     └─ local.storage.js
-                   ├─ tools
-                   │     └─ util.tool.js
-                   └─ auth.module.js
+app
+  ├─ src
+        ├─ modules
+              ├─ AUTH
+                    ├─ config
+                    │     ├─ auth.config.js
+                    │     └─ auth.config.js.example
+                    ├─ dao
+                    │     └─ usuario.dao.js
+                    ├─ hooks
+                    │     ├─ auth.after.hook.js
+                    │     └─ auth.before.hook.js
+                    ├─ mails
+                    │     └─ send.mail.js
+                    ├─ models
+                    │     └─ usuario.model.js
+                    ├─ reports
+                    │     └─ usuario.report.js
+                    ├─ resources
+                    │     └─ auth
+                    │            └─ account
+                    │                 ├─ account.controller.js
+                    │                 ├─ account.input.js
+                    │                 ├─ account.middleware.js
+                    │                 ├─ account.output.js
+                    │                 └─ account.route.js
+                    ├─ seeders
+                    │     ├─ production
+                    │     │      └─ usuario.seed.js
+                    │     └─ usuario.seed.js
+                    ├─ services
+                    │     └─ authServer.service.js
+                    ├─ storage
+                    │     └─ local.storage.js
+                    ├─ tools
+                    │     └─ util.tool.js
+                    └─ auth.module.js
 ```
 
 ## Carpetas preconfiguradas

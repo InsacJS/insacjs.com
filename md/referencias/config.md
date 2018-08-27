@@ -1,18 +1,18 @@
 # Carpeta `config`
 
-Contiene archivos con extensión `.config.js`. Algunos valores pueden ser modificados utilizando [Variables de entorno](./referencias/env#variables-de-entorno), dando prioridad a estas últimas.
+Contiene archivos con extensión `.config.js`. Algunos valores pueden ser modificados utilizando [Variables de entorno](./referencias/env), dando prioridad a estas últimas.
 
 ## Configuración global
 
 ```txt
-blog
- ├─ src
-       ├─ config
-             ├─ database.config.js
-             ├─ server.config.js
-             ├─ logger.config.js
-             ├─ response.config.js
-             └─ apidoc.config.js
+app
+  ├─ src
+        ├─ config
+              ├─ database.config.js
+              ├─ server.config.js
+              ├─ logger.config.js
+              ├─ response.config.js
+              └─ apidoc.config.js
 ```
 
 1. [DATABASE](#title-4)
@@ -24,7 +24,7 @@ blog
 ## Configuración local
 
 ```txt
-blog
+app
   ├─ src
         ├─ modules
               ├─ AUTH
@@ -33,7 +33,7 @@ blog
                           └─ auth.config.js.example
 ```
 
-Ejemplo: archivo `auth.config.js`
+**Ejemplo.-** archivo `auth.config.js`
 
 ```js
 const AUTH = {
@@ -46,7 +46,7 @@ const AUTH = {
 module.exports = AUTH
 ```
 
-Ejemplo: archivo `auth.config.js.example`
+**Ejemplo.-** archivo `auth.config.js.example`
 
 ```txt
 const AUTH = {
@@ -283,9 +283,9 @@ module.exports = APIDOC
 Puede personalizar el fichero [FOOTER.md](./assets/md/FOOTER.md) adicionando el mismo a la raíz del proyecto.
 
 ```txt
-blog
- ├─ src
- ├─ index.js
- ├─ FOOTER.md
- └─ package.json
+app
+  ├─ src
+  ├─ index.js
+  ├─ FOOTER.md
+  └─ package.json
 ```

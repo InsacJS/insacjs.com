@@ -1,6 +1,14 @@
 # Archivo  `app.js`
 
-Este archivo se encarga de instanciar el servidor y establecer el orden de ejecución de los módulos.
+Este archivo se encarga de instanciar la aplicación y establecer el orden de ejecución de los módulos.
+
+```txt
+app
+  ├─ src
+        └─ app.js
+```
+
+**Ejemplo:**
 
 ```js
 const { Insac } = require('insac')

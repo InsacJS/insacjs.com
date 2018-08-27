@@ -1,44 +1,50 @@
 # Clase `Field`
 
-Este objeto es utilizado para definir los atributos de un modelo y los datos de entrada y salida de una ruta.
+Esta clase es utilizada para definir los atributos de un modelo y los datos de entrada y salida de una ruta.
 
 ```js
-const { Field, THIS } = require('insac')
+const { Field, THIS } = require('insac')]
 ```
+
+## Tipos de datos básicos
+
+| Tipo       | Descripción                        | Validadores por defecto                    | Ejemplo                                              |
+| ---------- | ---------------------------------- | ------------------------------------------ | ---------------------------------------------------- |
+| `STRING`   | Cadena de texto.                   | `len: [0, LENGTH=255]`                     | `Field.STRING(props)`, `Field.STRING(LENGTH, props)` |
+| `TEXT`     | Bloque de texto.                   | `len: [0, 2147483647]`                     | `Field.TEXT(props)`                                  |
+| `INTEGER`  | Número entero.                     | `isInt: true`, `min: 0`, `max: 2147483647` | `Field.INTEGER(props)`                               |
+| `FLOAT`    | Número en coma flotante.           | `isFloat: true`, `min: 0`, `max: 1E+308`   | `Field.FLOAT(props)`                                 |
+| `BOOLEAN`  | Valor booleano.                    | `isBoolean: true`                          | `Field.BOOLEAN(props)`                               |
+| `DATE`     | Fecha (día y hora).                | `isDate: true`                             | `Field.DATE(props)`                                  |
+| `DATEONLY` | Fecha (día).                       | `isDate: true`                             | `Field.DATEONLY(props)`                              |
+| `TIME`     | Tiempo (hora). Formato: `HH:mm:ss` | `isTime: custom`                           | `Field.TIME(props)`                                  |
+| `JSON`     | Objeto de tipo JSON.               | `isJson: custom`                           | `Field.JSON(props)`                                  |
+| `JSONB`    | Objeto de tipo JSONB.              | `isJson: custom`                           | `Field.JSONB(props)`                                 |
+| `UUID`     | Código de tipo UUID.               | `isUUID: 4`                                | `Field.UUID(props)`                                  |
+| `ENUM`     | Tipo enumerado.                    | `isIn: [VALUES]`                           | `Field.ENUM(VALUES, props)`                          |
+| `ARRAY`    | Lista de tipos básicos.            | `isArray: custom`                          | `Field.ARRAY(Field.STRING(), props)`                 |
 
 ## Tipos de datos predefinidos
 
-| Tipo       | Descripción                  | Validadores por defecto                    |
-|------------|------------------------------|--------------------------------------------|
-| `ID`       | Clave primaria.              | isInt: `true`, min: `1`, max: `2147483647` |
-| `STRING`   | Cadena de texto.             | len: `[0, LENGHT]`                         |
-| `TEXT`     | Bloque de texto.             | len: `[0, 2147483647]`                     |
-| `INTEGER`  | Número entero.               | isInt: `true`, min: `0`, max: `2147483647` |
-| `FLOAT`    | Número en coma flotante.     | isFloat: `true`, min: `0`, max: `1E+308`   |
-| `BOOLEAN`  | Valor booleano.              | isBoolean: `true`                          |
-| `DATE`     | Fecha (día y hora).          | isDate: `true`                             |
-| `DATEONLY` | Solamente fecha.             | isDate: `true`                             |
-| `TIME`     | Solamente hora.              | isTime: `custom`                           |
-| `JSON`     | Objeto de tipo JSON.         | isJson: `custom`                           |
-| `JSONB`    | Objeto de tipo JSONB.        | isJson: `custom`                           |
-| `UUID`     | Código de tipo UUID.         | isUUID: `4`                                |
-| `ENUM`     | Tipo enumerado.              | isIn: `[VALUES]`                           |
-| `ARRAY`    | Lista de valores.            | isArray: `custom`                          |
+| Tipo       | Descripción                        | Validadores por defecto                          | Ejemplo                |
+| ---------- | ---------------------------------- | ------------------------------------------------ | ---------------------- |
+| `ID`       | Clave primaria.                    | `isInt: true`, `min: 1`, `max: 2147483647` | `Field.ID(props)`      |
 
 ## Propiedades de un atributo
 
-| Propiedad       | Descripción                                |
-| ----------------|--------------------------------------------|
-| `primaryKey`    | Indica si es una clave primaria.           |
-| `autoIncrement` | Indica si es autoincrementable.            |
-| `unique`        | Indica si el registro debe ser único.      |
-| `defaultValue`  | Valor por defecto.                         |
-| `example`       | Valor de ejemplo.                          |
-| `allowNull`     | Indica si acepta valores nulos.            |
-| `comment`       | Descripción del atributo.                  |
-| `uniqueMsg`     | Mensaje de error para validar `unique`.    |
-| `allowNullMsg`  | Mensaje de error para validar `allowNull`. |
-| `validate`      | Objeto para validar el tipo de dato.       |
+| Propiedad       | Tipo      | Descripción                                                          |
+| --------------- | --------- | -------------------------------------------------------------------- |
+| `primaryKey`    | `Boolean` | Indica si es una clave primaria.                                     |
+| `autoIncrement` | `Boolean` | Indica si es autoincrementable.                                      |
+| `unique`        | `Boolean` | Indica si el registro debe ser único.                                |
+| `defaultValue`  | `Object`  | Valor por defecto.                                                   |
+| `example`       | `Object`  | Valor de ejemplo.                                                    |
+| `allowNull`     | `Boolean` | Indica si acepta valores nulos.                                      |
+| `allowNullObj`  | `Boolean` | Indica si el objeto al que pertenece el campo acepta valores nulos.  |
+| `comment`       | `String`  | Descripción del atributo.                                            |
+| `uniqueMsg`     | `String`  | Mensaje de error para validar `unique`.                              |
+| `allowNullMsg`  | `String`  | Mensaje de error para validar `allowNull`.                           |
+| `validate`      | `Object`  | Objeto para validar el tipo de dato.                                 |
 
 A continuación se muestra un ejemplo para crear un campo de tipo ID:
 
@@ -134,6 +140,24 @@ const validate = {
 }
 ```
 
+## Función `use`
+
+Adiciona un campo personalizado a la clase `Field`, posteriormente puede ser utilizado como un campo básico.
+
+```js
+Field.use('ID', Field.INTEGER({
+  primaryKey    : true,
+  autoIncrement : true,
+  allowNull     : false,
+  validate      : { min: 1 }
+}))
+
+const AUTOR = sequelize.define('autor', {
+  id_autor : Field.ID(),
+  nombre   : Field.STRING()
+})
+```
+
 ## Función `clone`
 
 Crea una copia a partir de otro atributo, es posible modificar algunas de sus propiedades.
@@ -142,7 +166,7 @@ Crea una copia a partir de otro atributo, es posible modificar algunas de sus pr
 const ID = Field.ID()
 
 const INPUT = {
-  id: Field.clone(ID, { allowNull: false })
+  id: Field.clone(ID, { allowNull: true })
 }
 ```
 
@@ -205,7 +229,7 @@ const LIBRO = sequelize.define('libro', {
 })
 ```
 
-Es lo mismo que hacer:
+Sería lo mismo que hacer:
 
 ``` js
 const LIBRO = sequelize.define('libro', {

@@ -16,20 +16,21 @@ NodeJS permite crear aplicaciones del lado del servidor, además de que es una e
 
 A continuación de describen las diferentes tecnologías y herramientas mas importantes con las que trabaja el framework:
 
-| Nombre      | Versión | Descripción                                                    |
-|-------------|---------|----------------------------------------------------------------|
-| `NodeJS`    | 8.0     | Entorno de programación de JavaScript.                         |
-| `Express`   | 4.16    | Framework de NodeJS.                                           |
-| `Sequelize` | 4.37    | Framework ORM de NodeJS.                                       |
-| `Yarn`      | 1.7     | Manejador de dependencias.                                     |
-| `PM2`       | 2.7     | Gestor avanzado de procesos de producción para NodeJS.         |
-| `Git`       | 2.7     | Sistema de control de versiones distribuido de código abierto. |
-| `Eslint`    | 4.19    | Herramienta de linting para JavaScript.                        |
+| Nombre      | Versión  | Descripción                                                    |
+| ----------- | -------- | -------------------------------------------------------------- |
+| `NodeJS`    | ^8.0     | Entorno de programación de JavaScript.                         |
+| `MPM`       | ^6.3     | Gestor de paquetes de NodeJS.                                  |
+| `Express`   | ^4.16    | Framework de NodeJS.                                           |
+| `Sequelize` | ^4.37    | Framework ORM de NodeJS.                                       |
+| `Yarn`      | ^1.7     | Manejador de dependencias.                                     |
+| `PM2`       | ^2.7     | Gestor avanzado de procesos de producción para NodeJS.         |
+| `Git`       | ^2.7     | Sistema de control de versiones distribuido de código abierto. |
+| `Eslint`    | ^4.19    | Herramienta de linting para JavaScript.                        |
 
 ## Base de datos compatibles:
 
 | Nombre        | Versión  |
-|---------------|----------|
+| ------------- | -------- |
 | `PostgreSQL`  | 9.4      |
 | `MySQL`       | 5.7      |
 | `MSSQLSERVER` | 2017     |
@@ -50,3 +51,14 @@ Entre las características más importantes del framework se encuentran las sigu
 - **Esquemas de base de datos:** Sobre una base de datos, se crea un esquema para cada módulo, de esta forma es posible tener dos tablas o modelos con el mismo nombre, pero en diferentes módulos. Es posible relacionar modelos de diferentes módulos.
 
 - **Sistema de logs:** Por defecto, se muestran mensajes en la terminal para monitorear todas las peticiones y éstas se registran en ficheros de logs.
+
+## Referencias externas
+
+- [Node JS](https://nodejs.org/es/)
+- [NPM](https://www.npmjs.com/)
+- [Express](http://expressjs.com/es/)
+- [Sequelize](http://docs.sequelizejs.com/)
+- [Yarn](https://yarnpkg.com/es-ES/)
+- [PM2](http://pm2.keymetrics.io/)
+- [GIT](https://git-scm.com/)
+- [ESLint](https://eslint.org/)

@@ -19,19 +19,19 @@ Posteriormente, deberá crear algunos archivos con la siguiente estructura:
 
 ```txt
 app
-   ├─ src
-   │     └─ modules
-   │             └─ API
-   │                   ├─ resources
-   │                   │      └─ welcome
-   │                   │            ├─ welcome.controller.js
-   │                   │            ├─ welcome.input.js
-   │                   │            ├─ welcome.output.js
-   │                   │            └─ welcome.route.js
-   │                   └─ api.module.js
-   ├─ node_modules
-   ├─ index.js
-   └─ package.json
+  ├─ src
+  │     └─ modules
+  │           └─ API
+  │                 ├─ resources
+  │                 │     └─ welcome
+  │                 │           ├─ welcome.controller.js
+  │                 │           ├─ welcome.input.js
+  │                 │           ├─ welcome.output.js
+  │                 │           └─ welcome.route.js
+  │                 └─ api.module.js
+  ├─ node_modules
+  ├─ index.js
+  └─ package.json
 ```
 
 Y el siguiente contenido:

@@ -64,28 +64,28 @@ Estructura inicial del proyecto:
 
 ```txt
 blog
- ├─ .git
- ├─ node_modules
- ├─ src
- │     ├─ config
- │     │     ├─ database.config.js
- │     │     ├─ database.config.js.example
- │     │     ├─ server.config.js
- │     │     └─ server.config.js.example
- │     └─ app.js
- ├─ test
- │     ├─ integration
- │     │     └─ Example.spec.js
- │     ├─ unit
- │     │     └─ Example.spec.js
- │     ├─ helpers.js
- │     └─ mocha.opts
- ├─ .eslintrc.js
- ├─ .gitignore
- ├─ index.js
- ├─ package.json
- └─ README.md
- └─ yarn.lock
+  ├─ .git
+  ├─ node_modules
+  ├─ src
+  │     ├─ config
+  │     │     ├─ database.config.js
+  │     │     ├─ database.config.js.example
+  │     │     ├─ server.config.js
+  │     │     └─ server.config.js.example
+  │     └─ app.js
+  ├─ test
+  │     ├─ integration
+  │     │     └─ Example.spec.js
+  │     ├─ unit
+  │     │     └─ Example.spec.js
+  │     ├─ helpers.js
+  │     └─ mocha.opts
+  ├─ .eslintrc.js
+  ├─ .gitignore
+  ├─ index.js
+  ├─ package.json
+  ├─ README.md
+  └─ yarn.lock
 ```
 
 ## 2. Adición de un módulo
@@ -95,10 +95,11 @@ $ insac add:module api
 ```
 
 ```txt
- ├─ src
-       ├─ modules
-             └─ API
-                   └─ api.module.js
+blog
+  ├─ src
+        └─ modules
+              └─ API
+                    └─ api.module.js
 ```
 
 ## 3. Adición de modelos
@@ -124,12 +125,12 @@ insac add:model post --fields titulo,fecha:DATE,descripcion:TEXT
 
 ```txt
 API
-   ├─ dao
-   │     ├─ persona.dao.js
-   │     └─ post.dao.js
-   └─ models
-         ├─ persona.model.js
-         └─ post.model.js
+  ├─ dao
+  │     ├─ persona.dao.js
+  │     └─ post.dao.js
+  └─ models
+        ├─ persona.model.js
+        └─ post.model.js
 ```
 
 Archivo `persona.model.js`
@@ -227,9 +228,9 @@ insac add:seed post
 
 ```txt
 API
-   └─ seeders
-         ├─ persona.seed.js
-         └─ post.seed.js
+  └─ seeders
+        ├─ persona.seed.js
+        └─ post.seed.js
 ```
 
 ## 5. Generación de recursos CRUD

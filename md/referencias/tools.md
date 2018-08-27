@@ -17,10 +17,10 @@ module.exports = UTIL
 ## Tools globales
 
 ```txt
-blog
- ├─ src
-       ├─ tools
-             └─ util.tool.js
+app
+  ├─ src
+        ├─ tools
+              └─ util.tool.js
 ```
 
 Modo de uso:
@@ -31,7 +31,7 @@ app.tools.util.myFunction()
 ## Tools locales
 
 ```txt
-blog
+app
   ├─ src
         ├─ modules
               ├─ AUTH
