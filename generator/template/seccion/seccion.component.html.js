@@ -6,14 +6,16 @@ module.exports = (info, data) => {
   const SECTION = data.name.toUpperCase()
 
   for (let i in info.secciones) {
-    const _section  = info.secciones[i].folder
-    const _cap = info.secciones[i].capitulos[0].file
-    const icon = info.secciones[i].icon
-    const name = info.secciones[i].name
-    const section = _.camelCase(_section)
-    const Section = _.upperFirst(section)
-    items1 += `        <button routerLink="/${_section}/${_cap}" mat-menu-item><mat-icon>${icon}</mat-icon> ${name}</button>\n`
-    items2 += `        <button routerLink="/${_section}/${_cap}" mat-button style="color:white"><mat-icon>${icon}</mat-icon> ${name}</button>\n`
+    if (info.secciones[i].capitulos.length > 0) {
+      const _section  = info.secciones[i].folder
+      const _cap = info.secciones[i].capitulos[0].file
+      const icon = info.secciones[i].icon
+      const name = info.secciones[i].name
+      const section = _.camelCase(_section)
+      const Section = _.upperFirst(section)
+      items1 += `        <button routerLink="/${_section}/${_cap}" mat-menu-item><mat-icon>${icon}</mat-icon> ${name}</button>\n`
+      items2 += `        <button routerLink="/${_section}/${_cap}" mat-button style="color:white"><mat-icon>${icon}</mat-icon> ${name}</button>\n`
+    }
   }
 
   let result = ``
@@ -48,10 +50,25 @@ ${items2}      <a href="https://github.com/insacjs" target="_blank" mat-button s
 <button class="drawer-toggle" type="button" mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
 <mat-drawer-container class="drawer-container">
   <mat-drawer class="drawer" #drawer [mode]="isLargeScreen() ? 'side' : 'over'" [opened]="isLargeScreen()">
-    <div fxLayout="column">
-      <div class="menu-title">${SECTION}</div>
-      <button *ngFor="let menuItem of menuItems" class="link" (click)="onClick(drawer)" [routerLink]="menuItem.path" [fragment]="menuItem.fragment" mat-button [routerLinkActive]="['active']">{{menuItem.name}}</button>
-    </div>
+
+    <mat-accordion displayMode="flat" multi="true">
+
+      <mat-expansion-panel *ngFor="let group of groups" class="parametersPanel" expanded="true">
+        <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px" class="specific-class">
+          <mat-panel-title>
+            {{ group.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div fxLayout="column">
+          <div *ngFor="let menuItem of menuItems" styles="width=100%">
+            <button *ngIf="menuItem.group === group.key" class="link" (click)="onClick(drawer)" [routerLink]="menuItem.path" [fragment]="menuItem.fragment" mat-button [routerLinkActive]="['active']">{{menuItem.name}}</button>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
   </mat-drawer>
   <mat-drawer-content>
     <div [hidden]="!loading">

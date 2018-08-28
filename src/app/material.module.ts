@@ -17,7 +17,8 @@ import {
   MatSelectModule,
   MatMenuModule,
   MatSidenavModule,
-  MatTabsModule
+  MatTabsModule,
+  MatExpansionModule
 } from '@angular/material'
 
 @NgModule({
@@ -39,7 +40,8 @@ import {
     MatSelectModule,
     MatMenuModule,
     MatSidenavModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule
   ],
   exports: [
     FlexLayoutModule,
@@ -59,7 +61,8 @@ import {
     MatSelectModule,
     MatMenuModule,
     MatSidenavModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule {}

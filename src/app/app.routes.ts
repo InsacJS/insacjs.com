@@ -6,8 +6,7 @@ import { IndexComponent }         from './pages/index/index.component'
 import { NotFoundComponent }      from './pages/not-found/not-found.component'
 
 const APP_ROUTES: Routes = [
-  { path: 'tutoriales', loadChildren: './modules/tutoriales/tutoriales.module#TutorialesModule' },
-  { path: 'referencias', loadChildren: './modules/referencias/referencias.module#ReferenciasModule' },
+  { path: 'doc', loadChildren: './modules/doc/doc.module#DocModule' },
   { path: '', component: IndexComponent },
   { path: '**', component: NotFoundComponent }
 ]

@@ -126,3 +126,17 @@ code {
   border-radius: 10px;
   margin: 10px 0 10px 0;
 }
+
+.support {
+  font-size: 18px;
+  text-align: center;
+}
+
+.support-link, .support-link:active {
+  color: white;
+  text-decoration: none;
+}
+
+.support-link:hover {
+  color: lightblue;
+}

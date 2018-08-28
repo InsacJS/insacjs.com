@@ -13,7 +13,7 @@ const md = require('markdown-it')()
     // permalinkHref: (slug) => `http://localhost:4200/documentation/field-creator/${slug}`
   })
 
-const MD_PATH = path.resolve(__dirname, '../md')
+const MD_PATH = path.resolve(__dirname, './md')
 const info = require(path.resolve(MD_PATH, 'info.json'))
 
 const DESTINY_PATH = path.resolve(process.cwd(), 'src/app/modules')
@@ -61,6 +61,27 @@ for (let i in info.secciones) {
       const OLD_HREF = `href="#title-${anchorPosition}"`
       const anchor   = anchors[parseInt(anchorPosition) - 1]
       const NEW_HREF = `routerLink="/${_section}/${_cap}" fragment="${anchor}"`
+      MARKDOWN = MARKDOWN.replace(`<a ${OLD_HREF}`, `<a ${NEW_HREF}`)
+    }
+
+    while(MARKDOWN.indexOf('<a href="./') !== -1 && MARKDOWN.indexOf('<a href="./assets') === -1) {
+      const a = MARKDOWN.indexOf('<a href="./') + 11
+      const b = MARKDOWN.substr(a).indexOf('"')
+      const relativeUrl = MARKDOWN.substr(a, b)
+      const split = relativeUrl.split('#')
+      const finalUrl = split[0]
+      const fragment = split.length > 1 ? ` fragment="${split[1]}"` : ''
+      const OLD_HREF = `href="./${relativeUrl}"`
+      const NEW_HREF = `routerLink="/${finalUrl}"${fragment}`
+      MARKDOWN = MARKDOWN.replace(`<a ${OLD_HREF}`, `<a ${NEW_HREF}`)
+    }
+
+    while(MARKDOWN.indexOf('<a href="http') !== -1) {
+      const a = MARKDOWN.indexOf('<a href="') + 9
+      const b = MARKDOWN.substr(a).indexOf('"')
+      const absoluteUrl = MARKDOWN.substr(a, b)
+      const OLD_HREF = `href="${absoluteUrl}"`
+      const NEW_HREF = ` href="${absoluteUrl}" target="_blank"`
       MARKDOWN = MARKDOWN.replace(`<a ${OLD_HREF}`, `<a ${NEW_HREF}`)
     }
 

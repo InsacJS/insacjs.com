@@ -1,0 +1,54 @@
+{
+  "secciones": [
+    {
+      "name"   : "Documentación",
+      "folder" : "doc",
+      "icon"   : "library_books",
+      "groups" : [
+        { "key": "start", "name": "Primeros pasos" },
+        { "key": "config", "name": "Archivos de configuración" },
+        { "key": "resource", "name": "Archivos de un recurso" },
+        { "key": "carpeta", "name": "Componentes" },
+        { "key": "archivo", "name": "Archivos" },
+        { "key": "otros", "name": "Otras funciones" }
+      ],
+      "capitulos": [
+        { "file": "introduccion",            "name": "Introducción",            "group": "start" },
+        { "file": "estructura-del-proyecto", "name": "Estructura del proyecto", "group": "start" },
+        { "file": "hola-mundo",              "name": "Hola Mundo",              "group": "start" },
+        { "file": "mi-primer-proyecto",      "name": "Mi primer proyecto",      "group": "start" },
+        { "file": "config-database", "name": "Archivo database.config.js",  "group": "config" },
+        { "file": "config-server",   "name": "Archivo server.config.js",    "group": "config" },
+        { "file": "config-logger",   "name": "Archivo logger.config.js",    "group": "config" },
+        { "file": "config-response", "name": "Archivo response.config.js",  "group": "config" },
+        { "file": "config-apidoc",   "name": "Archivo apidoc.config.js",    "group": "config" },
+        { "file": "config",       "name": "Carpeta config",                 "group": "carpeta" },
+        { "file": "dao",          "name": "Carpeta dao",                    "group": "carpeta" },
+        { "file": "hooks",        "name": "Carpeta hooks",                  "group": "carpeta" },
+        { "file": "logger",       "name": "Carpeta logs",                   "group": "carpeta" },
+        { "file": "models",       "name": "Carpeta models",                 "group": "carpeta" },
+        { "file": "modules",      "name": "Carpeta modules",                "group": "carpeta" },
+        { "file": "resources",    "name": "Carpeta resources",              "group": "carpeta" },
+        { "file": "seeders",      "name": "Carpeta seeders",                "group": "carpeta" },
+        { "file": "test",         "name": "Carpeta test",                   "group": "carpeta" },
+        { "file": "tools",        "name": "Carpeta tools",                  "group": "carpeta" },
+        { "file": "component",    "name": "Carpetas personaizadas",         "group": "carpeta" },
+        { "file": "app",          "name": "Archivo app.js",                 "group": "archivo" },
+        { "file": "package",      "name": "Archivo package.json",           "group": "archivo" },
+        { "file": "ecosystem",    "name": "Archivo ecosystem.json",         "group": "archivo" },
+        { "file": "module",       "name": "Archivos *.module.js",           "group": "archivo" },
+        { "file": "route",        "name": "Archivos *.route.js",            "group": "resource" },
+        { "file": "input",        "name": "Archivos *.input.js",            "group": "resource" },
+        { "file": "output",       "name": "Archivos *.output.js",           "group": "resource" },
+        { "file": "middleware",   "name": "Archivos *.middleware.js",       "group": "resource" },
+        { "file": "controller",   "name": "Archivos *.controller.js",       "group": "resource" },
+        { "file": "field",        "name": "Objeto Field",                   "group": "otros" },
+        { "file": "response",     "name": "Objeto Response",                "group": "otros" },
+        { "file": "cli",          "name": "Programa insac-cli",             "group": "otros" },
+        { "file": "route-filter", "name": "Ruta con un Sistema de filtros", "group": "otros" },
+        { "file": "filters",      "name": "Sistema de filtros",             "group": "otros" },
+        { "file": "env",          "name": "Variables de entorno",           "group": "otros" }
+      ]
+    }
+  ]
+}

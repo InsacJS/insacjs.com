@@ -5,21 +5,29 @@ module.exports = (data) => {
   const _section = data.folder
   const section = _.camelCase(_section)
   const Section = _.upperFirst(section)
-  let items = ``
-  let routerLink
 
   function getFragment (capitulo) {
     return capitulo.anchors.length > 0 ? capitulo.anchors[0] : ''
   }
 
+  let routerLink
+  let items = ``
   for (let i = 0; i < data.capitulos.length; i++) {
     const name = data.capitulos[i].name
+    const group = data.capitulos[i].group
     const _cap = data.capitulos[i].file
     const cap = _.camelCase(_cap)
     const Cap = _.upperFirst(cap)
     const fragment = getFragment(data.capitulos[i])
     if (!routerLink) { routerLink = `    this.router.navigate(['${_section}/${_cap}'], { fragment: '${fragment}' })\n` }
-    items += `    this.addMenuItem({ path: '/${_section}/${_cap}', name: '${name}', fragment: '${fragment}' })${(i === (data.capitulos.length - 1)) ? '' : ','}\n`
+    items += `    this.addMenuItem({ path: '/${_section}/${_cap}', name: '${name}', fragment: '${fragment}', group: '${group}' })${(i === (data.capitulos.length - 1)) ? '' : ',\n'}`
+  }
+
+  let groups = ''
+  for (let i = 0; i < data.groups.length; i++) {
+    const key = data.groups[i].key
+    const name = data.groups[i].name
+    groups += `      { key: '${key}', name: '${name}' }${(i === (data.groups.length - 1)) ? '' : ',\n'}`
   }
 
   let result = ``
@@ -35,6 +43,7 @@ import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angul
 })
 export class ${Section}Component implements OnInit {
   menuItems = []
+  groups    = []
   loading   = false
 
   constructor (
@@ -63,6 +72,9 @@ export class ${Section}Component implements OnInit {
   }
 
   ngOnInit() {
+    this.groups = [
+${groups}
+    ]
 ${items}
   }
 

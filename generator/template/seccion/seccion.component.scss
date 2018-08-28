@@ -48,6 +48,7 @@
 }
 
 .drawer {
+  margin-top: 1px;
   background-color: #f2f2f2;
   min-width: 230px;
   border-right: solid lightgrey 1px;
@@ -64,6 +65,7 @@
   border-radius: 0px;
   border-bottom: solid lightgrey 1px;
   text-align: left;
+  width: 100%;
 }
 
 .footer {
@@ -85,3 +87,43 @@
   font-family: Roboto, "Helvetica Neue", sans-serif;
   padding-top: 15px;
 }
+
+///////////////////////////// MENU DESPLEGABLE ////////////////////////////////
+
+::ng-deep .parametersPanel .mat-expansion-panel-body {
+  padding: 0px 0px 0px 0px;
+  background-color: #f2f2f2;
+}
+
+.parametersPanel {
+  border-top: solid grey 1px;
+}
+
+.mat-expansion-panel-header,
+.mat-expansion-panel-header:hover,
+.mat-expansion-panel-header:focus,
+.mat-expansion-panel-header.mat-expanded,
+.mat-expansion-panel-header.mat-expanded:hover,
+.mat-expansion-panel-header.mat-expanded:focus {
+  background: #083e6c !important;
+}
+
+.mat-expansion-panel[_ngcontent-c1]:not(.mat-expanded)
+.mat-expansion-panel-header[_ngcontent-c1]:not([aria-disabled='true']).cdk-keyboard-focused,
+.mat-expansion-panel[_ngcontent-c1]:not(.mat-expanded)
+.mat-expansion-panel-header[_ngcontent-c1]:not([aria-disabled='true']).cdk-program-focused,
+.mat-expansion-panel[_ngcontent-c1]:not(.mat-expanded)
+.mat-expansion-panel-header[_ngcontent-c1]:not([aria-disabled='true']):hover {
+  background-color: #083e6c !important;
+}
+
+.mat-expansion-panel-header-title {
+  color: white;
+  font-weight: bold;
+}
+
+::ng-deep .specific-class > .mat-expansion-indicator:after {
+  color: white;
+}
+
+///////////////////////////////////////////////////////////////////////////////
