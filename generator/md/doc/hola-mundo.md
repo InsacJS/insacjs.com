@@ -156,8 +156,6 @@ CONFIGURACIÓN INICIAL
 
 [archivo] app.before.hook.js (default) ✓
 
-Módulo API ...
-
 
 CARGANDO APLICACIÓN
 ===================
@@ -171,7 +169,7 @@ Módulo API ...
 [archivo] /src/modules/API/resources/welcome/welcome.middleware.js ✓
 [archivo] /src/modules/API/resources/welcome/welcome.controller.js ✓
 
-[ruta] GET    /hello/:name ... hello ✓
+[ruta] GET    /welcome/hello/:name ... hello ✓
 
 
 CONFIGURACIÓN FINAL
@@ -194,12 +192,16 @@ EJECUTANDO APLICACIÓN
 
 ### `http://localhost:4000`
 
-![Captura 1](./assets/img/captura01.png)
+![Captura 1](./assets/img/hola-mundo/app/captura01.jpg)
 
 ### `http://localhost:4000/apidoc/API`
 
-![Captura 2](./assets/img/captura02.png)
+![Captura 2](./assets/img/hola-mundo/app/captura02.jpg)
 
-![Captura 3](./assets/img/captura03.png)
+### Petición de ejemplo
 
-![Captura 4](./assets/img/captura04.png)
+![Captura 3](./assets/img/hola-mundo/app/captura03.jpg)
+
+### Mensajes de logs
+
+![Captura 4](./assets/img/hola-mundo/app/captura04.jpg)

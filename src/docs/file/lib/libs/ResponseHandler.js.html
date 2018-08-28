@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/libs/ResponseHandler.js | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  
+  <a href="identifiers.html">Referencia</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/libs/ResponseHandler.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** @ignore */ const OkSuccess               = require(&apos;./successes/OkSuccess&apos;)
+/** @ignore */ const CreatedSuccess          = require(&apos;./successes/CreatedSuccess&apos;)
+/** @ignore */ const NoContentSuccess        = require(&apos;./successes/NoContentSuccess&apos;)
+/** @ignore */ const BadRequestError         = require(&apos;./errors/BadRequestError&apos;)
+/** @ignore */ const UnauthorizedError       = require(&apos;./errors/UnauthorizedError&apos;)
+/** @ignore */ const ForbiddenError          = require(&apos;./errors/ForbiddenError&apos;)
+/** @ignore */ const NotFoundError           = require(&apos;./errors/NotFoundError&apos;)
+/** @ignore */ const ConflictError           = require(&apos;./errors/ConflictError&apos;)
+/** @ignore */ const PreconditionFailedError = require(&apos;./errors/PreconditionFailedError&apos;)
+/** @ignore */ const InvalidTokenError       = require(&apos;./errors/InvalidTokenError&apos;)
+/** @ignore */ const InternalServerError     = require(&apos;./errors/InternalServerError&apos;)
+
+/**
+* @ignore
+* Clase Response
+*/
+class ResponseHandler {
+  /**
+  * Devuelve un middleware para enviar respuestas exitosas.
+  * @param {Object}   [options]                - Opciones para configurar el formato.
+  * @param {Function} [options.successHandler] - Funci&#xF3;n que se ejecuta cuando se activa el m&#xE9;todo success.
+  *                                              En este punto se puede manipular las respuestas.
+  * @param {Function} [options.onSuccess]      - Funci&#xF3;n que se ejecuta despues de normalizarla y
+  *                                              antes de aplicar el formato. En este punto podemos ver
+  *                                              el contenido original de la respuesta.
+  * @param {Function} [options.successFormat]  - Funci&#xF3;n que se ejecuta antes de enviar la respuesta.
+  *                                              Devuelve la respuesta final.
+  * @param {Boolean}  [options.all200=false]   - Indica si todas las peticiones tendr&#xE1;n como resultado `status: 200 Ok`
+  * @return {Function}
+  */
+  static success (options = {}) {
+    const successHandler = options.successHandler || ((data) =&gt; data)
+    const onSuccess      = options.onSuccess      || (() =&gt; {})
+    const successFormat  = options.successFormat  || (result =&gt; result)
+    const all200         = (typeof options.all200 !== &apos;undefined&apos;) ? options.all200 : false
+    return (req, res, next) =&gt; {
+      res.success = (data) =&gt; {
+        const result = normalizeSuccess(successHandler(data))
+        onSuccess(result, req)
+        res.status(all200 ? 200 : result.code).send(successFormat(result))
+      }
+      res.success200 = (...args) =&gt; { res.success(OkSuccess.create(...args)) }
+      res.success201 = (...args) =&gt; { res.success(CreatedSuccess.create(...args)) }
+      res.success204 = (...args) =&gt; { res.success(NoContentSuccess.create(...args)) }
+      next()
+    }
+  }
+
+  /**
+  * Devuelve un middleware para enviar respuestas con error.
+  * @param {Object}   [options]              - Opciones para configurar el formato.
+  * @param {Function} [options.errorHandler] - Funci&#xF3;n que se ejecuta cuando se activa el m&#xE9;todo error.
+  *                                            En este punto se puede manipular las respuestas.
+  * @param {Function} [options.onSuccess]    - Funci&#xF3;n que se ejecuta despues de normalizarla y
+  *                                            antes de aplicar el formato. En este punto podemos ver
+  *                                            el contenido original de la respuesta.
+  * @param {Function} [options.errorFormat]  - Funci&#xF3;n que se ejecuta antes de enviar la respuesta.
+  *                                            Devuelve la respuesta final.
+  * @param {Boolean} [options.all200=false]  - Indica si todas las peticiones tendr&#xE1;n como resultado `status: 200 Ok`
+  * @return {Function}
+  */
+  static error (options = {}) {
+    const errorHandler = options.errorHandler || ((data) =&gt; data)
+    const onError      = options.onError      || ((result) =&gt; result)
+    const errorFormat  = options.errorFormat  || (result =&gt; {
+      return {
+        name    : result.name,
+        status  : result.status,
+        type    : result.type,
+        code    : result.code,
+        message : result.message,
+        errors  : result.errors,
+        parent  : result.parent
+      }
+    })
+    const all200 = (typeof options.all200 !== &apos;undefined&apos;) ? options.all200 : false
+    return (req, res, next) =&gt; {
+      res.error = (data) =&gt; {
+        const result = normalizeError(errorHandler(data))
+        onError(result, req)
+        res.status(all200 ? 200 : result.code).send(errorFormat(result))
+      }
+      res.error400 = (...args) =&gt; { res.error(BadRequestError.create(...args)) }
+      res.error401 = (...args) =&gt; { res.error(UnauthorizedError.create(...args)) }
+      res.error403 = (...args) =&gt; { res.error(ForbiddenError.create(...args)) }
+      res.error404 = (...args) =&gt; { res.error(NotFoundError.create(...args)) }
+      res.error409 = (...args) =&gt; { res.error(ConflictError.create(...args)) }
+      res.error412 = (...args) =&gt; { res.error(PreconditionFailedError.create(...args)) }
+      res.error498 = (...args) =&gt; { res.error(InvalidTokenError.create(...args)) }
+      res.error500 = (...args) =&gt; { res.error(InternalServerError.create(...args)) }
+      next()
+    }
+  }
+}
+
+/**
+* @ignore
+* Normaliza el resultado. Si no es instancia de la clase ResponseSuccess,
+* por defecto se crea un resultado de tipo OkSuccess.
+* @param {Object} data - Resultado.
+* @return {ResponseSuccess}
+*/
+function normalizeSuccess (data) {
+  if (data &amp;&amp; data.name &amp;&amp; data.name === &apos;ResponseHandlerSuccess&apos;) { return data }
+  return OkSuccess.create(data)
+}
+
+/**
+* @ignore
+* Normaliza el resultado. Si no es instancia de la clase ResponseError,
+* por defecto se crea un resultado de tipo InternalServerError.
+* @param {Object} err - Error.
+* @return {ResponseError}
+*/
+function normalizeError (err) {
+  if (err &amp;&amp; err.name &amp;&amp; err.name === &apos;ResponseHandlerError&apos;) { return err }
+  return InternalServerError.create(err)
+}
+
+module.exports = ResponseHandler
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

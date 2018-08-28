@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/libs/ApidocCreator.js | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  
+  <a href="identifiers.html">Referencia</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/libs/ApidocCreator.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** @ignore */ const _ = require(&apos;lodash&apos;)
+
+/**
+* @ignore
+* Crea la documentaci&#xF3;n de un servicio.
+*/
+class ApidocCreator {
+  /**
+  * Devuelve un objeto que permite crear la documentaci&#xF3;n de una ruta, con la
+  * opci&#xF3;n de ejecutar una funci&#xF3;n cuando la crea.
+  * @param {Function} [onCreate] - Funci&#xF3;n de tipo (route, apidoc) =&gt; { } que se ejecuta cuando se crea una ruta.
+  * @return {Object}
+  * @example
+  * const onCreate = (route, apidoc) =&gt; {
+  *   console.log(route)
+  *   console.log(apidoc)
+  * }
+  */
+  static router (onCreate) {
+    return {
+      get    : (path, properties) =&gt; { properties.method = &apos;get&apos;;    properties.path = path; _route(properties, onCreate) },
+      post   : (path, properties) =&gt; { properties.method = &apos;post&apos;;   properties.path = path; _route(properties, onCreate) },
+      put    : (path, properties) =&gt; { properties.method = &apos;put&apos;;    properties.path = path; _route(properties, onCreate) },
+      patch  : (path, properties) =&gt; { properties.method = &apos;patch&apos;;  properties.path = path; _route(properties, onCreate) },
+      delete : (path, properties) =&gt; { properties.method = &apos;delete&apos;; properties.path = path; _route(properties, onCreate) }
+    }
+  }
+}
+
+/**
+* @ignore
+* Crea el apidoc para una ruta.
+* @param {!Object}  properties - Propiedades de la ruta.
+* @param {Function} [onCreate] - Funci&#xF3;n que se ejecuta cuando se encuentra una ruta.
+*/
+function _route (properties, onCreate) {
+  properties.method      = properties.method.toLowerCase()
+  properties.name        = properties.name        || `[${properties.method}] ${properties.path}`
+  properties.group       = properties.group       || &apos;API&apos;
+  properties.description = properties.description || properties.name
+  properties.version     = properties.version     || 1
+  const INPUT = {
+    headers : properties.input ? properties.input.headers || {} : {},
+    params  : properties.input ? properties.input.params  || {} : {},
+    query   : properties.input ? properties.input.query   || {} : {},
+    body    : properties.input ? properties.input.body    || {} : {}
+  }
+  const OUTPUT = properties.output || {}
+  properties.input  = INPUT
+  properties.output = OUTPUT
+
+  let apidoc = &apos;&apos;
+  apidoc += _header(properties)
+
+  apidoc += _createApidoc(&apos;&apos;, INPUT.headers, &apos;@apiHeader&apos;, &apos;Datos de entrada - headers&apos;)
+  apidoc += _createApidoc(&apos;&apos;, INPUT.params,  &apos;@apiParam&apos;,  &apos;Datos de entrada - params&apos;)
+  apidoc += _createApidoc(&apos;&apos;, INPUT.query,   &apos;@apiParam&apos;,  &apos;Datos de entrada - query&apos;)
+  apidoc += _createApidoc(&apos;&apos;, INPUT.body,    &apos;@apiParam&apos;,  &apos;Datos de entrada - body&apos;)
+
+  if (INPUT.body &amp;&amp; ((Object.keys(INPUT.body).length &gt; 0) || (Array.isArray(INPUT.body)))) {
+    const example = _example(INPUT.body)
+    apidoc += `* @apiParamExample {json} Ejemplo Petici&#xF3;n \n${example}`
+  }
+  if (properties.inputExamples) {
+    properties.inputExamples.forEach(inputExample =&gt; {
+      const example = _customExample(inputExample.data)
+      apidoc += `* @apiParamExample {json} ${inputExample.title}\n${example}`
+    })
+  }
+  if (properties.sampleRequest) {
+    apidoc += `* @apiSampleRequest ${properties.sampleRequest}\n`
+  }
+  apidoc += _createApidoc(&apos;&apos;, OUTPUT, &apos;@apiSuccess&apos;, &apos;Respuesta - body&apos;)
+  if (OUTPUT &amp;&amp; ((Object.keys(OUTPUT).length &gt; 0) || (Array.isArray(OUTPUT)))) {
+    const example = _example(OUTPUT)
+    apidoc += `* @apiSuccessExample {json} Respuesta Exitosa\n${example}`
+  }
+  if (properties.outputExamples) {
+    properties.outputExamples.forEach(outputExample =&gt; {
+      const example = _customExample(outputExample.data)
+      apidoc += `* @apiSuccessExample {json} ${outputExample.title}\n${example}`
+    })
+  }
+  apidoc += `*/\n`
+  properties.apidoc = apidoc
+  if (onCreate) { onCreate(properties, apidoc) }
+}
+
+/**
+* @ignore
+* Crea un ejemplo para el apidoc.
+* @param {Object} obj - Objeto que contiene los campos.
+* @return {String}
+*/
+function _example (obj) {
+  let result = &apos;&apos;
+  const example = JSON.stringify(_createData(obj, false), null, 2)
+  example.split(&apos;\n&apos;).forEach(line =&gt; {
+    result += `* ${line}\n`
+  })
+  return result
+}
+
+/**
+* @ignore
+* Crea un ejemplo personalizado para el apidoc.
+* @param {Object} obj - Objeto de ejemplo.
+* @return {String}
+*/
+function _customExample (obj) {
+  let result = &apos;&apos;
+  const example = JSON.stringify(obj, null, 2)
+  example.split(&apos;\n&apos;).forEach(line =&gt; {
+    result += `* ${line}\n`
+  })
+  return result
+}
+
+/**
+* @ignore
+* Crea el encabezado del apidoc.
+* @param {Object} route - Propiedades de la ruta.
+* @return {String}
+*/
+function _header (route) {
+  let content = &apos;\n/**\n&apos;
+  content += `* @api {${route.method}} ${route.path} ${route.name}\n`
+  content += `* @apiName ${route.name}\n`
+  content += `* @apiGroup ${route.group}\n`
+  content += `* @apiDescription ${route.description}\n`
+  content += `* @apiVersion ${route.version}.0.0\n`
+  let define = ``
+  if (route.permissions) {
+    route.permissions.forEach(permission =&gt; {
+      define += `\n/**\n`
+      define += `* @apiDefine ${permission} Rol: ${permission.toUpperCase()}\n`
+      define += `* Solo los usuarios que tengan este rol pueden acceder al recurso.\n`
+      define += `*/\n`
+      content += `* @apiPermission ${permission}\n`
+    })
+  }
+  return define + content
+}
+
+/**
+* @ignore
+* Crea los campos del apidoc
+* @param {String} fullprop       - Ruta completa del campo.
+* @param {Object} obj            - Objeto que contiene los campos.
+* @param {String} apidocProperty - Tipo de campo a documentar.
+* @param {String} type           - Tipo de campo.
+* @return {String}
+*/
+function _createApidoc (fullprop, obj, apidocProperty, type) {
+  let apidoc = &apos;&apos;
+  if (Array.isArray(obj)) {
+    if (fullprop !== &apos;&apos;) {
+      apidoc += `* ${apidocProperty} (${type}) {Object[]} ${fullprop} Lista de objetos **${fullprop}**\n`
+    }
+    apidoc += _createApidoc(fullprop, obj[0], apidocProperty, type)
+    return apidoc
+  } else {
+    if (fullprop !== &apos;&apos;) {
+      apidoc += `* ${apidocProperty} (${type}) {Object} ${fullprop} Datos del objeto **${fullprop}**\n`
+    }
+    for (let prop in obj) {
+      const field    = obj[prop]
+      const property = (fullprop !== &apos;&apos;) ? `${fullprop}.${prop}` : prop
+      if (_isField(field)) {
+        const ONLY_TYPE           = apidocProperty === &apos;@apiSuccess&apos;
+        const description         = _createDescription(field, prop)
+        const validateDescription = _createValidateDescription(field, ONLY_TYPE)
+        let fieldName = ONLY_TYPE ? `[${property}]` : _apidocProp(field, property)
+        let fieldType = _apidocType(field, true) // es true, porque siempre se mostrar&#xE1; solamente el tipo de dato.
+        apidoc += `* ${apidocProperty} (${type}) {${fieldType}} ${fieldName} ${description} ${validateDescription}\n`
+      } else {
+        if (typeof field === &apos;object&apos;) {
+          apidoc += _createApidoc(property, obj[prop], apidocProperty, type)
+        }
+      }
+    }
+  }
+  return apidoc
+}
+
+/**
+* @ignore
+* Devuelve la descripci&#xF3;n de un campo.
+* @param {Object} field      - Atributo.
+* @param {String} fieldName  - Nombre del campo.
+* @return {String}
+*/
+function _createDescription (field, fieldName) {
+  if (field.comment)   { return field.comment }
+  if (field.xlabel)    { return field.xlabel }
+  return _.upperFirst(_.replace(fieldName, /_/g, &apos; &apos;).trim())
+}
+
+/**
+* @ignore
+* Devuelve la descripci&#xF3;n del validador de un campo, en formato HTML.
+* @param {Object} field      - Atributo.
+* @param {boolean} onlyType  - Indica si solo se devolver&#xE1; el tipo o se
+*                              incluir&#xE1;n algunos detalles m&#xE1;s espec&#xED;ficos.
+* @return {String}
+*/
+function _createValidateDescription (field, onlyType) {
+  _normalizeValidate(field)
+  if (!onlyType &amp;&amp; field.validate &amp;&amp; Object.keys(field.validate).length &gt; 0) {
+    let vals = &apos;&apos;
+    Object.keys(field.validate).forEach(key =&gt; {
+      let value = field.validate[key].args
+      if (typeof value === &apos;undefined&apos;) { value = &apos;true&apos; }
+      vals += `, &lt;strong&gt;${key}: &lt;/strong&gt;&lt;code&gt;${value}&lt;/code&gt;`
+    })
+    return `&lt;br&gt;${vals.substr(2)}`
+  }
+  return &apos;&apos;
+}
+
+/**
+* @ignore
+* Devuelve el formato del nombre del campo, seg&#xFA;n si es requerido o no.
+* @param {Object} field - Atributo
+* @param {String} prop  - Nombre completo del campo.
+* @return {String}
+*/
+function _apidocProp (field, prop) {
+  prop = (typeof field.defaultValue !== &apos;undefined&apos;) ? `${prop}=${field.defaultValue}` : prop
+  return (field.allowNull === false) ? prop : `[${prop}]`
+}
+
+/**
+* @ignore
+* Devuelve el formato tipo del campo, seg&#xFA;n el tipo de dato.
+* @param {Object}  field    - Atributo
+* @param {boolean} onlyType - Indica si solo se devolver&#xE1; el tipo o se
+*                             incluir&#xE1;n algunos detalles m&#xE1;s espec&#xED;ficos.
+* @return {String}
+*/
+function _apidocType (field, onlyType) {
+  const IS_ARRAY = field.type.key === &apos;ARRAY&apos;
+  const TYPE     = IS_ARRAY ? field.type.type : field.type
+  const TYPE_STR = `${_.upperFirst(_.lowerCase(TYPE.key))}${IS_ARRAY ? &apos;[]&apos;  : &apos;&apos;}`
+  if (!onlyType) {
+    if (TYPE.key === &apos;ENUM&apos; &amp;&amp; typeof TYPE.values !== &apos;undefined&apos;) {
+      return `${TYPE_STR}=${TYPE.values.toString()}`
+    }
+  }
+  return TYPE_STR
+}
+
+/**
+* @ignore
+* Normaliza la propiedad validate.
+* @param {Object} field Atributo de un modelo sequelize.
+*/
+function _normalizeValidate (field) {
+  if (field.validate) {
+    Object.keys(field.validate).forEach(key =&gt; {
+      let validateItem = field.validate[key]
+      if (typeof validateItem === &apos;function&apos;) { return }
+      // Adiciona la propiedad args, si el validador no lo tuviera.
+      // Ejemplo:    min: 10   -&gt;   min: { args: 10 }           isInt: true    -&gt;    isInt: { args: true }
+      if ((typeof validateItem !== &apos;object&apos;) || (typeof validateItem.args === &apos;undefined&apos;)) {
+        field.validate[key] = { args: validateItem }
+      }
+      // Convierte los validadores booleanos:    isInt: { args: true }   -&gt;    isInt: true
+      // Sequelize no admite validateKey: { args: true }, es por eso que si existe, &#xE9;sta se elimina.
+      if (typeof field.validate[key].args === &apos;boolean&apos;) {
+        delete field.validate[key].args
+        if (typeof field.validate[key].msg === &apos;undefined&apos;) {
+          field.validate[key] = true
+        }
+      }
+      // Corrige el problema cuando se declaran args con valores de 0 y 1.
+      // Se corrige porque Sequelize los toma como valores booleanos, cuando deber&#xED;a tomarlos como n&#xFA;meros enteros.
+      // Ejemplo:     min: { args: 0 }  -&gt;   min: { args: [0] }    y   min: { args: 1 }  -&gt;   min: { args: [1] }
+      if ((typeof field.validate[key].args !== &apos;undefined&apos;) &amp;&amp; ((field.validate[key].args === 0) || (field.validate[key].args === 1))) {
+        field.validate[key].args = [field.validate[key].args]
+      }
+    })
+  }
+}
+
+/**
+* @ignore
+* Crea un objeto para representar un ejemplo de la ruta.
+* @param {Object}  obj          - Objeto con todos los campos.
+* @param {boolean} onlyRequired - Indica si se incluir&#xE1;n solo los atributos requeridos o todos.
+* @return {Object}
+*/
+function _createData (obj, onlyRequired) {
+  if (Array.isArray(obj)) {
+    return [_createData(obj[0], onlyRequired)]
+  }
+  const data = {}
+  for (let prop in obj) {
+    const field = obj[prop]
+    if (_isField(field)) {
+      if (onlyRequired === true) {
+        if (field.required) {
+          data[prop] = _exampleData(field)
+        }
+      } else {
+        data[prop] = _exampleData(field)
+      }
+    } else {
+      if (typeof field === &apos;object&apos;) {
+        data[prop] = _createData(obj[prop], onlyRequired)
+      }
+    }
+  }
+  return data
+}
+
+/**
+* @ignore
+* Funci&#xF3;n que indica si un objeto es un campo o no.
+* @param {Object} obj - Objeto.
+* @return {String}
+*/
+function _isField (obj) {
+  if (obj &amp;&amp; obj._modelAttribute &amp;&amp; (obj._modelAttribute === true)) {
+    return true
+  }
+  return false
+}
+
+/**
+* @ignore
+* Devuelve un dato de ejemplo.
+* @param {Object} field - Atributo.
+* @return {String|Boolean|Number|Object}
+*/
+function _exampleData (field) {
+  if (field.example)      { return field.example }
+  if (field.defaultValue) { return field.defaultValue }
+  if (field.type.key === &apos;STRING&apos;)  { return &apos;text&apos; }
+  if (field.type.key === &apos;TEXT&apos;)    { return &apos;text block&apos; }
+  if (field.type.key === &apos;INTEGER&apos;) { return 1 }
+  if (field.type.key === &apos;FLOAT&apos;)   { return 12.99 }
+  if (field.type.key === &apos;BOOLEAN&apos;) { return false }
+  if (field.type.key === &apos;ENUM&apos;)    { return field.type.values[0] }
+  if (field.type.key === &apos;JSON&apos;)    { return { json: { data: &apos;value&apos; } } }
+  if (field.type.key === &apos;JSONB&apos;)   { return { jsonb: { data: &apos;value&apos; } } }
+  if (field.type.key === &apos;DATE&apos;)     { return &apos;2018-02-03T00:39:45.113Z&apos; }
+  if (field.type.key === &apos;DATEONLY&apos;) { return &apos;2018-02-03&apos; }
+  if (field.type.key === &apos;TIME&apos;)     { return &apos;08:12:30&apos; }
+  if (field.type.key === &apos;UUID&apos;)     { return &apos;15dab328-07dc-4400-a5ea-55f836c40f31&apos; }
+  if (field.type.key === &apos;ARRAY&apos;) {
+    if (field.type.type.key === &apos;STRING&apos;)   { return [&apos;Alfa&apos;, &apos;Beta&apos;] }
+    if (field.type.type.key === &apos;TEXT&apos;)     { return [&apos;Text Block A&apos;, &apos;Text Block B&apos;] }
+    if (field.type.type.key === &apos;INTEGER&apos;)  { return [1, 2] }
+    if (field.type.type.key === &apos;FLOAT&apos;)    { return [1.2, 2.8] }
+    if (field.type.type.key === &apos;BOOLEAN&apos;)  { return [true, false] }
+    if (field.type.type.key === &apos;DATE&apos;)     { return [&apos;2018-02-03T00:39:45.113Z&apos;] }
+    if (field.type.type.key === &apos;DATEONLY&apos;) { return [&apos;2018-02-03&apos;] }
+    if (field.type.type.key === &apos;TIME&apos;)     { return [&apos;08:12:30&apos;] }
+    if (field.type.type.key === &apos;UUID&apos;)     { return [&apos;15dab328-07dc-4400-a5ea-55f836c40f31&apos;] }
+    if (field.type.type.key === &apos;ENUM&apos;)     { return [field.type.type.values[0]] }
+    if (field.type.type.key === &apos;JSON&apos;)     { return [{ json: { data: &apos;value&apos; } }] }
+    if (field.type.type.key === &apos;JSONB&apos;)    { return [{ jsonb: { data: &apos;value&apos; } }] }
+    return [&apos;example&apos;]
+  }
+  return &apos;example&apos;
+}
+
+module.exports = ApidocCreator
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

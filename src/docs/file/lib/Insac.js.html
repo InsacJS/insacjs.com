@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">lib/Insac.js | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  
+  <a href="identifiers.html">Referencia</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/Insac.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** @ignore */ const express = require(&apos;express&apos;)
+/** @ignore */ const https   = require(&apos;https&apos;)
+/** @ignore */ const path    = require(&apos;path&apos;)
+
+/** @ignore */ const config = require(&apos;./config/app.config&apos;)
+
+/** @ignore */ const Apidoc   = require(&apos;./core/Apidoc&apos;)
+/** @ignore */ const Database = require(&apos;./core/Database&apos;)
+/** @ignore */ const Logger   = require(&apos;./core/Logger&apos;)
+
+/** @ignore */ const util = require(&apos;./tools/util&apos;)
+
+/**
+* Clase principal, utilizada para controlar la aplicaci&#xF3;n.
+*/
+class Insac {
+  /**
+  * Crea una instancia de la aplicaci&#xF3;n.
+  */
+  constructor () {
+    /**
+    * Instancia del servidor express.
+    * @type {Function}
+    */
+    this.app = createServer(config)
+
+    /**
+    * Funci&#xF3;n que se ejecuta despu&#xE9;s de Inicializar el m&#xF3;dulo.
+    * @type {AsyncFunction}
+    */
+    this.actionOnInit = null
+
+    /**
+    * Funci&#xF3;n que se ejecuta despu&#xE9;s de Instalar el m&#xF3;dulo.
+    * @type {AsyncFunction}
+    */
+    this.actionOnSetup = null
+
+    /**
+    * Funci&#xF3;n que se ejecuta despu&#xE9;s de Cargar el m&#xF3;dulo.
+    * @type {AsyncFunction}
+    */
+    this.actionOnStart = null
+  }
+
+  /**
+  * Adiciona un m&#xF3;dulo a la aplicaci&#xF3;n.
+  * @param {!String}  moduleName - Nombre del m&#xF3;dulo.
+  */
+  addModule (moduleName) {
+    const app          = this.getApp()
+    moduleName         = moduleName.toLowerCase()
+    const MODULE_NAME  = moduleName.toUpperCase()
+    const MODULES_PATH = path.resolve(app.config.PATH.sources, &apos;modules&apos;)
+    try {
+      util.find(MODULES_PATH, `${moduleName}.module.js`, ({ filePath, dirPath, fileName }) =&gt; {
+        if (app.modules.includes(MODULE_NAME)) {
+          throw new Error(`El m&#xF3;dulo ${MODULE_NAME} ya ha sido adicionado`)
+        }
+        const filesInfo = util.find(dirPath, `${moduleName}.config.js`)
+        let moduleConfig = {}
+        if (filesInfo.length &gt; 0) {
+          moduleConfig = require(filesInfo[0].filePath)
+          app.logger.appPrimary(&apos;[archivo]&apos;, `${filesInfo[0].filePath.replace(app.config.PATH.project, &apos;&apos;)} ${app.logger.OK}`)
+        }
+        moduleConfig.moduleName = MODULE_NAME
+        moduleConfig.modulePath = dirPath
+        app.config[MODULE_NAME] = moduleConfig
+        app[MODULE_NAME]        = require(filePath)(app)
+        app.modules.push(MODULE_NAME)
+        app.logger.appPrimary(&apos;[archivo]&apos;, `${filePath.replace(app.config.PATH.project, &apos;&apos;)} ${app.logger.OK}`)
+        app.logger.appPrimary()
+      })
+      if (!app.modules.includes(MODULE_NAME)) {
+        throw new Error(`Se requiere el archivo &apos;${moduleName}.module.js&apos;`)
+      }
+    } catch (err) {
+      app.logger.appError(&apos;Error:&apos;, `Ocurri&#xF3; un error al adicionar el m&#xF3;dulo &apos;${moduleName}&apos;. ${err.message}\n`)
+      throw err
+    }
+  }
+
+  /**
+  * Adiciona una funci&#xF3;n para que se ejecute en un determinado momento.
+  * @param {!String}        [type=&apos;onStart&apos;] - Tipo de evento (onInit, onSetup, onStart).
+  * @param {!AsyncFunction} action           - Funci&#xF3;n de tipo asincrono
+  */
+  addAction (type, action) {
+    if (type === &apos;onInit&apos;)  this.actionOnInit  = action
+    if (type === &apos;onSetup&apos;) this.actionOnSetup = action
+    if (type === &apos;onStart&apos;) this.actionOnStart = action
+  }
+
+  /**
+  * Configura, instala, carga y ejecuta la aplicaci&#xF3;n,
+  * dependiendo del modo de ejecuci&#xF3;n.
+  * @return {Promise}
+  */
+  async init () {
+    const app = this.getApp()
+
+    const SETUP  = app.config.DATABASE.setup
+    const START  = app.config.SERVER.start
+    const LISTEN = app.config.SERVER.listen
+
+    try {
+      app.loaded = false
+
+      if (SETUP || START) {
+        app.logger.appTitle(&apos;CONFIGURACI&#xD3;N INICIAL&apos;)
+        await loadTools(app)
+        await loadBeforeHooks(app)
+        if (this.actionOnInit) await this.actionOnInit()
+      }
+
+      if (SETUP) {
+        app.logger.appTitle(&apos;INSTALANDO APLICACI&#xD3;N&apos;)
+        await app.DB.onInit(app)
+        if (app.config.DATABASE.onSetup.dropDatabase)   await app.DB.dropDatabase(app)
+        if (app.config.DATABASE.onSetup.createDatabase) await app.DB.createDatabase(app)
+        await setupModules(app)
+        if (this.actionOnSetup) await this.actionOnSetup()
+        await app.DB.sequelize.close()
+      }
+
+      if (START)  {
+        app.logger.appTitle(&apos;CARGANDO APLICACI&#xD3;N&apos;)
+        await app.apidoc.onInit(app)
+        await app.DB.onInit(app)
+        await startModules(app)
+        if (this.actionOnStart) await this.actionOnStart()
+      }
+
+      if (SETUP || START) {
+        app.logger.appTitle(&apos;CONFIGURACI&#xD3;N FINAL&apos;)
+        await loadAfterHooks(app)
+        if (app.apidoc.isEnabled()) { await app.apidoc.build(app) }
+        app.logger.appAccent()
+        if (SETUP &amp;&amp; START)  { app.logger.appAccent(&apos;La aplicaci&#xF3;n ha sido instalada y cargada con &#xE9;xito.&apos;) }
+        if (SETUP &amp;&amp; !START) { app.logger.appAccent(&apos;La aplicaci&#xF3;n ha sido instalada con &#xE9;xito.&apos;) }
+        if (!SETUP &amp;&amp; START) { app.logger.appAccent(&apos;La aplicaci&#xF3;n ha sido cargada con &#xE9;xito.&apos;) }
+        app.logger.appAccent()
+      }
+
+      if (START &amp;&amp; LISTEN) {
+        app.logger.appTitle(&apos;EJECUTANDO APLICACI&#xD3;N&apos;)
+        await listen(app)
+      }
+
+      app.loaded = true
+    } catch (err) {
+      app.logger.appError(&apos;Error:&apos;, `Ocurri&#xF3; un error al cargar la aplicaci&#xF3;n. ${err.message}\n`)
+      throw err
+    }
+  }
+
+  /**
+  * Cierra el servidor y la conexi&#xF3;n con la base de datos.
+  * @return  {Promise}
+  */
+  async close () {
+    const app = this.getApp()
+    if (app.SERVER) {
+      await app.SERVER.close()
+    }
+    await app.DB.sequelize.close()
+  }
+
+  /**
+  * Devuelve la instancia del servidor express.
+  * @return {Function}
+  */
+  getApp () {
+    return this.app
+  }
+}
+
+/**
+* @ignore
+* Crea una instancia del servidor express.
+* @param {!Object} config - Configuraci&#xF3;n de la aplicaci&#xF3;n.
+* @return {Function}
+*/
+function createServer (config) {
+  const app   = express()
+  app.config  = config
+  app.apidoc  = new Apidoc()
+  app.DB      = new Database()
+  app.logger  = new Logger(app)
+  app.modules = [] // Para almacenar los nombres de los m&#xF3;dulos
+  app.getResourceModules = () =&gt; {
+    const resourceModules = []
+    app.modules.forEach(mod =&gt; {
+      if (app[mod] &amp;&amp; app[mod].hasComponent(&apos;resources&apos;, &apos;.route.js&apos;)) { resourceModules.push(mod) }
+    })
+    return resourceModules
+  }
+  app.logger.appLogo(app)
+  return app
+}
+
+/**
+* @ignore
+* Carga las herramientas o utilitarios generales de la aplicaci&#xF3;n.
+* @param {!Object} app - Instancia del servidor express.
+* @return {Function}
+*/
+async function loadTools (app) {
+  const TOOLS_PATH = path.resolve(app.config.PATH.sources, &apos;tools&apos;)
+  app.tools = {}
+  if (util.isDir(TOOLS_PATH)) {
+    await util.findAsync(TOOLS_PATH, &apos;.tool.js&apos;, async ({ fileName, filePath }) =&gt; {
+      app.tools[fileName] = await util.loadFile(app, filePath)
+    })
+  }
+}
+
+/**
+* @ignore
+* Carga los archivos de configuraci&#xF3;n (before hooks) que se requieren
+* antes de cargar los m&#xF3;dulos.
+* @param {!Function} app - Instancia del servidor express.
+*/
+async function loadBeforeHooks (app) {
+  await require(&apos;./hooks/app.before.hook&apos;)(app)
+  app.logger.appPrimary(&apos;[archivo]&apos;, `app.before.hook.js (default) ${app.logger.OK}`)
+
+  const HOOKS_PATH  = path.resolve(app.config.PATH.sources, &apos;hooks&apos;)
+  if (util.isDir(HOOKS_PATH)) {
+    await util.findAsync(HOOKS_PATH, &apos;.before.hook.js&apos;, async ({ filePath, fileName }) =&gt; {
+      await require(filePath)(app)
+      app.logger.appPrimary(&apos;[archivo]&apos;, `${filePath.replace(app.config.PATH.project, &apos;&apos;)} ${app.logger.OK}`)
+    })
+  }
+  app.logger.appPrimary()
+}
+
+/**
+* @ignore
+* Carga los archivos de configuraci&#xF3;n (after hooks) que se requieren
+* despu&#xE9;s de cargar los m&#xF3;dulos.
+* @param {!Function} app - Instancia del servidor express.
+*/
+async function loadAfterHooks (app) {
+  const HOOKS_PATH  = path.resolve(app.config.PATH.sources, &apos;hooks&apos;)
+  if (util.isDir(HOOKS_PATH)) {
+    await util.findAsync(HOOKS_PATH, &apos;.after.hook.js&apos;, async ({ filePath, fileName }) =&gt; {
+      await require(filePath)(app)
+      app.logger.appPrimary(&apos;[archivo]&apos;, `${filePath.replace(app.config.PATH.project, &apos;&apos;)} ${app.logger.OK}`)
+    })
+  }
+  await require(&apos;./hooks/app.after.hook&apos;)(app)
+  app.logger.appPrimary(&apos;[archivo]&apos;, `app.after.hook.js (default) ${app.logger.OK}`)
+  app.logger.appPrimary()
+}
+
+/**
+* @ignore
+* Instala todos los m&#xF3;dulos.
+* @param {!Function} app - Instancia del servidor express.
+*/
+async function setupModules (app) {
+  for (let i in app.modules) {
+    const MODULE = app[app.modules[i]]
+    if (app.config.DATABASE.onSetup.modules.length === 0 || app.config.DATABASE.onSetup.modules.includes(MODULE.getName())) {
+      if (MODULE.hasSetup()) {
+        app.logger.appTitle2(`M&#xF3;dulo ${MODULE.getName()} ...`)
+        await MODULE.loadComponent(app, &apos;hooks&apos;, &apos;.before.hook.js&apos;)
+        await MODULE.onInit(app)
+        await MODULE.onSetup(app)
+        await MODULE.loadComponent(app, &apos;hooks&apos;, &apos;.after.hook.js&apos;)
+      }
+    }
+  }
+}
+
+/**
+* @ignore
+* Carga todos los m&#xF3;dulos.
+* @param {!Function} app - Instancia del servidor express.
+*/
+async function startModules (app) {
+  for (let i in app.modules) {
+    const MODULE = app[app.modules[i]]
+    app.logger.appTitle2(`M&#xF3;dulo ${MODULE.getName()} ...`)
+    await MODULE.loadComponent(app, &apos;hooks&apos;, &apos;.before.hook.js&apos;)
+    await MODULE.onInit(app)
+    await MODULE.onStart(app)
+    await MODULE.loadComponent(app, &apos;hooks&apos;, &apos;.after.hook.js&apos;)
+  }
+}
+
+/**
+* @ignore
+* Despliega la aplicaci&#xF3;n.
+* @param {!Function} app - Instancia del servidor express.
+* @return {Promise}
+*/
+async function listen (app) {
+  if (app.config.SERVER.https) {
+    app.SERVER = await https.createServer(app.config.SERVER.httpsOptions, app).listen(app.config.SERVER.port)
+  } else {
+    app.SERVER = await app.listen(app.config.SERVER.port)
+  }
+  const URL = `${app.config.SERVER.protocol}://${app.config.SERVER.hostname}:${app.config.SERVER.port}`
+  app.logger.appPrimary(`[SERVICIO]`, `${URL} ${app.logger.OK}`)
+  if (app.apidoc.isEnabled()) {
+    app.getResourceModules().forEach(mod =&gt; {
+      app.logger.appPrimary(`[APIDOC]  `, `${URL}/apidoc/${mod} ${app.logger.OK}`)
+    })
+    app.logger.appPrimary()
+  }
+  if (!app.apidoc.isEnabled()) {
+    await app.apidoc.remove(app)
+  }
+}
+
+module.exports = Insac
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

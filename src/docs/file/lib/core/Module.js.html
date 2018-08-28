@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/core/Module.js | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  
+  <a href="identifiers.html">Referencia</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/core/Module.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** @ignore */ const _      = require(&apos;lodash&apos;)
+/** @ignore */ const path   = require(&apos;path&apos;)
+
+/** @ignore */ const util   = require(&apos;../tools/util&apos;)
+
+/** @ignore */ const FieldCreator = require(&apos;../libs/FieldCreator&apos;)
+
+/**
+* Modelo base para crear m&#xF3;dulos.
+*/
+class Module {
+  /**
+  * Crea una instancia de la clase Module
+  * @param {!Object} config - Configuraci&#xF3;n del m&#xF3;dulo.
+  */
+  constructor (config) {
+    /**
+    * Configuraci&#xF3;n del m&#xF3;dulo.
+    * @type {Object}
+    */
+    this.config               = config
+    this.config.moduleName    = config.moduleName
+    this.config.modulePath    = config.modulePath
+    this.config.setup         = (typeof config.setup === &apos;boolean&apos;) ? config.setup : true
+    if (typeof this.config.schema === &apos;undefined&apos;) {
+      this.config.schema = this.hasComponent(&apos;models&apos;, &apos;.model.js&apos;) ? this.getName().toLowerCase() : null
+    }
+
+    /**
+    * Longitud m&#xE1;xima del nombre de los modelos.
+    * @type {Number}
+    */
+    this._max = 0
+
+    /**
+    * Componentes personalizados.
+    * @type {Object[]} components
+    * @property {!String} components.dirName                 - Nombre de la carpeta.
+    * @property {!String} components.fileExt                 - Extensi&#xF3;n del archivo principal.
+    * @property {Object} [components.options]                - Opciones del componente.
+    * @property {Boolean} [components.options.onInit=true]   - Indica si se va a cargar al inicializar el m&#xF3;dulo.
+    * @property {Boolean} [components.options.onSetup=false] - Indica si se va a cargar al instalar el m&#xF3;dulo.
+    * @property {Boolean} [components.options.onStart=true]  - Indica si se va a cargar al cargar el m&#xF3;dulo.
+    */
+    this.components = []
+
+    /**
+    * Funci&#xF3;n que se ejecuta despues de Inicializar el m&#xF3;dulo.
+    * @type {AsyncFunction}
+    */
+    this.actionOnInit = null
+
+    /**
+    * Funci&#xF3;n que se ejecuta despues de Instalar el m&#xF3;dulo.
+    * @type {AsyncFunction}
+    */
+    this.actionOnSetup = null
+
+    /**
+    * Funci&#xF3;n que se ejecuta despues de Cargar el m&#xF3;dulo.
+    * @type {AsyncFunction}
+    */
+    this.actionOnStart = null
+  }
+
+  /**
+  * Se ejecuta al inicializar el m&#xF3;dulo.
+  * @param {!Functon} app - Instancia del servidor express.
+  * @return {Promise}
+  */
+  async onInit (app) {
+    const MODULE = this
+    await MODULE.loadComponent(app, &apos;tools&apos;, &apos;.tool.js&apos;)
+    await MODULE.loadComponent(app, &apos;models&apos;, &apos;.model.js&apos;, ({ fileName, filePath }) =&gt; {
+      const key = fileName
+      const val = importModel(app, MODULE, filePath)
+      return { key, val }
+    })
+    if (Object.keys(MODULE.models).length &gt; 0) app.logger.appPrimary()
+    app.DB.associateModels(app, MODULE)
+
+    await MODULE.loadCustomComponents(app, &apos;onInit&apos;)
+    if (this.actionOnInit) await this.actionOnInit()
+  }
+
+  /**
+  * Se ejecuta cuando se instala la aplicaci&#xF3;n.
+  * @param {!Function} app - Instancia del servidor express.
+  * @return {Promise}
+  */
+  async onSetup (app) {
+    const MODULE = this
+
+    if (MODULE.getSchema() &amp;&amp; app.config.DATABASE.onSetup.dropSchemas)   await app.DB.dropSchema(app, MODULE)
+    if (MODULE.getSchema() &amp;&amp; app.config.DATABASE.onSetup.createSchemas) await app.DB.createSchema(app, MODULE)
+
+    const MODELS_PATH = MODULE.getPath(&apos;models&apos;)
+    if (util.isDir(MODELS_PATH) &amp;&amp; util.countFiles(MODELS_PATH, &apos;.model.js&apos;) &gt; 0) {
+      if (app.config.DATABASE.onSetup.dropTables)   await app.DB.dropTables(app, MODULE)
+      if (app.config.DATABASE.onSetup.createTables) await app.DB.createTables(app, MODULE)
+    }
+
+    const SEEDERS_PATH = MODULE.getPath(&apos;seeders&apos;)
+    if (util.isDir(SEEDERS_PATH) &amp;&amp; util.countFiles(SEEDERS_PATH, &apos;.seed.js&apos;) &gt; 0) {
+      if (app.config.DATABASE.onSetup.createSeeders) await app.DB.createSeeders(app, MODULE)
+    }
+
+    await MODULE.loadCustomComponents(app, &apos;onSetup&apos;)
+    if (this.actionOnSetup) await this.actionOnSetup()
+  }
+
+  /**
+  * Se ejecuta al cargar el m&#xF3;dulo.
+  * @param {!Function} app - Instancia del servidor express.
+  * @return {Promise}
+  */
+  async onStart (app) {
+    const MODULE = this
+
+    await MODULE.loadComponent(app, &apos;dao&apos;, &apos;.dao.js&apos;)
+    await MODULE.loadComponent(app, &apos;resources&apos;, &apos;.route.js&apos;, async (info) =&gt; {
+      const key = info.dirPath.replace(MODULE.getPath(), &apos;&apos;)
+      const val = await loadResource(app, MODULE, info)
+      return { key, val }
+    })
+
+    await MODULE.loadCustomComponents(app, &apos;onStart&apos;)
+    if (this.actionOnStart) await this.actionOnStart()
+  }
+
+  /**
+  * Carga todos los componentes personalizados.
+  * @param {Function} app                                      - Instancia del servidor express.
+  * @param {!String} [loadOption=&apos;onInit&apos;,&apos;onSetup&apos;,&apos;onStart&apos;] - Opci&#xF3;n de cargado.
+  */
+  async loadCustomComponents (app, loadOption) {
+    const MODULE = this
+    for (let i in MODULE.components) {
+      if (MODULE.components[i].options[loadOption]) {
+        const dirName = MODULE.components[i].dirName
+        const fileExt = MODULE.components[i].fileExt
+        await MODULE.loadComponent(app, dirName, fileExt)
+      }
+    }
+  }
+
+  /**
+  * Adiciona un componente personalizado al m&#xF3;dulo.
+  * @param {!String} dirName                 - Nombre de la carpeta.
+  * @param {!String} fileExt                 - Extensi&#xF3;n del archivo principal.
+  * @param {Object} [options]                - Opciones del componente.
+  * @param {Boolean} [options.onInit=true]   - Indica si se va a cargar al inicializar el m&#xF3;dulo.
+  * @param {Boolean} [options.onSetup=false] - Indica si se va a cargar al instalar el m&#xF3;dulo.
+  * @param {Boolean} [options.onStart=true]  - Indica si se va a cargar al cargar el m&#xF3;dulo.
+  */
+  addComponent (dirName, fileExt, options = {}) {
+    options.onInit  = typeof options.onInit === &apos;boolean&apos; ? options.onInit : false
+    options.onSetup = typeof options.onSetup === &apos;boolean&apos; ? options.onSetup : false
+    options.onStart = typeof options.onStart === &apos;boolean&apos; ? options.onStart : true
+    this.components.push({ dirName, fileExt, options })
+  }
+
+  /**
+  * Adiciona una funci&#xF3;n para que se ejecute en un determinado momento.
+  * @param {!String}        [type=&apos;onStart&apos;] - Tipo de evento (onInit, onSetup, onStart).
+  * @param {!AsyncFunction} action           - Funci&#xF3;n de tipo asincrono
+  */
+  addAction (type, action) {
+    if (type === &apos;onInit&apos;)  this.actionOnInit  = action
+    if (type === &apos;onSetup&apos;) this.actionOnSetup = action
+    if (type === &apos;onStart&apos;) this.actionOnStart = action
+  }
+
+  /**
+  * Carga un componente al m&#xF3;dulo.
+  * @param {!Functon}      app      - Instancia del servidor express.
+  * @param {!String}       dirName  - Nombre de la carpeta.
+  * @param {!String}       fileExt  - Extensi&#xF3;n del fichero principal del componente.
+  * @param {AsyncFunction} [onFind] - Funci&#xF3;n para personalizar el cargado del componente.
+  *                                   Opcionalmente puede devolver una objeto que contiene una clave y un valor.
+  *                                   que se utilizaran para identificar a los ficheros.
+  * @return {Promise}
+  */
+  async loadComponent (app, dirName, fileExt, onFind) {
+    const MODULE    = this
+    const dirPath   = MODULE.getPath(dirName)
+    MODULE[dirName] = {}
+    if (util.isDir(dirPath)) {
+      let fileLoaded = false
+      await util.findAsync(dirPath, fileExt, async (info) =&gt; {
+        const result = onFind ? ((await onFind(info)) || {}) : {}
+        const key    = info.fileName
+        let val      = result.val
+        if (!result.val) {
+          val        = await util.loadFile(app, info.filePath)
+          fileLoaded = true
+        }
+        MODULE[dirName][key] = val
+      })
+      if (fileLoaded) app.logger.appPrimary()
+    }
+    return MODULE[dirName]
+  }
+
+  /**
+  * Devuelve el contenido de un archivo, alternativamente, es posible ejecutar
+  * su contenido si se trata de una funci&#xF3;n devolviendo en todo caso el resultado de dicha funci&#xF3;n.
+  * @param {String} app      - Instancia del servidor (es para mostrar los logs).
+  * @param {String} filePath - Ruta del archivo.
+  * @return {Object} data
+  * @example
+  * module.exports = (app) =&gt; {
+  *   const data = {}
+  *   return data
+  * }
+  *
+  * @example
+  * const data = {}
+  * module.exports = data
+  */
+  async loadFile (app, filePath) { return util.loadFile(app, filePath) }
+
+  /**
+  * Devuelve el nombre del m&#xF3;dulo.
+  * @return {String}
+  */
+  getName () { return this.config.moduleName }
+
+  /**
+  * Devuelve el nombre del esquema asociado al m&#xF3;dulo.
+  * @return {String}
+  */
+  getSchema () { return this.config.schema }
+
+  /**
+  * Indica si es posible instalar el m&#xF3;dulo.
+  * @return {Boolean}
+  */
+  hasSetup () { return this.config.setup }
+
+  /**
+  * Devuelve la ruta absoluta del m&#xF3;dulo.
+  * @param {String} [relativePath] - Ruta relativa respecto al m&#xF3;dulo.
+  * @return {String}
+  */
+  getPath (relativePath = &apos;&apos;) { return path.resolve(this.config.modulePath) }
+  /**
+  * Indica si existen elementos de un determinado componente del m&#xF3;dulo.
+  * @param {!String} dirName - Nombre de la carpeta (componente).
+  * @param {!String} fileExt - Extensi&#xF3;n del fichero principal del componente.
+  * @return {Boolean}
+  */
+  hasComponent (dirName, fileExt) {
+    const COMPONENT_PATH = this.getPath(dirName)
+    return COMPONENT_PATH &amp;&amp; util.countFiles(COMPONENT_PATH, fileExt) &gt; 0
+  }
+}
+
+/**
+* @ignore
+* Importa un modelo Sequelize.
+* @param {!Function} app      - Instancia del servidor express.
+* @param {!Module}   MODULE   - Instancia del m&#xF3;dulo.
+* @param {!String}   filePath - Ruta del modelo.
+* @return {SequelizeModel}
+*/
+function importModel (app, MODULE, filePath) {
+  try {
+    const MODEL = app.DB.importModel(app, MODULE, filePath)
+    app.logger.appPrimary(&apos;[archivo]&apos;, `${filePath.replace(app.config.PATH.project, &apos;&apos;)} ${app.logger.OK}`)
+    return MODEL
+  } catch (e) {
+    app.logger.appError(&apos;[archivo]&apos;, `${filePath.replace(app.config.PATH.project, &apos;&apos;)} ${app.logger.FAIL}\n`)
+    throw e
+  }
+}
+
+/**
+* @ignore
+* Devuelve el contenido de un recurso.
+* @param {!Function} app      - Instancia del servidor express.
+* @param {!Module}   MODULE   - Instancia del M&#xF3;dulo.
+* @param {!Object}   fileInfo - Informaci&#xF3;n del fichero principal del componente (example.route.js).
+* @return {Object}
+*/
+async function loadResource (app, MODULE, { filePath, fileName, dirPath }) {
+  const RESOURCE      = await util.loadFile(app, filePath)
+  const INPUT         = await util.loadFile(app, path.resolve(dirPath, `${fileName}.input.js`))
+  const OUTPUT        = await util.loadFile(app, path.resolve(dirPath, `${fileName}.output.js`))
+  const MIDDLEWARE    = await util.loadFile(app, path.resolve(dirPath, `${fileName}.middleware.js`))
+  const CONTROLLER    = await util.loadFile(app, path.resolve(dirPath, `${fileName}.controller.js`))
+  const RESOURCE_MAME = fileName
+  const MODULE_NAME   = MODULE.getName()
+  let   pathSize      = 0
+  const HAS_RESOURCES = Object.keys(RESOURCE).length &gt; 0
+  Object.keys(RESOURCE).forEach(key =&gt; { if (RESOURCE[key].path.length &gt; pathSize) { pathSize = RESOURCE[key].path.length } })
+  if (HAS_RESOURCES) app.logger.appPrimary()
+  Object.keys(RESOURCE).forEach(key =&gt; {
+    const ROUTE     = RESOURCE[key]
+    let permissions = []
+    if (MIDDLEWARE[key]) { MIDDLEWARE[key].forEach(mw =&gt; { if (mw.permissions) { permissions = mw.permissions } }) }
+    ROUTE.outputFilter = typeof ROUTE.outputFilter !== &apos;undefined&apos; ? ROUTE.outputFilter : true
+    ROUTE.inputLogs    = typeof ROUTE.inputLogs    !== &apos;undefined&apos; ? ROUTE.inputLogs    : true
+    ROUTE.key          = key
+    ROUTE.resourceName = RESOURCE_MAME
+    ROUTE.moduleName   = MODULE_NAME
+    ROUTE.name         = `${_toWords(_.upperFirst(_.camelCase(`${key}_${RESOURCE_MAME}`)))}`
+    ROUTE.group        = `${MODULE_NAME} ${_toWords(_.upperFirst(_.camelCase(`${RESOURCE_MAME}`)))}`
+    ROUTE.permissions  = permissions
+    ROUTE.input        = INPUT[key]      || {}
+    ROUTE.output       = OUTPUT[key]     || {}
+    ROUTE.middleware   = MIDDLEWARE[key] || []
+    ROUTE.controller   = CONTROLLER[key]
+    validateFieldGroup(app, &apos;input&apos;,  ROUTE.input,  key)
+    validateFieldGroup(app, &apos;output&apos;, ROUTE.output, key)
+    validateInputParams(app, ROUTE.path, ROUTE.input, key)
+    const routeMethod = _.padEnd(`${ROUTE.method.toUpperCase()}`, 6, &apos; &apos;)
+    const routePath   = _.padEnd(`${ROUTE.path} `, pathSize + 1, &apos;.&apos;)
+    const routeKey    = ROUTE.key
+    if (!ROUTE.controller) {
+      const data = `  Se requiere un controlador.\n`
+      app.logger.appError(&apos;[ruta]&apos;, `${routeMethod} ${routePath}... ${routeKey} ${app.logger.FAIL}`, data)
+    }
+    app.apidoc.router[ROUTE.method.toLowerCase()](ROUTE.path, ROUTE)
+    app.logger.appPrimary(&apos;[ruta]&apos;, `${routeMethod} ${routePath}... ${routeKey} ${app.logger.OK}`)
+  })
+  app.logger.appPrimary()
+  return RESOURCE
+}
+
+/**
+* @ignore
+* Valida el contenido de los ficheros input y output de una ruta.
+* @param {!Function} app  - Instancia del servidor express.
+* @param {!String}   type - Tipo de componente al que pertenece el objeto.
+* @param {!Object}   data - Objeto input u output.
+* @param {!String}   key  - Clave asociada a una ruta.
+*/
+function validateFieldGroup (app, type, data, key) {
+  try {
+    FieldCreator.validateGroup(data)
+  } catch (e) {
+    app.logger.appError(null, `Ocurri&#xF3; un error mientras se cargaba el componente &apos;${type}&apos; de la ruta &apos;${key}&apos;.\n ${e.message}\n`)
+    throw e
+  }
+}
+
+/**
+* @ignore
+* Verifica que los par&#xE1;metros declarados en el objeto INPUT se encuentren
+* definidos en la propiedad &apos;path&apos; de la ruta.
+* Valida el contenido de los ficheros input y output de una ruta.
+* @param {!Function} app   - Instancia del servidor express.
+* @param {!String}   path  - Propiedad &apos;path&apos; de la ruta.
+* @param {!Object}   input - Propiedad &apos;input&apos; de la ruta.
+* @param {!String}   key   - Clave asociada a una ruta.
+*/
+function validateInputParams (app, path, input, key) {
+  if (input.params) {
+    const params = Object.keys(input.params)
+    for (let i in params) {
+      if (!path.includes(`:${params[i]}`)) {
+        const msg = `El par&#xE1;metro &apos;INPUT.params.${params[i]}&apos; no se encuentra definido el la propiedad &apos;path&apos;. Se tiene ROUTE.path: ${path}`
+        app.logger.appError(&apos;Error:&apos;, `Ocurri&#xF3; un error mientras se cargaba el componente &apos;input&apos; de la ruta &apos;${key}&apos;. \n ${msg}\n`)
+        throw new Error(msg)
+      }
+    }
+  }
+}
+
+/**
+* @ignore
+* Separa el conenido de una frase en palabras.
+* @param {String} text - frase
+* @return {String}
+*/
+function _toWords (text) {
+  return _.replace((_.words(text)).toString(), /,/g, &apos; &apos;)
+}
+
+module.exports = Module
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

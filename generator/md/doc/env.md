@@ -34,13 +34,22 @@ process.env.DB_TZ   // TIMEZONE de la base de datos.                  Ej.- proce
 ## LOGGER
 
 ```js
-process.env.COLORS    // Hablita los colores de los logs. Ej.- process.env.COLORS    = 'true'
-process.env.LOGGER    // Habilita los logs.               Ej.- process.env.LOGGER    = 'true'
-process.env.LOG_LEVEL // Nivel de logs de la consola.     Ej.- process.env.LOG_LEVEL = 'silly'
+process.env.COLORS     // Hablita los colores de los logs.      Ej.- process.env.COLORS     = 'true'
+process.env.LOGGER     // Habilita los logs.                    Ej.- process.env.LOGGER     = 'true'
+process.env.LOGS_LEVEL // Nivel de logs de la consola.          Ej.- process.env.LOGS_LEVEL = 'silly'
 ```
 
 ## APIDOC
 
 ```js
 process.env.APIDOC // Habilita la creación del apidoc. Ej.- process.env.APIDOC = 'true'
+```
+
+## PATH
+
+```js
+process.env.PROJECT_PATH // Ruta de la carpeta del proyecto. Ej.- process.env.PROJECT_PATH = '/home/user/my-project'
+process.env.SOURCES_PATH // Ruta de la carpeta 'src'.        Ej.- process.env.SOURCES_PATH = 'custom-src'
+process.env.LOGS_PATH    // Ruta de la carpeta 'logs'.       Ej.- process.env.LOGS_PATH    = 'custom-logs'
+process.env.PUBLIC_PATH  // Ruta de la carpeta 'public'.     Ej.- process.env.PUBLIC_PATH  = 'custom-public'
 ```

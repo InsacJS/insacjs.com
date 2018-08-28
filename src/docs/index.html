@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  
+  <a href="identifiers.html">Referencia</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p><img src="assets/insac-logo-256.png" alt="Logo Insac JS"></p>
+<p>Insac JS es un framework de creaci&#xF3;n de servicios web basado en lenguaje script que utiliza arquitectura REST.</p>
+<h2 id="filosof&#xED;a">Filosof&#xED;a</h2><p>El framework est&#xE1; enfocado en la organizaci&#xF3;n, automatizaci&#xF3;n y reutilizaci&#xF3;n de c&#xF3;digo.</p>
+<h2 id="tecnolog&#xED;as-utilizadas">Tecnolog&#xED;as utilizadas</h2><p>El framework ha sido implementado utilizando el lenguaje JavaScript bajo el est&#xE1;ndar de programaci&#xF3;n ECMAScript 2017, esto por el potencial que alcanz&#xF3; el lenguaje gracias a NodeJS, un entorno de ejecuci&#xF3;n para JavaScript construido con el motor de JavaScript V8 de Chrome.</p>
+<p>NodeJS permite crear aplicaciones del lado del servidor, adem&#xE1;s de que es una excelente herramienta para crear servicios web gracias a su modelo de operaciones E/S sin bloqueo orientado a eventos, que lo hace liviano y eficiente.</p>
+<p>A continuaci&#xF3;n de describen las diferentes tecnolog&#xED;as y herramientas mas importantes con las que trabaja el framework:</p>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Versi&#xF3;n</th>
+<th>Descripci&#xF3;n</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NodeJS</code></td>
+<td>8.0</td>
+<td>Entorno de programaci&#xF3;n de JavaScript.</td>
+</tr>
+<tr>
+<td><code>Express</code></td>
+<td>4.16</td>
+<td>Framework de NodeJS.</td>
+</tr>
+<tr>
+<td><code>Sequelize</code></td>
+<td>4.37</td>
+<td>Framework ORM de NodeJS.</td>
+</tr>
+<tr>
+<td><code>Yarn</code></td>
+<td>1.7</td>
+<td>Manejador de dependencias.</td>
+</tr>
+<tr>
+<td><code>PM2</code></td>
+<td>2.7</td>
+<td>Gestor avanzado de procesos de producci&#xF3;n para NodeJS.</td>
+</tr>
+<tr>
+<td><code>Git</code></td>
+<td>2.7</td>
+<td>Sistema de control de versiones distribuido de c&#xF3;digo abierto.</td>
+</tr>
+<tr>
+<td><code>Eslint</code></td>
+<td>4.19</td>
+<td>Herramienta de linting para JavaScript.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="base-de-datos-compatibles-">Base de datos compatibles:</h2><table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Versi&#xF3;n</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PostgreSQL</code></td>
+<td>9.4</td>
+</tr>
+<tr>
+<td><code>MySQL</code></td>
+<td>5.7</td>
+</tr>
+<tr>
+<td><code>MSSQLSERVER</code></td>
+<td>2017</td>
+</tr>
+<tr>
+<td><code>SQLite</code></td>
+<td>3.24</td>
+</tr>
+</tbody>
+</table>
+<h2 id="caracteristicas">Caracteristicas</h2><p>Entre las caracter&#xED;sticas m&#xE1;s importantes del framework se encuentran las siguientes:</p>
+<ul>
+<li><p><strong>Estructura de proyecto:</strong> Utiliza un sistema que permite identificar a los componentes de la aplicaci&#xF3;n y sus respectivas funciones a trav&#xE9;s del nombre y la extensi&#xF3;n de los ficheros.</p>
+</li>
+<li><p><strong>Creaci&#xF3;n autom&#xE1;tica del APIDOC:</strong> Crea el APIDOC de manera autom&#xE1;tica cada vez que se ejecuta la aplicaci&#xF3;n, de esta forma se garantiza que siempre estar&#xE1; actualizada.</p>
+</li>
+<li><p><strong>Validador autom&#xE1;tico:</strong> Valida los datos de entrada de forma autom&#xE1;tica, cuando los datos llegan al Middleware o al Controlador, &#xE9;stos ya se encuentran validados y convertidos al tipo de dato correspondiente.</p>
+</li>
+<li><p><strong>Sistema de filtrado de datos:</strong> Por defecto, todas las peticiones incluyen un sistema de filtrado por campos, adicionalmente, es posible optimizar la consulta con la base de datos utilizando los filtros que se env&#xED;an a trav&#xE9;s de la URL.</p>
+</li>
+<li><p><strong>Esquemas de base de datos:</strong> Sobre una base de datos, se crea un esquema para cada m&#xF3;dulo, de esta forma es posible tener dos tablas o modelos con el mismo nombre, pero en diferentes m&#xF3;dulos. Es posible relacionar modelos de diferentes m&#xF3;dulos.</p>
+</li>
+<li><p><strong>Sistema de logs:</strong> Por defecto, se muestran mensajes en la terminal para monitorear todas las peticiones y &#xE9;stas se registran en ficheros de logs.</p>
+</li>
+</ul>
+<h2 id="ejemplo--">Ejemplo.-</h2><p>Para preparar un proyecto b&#xE1;sico, desde la terminal ejecuta los siguientes comandos:</p>
+<pre><code class="lang-bash"><code class="source-code prettyprint"># Crea la carpeta del proyecto
+$ mkdir app
+$ cd app
+
+# Inicializa el gestor de paquetes de Node.
+$ npm init
+
+# Instala el framework
+$ npm install --save insac</code>
+</code></pre>
+<p>Posteriormente, deber&#xE1; crear algunos archivos con la siguiente estructura:</p>
+<pre><code class="lang-txt"><code class="source-code prettyprint">app
+  &#x251C;&#x2500; src
+  &#x2502;     &#x2514;&#x2500; modules
+  &#x2502;           &#x2514;&#x2500; API
+  &#x2502;                 &#x251C;&#x2500; resources
+  &#x2502;                 &#x2502;     &#x2514;&#x2500; welcome
+  &#x2502;                 &#x2502;           &#x251C;&#x2500; welcome.controller.js
+  &#x2502;                 &#x2502;           &#x251C;&#x2500; welcome.input.js
+  &#x2502;                 &#x2502;           &#x251C;&#x2500; welcome.output.js
+  &#x2502;                 &#x2502;           &#x2514;&#x2500; welcome.route.js
+  &#x2502;                 &#x2514;&#x2500; api.module.js
+  &#x251C;&#x2500; node_modules
+  &#x251C;&#x2500; index.js
+  &#x2514;&#x2500; package.json</code>
+</code></pre>
+<p>Y el siguiente contenido:</p>
+<h3 id="-code-api-module-js--code-"><code>api.module.js</code></h3><pre><code class="lang-js"><code class="source-code prettyprint">const { Module } = require(&apos;insac&apos;)
+
+module.exports = (app) =&gt; {
+  return new Module(app.config.API)
+}</code>
+</code></pre>
+<h3 id="-code-welcome-route-js--code-"><code>welcome.route.js</code></h3><pre><code class="lang-js"><code class="source-code prettyprint">module.exports = (app) =&gt; {
+  const ROUTE = {}
+
+  ROUTE.hello = {
+    path   : &apos;/welcome/hello/:name&apos;,
+    method : &apos;get&apos;
+  }
+
+  return ROUTE
+}</code>
+</code></pre>
+<h3 id="-code-welcome-input-js--code-"><code>welcome.input.js</code></h3><pre><code class="lang-js"><code class="source-code prettyprint">const { Field } = require(&apos;insac&apos;)
+
+module.exports = (app) =&gt; {
+  const INPUT = {}
+
+  INPUT.hello = {
+    params: {
+      name: Field.STRING({ allowNull: false })
+    },
+    query: {
+      number: Field.INTEGER({ allowNull: false })
+    }
+  }
+
+  return INPUT
+}</code>
+</code></pre>
+<h3 id="-code-welcome-output-js--code-"><code>welcome.output.js</code></h3><pre><code class="lang-js"><code class="source-code prettyprint">const { Field } = require(&apos;insac&apos;)
+
+module.exports = (app) =&gt; {
+  const OUTPUT = {}
+
+  OUTPUT.hello = {
+    message : Field.STRING(),
+    number  : Field.INTEGER()
+  }
+
+  return OUTPUT
+}</code>
+</code></pre>
+<h3 id="-code-welcome-controller-js--code-"><code>welcome.controller.js</code></h3><pre><code class="lang-js"><code class="source-code prettyprint">module.exports = (app) =&gt; {
+  const CONTROLLER = {}
+
+  CONTROLLER.hello = async (req, res, next) =&gt; {
+    try {
+      const NAME   = req.params.name
+      const NUMBER = req.query.number
+      const RESULT = { message: `Hola ${NAME}!!!`, number: NUMBER }
+      res.success200(RESULT, &apos;Mensaje enviado exitosamente.&apos;)
+    } catch (err) { return next(err) }
+  }
+
+  return CONTROLLER
+}</code>
+</code></pre>
+<h3 id="-code-index-js--code-"><code>index.js</code></h3><pre><code class="lang-js"><code class="source-code prettyprint">const { Insac } = require(&apos;insac&apos;)
+
+const service = new Insac()
+
+service.addModule(&apos;api&apos;)
+
+service.init().catch(e =&gt; {
+  console.log(e)
+  process.exit(1)
+})
+
+module.exports = service</code>
+</code></pre>
+<p>Despu&#xE9;s, ejecuta la aplicaci&#xF3;n:</p>
+<pre><code class="lang-bash"><code class="source-code prettyprint">$ node index.js</code>
+</code></pre>
+<h3 id="-code-http---localhost-4000--code-"><code>http://localhost:4000</code></h3><p><img src="./assets/hola-mundo/app/captura01.jpg" alt="Captura 1"></p>
+<h3 id="-code-http---localhost-4000-apidoc-api--code-"><code>http://localhost:4000/apidoc/API</code></h3><p><img src="./assets/hola-mundo/app/captura02.jpg" alt="Captura 2"></p>
+<h3 id="petici&#xF3;n-de-ejemplo">Petici&#xF3;n de ejemplo</h3><p><img src="./assets/hola-mundo/app/captura03.jpg" alt="Captura 3"></p>
+<h3 id="mensajes-de-logs">Mensajes de logs</h3><p><img src="./assets/hola-mundo/app/captura04.jpg" alt="Captura 4"></p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

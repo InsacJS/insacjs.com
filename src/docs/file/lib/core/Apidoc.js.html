@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/core/Apidoc.js | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  
+  <a href="identifiers.html">Referencia</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/core/Apidoc.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** @ignore */ const path = require(&apos;path&apos;)
+
+/** @ignore */ const ApidocCreator      = require(&apos;../libs/ApidocCreator&apos;)
+/** @ignore */ const InputDataValidator = require(&apos;../libs/InputDataValidator&apos;)
+/** @ignore */ const ResponseHandler    = require(&apos;../libs/ResponseHandler&apos;)
+/** @ignore */ const SequelizeOptions   = require(&apos;../libs/SequelizeOptions&apos;)
+
+/** @ignore */ const Field  = require(&apos;../libs/FieldCreator&apos;)
+
+/** @ignore */ const util   = require(&apos;../tools/util&apos;)
+
+/**
+* M&#xF3;dulo encargado de automatizar la creaci&#xF3;n del apidoc.
+*/
+class Apidoc {
+  /**
+  * Crea una instancia de la clase Apidoc.
+  */
+  constructor () {
+    /**
+    * Contiene el apidoc en texto plano, por m&#xF3;dulos.
+    * @type {Object}
+    */
+    this.apidocContent = {}
+
+    /**
+    * Enrutador del apidoc.
+    * @type {Object}
+    */
+    this.router = null
+  }
+
+  /**
+  * Inicializa las propiedades de la instancia.
+  * @param {Function} app - Instancia del servidor express.
+  */
+  onInit (app) {
+    this.apidocContent = {}
+    this.router        = ApidocCreator.router((route) =&gt; {
+      const MODULE = route.moduleName
+      app[route.method](
+        route.path,
+        this._inputLogsMiddleware(app, route),
+        this._successMiddleware(app, route),
+        this._validatorMiddleware(route),
+        this._optionsMiddleware(app, route),
+        route.middleware || [],
+        route.controller
+      )
+      if (!this.apidocContent[MODULE]) { this.apidocContent[MODULE] = &apos;&apos; }
+      this.apidocContent[MODULE] += `\n${route.apidoc}\n`
+    })
+  }
+
+  /**
+  * Indica si el apidoc est&#xE1; habilitado.
+  * @return {Boolean}
+  */
+  isEnabled () {
+    return process.env.APIDOC === &apos;true&apos;
+  }
+
+  /**
+  * Elimina el directorio que contiene la documentaci&#xF3;n de los servicios (apidoc).
+  * @param {Function} app - Instancia del servidor express.
+  */
+  remove (app) {
+    const APIDOC_PATH = path.resolve(app.config.PATH.public, &apos;apidoc&apos;)
+    try {
+      if (util.isDir(APIDOC_PATH)) { util.rmdir(APIDOC_PATH) }
+    } catch (e) {
+      app.logger.appWarn(`No se pudo eliminar la carpeta &apos;${APIDOC_PATH.replace(app.config.PATH.project, &apos;&apos;)}&apos;.`, e.message)
+    }
+  }
+
+  /**
+  * Construye el apidoc.
+  * @param {Function} app - Instancia del servidor express.
+  * @return {Promise}
+  */
+  async build (app) {
+    const templatePath = path.resolve(__dirname, &apos;../apidoc/template&apos;)
+    const tmpPath      = path.resolve(__dirname, &apos;../../.temp&apos;)
+    util.mkdir(tmpPath)
+    if (app.config.APIDOC.header) {
+      let HEADER_PATH     = path.resolve(app.config.PATH.project, `./${app.config.APIDOC.header.filename}`)
+      let HEADER_PATH_TMP = path.resolve(tmpPath, app.config.APIDOC.header.filename)
+      if (!util.isFile(HEADER_PATH)) { HEADER_PATH = path.resolve(__dirname, `./../apidoc/HEADER.md`) }
+      util.copyFile(HEADER_PATH, HEADER_PATH_TMP)
+    }
+    if (app.config.APIDOC.footer) {
+      let FOOTER_PATH     = path.resolve(app.config.PATH.project, `./${app.config.APIDOC.footer.filename}`)
+      let FOOTER_PATH_TMP = path.resolve(tmpPath, app.config.APIDOC.footer.filename)
+      if (!util.isFile(FOOTER_PATH)) { FOOTER_PATH = path.resolve(__dirname, `./../apidoc/FOOTER.md`) }
+      util.copyFile(FOOTER_PATH, FOOTER_PATH_TMP)
+    }
+    util.writeFile(path.resolve(tmpPath, &apos;apidoc.json&apos;), JSON.stringify(app.config.APIDOC, null, 2))
+    app.modules.forEach(mod =&gt; {
+      if (app[mod].hasComponent(&apos;resources&apos;, &apos;.route.js&apos;)) {
+        util.writeFile(path.resolve(tmpPath, `doc/${mod}/apidoc.js`), this.apidocContent[mod] || &apos;&apos;)
+      }
+    })
+    const output = path.resolve(app.config.PATH.public, &apos;apidoc&apos;)
+    try { util.rmdir(output) } catch (e) { }
+    if (this.isEnabled()) {
+      const resourceModules = app.getResourceModules()
+      for (let i in resourceModules) {
+        const mod = resourceModules[i]
+        try {
+          await this._createApidoc(`doc/${mod}`, `${output}/${mod}`, templatePath, tmpPath)
+          await this._updateIndex(app, output, mod)
+          app.logger.appPrimary(&apos;[apidoc]&apos;, `M&#xF3;dulo ${mod} ... ${app.logger.OK}`)
+        } catch (e) {
+          app.logger.appError(&apos;[apidoc]&apos;, `M&#xF3;dulo ${mod} ... ${app.logger.FAIL}\n`)
+          throw e
+        }
+      }
+    }
+    app.logger.appPrimary()
+    try { util.rmdir(tmpPath) } catch (e) { }
+  }
+
+  /**
+  * Devuelve un middleware que muestra logs de los datos de entrada.
+  * @param {Function} app   - Instancia del servidor express.
+  * @param {Object}   route - Propiedades de la ruta.
+  * @return {Function}
+  */
+  _inputLogsMiddleware (app, route) {
+    if (route.inputLogs) {
+      return (req, res, next) =&gt; {
+        app.logger.inputHeaders(req)
+        app.logger.inputParams(req)
+        app.logger.inputQuery(req)
+        app.logger.inputBody(req)
+        return next()
+      }
+    }
+    return []
+  }
+
+  /**
+  * Devuelve un middleware para validar los datos de entrada de un ruta.
+  * @param {Object}   route - Propiedades de la ruta.
+  * @return {Function}
+  */
+  _validatorMiddleware (route) {
+    return InputDataValidator.validate(route.input)
+  }
+
+  /**
+  * Adiciona las funciones de tipo success en el response, para enviar respuestas exitosas.
+  * @param {Function} app   - Instancia del servidor.
+  * @param {Object}   route - Propiedades de la ruta.
+  * @return {Function}
+  */
+  _successMiddleware (app, route) {
+    function onSuccess (result, req) {
+      if (route.outputFilter) {
+        result.data = SequelizeOptions.filter(result.data, {
+          query  : req.query,
+          output : route.output,
+          plain  : route.plain
+        })
+      }
+      req.endAt = Date.now()
+      app.logger.outputData(req, result)
+      app.logger.responseSuccess(req, result)
+    }
+    return ResponseHandler.success({ successFormat: app.config.RESPONSE.successFormat, onSuccess, all200: app.config.RESPONSE.all200 })
+  }
+
+  /**
+  * Adiciona la variable options en el request para realizar consultas sequelize.
+  * @param {Function} app   - Instancia del servidor.
+  * @param {Object}   route - Propiedades de la ruta.
+  * @return {Function}
+  */
+  _optionsMiddleware (app, route) {
+    const MODULE   = route.moduleName
+    const RESOURCE = route.resourceName
+    const MODEL    = (MODULE &amp;&amp; RESOURCE &amp;&amp; app[MODULE].models) ? app[MODULE].models[RESOURCE] : undefined
+    const IS_LIST  = Array.isArray(route.output)
+    function createOptions (req) {
+      if (IS_LIST) {
+        req.query.limit  = req.query.limit || (Field.LIMIT() ? Field.LIMIT().defaultValue : 50)
+        req.query.page   = req.query.page  || (Field.PAGE()  ? Field.PAGE().defaultValue  : 1)
+        req.query.offset = (req.query.page &gt;= 1) ? ((req.query.page - 1) * req.query.limit) : 0
+        if (MODEL) {
+          req.query.distinct = true
+          req.query.col      = MODEL.primaryKeyAttributes[0]
+        }
+      }
+      return SequelizeOptions.create({ query: req.query, output: route.output, model: MODEL, keys: true })
+    }
+    return (req, res, next) =&gt; {
+      req.options = createOptions(req)
+      next()
+    }
+  }
+
+  /**
+  * Ejecuta el comando para crear el APIDOC.
+  * @param {String} input    - Ruta del directorio de entrada.
+  * @param {String} output   - Ruta del directorio de salida.
+  * @param {String} template - Ruta del directorio del template.
+  * @param {String} execPath - Ruta desde donde se ejecutar&#xE1; el comando.
+  * @return {Promise}
+  */
+  async _createApidoc (input, output, template, execPath) {
+    try {
+      await util.cmd(`node &quot;../../apidoc/bin/apidoc&quot; -i &quot;${input}&quot; -o &quot;${output}&quot; -t &quot;${template}&quot;`, execPath)
+    } catch (e) {
+      try {
+        await util.cmd(`node &quot;../node_modules/apidoc/bin/apidoc&quot; -i &quot;${input}&quot; -o &quot;${output}&quot; -t &quot;${template}&quot;`, execPath)
+      } catch (e) {
+        try {
+          await util.cmd(`apidoc -i &quot;${input}&quot; -o &quot;${output}&quot; -t &quot;${template}&quot;`, execPath)
+        } catch (e) {
+          if (typeof e === &apos;string&apos; &amp;&amp; (e.includes(&apos;apidoc: not found&apos;) || e.includes(&apos;no se reconoce como un comando&apos;))) {
+            throw new Error(`ApidocJS no se encuentra instalado: Ejecute &apos;npm install -g apidoc&apos; para solucionarlo.`)
+          }
+          throw e
+        }
+      }
+    }
+  }
+
+  /**
+  * Actualiza la propiedad href del archivo index.html.
+  * @param {Function} app    - Instancia del servidor de express.
+  * @param {!String}  output - Ruta del directorio que contiene al archivo index.html
+  * @param {String}   mod    - Nombre del m&#xF3;dulo al que pertenece el apidoc.
+  */
+  _updateIndex (app, output, mod) {
+    const INDEX_PATH = path.resolve(output, `${mod}/index.html`)
+    const URL        = app.config.APIDOC.url
+    if (!util.isFile(INDEX_PATH)) {
+      let emptyContent = util.readFile(path.resolve(__dirname, &apos;../apidoc/empty/index.html&apos;))
+      emptyContent = emptyContent.replace(&apos;{{INDEX_PAGE_URL}}&apos;, `${app.config.APIDOC.url}`)
+      return util.writeFile(INDEX_PATH, emptyContent)
+    }
+    let indexContent   = util.readFile(INDEX_PATH)
+    const BASE_HREF    = indexContent.indexOf(`&lt;base href=&quot;./&quot;&gt;`) !== -1
+    const REPLACE      = BASE_HREF ? `&lt;base href=&quot;./&quot;&gt;`             : `&lt;head&gt;`
+    const REPLACE_WITH = BASE_HREF ? `&lt;base href=&quot;${URL}/apidoc/${mod}/&quot;&gt;` : `&lt;head&gt;\n  &lt;base href=&quot;${URL}/apidoc/${mod}/&quot;&gt;`
+    indexContent = indexContent.replace(REPLACE, REPLACE_WITH)
+    util.writeFile(INDEX_PATH, indexContent)
+  }
+}
+
+module.exports = Apidoc
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

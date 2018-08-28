@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">lib/tools/util/index.js | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  
+  <a href="identifiers.html">Referencia</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/tools/util/index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** @ignore */ const fs       = require(&apos;fs&apos;)
+/** @ignore */ const path     = require(&apos;path&apos;)
+/** @ignore */ const mkdirp   = require(&apos;mkdirp&apos;)
+/** @ignore */ const { exec } = require(&apos;child_process&apos;)
+
+// |=============================================================|
+// |-------------- CONSTANTES -----------------------------------|
+// |=============================================================|
+
+/**
+* Valor m&#xE1;ximo de un n&#xFA;mero entero
+* @const {Number}
+*/
+const INTEGER_MAX_VALUE = 2147483647
+
+exports.INTEGER_MAX_VALUE = INTEGER_MAX_VALUE
+
+// |=============================================================|
+// |-------------- VARIOS ---------------------------------------|
+// |=============================================================|
+
+/**
+* Devuelve una lista que contiene informaci&#xF3;n de los archivos encontrados.
+* Adicionalmente puede ejecutar una funci&#xF3;n (onFind) cuando encuentra un archivo.
+* @param {String}   dirPath                - Directorio de b&#xFA;squeda.
+* @param {String}   ext                    - Extensi&#xF3;n del archivo.
+* @param {Function} [onFind]               - Funci&#xF3;n que se ejecuta cuando encuentra el archivo.
+* @param {Object}   [options]              - Opciones adicionales de b&#xFA;squeda
+* @param {String[]} [options.ignoredPaths] - Lista de las rutas que ser&#xE1;n ignoradas
+* @return {Object[]}
+* @property {!String} fileName - Nombre del archivo, sin la extensi&#xF3;n.
+* @property {!String} filePath - Ruta absoluta del archivo.
+* @property {!String} dirName  - Nombre del directorio dond se encuentra el archivo.
+* @property {!String} dirPath  - Ruta absoluta del directorio donde se encuentra el archivo.
+* @property {!String} fileExt  - Extensi&#xF3;n del archivo.
+* @example
+* const result = util.findAsync(&apos;/search/path&apos;, &apos;.config.js&apos;, (fileInfo) =&gt; {
+*   console.log(&apos;FileName = &apos;, fileInfo.fileName)
+*   console.log(&apos;FilePath = &apos;, fileInfo.filePath)
+*   console.log(&apos;DirName  = &apos;, fileInfo.dirName)
+*   console.log(&apos;DirPath  = &apos;, fileInfo.dirPath)
+*   console.log(&apos;FileExt  = &apos;, fileInfo.fileExt)
+* })
+* console.log(result) // Muestra una lista de todos los archivos encontrados
+*/
+exports.find = function find (dirPath, ext, onFind, options = {}) {
+  options.ignoredPaths = options.ignoredPaths || []
+  const result = []
+  function _isIgnored (filePath) {
+    for (let i in options.ignoredPaths) {
+      if (filePath.startsWith(options.ignoredPaths[i])) { return true }
+    }
+  }
+  function _find (filePath) {
+    if (_isIgnored(filePath)) { return }
+    if (fs.statSync(filePath).isDirectory()) {
+      fs.readdirSync(filePath).forEach((fileName) =&gt; {
+        _find(path.resolve(filePath, fileName))
+      })
+    } else {
+      if (filePath.endsWith(ext)) {
+        const dirPath  = path.dirname(filePath)
+        const fileName = filePath.split(path.sep).pop().replace(ext, &apos;&apos;)
+        const dirName  = dirPath.split(path.sep).pop()
+        const fileExt  = ext
+        const fileInfo = { filePath, dirPath, fileName, dirName, fileExt }
+        if (onFind) { onFind(fileInfo) }
+        result.push(fileInfo)
+      }
+    }
+  }
+  _find(dirPath)
+  return result
+}
+
+/**
+* Devuelve una lista que contiene informaci&#xF3;n de los archivos encontrados.
+* Adicionalmente puede ejecutar una funci&#xF3;n (async onFind) cuando encuentra un archivo.
+* @param {String}        dirPath           - Directorio de b&#xFA;squeda.
+* @param {String}        ext               - Extensi&#xF3;n del archivo.
+* @param {AsyncFunction} onFind            - Funci&#xF3;n as&#xED;ncrona que se ejecuta cuando
+*                                            encuentra el archivo.
+* @param {Object}   [options]              - Opciones adicionales de b&#xFA;squeda
+* @param {String[]} [options.ignoredPaths] - Lista de las rutas que ser&#xE1;n ignoradas
+* @return {Promise&lt;Object[]&gt;}
+* @property {!String} fileName - Nombre del archivo, sin la extensi&#xF3;n.
+* @property {!String} filePath - Ruta absoluta del archivo.
+* @property {!String} dirName  - Nombre del directorio dond se encuentra el archivo.
+* @property {!String} dirPath  - Ruta absoluta del directorio donde se encuentra el archivo.
+* @property {!String} fileExt  - Extensi&#xF3;n del archivo.
+* @example
+* const result = await util.findAsync(&apos;/search/path&apos;, &apos;.config.js&apos;, async (fileInfo) =&gt; {
+*   console.log(&apos;FileName = &apos;, fileInfo.fileName)
+*   console.log(&apos;FilePath = &apos;, fileInfo.filePath)
+*   console.log(&apos;DirName  = &apos;, fileInfo.dirName)
+*   console.log(&apos;DirPath  = &apos;, fileInfo.dirPath)
+*   console.log(&apos;FileExt  = &apos;, fileInfo.fileExt)
+* })
+* console.log(result) // Muestra una lista de todos los archivos encontrados
+*/
+exports.findAsync = async function findAsync (dirPath, ext, onFind, options = {}) {
+  options.ignoredPaths = options.ignoredPaths || []
+  const result = []
+  function _isIgnored (filePath) {
+    for (let i in options.ignoredPaths) {
+      if (filePath.startsWith(options.ignoredPaths[i])) { return true }
+    }
+  }
+  async function _find (filePath) {
+    if (_isIgnored(filePath)) { return }
+    if (fs.statSync(filePath).isDirectory()) {
+      const directories = fs.readdirSync(filePath)
+      for (let i in directories) {
+        await _find(path.resolve(filePath, directories[i]))
+      }
+    } else {
+      if (filePath.endsWith(ext)) {
+        const dirPath  = path.dirname(filePath)
+        const fileName = filePath.split(path.sep).pop().replace(ext, &apos;&apos;)
+        const dirName  = dirPath.split(path.sep).pop()
+        const fileExt  = ext
+        const fileInfo = { filePath, dirPath, fileName, dirName, fileExt }
+        if (onFind) { await onFind(fileInfo) }
+        result.push(fileInfo)
+      }
+    }
+  }
+  await _find(dirPath)
+  return result
+}
+
+/**
+* Devuelve una promesa que simula una tarea.
+* @param {Number} timeout - Tiempo de espera.
+* @return {Promise}
+*/
+exports.timer = function timer (timeout) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; { resolve() }, timeout)
+  })
+}
+
+/**
+* Ejecuta un comando desde la terminal.
+* @param {String} command     - Comando a ejecutar.
+* @param {String} executePath - Ruta desde donde se ejecutar&#xE1; el comando.
+* @return {Promise}
+*/
+exports.cmd = function cmd (command, executePath) {
+  return new Promise((resolve, reject) =&gt; {
+    exec(command, { cwd: executePath }, (error, stdout, stderr) =&gt; {
+      if (error !== null) { reject(stderr) } else { resolve(stdout) }
+    })
+  })
+}
+
+/**
+* Devuelve datos parseados de una respuesta sequelize.
+* @param {Object} data - Resultado de una consulta sequelize.
+* @return {Object}
+*/
+exports.toJson = function toJson (data) {
+  return JSON.parse(JSON.stringify(data))
+}
+
+/**
+* Devuelve un array de datos a partir de un array de objetos,
+* indicando una propiedad del objeto.
+* @param {Object[]} data     - Lista de objetos.
+* @param {String}   property - Propiedad a extraer.
+* @return {String|Number|Boolean[]}
+*/
+exports.toArray = function toArray (data, property) {
+  const result = []
+  const props = property.split(&apos;.&apos;)
+  data.forEach(obj =&gt; {
+    for (let i in props) { obj = obj[props[i]] }
+    result.push(obj)
+  })
+  return result
+}
+
+// |=============================================================|
+// |-------------- DIRECTORIOS ----------------------------------|
+// |=============================================================|
+
+/**
+* Indica si existe un directorio.
+* @param {String} dirPath - Ruta del directorio
+* @return {Boolean}
+*/
+exports.isDir = function isDir (dirPath) {
+  return fs.existsSync(dirPath) &amp;&amp; fs.statSync(dirPath).isDirectory()
+}
+
+/**
+* Crea un directorio recursivamente.
+* @param {String} dirPath - Ruta del directorio
+*/
+exports.mkdir = function mkdir (dirPath) {
+  mkdirp.sync(dirPath)
+}
+
+/**
+* Elimina un directorio recursivamente.
+* @param {String} dirPath - Ruta del directorio
+*/
+exports.rmdir = function rmdir (dirPath) {
+  function _rmdir (dirPath) {
+    if (fs.statSync(dirPath).isDirectory()) {
+      fs.readdirSync(dirPath).forEach(fileName =&gt; {
+        const filePath = path.resolve(dirPath, fileName)
+        if (fs.statSync(dirPath).isDirectory()) {
+          _rmdir(filePath)
+        } else { fs.unlinkSync(filePath) }
+      })
+      fs.rmdirSync(dirPath)
+    } else { fs.unlinkSync(dirPath) }
+  }
+  _rmdir(dirPath)
+}
+
+/**
+* Copia un directorio.
+* @param {String} source - Ruta de origen.
+* @param {String} target - Ruta de destino.
+*/
+exports.copyDir = function copyDir (source, target) {
+  function _copy (sourcePath, targetPath) {
+    if (fs.statSync(sourcePath).isDirectory()) {
+      mkdirp.sync(targetPath)
+      fs.readdirSync(sourcePath).forEach(fileName =&gt; {
+        _copy(path.resolve(sourcePath, fileName), path.resolve(targetPath, fileName))
+      })
+    } else {
+      fs.createReadStream(sourcePath).pipe(fs.createWriteStream(targetPath))
+    }
+  }
+  _copy(source, target)
+}
+
+// |=============================================================|
+// |-------------- ARCHIVOS -------------------------------------|
+// |=============================================================|
+
+/**
+* Indica si existe un archivo.
+* @param {String} filePath - Ruta del archivo.
+* @return {Boolean}
+*/
+exports.isFile = function isFile (filePath) {
+  return fs.existsSync(filePath) &amp;&amp; !(fs.statSync(filePath).isDirectory())
+}
+
+/**
+* Devuelve el contenido de un archivo de texto.
+* @param {String} filePath - Ruta del archivo.
+* @return {String}
+*/
+exports.readFile = function readFile (filePath) {
+  return fs.readFileSync(filePath, &apos;utf-8&apos;)
+}
+
+/**
+* Crea un archivo.
+* @param {String} filePath - Ruta del archivo.
+* @param {String} content  - Contenido del archivo.
+*/
+exports.writeFile = function writeFile (filePath, content) {
+  mkdirp.sync(path.dirname(filePath))
+  fs.writeFileSync(filePath, content)
+}
+
+/**
+* Elimina un archivo.
+* @param {String} filePath - Ruta del archivo.
+*/
+exports.removeFile = function removeFile (filePath) {
+  if (fs.existsSync(filePath)) {
+    fs.unlinkSync(filePath)
+  }
+}
+
+/**
+* Copia un archivo.
+* @param {String} sourcePath - Ruta de origen.
+* @param {String} targetPath - Ruta de destino.
+*/
+exports.copyFile = function copyFile (sourcePath, targetPath) {
+  fs.createReadStream(sourcePath).pipe(fs.createWriteStream(targetPath))
+}
+
+/**
+* Devuelve la cantidad de ficheros existentes dentro de un directorio.
+* @param {String} dirPath           - Ruta del directorio.
+* @param {String} [ext=&apos;.js&apos;]        - Se contar&#xE1;n todos los ficheros que tengan esta extensi&#xF3;n.
+* @param {Boolean} [recursive=true] - Indica si se buscar&#xE1;n dentro de los subdirectorios.
+* @return {Number}
+*/
+exports.countFiles = function countFiles (dirPath, ext = &apos;.js&apos;, recursive = true) {
+  let sw = false
+  function _count (dirPath) {
+    if (fs.statSync(dirPath).isDirectory()) {
+      if (!recursive &amp;&amp; sw) { return 0 }
+      sw = true
+      let count = 0
+      fs.readdirSync(dirPath).forEach(fileName =&gt; {
+        count += _count(path.resolve(dirPath, fileName))
+      })
+      return count
+    } else {
+      return dirPath.endsWith(ext) ? 1 : 0
+    }
+  }
+  return _count(dirPath)
+}
+
+/**
+* Devuelve el contenido de un archivo, alternativamente, es posible ejecutar
+* su contenido si se trata de una funci&#xF3;n devolviendo en todo caso el resultado de dicha funci&#xF3;n.
+* @param {String} app      - Instancia del servidor (es para mostrar los logs).
+* @param {String} filePath - Ruta del archivo.
+* @return {Object} data
+* @example
+* module.exports = (app) =&gt; {
+*   const data = {}
+*   return data
+* }
+*
+* @example
+* const data = {}
+* module.exports = data
+*/
+exports.loadFile = async function loadFile (app, filePath) {
+  let content = {}
+  try {
+    if (fs.existsSync(filePath) &amp;&amp; !(fs.statSync(filePath).isDirectory())) {
+      content = require(filePath)
+    }
+    if (typeof content === &apos;function&apos;) {
+      content = await content(app)
+    }
+    app.logger.appPrimary(&apos;[archivo]&apos;, `${filePath.replace(app.config.PATH.project, &apos;&apos;)} ${app.logger.OK}`)
+  } catch (e) {
+    app.logger.appError(&apos;[archivo]&apos;, `${filePath.replace(app.config.PATH.project, &apos;&apos;)} ${app.logger.FAIL}\n`)
+    throw e
+  }
+  return content
+}
+
+// |=============================================================|
+// |-------------- FILTROS Y CONSULTAS --------------------------|
+// |=============================================================|
+
+/**
+* Crea los metadatos para una consulta de tipo findAndCountAll.
+* @param {Request}         req    - Objeto Request
+* @param {SequelizeResult} result - Resultado de la consulta findAndCountAll
+* @return {Object}
+*/
+exports.metadata = function metadata (req, result) {
+  let count = result.count
+  let limit = req.query.limit
+  let page  = req.query.page
+  let start = req.query.offset + 1
+  if (start &gt; count) start = 0
+  let end = start + limit - 1
+  if (start === 0) { end = 0 }
+  if (end &gt; count) { end = count }
+  return { count, limit, page, start, end }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

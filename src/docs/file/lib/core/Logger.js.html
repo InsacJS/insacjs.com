@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/core/Logger.js | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  
+  <a href="identifiers.html">Referencia</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/core/Logger.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** @ignore */ const _      = require(&apos;lodash&apos;)
+/** @ignore */ const moment = require(&apos;moment&apos;)
+/** @ignore */ const util   = require(&apos;util&apos;)
+/** @ignore */ const path   = require(&apos;path&apos;)
+/** @ignore */ const fs     = require(&apos;fs&apos;)
+/** @ignore */ const mkdirp = require(&apos;mkdirp&apos;)
+
+/** @ignore */ const { createLogger, format, transports } = require(&apos;winston&apos;)
+/** @ignore */ const { printf } = format
+
+/**
+* Clase para crear logs.
+*/
+class Logger {
+  /**
+  * Crea una instancia de Logger.
+  * @param {Function} app - Instancia del servidor express.
+  */
+  constructor (app) {
+    /**
+    * Configuraci&#xF3;n de la aplicaci&#xF3;n.
+    * @type {Object}
+    */
+    this.config = app.config
+
+    /**
+    * Colores para los logs.
+    * @type {Object}
+    */
+    this.colors = {}
+
+    /**
+    * Estilos para los logs.
+    * @type {Object}
+    */
+    this.styles = {}
+
+    /**
+    * Contiene los niveles de logs.
+    * @type {Object}
+    */
+    this.levels = {}
+
+    /**
+    * Contiene los colores asociados a los diferentes niveles de logs.
+    * @type {Object}
+    */
+    this.levelColors = {}
+
+    /**
+    * Instancia de winston logger.
+    * @type {WinstonLogger}
+    */
+    this.winstonLogger = null
+
+    /**
+    * Cadena de texto que representa un Ok.
+    * @type {String}
+    */
+    this.OK = &apos;&apos;
+
+    /**
+    * Cadena de texto que representa un Fail.
+    * @type {String}
+    */
+    this.FAIL = &apos;&apos;
+
+    this.init(app)
+  }
+
+  /**
+  * Inicializa las propiedades.
+  * @param {Function} app
+  */
+  init (app) {
+    const colors = this.colors = {}
+
+    // Colores b&#xE1;sicos
+    // ansicolor: https://github.com/shiena/ansicolor/blob/master/README.md
+    colors.BLACK         = `\x1b[30m`
+    colors.RED           = `\x1b[31m`
+    colors.GREEN         = `\x1b[32m`
+    colors.YELLOW        = `\x1b[33m`
+    colors.BLUE          = `\x1b[34m`
+    colors.MAGENTA       = `\x1b[35m`
+    colors.CYAN          = `\x1b[36m`
+    colors.LIGHT_GREY    = `\x1b[90m`
+    colors.LIGHT_RED     = `\x1b[91m`
+    colors.LIGHT_GREEN   = `\x1b[92m`
+    colors.LIGHT_YELLOW  = `\x1b[93m`
+    colors.LIGHT_BLUE    = `\x1b[94m`
+    colors.LIGHT_MAGENTA = `\x1b[95m`
+    colors.LIGHT_CYAN    = `\x1b[96m`
+    colors.LIGHT_WHITE   = `\x1b[97m`
+
+    if (process.env.COLORS === &apos;false&apos;) {
+      Object.keys(colors).forEach(key =&gt; { colors[key] = &apos;&apos; })
+    }
+    colors.RESET   = `\x1b[0m`
+    colors.WHITE = colors.LIGHT_WHITE
+
+    const styles = this.styles = {}
+
+    // Estilos b&#xE1;sicos
+    styles.BOLD          = `\x1b[1m`
+    styles.BOLD_OFF      = `\x1b[21m`
+    styles.UNDERLINE     = `\x1b[4m`
+    styles.UNDERLINE_OFF = `\x1b[24m`
+    styles.BLINK         = `\x1b[5m`
+    styles.BLINK_OFF     = `\x1b[25m`
+
+    styles.RESET   = `\x1b[0m`
+
+    // Colores del sistema
+    colors.PRIMARY = `${styles.BOLD}${colors.LIGHT_BLUE}`
+    colors.ACCENT  = `${styles.BOLD}`
+    colors.TEXT    = `${colors.RESET}`
+
+    colors.FATAL   = `${styles.BOLD}${colors.RED}`
+    colors.ERROR   = `${styles.BOLD}${colors.LIGHT_RED}`
+    colors.WARN    = `${styles.BOLD}${colors.LIGHT_YELLOW}`
+    colors.NOTICE  = `${styles.BOLD}${colors.LIGHT_GREEN}`
+    colors.INFO    = `${styles.BOLD}${colors.LIGHT_WHITE}`
+    colors.VERBOSE = `${styles.BOLD}${colors.LIGHT_CYAN}`
+    colors.DEBUG   = `${styles.BOLD}${colors.LIGHT_BLUE}`
+    colors.SILLY   = `${styles.BOLD}${colors.LIGHT_MAGENTA}`
+
+    const LEVELS = this.levels = {}
+
+    LEVELS.fatal   = 0 // Mensajes cr&#xED;ticos
+    LEVELS.error   = 1 // Mensajes de error
+    LEVELS.warn    = 2 // Mensajes de advertencia
+    LEVELS.notice  = 3 // Mensajes importantes
+    LEVELS.info    = 4 // Mensajes informativos
+    LEVELS.verbose = 5 // Mensajes detallados
+    LEVELS.debug   = 6 // Mensajes para el depurador
+    LEVELS.silly   = 7 // Mensajes sin importancia
+
+    this.levelColors = {
+      fatal   : colors.RED,
+      error   : colors.LIGHT_RED,
+      warn    : colors.LIGHT_YELLOW,
+      notice  : colors.LIGHT_GREEN,
+      info    : colors.RESET,
+      verbose : colors.LIGHT_CYAN,
+      debug   : colors.LIGHT_BLUE,
+      silly   : colors.LIGHT_MAGENTA
+    }
+
+    this.winstonLogger = createLogger({
+      levels      : LEVELS,
+      transports  : createTransports(app, this),
+      exitOnError : false
+    })
+
+    this.OK   = `${colors.TEXT}${process.platform === &apos;linux&apos; ? &apos;\u2713&apos; : &apos;&apos;}${colors.RESET}`
+    this.FAIL = `${colors.TEXT}${process.platform === &apos;linux&apos; ? &apos;\u2715&apos; : &apos;x&apos;}${colors.RESET}`
+
+    createLoggerFunctions(this)
+  }
+
+  /**
+  * Indica si los logs est&#xE1;n habilitados.
+  * @return {Boolean}
+  */
+  isEnabled () {
+    return process.env.LOGGER === &apos;true&apos;
+  }
+
+  /**
+  * Muestra un mensaje del logo de la aplicaci&#xF3;n.
+  * @param {!Function} app . Instancia del servidor express.
+  */
+  appLogo (app) {
+    if (!this.isEnabled()) return
+    const colors  = app.logger.colors
+    const WIDTH   = 40
+    const version = _.pad(`Versi&#xF3;n ${app.config.PROJECT.insacVersion}`, WIDTH, &apos; &apos;)
+    let msg = &apos;\n&apos;
+    msg += ` ${colors.PRIMARY} ${_.pad(`=====================================`, WIDTH, &apos; &apos;)} ${colors.RESET}\n`
+    msg += ` ${colors.PRIMARY} ${_.pad(`  ---------------------------------  `, WIDTH, &apos; &apos;)} ${colors.RESET}\n`
+    msg +=  ` ${colors.ACCENT} ${_.pad(&apos;    I N S A C   F R A M E W O R K    &apos;, WIDTH, &apos; &apos;)} ${colors.RESET}\n`
+    msg += ` ${colors.PRIMARY} ${_.pad(`  =================================  `, WIDTH, &apos; &apos;)} ${colors.RESET}\n`
+    msg += ` ${colors.PRIMARY} ${_.pad(`-------------------------------------`, WIDTH, &apos; &apos;)} ${colors.RESET}\n\n`
+    msg += ` ${colors.ACCENT} ${version} ${colors.RESET}\n\n\n`
+    msg += ` ${colors.PRIMARY}Sistema :${colors.RESET} ${colors.TEXT}${app.config.PROJECT.appName}${colors.RESET}\n`
+    msg += ` ${colors.PRIMARY}Versi&#xF3;n :${colors.RESET} ${colors.TEXT}${app.config.PROJECT.appVersion}${colors.RESET}\n`
+    msg += ` ${colors.PRIMARY}Entorno :${colors.RESET} ${colors.TEXT}${app.config.SERVER.env}${colors.RESET}\n\n\n`
+    process.stdout.write(msg)
+  }
+
+  /**
+  * Muestra el t&#xED;tulo principal de una tarea.
+  * @param {String} title - T&#xED;tulo principal.
+  */
+  appTitle (title) {
+    if (!this.isEnabled()) return
+    const colors = this.colors
+    let msg = &apos;&apos;
+    msg += `\n`
+    msg += ` ${colors.ACCENT}${title}${colors.RESET}\n`
+    msg += ` ${colors.PRIMARY}${_.pad(&apos;&apos;, title.length, &apos;=&apos;)}${colors.RESET}\n`
+    msg += `\n`
+    process.stdout.write(msg)
+  }
+
+  /**
+  * Muestra el t&#xED;tulo secundario de una tarea.
+  * @param {String} title - T&#xED;tulo secundario.
+  */
+  appTitle2 (title) {
+    if (!this.isEnabled()) return
+    const colors = this.colors
+    process.stdout.write(`\n`)
+    process.stdout.write(` ${colors.ACCENT}${title}${colors.RESET}\n`)
+    process.stdout.write(`\n`)
+  }
+
+  /**
+  * Para imprimir mensajes con el color Primary.
+  * @param {String} title   - T&#xED;tulo.
+  * @param {String} message - Mensaje.
+  * @param {Object} data    - Datos adicionales.
+  */
+  appPrimary (title = &apos;&apos;, message = &apos;&apos;, data = &apos;&apos;) {
+    if (!this.isEnabled()) return
+    const colors = this.colors
+    const C1 = colors.PRIMARY
+    const C2 = colors.TEXT
+    const C3 = colors.TEXT
+    const RT = colors.RESET
+    process.stdout.write(` ${C1}${title}${RT} ${C2}${message}${RT} ${C3}${data}${RT}\n`)
+  }
+
+  /**
+  * Para imprimir mensajes con el color Accent.
+  * @param {String} title   - T&#xED;tulo.
+  * @param {String} message - Mensaje.
+  * @param {Object} data    - Datos adicionales.
+  */
+  appAccent (title = &apos;&apos;, message = &apos;&apos;, data = &apos;&apos;) {
+    if (!this.isEnabled()) return
+    const colors = this.colors
+    const styles = this.styles
+    const C1 = colors.ACCENT
+    const C2 = colors.TEXT
+    const C3 = colors.TEXT
+    const RT = `${colors.RESET}${styles.RESET}`
+    process.stdout.write(` ${C1}${title}${RT} ${C2}${message}${RT} ${C3}${data}${RT}\n`)
+  }
+
+  /**
+  * Para imprimir mensajes con el color Error.
+  * @param {String} title   - T&#xED;tulo.
+  * @param {String} message - Mensaje.
+  * @param {Object} data    - Datos adicionales.
+  */
+  appError (title = &apos;&apos;, message = &apos;&apos;, data = &apos;&apos;) {
+    if (!this.isEnabled()) return
+    const colors = this.colors
+    const C1 = colors.ERROR
+    const C2 = colors.TEXT
+    const C3 = colors.TEXT
+    const RT = colors.RESET
+    process.stdout.write(` ${C1}${title}${RT} ${C2}${message}${RT} ${C3}${data}${RT}\n`)
+  }
+
+  /**
+  * Muestra por consola la ruta de una petici&#xF3;n.
+  * @param {Request} req - Objeto request.
+  */
+  requestPath (req) {
+    if (!this.isEnabled() || !this.config.LOGGER.include.request.path) return
+    const METHOD    = req.method
+    const PATH_NAME = req._parsedUrl.pathname
+    const MESSAGE   = `[${METHOD}] ${PATH_NAME}`
+    this.info(req, MESSAGE)
+  }
+
+  /**
+  * Muestra por consola el contenido de los headers de una petici&#xF3;n.
+  * @param {Request} req - Objeto request.
+  */
+  inputHeaders (req) {
+    if (!this.isEnabled() || !this.config.LOGGER.include.input.headers) return
+    const MESSAGE = `[HEADERS] ${JSON.stringify(req.headers, null, 2)}`
+    if (Object.keys(req.headers).length &gt; 0) this.info(req, MESSAGE)
+  }
+
+  /**
+  * Muestra por consola el contenido de la query de una petici&#xF3;n.
+  * @param {Request} req - Objeto request.
+  */
+  inputParams (req) {
+    if (!this.isEnabled() || !this.config.LOGGER.include.input.params) return
+    const MESSAGE = `[PARAMS] ${JSON.stringify(req.params)}`
+    if (Object.keys(req.params).length &gt; 0) this.info(req, MESSAGE)
+  }
+
+  /**
+  * Muestra por consola el contenido de la query de una petici&#xF3;n.
+  * @param {Request} req - Objeto request.
+  */
+  inputQuery (req) {
+    if (!this.isEnabled() || !this.config.LOGGER.include.input.query) return
+    const MESSAGE = `[QUERY] ${req._parsedUrl.search}`
+    if (req._parsedUrl.search) this.info(req, MESSAGE)
+  }
+
+  /**
+  * Muestra por console el contenido del body de una petici&#xF3;n.
+  * @param {Request} req - Objeto request.
+  */
+  inputBody (req) {
+    if (!this.isEnabled() || !this.config.LOGGER.include.input.body) return
+    const MESSAGE = `[BODY] ${JSON.stringify(req.body, null, 2)}`
+    if (Object.keys(req.body).length &gt; 0) this.info(req, MESSAGE)
+  }
+
+  /**
+  * Muestra por consola el contenido DATA de la respuesta a una petici&#xF3;n.
+  * @param {Request}         req    - Objeto request.
+  * @param {ResponseSuccess} result - Resultado.
+  */
+  outputData (req, result) {
+    if (!this.isEnabled() || !this.config.LOGGER.include.output.data) return
+    const MESSAGE = `[DATA] ${JSON.stringify(result.data || {}, null, 2)}`
+    if (Object.keys(result.data || {}).length &gt; 0) this.info(req, MESSAGE)
+  }
+
+  /**
+  * Muestra por consola el resultado de una peticion.
+  * @param {Request}         req    - Objeto request.
+  * @param {ResponseSuccess} result - Resultado.
+  */
+  responseSuccess (req, result) {
+    if (!this.isEnabled() || !this.config.LOGGER.include.response.success) return
+    const elapsedTime = (req.endAt - req.startAt) / 1000
+    let contentLength = result &amp;&amp; result.data ? Buffer.byteLength(JSON.stringify(result.data), &apos;UTF-8&apos;) / 1024 : 0
+    contentLength = Math.round(contentLength * 100) / 100
+    const MESSAGE = `[STATUS] ${result.code} ${result.type} (${elapsedTime} seg.) [data: ${contentLength} KB]`
+    this.notice(req, MESSAGE)
+  }
+
+  /**
+  * Muestra por consola errores de tipo 400.
+  * @param {Request}       req - Objeto request.
+  * @param {ResponseError} err - Instancia de un error.
+  */
+  responseError (req, err) {
+    if (!this.isEnabled() || !this.config.LOGGER.include.response.error) return
+    let errors = &apos;&apos;
+    err.errors.forEach(e =&gt; { errors += `\n - ${e.msg}` })
+    if (errors !== &apos;&apos;) errors = `${errors}`
+    const MESSAGE = `[STATUS] ${err.code} ${err.type}${errors}`
+    this.warn(req, MESSAGE)
+  }
+
+  /**
+  * Muestra por consola el error producido por un error de tipo 500.
+  * @param {Request}       req - Objeto request.
+  * @param {ResponseError} err - Instancia de un error.
+  */
+  responseError500 (req, err) {
+    if (!this.isEnabled() || !this.config.LOGGER.include.response.error500) return
+    const FECHA     = moment().format(&apos;DD/MM/YYYY HH:mm:ss&apos;)
+    const METHOD    = req.method
+    const PATH_NAME = req._parsedUrl.pathname
+    const QUERY     = req._parsedUrl.search ? req._parsedUrl.search : &apos;&apos;
+    const BODY      = `\n${JSON.stringify(req.body, null, 2)}`
+    let message = `\n ${_.pad(&apos; ERROR INTERNO &apos;, 50, &apos;\\&apos;)} \n\n`
+    message += ` - FECHA      : ${FECHA}\n`
+    message += ` - REQUEST ID : ${req.id}\n`
+    message += ` - IP ORIGEN  : ${req.connection.remoteAddress}\n`
+    message += ` - NAVEGADOR  : ${req.headers[&apos;user-agent&apos;]}\n`
+    message += ` - URL        : [${METHOD}] ${PATH_NAME}\n`
+    message += ` - QUERY      : ${QUERY}\n`
+    message += ` - BODY       : ${BODY}\n`
+    const ERR = util.inspect(err, false, null)
+    const MESSAGE = `[STATUS] ${err.code} ${err.type}\n${message}\n${ERR}`
+    this.error(req, MESSAGE)
+  }
+}
+
+/**
+* @ignore
+* Crea una lista de transportes que utiliza WinstonLogger.
+* @param {!Function}    app    - Instancia del servidor express.
+* @param {!Logger}      logger - Instancia de logger.
+* @return {Transport[]}
+*/
+function createTransports (app, logger) {
+  const TRANSPORTS = []
+  if (logger.isEnabled()) {
+    TRANSPORTS.push(new transports.Console({
+      format           : printf(consoleFormat(app)),
+      level            : logger.config.LOGGER.console.transport.level,
+      handleExceptions : false,
+      colorize         : false,
+      json             : logger.config.LOGGER.console.transport.json
+    }))
+  }
+
+  const LOGS_PATH = logger.config.PATH.logs
+
+  logger.config.LOGGER.file.levels.forEach(levelName =&gt; {
+    const LEVEL_PATH = path.resolve(LOGS_PATH, levelName)
+    if (!fs.existsSync(LEVEL_PATH)) { mkdirp.sync(LEVEL_PATH) }
+    TRANSPORTS.push(new transports.File({
+      format           : printf(fileFormat(app)),
+      level            : levelName,
+      handleExceptions : false,
+      colorize         : false,
+      json             : logger.config.LOGGER.file.transport.json,
+      filename         : path.resolve(LEVEL_PATH, `app.${levelName}.log`),
+      maxsize          : logger.config.LOGGER.file.transport.maxsize,
+      maxFiles         : logger.config.LOGGER.file.transport.maxFiles
+    }))
+  })
+  return TRANSPORTS
+}
+
+/**
+* @ignore
+* Devuelve una cadena de texto con formato personalizado para los logs de la consola.
+* @param {!Function} app - Instancia del servidor express.
+* @return {String}
+*/
+function consoleFormat (app) {
+  return (info) =&gt; {
+    const RESULT = {
+      timestamp : &apos;&apos;,
+      reqId     : &apos;&apos;,
+      level     : info.level,
+      message   : info.message,
+      data      : &apos;&apos;
+    }
+    if (info.data) {
+      const dataSTR = util.inspect(info.data, false, null)
+      if (dataSTR) { RESULT.data = `\n${dataSTR}` }
+    }
+    if (app.logger.config.LOGGER.console.timestamp) {
+      RESULT.timestamp = `${moment().format(&apos;DD/MM/YYYY HH:mm:ss&apos;)} `
+    }
+    if (app.logger.config.LOGGER.console.reqId) {
+      RESULT.reqId = `${info.id || _.pad(&apos;&apos;, 36, &apos;-&apos;)} `
+    }
+    if (app.logger.config.LOGGER.console.transport.json) {
+      return JSON.stringify(RESULT)
+    }
+    const LEVEL_STR = _.padEnd(`[${RESULT.level}]`, 10, &apos; &apos;)
+    return `${app.logger.levelColors[RESULT.level]}${RESULT.timestamp}${RESULT.reqId}${LEVEL_STR} ${RESULT.message}${RESULT.data}${app.logger.colors.RESET}`
+  }
+}
+
+/**
+* @ignore
+* Devuelve una cadena de texto con formato personalizado para los logs de los ficheros.
+* @param {!Function} app - Instancia del servidor express.
+* @return {String}
+*/
+function fileFormat (app) {
+  return (info)  =&gt; {
+    const RESULT = {
+      timestamp : moment().format(&apos;DD/MM/YYYY HH:mm:ss&apos;),
+      reqId     : info.id || _.pad(&apos;&apos;, 36, &apos;-&apos;),
+      level     : info.level,
+      message   : info.message,
+      data      : &apos;&apos;
+    }
+    if (info.data) {
+      const dataSTR = util.inspect(info.data, false, null)
+      if (dataSTR) { RESULT.data = `\n${dataSTR}` }
+    }
+    if (app.logger.config.LOGGER.file.transport.json) {
+      return JSON.stringify(RESULT)
+    }
+    return `${RESULT.timestamp} ${RESULT.reqId} [${RESULT.level}] ${RESULT.message}${RESULT.data}`
+  }
+}
+
+/**
+* @ignore
+* Adiciona funciones personalizadas para todos los niveles de logs soportados.
+* @param {!Logger} logger - Instancia de logger.
+* @return {String}
+*/
+function createLoggerFunctions (logger) {
+  const IS_ENABLED = logger.isEnabled()
+  Object.keys(logger.levels).forEach(level =&gt; {
+    logger[level] = (req, message, data) =&gt; {
+      if (!IS_ENABLED) return
+      logger.winstonLogger[level]({ id: req ? req.id : null, message, data })
+    }
+  })
+}
+
+module.exports = Logger
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/libs/SequelizeOptions.js | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  
+  <a href="identifiers.html">Referencia</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/libs/SequelizeOptions.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+* @ignore
+* Clase para crear el objeto options que utiliza Sequelize para realizar consultas.
+*/
+class SequelizeOptions {
+  /**
+  * Crea el objeto options.
+  * @param {Object}         options              - Opciones de configuraci&#xF3;n.
+  * @param {Object}         [options.query]      - Filtros de una consulta.
+  * @param {Object}         [options.output]     - Formato de salida.
+  * @param {SequelizeModel} [options.model]      - Modelo que se usar&#xE1; para filtrar campos.
+  * @param {Boolean}        [options.keys=false] - Indica si se incluir&#xE1;n de forma obligatoria
+  *                                                los campos que sean claves primarias y for&#xE1;neas.
+  * @return {Object}
+  */
+  static create (options = {}) {
+    const QUERY  = options.query || {}
+    const OUTPUT = options.output
+    const MODEL  = options.model
+    const KEYS   = (typeof options.keys !== &apos;undefined&apos;) ? options.keys : false
+    let fieldsSTR = QUERY.fields || &apos;ALL&apos;
+    if (fieldsSTR.indexOf(&apos;ALL&apos;) !== -1) fieldsSTR = _fieldsALL(OUTPUT)
+    let OPT = {}
+    while (fieldsSTR.indexOf(&apos;()&apos;) !== -1) { fieldsSTR = fieldsSTR.replace(&apos;()&apos;, &apos;(all)&apos;) }
+    const OUTPUT2 = (OUTPUT &amp;&amp; Array.isArray(OUTPUT)) ? OUTPUT[0] : OUTPUT
+    OPT = parseFieldsSTR(fieldsSTR, OUTPUT2, MODEL, KEYS, undefined, &apos;&apos;, QUERY)
+    if (typeof QUERY.col      !== &apos;undefined&apos;) { OPT.col      = QUERY.col      }
+    if (typeof QUERY.distinct !== &apos;undefined&apos;) { OPT.distinct = QUERY.distinct }
+    if (typeof QUERY.offset   !== &apos;undefined&apos;) { OPT.offset   = QUERY.offset   }
+    if (typeof QUERY.limit    !== &apos;undefined&apos;) { OPT.limit    = QUERY.limit    }
+    if (typeof QUERY.page     !== &apos;undefined&apos;) {
+      OPT.limit  = OPT.limit || 50
+      OPT.offset = (QUERY.page &gt;= 1) ? ((QUERY.page - 1) * QUERY.limit) : 0
+    }
+    if (typeof QUERY.order    !== &apos;undefined&apos;) {
+      OPT.order = []
+      QUERY.order.split(&apos;,&apos;).forEach(fieldName =&gt; {
+        OPT.order.push(parseOrder(fieldName))
+      })
+    }
+    return OPT
+  }
+
+  /**
+  * Filtra los campos de un objeto (Elimina aquellos campos no requeridos).
+  * @param {Object}   data                  - Datos a filtrar.
+  * @param {Object[]} options               - Opciones de configuraci&#xF3;n.
+  * @param {Object}   [options.query]       - Filtros de una consulta.
+  * @param {Object}   [options.output]      - Formato de salida.
+  * @param {Boolean}  [options.plain=false] - Indica si los campos de los submodelos se
+  *                                           mover&#xE1;n al objeto raiz.
+  *                                           los campos que sean claves primarias y for&#xE1;neas.
+  * @return {Object}
+  */
+  static filter (data, options = {}) {
+    if (!options.output) { return data }
+    const OUTPUT  = options.output
+    const QUERY   = options.query || {}
+    const OPTIONS = SequelizeOptions.create({ query: QUERY, output: OUTPUT })
+    if (options.plain === true) {
+      if (Array.isArray(OUTPUT)) {
+        const RESULT = []
+        for (let i in data) {
+          const OBJ = {}
+          copyPlain(data[i], OUTPUT[0], OPTIONS, &apos;&apos;, OBJ)
+          RESULT.push(OBJ)
+        }
+        return RESULT
+      } else {
+        const OBJ = {}
+        copyPlain(data, OUTPUT, OPTIONS, &apos;&apos;, OBJ)
+        return OBJ
+      }
+    }
+    return copy(data, OUTPUT, OPTIONS)
+  }
+}
+
+/**
+* @ignore
+* Devuelve un string que contiene todos los campos posibles.
+* @param {Object} [output] - Objeto output.
+* @return {String}
+*/
+function _fieldsALL (output = {}) {
+  let result = &apos;,all&apos;
+  if (Array.isArray(output)) {
+    output = output[0]
+  }
+  Object.keys(output).forEach(prop =&gt; {
+    if (!_isField(output[prop])) {
+      const SUB = _fieldsALL(output[prop])
+      result += `,${prop}(${SUB})`
+    }
+  })
+  return result.substr(1)
+}
+
+/**
+* @ignore
+* Copia los valores de los campos de un objeto en base a un modelo base.
+* @param {Object} DATA    - Objeto que contiene los datos.
+* @param {Object} OUTPUT  - Objeto que tiene el formato de los campos.
+* @param {Object} OPTIONS - Objeto que contiene los campos permitidos.
+* @return {Object}
+*/
+function copy (DATA, OUTPUT, OPTIONS) {
+  if ((typeof DATA === &apos;undefined&apos;) || (DATA === null)) { return undefined }
+  if (Array.isArray(OUTPUT)) {
+    if (!Array.isArray(DATA)) {
+      return undefined
+    }
+    const result = []
+    for (let i in DATA) {
+      const resultTemp = copy(DATA[i], OUTPUT[0], OPTIONS)
+      if (typeof resultTemp !== &apos;undefined&apos;) { result.push(resultTemp) }
+    }
+    return result
+  }
+  const result = {}
+  for (let prop in OUTPUT) {
+    if (_isField(OUTPUT[prop])) {
+      if (OPTIONS.attributes.includes(prop)) {
+        result[prop] = DATA[prop]
+      }
+    } else {
+      let assoc
+      if (OPTIONS &amp;&amp; OPTIONS.include) {
+        OPTIONS.include.forEach(as =&gt; {
+          if (as.association === prop) {
+            assoc = as
+          }
+        })
+      }
+      if (assoc) {
+        result[prop] = copy(DATA[prop], OUTPUT[prop], assoc)
+      }
+    }
+  }
+  return Object.keys(result).length &gt; 0 ? result : undefined
+}
+
+/**
+* @ignore
+* Copia los valores de los campos de un objeto en base a un modelo base.
+* Para el formato de salida, se copian todos los campos de los objetos anidados, en el objeto raiz.
+* @param {Object} DATA    - Objeto que contiene los datos.
+* @param {Object} OUTPUT  - Objeto que tiene el formato de los campos.
+* @param {Object} OPTIONS - Objeto que contiene los campos permitidos.
+* @param {String} PATH    - Nombre completo del campo.
+* @param {Object} OBJ     - Objeto raiz.
+* @return {Object}
+*/
+function copyPlain (DATA, OUTPUT, OPTIONS, PATH, OBJ) {
+  if ((typeof DATA === &apos;undefined&apos;) || (DATA === null)) { return undefined }
+  if (Array.isArray(OUTPUT)) {
+    if (!Array.isArray(DATA)) {
+      return undefined
+    }
+    for (let i in DATA) {
+      const fullPath = (PATH === &apos;&apos;) ? i : `${PATH}.${i}`
+      copyPlain(DATA[i], OUTPUT[0], OPTIONS, fullPath, OBJ)
+    }
+  }
+  for (let prop in OUTPUT) {
+    if (_isField(OUTPUT[prop])) {
+      if (OPTIONS.attributes.includes(prop)) {
+        const fullPath = (PATH === &apos;&apos;) ? prop : `${PATH}.${prop}`
+        OBJ[fullPath] = DATA[prop]
+      }
+    } else {
+      let assoc
+      if (OPTIONS &amp;&amp; OPTIONS.include) {
+        OPTIONS.include.forEach(as =&gt; {
+          if (as.association === prop) {
+            assoc = as
+          }
+        })
+      }
+      if (assoc) {
+        const fullPath = (PATH === &apos;&apos;) ? prop : `${PATH}.${prop}`
+        copyPlain(DATA[prop], OUTPUT[prop], assoc, fullPath, OBJ)
+      }
+    }
+  }
+  return OBJ
+}
+
+/**
+* @ignore
+* Devuelve el formato del filtro order,
+* @param {String} fieldName - Nombre del campo.
+* @return {String[]}
+*/
+function parseOrder (fieldName) {
+  const split = fieldName.split(&apos;.&apos;)
+  if (fieldName.charAt(0) === &apos;-&apos;) {
+    split[0] = split[0].substr(1)
+    split.push(&apos;DESC&apos;)
+  } else {
+    split.push(&apos;ASC&apos;)
+  }
+  return split
+}
+
+/**
+* @ignore
+* Adiciona un atributo si corresponde.
+* @param {String}         word       - Palabra obtenida desde la query.
+* @param {Object}         [OUTPUT]   - Objeto que contiene el formato.
+* @param {SequelizeModel} [MODEL]    - Modelo Sequelize de referencia.
+* @param {Boolean}        KEYS       - Indica si se incluiran por defecto las claves primarias y foraneas.
+* @param {Object}         where      - Objeto que almacena la propiedad where del options.
+* @param {String[]}       attributes - Objeto que almacena la propiedad attributes del options.
+* @param {String[]}       exclude    - Objeto que almacena la propiedad exclude del options.
+* @param {Boolean}        allFields  - Bandera que indica si se adicionar&#xF3;n todos los fields.
+*/
+function addAttribute (word, OUTPUT, MODEL, KEYS, where, attributes, exclude, allFields) {
+  const split = word.split(&apos;=&apos;)
+  if (split.length === 2) {
+    word = split[0]
+    if (!OUTPUT || OUTPUT[word]) {
+      if (!MODEL || MODEL.attributes[word]) {
+        if (KEYS) {
+          // TODO validar el campo
+          where[word] = split[1]
+        }
+      }
+    }
+  }
+  if (!allFields) {
+    if (word.startsWith(&apos;-&apos;)) {
+      word = word.substr(1)
+      if (!OUTPUT || OUTPUT[word]) {
+        if (!MODEL || MODEL.attributes[word]) {
+          exclude.push(word)
+        }
+      }
+    } else {
+      if (!OUTPUT || OUTPUT[word]) {
+        if (!MODEL || MODEL.attributes[word]) {
+          attributes.push(word)
+        }
+      }
+    }
+  }
+}
+
+/**
+* @ignore
+* Parsea el valor del campo query.fields, devolviendo un include.
+* @param {String}         fieldsSTR - Valor del campo query.fields.
+* @param {Object}         [OUTPUT]  - Objeto que contiene el formato.
+* @param {SequelizeModel} [MODEL]   - Modelo Sequelize de referencia.
+* @param {Boolean}        KEYS      - Indica si se incluiran por defecto las claves primarias y foraneas.
+* @param {String}         as        - Nombre de la asociaci&#xF3;n.
+* @param {String}         trace     - Ruta del campo.
+* @param {Object}         QUERY     - Objeto query.
+* @return {Object}
+*/
+function parseFieldsSTR (fieldsSTR, OUTPUT, MODEL, KEYS, as, trace, QUERY) {
+  let attributes = []
+  const include = []
+  const exclude = []
+  const where   = {}
+  let allFields = false
+  let word = &apos;&apos;
+  for (let i = 0; i &lt; fieldsSTR.length; i++) {
+    const ch = fieldsSTR[i]
+    if (ch === &apos;,&apos;) {
+      if (word !== &apos;&apos;) {
+        if (word === &apos;all&apos; &amp;&amp; !allFields) {
+          attributes = getAllAttributes(OUTPUT, MODEL)
+          allFields = true
+        } else {
+          addAttribute(word, OUTPUT, MODEL, KEYS, where, attributes, exclude, allFields)
+        }
+      }
+      word = &apos;&apos;
+      continue
+    }
+    if (ch === &apos;(&apos;) {
+      const a = i + 1
+      const b = findIndex(fieldsSTR, a)
+      const c = b - a
+      const subFieldSTR = fieldsSTR.substr(a, c)
+      if (OUTPUT[word]) {
+        const SUB_OUTPUT = Array.isArray(OUTPUT[word]) ? OUTPUT[word][0] : OUTPUT[word]
+        const SUB_MODEL  = MODEL &amp;&amp; MODEL.associations[word] ? MODEL.associations[word].target : undefined
+        const trace2     = (trace === &apos;&apos;) ? word : `${trace}.${word}`
+        include.push(parseFieldsSTR(subFieldSTR, SUB_OUTPUT, SUB_MODEL, KEYS, word, trace2, QUERY))
+      }
+      word = &apos;&apos;
+      i = b
+      continue
+    }
+    word += ch
+  }
+  if (word !== &apos;&apos;) {
+    if (word === &apos;all&apos; &amp;&amp; !allFields) {
+      attributes = getAllAttributes(OUTPUT, MODEL)
+      allFields  = true
+    } else {
+      addAttribute(word, OUTPUT, MODEL, KEYS, where, attributes, exclude, allFields)
+    }
+  }
+  const OPT = { attributes }
+  if (as) { OPT.association = as }
+  if (exclude.length &gt; 0) { OPT.attributes = { exclude } }
+  if (include.length &gt; 0) { OPT.include = include }
+  OPT.attributes = normalizeAttributes(OPT.attributes, OUTPUT, MODEL, KEYS)
+  // WHERE required = false. Son opcionales los filtros efectuados desde la propiedad fields.
+  if (Object.keys(where).length &gt; 0) { OPT.where = where; OPT.required = false }
+  // WHERE required = true. Son requeridos los filtros efectuados desde el objeto QUERY
+  if (Array.isArray(OPT.attributes)) {
+    OPT.attributes.forEach(attrib =&gt; {
+      const path = (trace === &apos;&apos;) ? attrib : `${trace}.${attrib}`
+      if (QUERY[path]) {
+        if (!OPT.where) { OPT.where = {} }
+        const value = ((typeof QUERY[path] === &apos;string&apos;) &amp;&amp; (QUERY[path].indexOf(&apos;,&apos;) !== -1)) ? QUERY[path].split(&apos;,&apos;) : QUERY[path]
+        OPT.where[attrib] = value
+        OPT.required = true
+      }
+    })
+  }
+  return OPT
+}
+
+/**
+* @ignore
+* Normaliza la propiedad attributes.
+* @param {Object}         ATTRIB   - Propiedad attributes.
+* @param {Object}         [OUTPUT] - Objeto que contiene el formato.
+* @param {SequelizeModel} [MODEL]  - Modelo Sequelize de referencia.
+* @param {Boolean}        KEYS     - Indica si se incluiran por defecto las
+*                                    claves primarias y foraneas.
+* @return {Object}
+*/
+function normalizeAttributes (ATTRIB, OUTPUT, MODEL, KEYS) {
+  const EXCLUDE  = (ATTRIB &amp;&amp; ATTRIB.exclude) ? ATTRIB.exclude : []
+  let attributes = (ATTRIB &amp;&amp; Array.isArray(ATTRIB)) ? ATTRIB : []
+  if (!KEYS) {
+    if (EXCLUDE.length &gt; 0) {
+      if (OUTPUT) {
+        for (let prop in OUTPUT) {
+          if (_isField(OUTPUT[prop])) {
+            if (!EXCLUDE.includes(prop)) {
+              if (!MODEL || MODEL.attributes[prop]) {
+                attributes.push(prop)
+              }
+            }
+          }
+        }
+      } else if (MODEL) {
+        Object.keys(MODEL.attributes).forEach(key =&gt; {
+          if (!attributes.includes(key) &amp;&amp; !EXCLUDE.includes(key)) {
+            attributes.push(key)
+          }
+        })
+      } else {
+        attributes = ATTRIB
+      }
+    }
+  } else {
+    if (OUTPUT) {
+      for (let prop in OUTPUT) {
+        if (_isField(OUTPUT[prop]) &amp;&amp; !attributes.includes(prop)) {
+          if ((OUTPUT[prop].primaryKey &amp;&amp; OUTPUT[prop].primaryKey === true) || OUTPUT[prop].references) {
+            if (!MODEL || MODEL.attributes[prop]) {
+              attributes.push(prop)
+            }
+          } else {
+            if (EXCLUDE.length &gt; 0 &amp;&amp; !EXCLUDE.includes(prop)) {
+              if (!MODEL || MODEL.attributes[prop]) {
+                attributes.push(prop)
+              }
+            }
+          }
+        }
+      }
+    } else if (MODEL) {
+      Object.keys(MODEL.attributes).forEach(key =&gt; {
+        if (MODEL.attributes[key].primaryKey &amp;&amp; (MODEL.attributes[key].primaryKey === true) &amp;&amp; !attributes.includes(key)) {
+          if (EXCLUDE.length &gt; 0 &amp;&amp; !EXCLUDE.includes(key)) {
+            attributes.push(key)
+          }
+        }
+      })
+    } else {
+      attributes = ATTRIB
+    }
+  }
+  return attributes
+}
+
+/**
+* @ignore
+* Devuelve la propiedad attributes con todos los campos posibles.
+* @param {Object}         [OUTPUT] - Objeto que contiene el formato.
+* @param {SequelizeModel} [MODEL]  - Modelo Sequelize de referencia.
+* @return {String[]}
+*/
+function getAllAttributes (OUTPUT, MODEL) {
+  const ATTRIBUTES = []
+  if (OUTPUT) {
+    for (let prop in OUTPUT) {
+      if (_isField(OUTPUT[prop])) {
+        if (!MODEL || MODEL.attributes[prop]) {
+          ATTRIBUTES.push(prop)
+        }
+      }
+    }
+  } else if (MODEL) {
+    Object.keys(MODEL.attributes).forEach(prop =&gt; {
+      if (!ATTRIBUTES.includes(prop)) {
+        ATTRIBUTES.push(prop)
+      }
+    })
+  } else {
+    return undefined
+  }
+  return ATTRIBUTES
+}
+
+/**
+* @ignore
+* Devuelve el indice del parentesis de cierre que corresponde al nivel actual.
+* @param {String} str - Cadena de texto.
+* @param {Number} pos - Posici&#xF3;n desde la que se comienza la b&#xFA;squeda.
+* @return {Number}
+*/
+function findIndex (str, pos) {
+  let level = 0
+  for (let i = pos; i &lt; str.length; i++) {
+    if (str[i] === &apos;)&apos; &amp;&amp; level === 0) { return i }
+    if (str[i] === &apos;(&apos;) { level++ }
+    if (str[i] === &apos;)&apos;) { level-- }
+  }
+}
+
+/**
+* @ignore
+* Funci&#xF3;n que indica si un objeto es un campo o no.
+* @param {Object} obj - Objeto.
+* @return {String}
+*/
+function _isField (obj) {
+  if (obj &amp;&amp; obj._modelAttribute &amp;&amp; (obj._modelAttribute === true)) {
+    return true
+  }
+  return false
+}
+
+module.exports = SequelizeOptions
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

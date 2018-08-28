@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">lib/libs/InputDataValidator.js | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  
+  <a href="identifiers.html">Referencia</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/libs/InputDataValidator.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** @ignore */ const _               = require(&apos;lodash&apos;)
+/** @ignore */ const path            = require(&apos;path&apos;)
+/** @ignore */ const handlebars      = require(&apos;handlebars&apos;)
+/** @ignore */ const Sequelize       = require(&apos;sequelize&apos;)
+/** @ignore */ const bodyParser      = require(&apos;body-parser&apos;)
+/** @ignore */ const ValidationError = require(&apos;./ValidationError&apos;)
+
+/**
+* @ignore
+* Clase Validator
+*/
+class InputDataValidator {
+  /**
+  * Devuelve un middleware para Validar los datos de entrada.
+  * @param {Object}   input          - Objeto input.
+  * @param {Object}   options        - Opciones de configuraci&#xF3;n.
+  * @param {String[]} options.remove - Contiene los campos que ser&#xE1;n removidos si no han sdo especificados en el input.
+  * @return {Function}
+  */
+  static validate (input, options = {}) {
+    options.remove = options.remove || [&apos;body&apos;]
+    InputDataValidator.ERROR_MSG = require(path.resolve(__dirname, `./lang/${InputDataValidator.LANGUAJE}.js`)).errors
+    if (!input) {
+      return (req, res, next) =&gt; { next() }
+    }
+    _addValidator(input)
+    const inputMiddleware = async (req, res, next) =&gt; {
+      try {
+        const body    = req.body    || {}
+        const headers = req.headers || {}
+        const params  = req.params  || {}
+        const query   = req.query   || {}
+        const { errors, result } = await _validate(input, { body, headers, params, query })
+        if (errors.length &gt; 0) {
+          return next(new ValidationError(errors))
+        }
+        if (result.headers) Object.keys(result.headers).forEach(key =&gt; { req.headers[key] = result.headers[key] })
+        if (result.params)  Object.keys(result.params).forEach(key  =&gt; { req.params[key]  = result.params[key]  })
+        if (result.query)   Object.keys(result.query).forEach(key   =&gt; { req.query[key]   = result.query[key]   })
+        if (result.body)    Object.keys(result.body).forEach(key    =&gt; { req.body[key]    = result.body[key]    })
+        if (options.remove.includes(&apos;headers&apos;)) req.headers = result.headers
+        if (options.remove.includes(&apos;params&apos;))  req.params  = result.params
+        if (options.remove.includes(&apos;query&apos;))   req.query   = result.query
+        if (options.remove.includes(&apos;body&apos;))    req.body    = result.body
+        next()
+      } catch (err) { next(err) }
+    }
+    return [bodyParser.json(), inputMiddleware]
+  }
+
+  /**
+  * Indica si un objeto es requerido o no.
+  * Si alguno de sus campos contiene la propiedad allowNullObj igual a false, el objeto ser&#xE1; requerido.
+  * @param {Object} obj - Objeto de tipo FieldGroup.
+  * @return {Boolean}
+  */
+  static isRequired (obj) {
+    if (_isField(obj)) { return (typeof obj.allowNullObj !== &apos;undefined&apos;) &amp;&amp; (obj.allowNullObj === false) }
+    if (Array.isArray(obj)) { obj = obj[0] }
+    for (let prop in obj) {
+      const FIELD = obj[prop]
+      if (_isField(FIELD) &amp;&amp; (typeof FIELD.allowNullObj !== &apos;undefined&apos;) &amp;&amp; (FIELD.allowNullObj === false)) {
+        return true
+      }
+    }
+    return false
+  }
+}
+
+/**
+* @ignore
+* Parsea el valor de un campo, seg&#xFA;n el tipo de dato.
+* @param {SequelizeField} field - Campo de referencia.
+* @param {Object}         value - Dato a parsear.
+* @return {Object} Dato parseado.
+*/
+function _parseValue (field, value) {
+  if (field.type.key === &apos;STRING&apos;)   { return Sequelize.Validator.toString(value + &apos;&apos;) }
+  if (field.type.key === &apos;TEXT&apos;)     { return Sequelize.Validator.toString(value + &apos;&apos;) }
+  if (field.type.key === &apos;ENUM&apos;)     { return Sequelize.Validator.toString(value + &apos;&apos;) }
+  if (field.type.key === &apos;INTEGER&apos;)  { return Sequelize.Validator.toInt(value + &apos;&apos;) }
+  if (field.type.key === &apos;FLOAT&apos;)    { return Sequelize.Validator.toFloat(value + &apos;&apos;) }
+  if (field.type.key === &apos;BOOLEAN&apos;)  { return Sequelize.Validator.toBoolean(value + &apos;&apos;) }
+  if (field.type.key === &apos;DATE&apos;)     { return Sequelize.Validator.toDate(value + &apos;&apos;) }
+  if (field.type.key === &apos;DATEONLY&apos;) { return Sequelize.Validator.toString(value + &apos;&apos;) }
+  if (field.type.key === &apos;TIME&apos;)     { return Sequelize.Validator.toString(value + &apos;&apos;) }
+  if (field.type.key === &apos;JSON&apos;)     { return typeof value === &apos;string&apos; ? JSON.parse(value) : value }
+  if (field.type.key === &apos;JSONB&apos;)    { return typeof value === &apos;string&apos; ? JSON.parse(value) : value }
+  if (field.type.key === &apos;UUID&apos;)     { return Sequelize.Validator.toString(value + &apos;&apos;) }
+  if (field.type.key === &apos;ARRAY&apos;) {
+    const values = []
+    if (field.type.type.key === &apos;STRING&apos;)   for (let i in value) { values.push(Sequelize.Validator.toString(value[i] + &apos;&apos;)) }
+    if (field.type.type.key === &apos;TEXT&apos;)     for (let i in value) { values.push(Sequelize.Validator.toString(value[i] + &apos;&apos;)) }
+    if (field.type.type.key === &apos;ENUM&apos;)     for (let i in value) { values.push(Sequelize.Validator.toString(value[i] + &apos;&apos;)) }
+    if (field.type.type.key === &apos;INTEGER&apos;)  for (let i in value) { values.push(Sequelize.Validator.toInt(value[i] + &apos;&apos;)) }
+    if (field.type.type.key === &apos;FLOAT&apos;)    for (let i in value) { values.push(Sequelize.Validator.toFloat(value[i] + &apos;&apos;)) }
+    if (field.type.type.key === &apos;BOOLEAN&apos;)  for (let i in value) { values.push(Sequelize.Validator.toBoolean(value[i] + &apos;&apos;)) }
+    if (field.type.type.key === &apos;DATE&apos;)     for (let i in value) { values.push(Sequelize.Validator.toDate(value[i] + &apos;&apos;)) }
+    if (field.type.type.key === &apos;DATEONLY&apos;) for (let i in value) { values.push(Sequelize.Validator.toString(value[i] + &apos;&apos;)) }
+    if (field.type.type.key === &apos;TIME&apos;)     for (let i in value) { values.push(Sequelize.Validator.toString(value[i] + &apos;&apos;)) }
+    if (field.type.type.key === &apos;JSON&apos;)     for (let i in value) { values.push(typeof value[i] === &apos;string&apos; ? JSON.parse(value[i]) : value[i]) }
+    if (field.type.type.key === &apos;JSONB&apos;)    for (let i in value) { values.push(typeof value[i] === &apos;string&apos; ? JSON.parse(value[i]) : value[i]) }
+    if (field.type.type.key === &apos;UUID&apos;)     for (let i in value) { values.push(Sequelize.Validator.toString(value[i] + &apos;&apos;)) }
+    return values
+  }
+  return value
+}
+
+/**
+* @ignore
+* Valida un objeto de tipo FieldGrou&#x1E55;.
+* Devuelve un objeto que contiene el resultado de la validaci&#xF3;n.
+*  - errors contiene todos los errores encontrados.
+*  - result contiene un objeto con los datos validos seg&#xFA;n el formato de entrada.
+* @param {Object} field                - Objeto de referencia (FieldGroup Array u Object)
+* @param {String|Boolean|Number} value - Dato a validar.
+* @param {String} path                 - Ruta del campo.
+* @param {String} fieldName            - Nombre del campo.
+* @return {Object}
+*/
+async function _validate (field, value, path = &apos;&apos;, fieldName = &apos;&apos;) {
+  // El campo es de tpo FIELD
+  if (_isField(field)) {
+    return _validateField(field, value, path, fieldName)
+  }
+  // El campo es de tpo ARRAY
+  if (Array.isArray(field)) {
+    if (typeof value === &apos;undefined&apos;) {
+      return { errors: [], result: undefined }
+    }
+    let err = []
+    if (!Array.isArray(value)) {
+      err.push({ path: path, value: value, msg: handlebars.compile(InputDataValidator.ERROR_MSG.isArray)({ fieldName: _toWords(fieldName) }) })
+      return { errors: err, result: [] }
+    }
+    let res = []
+    for (let i in value) {
+      const { errors, result } = await _validate(field[0], value[i], path, fieldName)
+      err = err.concat(errors)
+      if (typeof result !== &apos;undefined&apos;) { res.push(result) }
+    }
+    return { errors: err, result: res }
+  }
+  // El campo es de tpo OBJECT
+  return _validateObject(field, value, path, fieldName)
+}
+
+/**
+* @ignore
+* Valida un objeto de tipo Field.
+* Devuelve un objeto que contiene el resultado de la validaci&#xF3;n.
+*  - errors contiene todos los errores encontrados.
+*  - result contiene un objeto con los datos validos seg&#xFA;n el formato de entrada.
+* @param {Object} field                - Objeto de referencia (Field)
+* @param {String|Boolean|Number} value - Dato a validar.
+* @param {String} path                 - Ruta del campo.
+* @param {String} fieldName            - Nombre del campo.
+* @return {Object}
+*/
+async function _validateField (field, value, path, fieldName) {
+  let errors = []
+  try {
+    const MODEL = field.validator.build()
+    MODEL.dataValues[fieldName] = value
+    await MODEL.validate({ fields: [fieldName] })
+    value = (typeof value !== &apos;undefined&apos;) ? _parseValue(field, value) : undefined
+  } catch (err) {
+    if (!err.name || (err.name !== &apos;SequelizeValidationError&apos;)) { throw err }
+    for (let i in err.errors) {
+      const ERROR    = err.errors[i]
+      const FIELD    = field.validator.attributes[fieldName]
+      const VALIDATE = FIELD.validate ? FIELD.validate[ERROR.validatorKey] : undefined
+      let msg = VALIDATE ? VALIDATE.msg : ERROR.message
+      if (typeof VALIDATE === &apos;function&apos;) { msg += ` ${ERROR.message}` }
+      errors.push({
+        path  : path,
+        value : value,
+        msg   : (ERROR.validatorKey === &apos;is_null&apos;) ? FIELD.allowNullMsg : msg
+      })
+    }
+  }
+  return { errors, result: value }
+}
+
+/**
+* @ignore
+* Valida un objeto.
+* Devuelve un objeto que contiene el resultado de la validaci&#xF3;n.
+*  - errors contiene todos los errores encontrados.
+*  - result contiene un objeto con los datos validos seg&#xFA;n el formato de entrada.
+* @param {Object} field                - Objeto de referencia (FieldGroup Object).
+* @param {String|Boolean|Number} value - Dato a validar.
+* @param {String} path                 - Ruta del campo.
+* @param {String} fieldName            - Nombre del campo.
+* @return {Object}
+*/
+async function _validateObject (field, value, path, fieldName) {
+  let err = []
+  if (typeof value === &apos;undefined&apos;) {
+    if (InputDataValidator.isRequired(field)) {
+      err.push({ path: path, value: value, msg: handlebars.compile(InputDataValidator.ERROR_MSG.allowNullObj)({ fieldName: _toWords(fieldName) }) })
+    }
+    return { errors: err, result: undefined }
+  }
+  if (typeof value !== &apos;object&apos; || Array.isArray(value)) {
+    err.push({ path: path, value: value, msg: handlebars.compile(InputDataValidator.ERROR_MSG.isObject)({ fieldName: _toWords(fieldName) }) })
+    return { errors: err, result: {} }
+  }
+  let res = {}
+  for (let prop in field) {
+    const path2 = (path === &apos;&apos;) ? prop : `${path}.${prop}`
+    const { errors, result } = await _validate(field[prop], value[prop], path2, prop)
+    err = err.concat(errors)
+    if (typeof result !== &apos;undefined&apos;) { res[prop] = result }
+  }
+  return { errors: err, result: res }
+}
+
+/**
+* @ignore
+* Funci&#xF3;n que indica si un objeto es un campo o no.
+* @param {Object} obj Objeto.
+* @return {String}
+*/
+function _isField (obj) {
+  if (obj &amp;&amp; obj._modelAttribute &amp;&amp; (obj._modelAttribute === true)) {
+    return true
+  }
+  return false
+}
+
+/**
+* @ignore
+* Adiciona la propiedad validator.
+* @param {Object} field     - Atributo.
+* @param {String} path      - Ruta del nombre del campo.
+* @param {String} fieldName - Nombre del campo.
+*/
+function _addValidator (field, path = &apos;&apos;, fieldName = &apos;&apos;) {
+  const PARAMS = {
+    dialect          : &apos;postgres&apos;,
+    lang             : &apos;es&apos;,
+    logging          : false,
+    operatorsAliases : false,
+    define           : { underscored: true, freezeTableName: true, timestamps: false }
+  }
+  if (_isField(field)) {
+    const FIELDS = {}
+    FIELDS[fieldName] = _.cloneDeep(field)
+    _updateErrorMsg(FIELDS[fieldName], fieldName)
+    const MODEL_NAME = field.Model ? field.Model.name : &apos;DEFAULT&apos;
+    field.validator = (new Sequelize(null, null, null, PARAMS)).define(MODEL_NAME, FIELDS)
+  } else {
+    if (Array.isArray(field)) {
+      _addValidator(field[0], path, fieldName)
+    } else {
+      for (let prop in field) {
+        const path2 = (path === &apos;&apos;) ? prop : `${path}.${prop}`
+        _addValidator(field[prop], path2, prop)
+      }
+    }
+  }
+}
+
+/**
+* @ignore
+* Actualiza los mensajes de error.
+* @param {String} field     - Atributo.
+* @param {String} fieldName - Nombre del campo.
+* @return {String}
+*/
+function _updateErrorMsg (field, fieldName) {
+  _normalizeValidate(field)
+  const data = { fieldName: _toWords(field.fieldName || fieldName) }
+  if (field.validate) {
+    Object.keys(field.validate).forEach(valKey =&gt; {
+      let msg = field.validate[valKey].msg || InputDataValidator.ERROR_MSG[valKey] || InputDataValidator.ERROR_MSG.default
+      data.args = field.validate[valKey].args
+      if (Array.isArray(data.args)) { for (let i = 0; i &lt; data.args.length; i++) { data[`args${i}`] = data.args[i] } }
+      if (msg) { msg = handlebars.compile(msg)(data) }
+      if (typeof field.validate[valKey] === &apos;boolean&apos;) {
+        field.validate[valKey] = { msg }
+      } else {
+        field.validate[valKey].msg = msg
+      }
+    })
+  }
+  field.allowNullMsg = handlebars.compile(field.allowNullMsg || InputDataValidator.ERROR_MSG.allowNull)(data)
+}
+
+/**
+* @ignore
+* Normaliza la propiedad validate.
+* @param {Object} field Atributo de un modelo sequelize.
+*/
+function _normalizeValidate (field) {
+  if (field.validate) {
+    Object.keys(field.validate).forEach(key =&gt; {
+      let validateItem = field.validate[key]
+      if (typeof validateItem === &apos;function&apos;) { return }
+      // Adiciona la propiedad args, si el validador no lo tuviera.
+      // Ejemplo:    min: 10   -&gt;   min: { args: 10 }           isInt: true    -&gt;    isInt: { args: true }
+      if ((typeof validateItem !== &apos;object&apos;) || (typeof validateItem.args === &apos;undefined&apos;)) {
+        field.validate[key] = { args: validateItem }
+      }
+      // Convierte los validadores booleanos:    isInt: { args: true }   -&gt;    isInt: true
+      // Sequelize no admite validateKey: { args: true }, es por eso que si existe, &#xE9;sta se elimina.
+      if (typeof field.validate[key].args === &apos;boolean&apos;) {
+        delete field.validate[key].args
+        if (typeof field.validate[key].msg === &apos;undefined&apos;) {
+          field.validate[key] = true
+        }
+      }
+      // Corrige el problema cuando se declaran args con valores de 0 y 1.
+      // Se corrige porque Sequelize los toma como valores booleanos, cuando deber&#xED;a tomarlos como n&#xFA;meros enteros.
+      // Ejemplo:     min: { args: 0 }  -&gt;   min: { args: [0] }    y   min: { args: 1 }  -&gt;   min: { args: [1] }
+      if ((typeof field.validate[key].args !== &apos;undefined&apos;) &amp;&amp; ((field.validate[key].args === 0) || (field.validate[key].args === 1))) {
+        field.validate[key].args = [field.validate[key].args]
+      }
+    })
+  }
+}
+
+/**
+* @ignore
+* Converte una palabra compuesta (frase sin espacios) en palabras separadas.
+* @param {String} str - Palabra compuesta.
+* @return {String}
+*/
+function _toWords (str) {
+  return _.words(str).toString().replace(/,/g, &apos; &apos;)
+}
+
+InputDataValidator.LANGUAJE = &apos;es&apos;
+
+module.exports = InputDataValidator
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

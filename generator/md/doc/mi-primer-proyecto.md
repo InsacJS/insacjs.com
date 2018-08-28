@@ -293,11 +293,6 @@ $ npm run setup
 
  [archivo] app.before.hook.js (default) ✓
 
- Módulo API ...
-
- [archivo] /src/modules/API/models/persona.model.js ✓
- [archivo] /src/modules/API/models/post.model.js ✓
-
 
  INSTALANDO APLICACIÓN
  =====================
@@ -307,25 +302,36 @@ $ npm run setup
 
  Módulo API ...
 
+ [archivo] /src/modules/API/models/persona.model.js ✓
+ [archivo] /src/modules/API/models/post.model.js ✓
+
  CREATE SCHEMA api ... ✓
 
- DROP TABLE api.persona ... ✓
- DROP TABLE api.post ...... ✓
+ DROP TABLE api.persona ... (No existe) ✓
+ DROP TABLE api.post ...... (No existe) ✓
 
  CREATE TABLE api.persona ... ✓
  CREATE TABLE api.post ...... ✓
 
  [archivo] /src/modules/API/seeders/persona.seed.js ✓
 
- BULK INSERT api.persona [1 registros] ...
+ BULK INSERT api.persona [1 registro] ...
 
- INSERT persona.seed.js  (Se insertaron 1 registros en 0.02 seg.) ✓
+ [resultado] persona.seed.js  (Se insertó 1 registro en 0.024 seg.) ✓
 
  [archivo] /src/modules/API/seeders/post.seed.js ✓
 
- BULK INSERT api.post [1 registros] ...
+ BULK INSERT api.post [1 registro] ...
 
- INSERT post.seed.js ... (Se insertaron 1 registros en 0.008 seg.) ✓
+ [resultado] post.seed.js ... (Se insertó 1 registro en 0.008 seg.) ✓
+
+
+ CONFIGURACIÓN FINAL
+ ===================
+
+ [archivo] app.after.hook.js (default) ✓
+
+ [apidoc] Módulo API ... ✓
 
 
  La aplicación ha sido instalada con éxito.  
@@ -359,17 +365,15 @@ $ npm run start
 
  [archivo] app.before.hook.js (default) ✓
 
- Módulo API ...
-
- [archivo] /src/modules/API/models/persona.model.js ✓
- [archivo] /src/modules/API/models/post.model.js ✓
-
 
  CARGANDO APLICACIÓN
  ===================
 
 
  Módulo API ...
+
+ [archivo] /src/modules/API/models/persona.model.js ✓
+ [archivo] /src/modules/API/models/post.model.js ✓
 
  [archivo] /src/modules/API/dao/persona.dao.js ✓
  [archivo] /src/modules/API/dao/post.dao.js ✓
@@ -423,8 +427,8 @@ Resultado:
 
 ## `http://localhost:4000`
 
-![Insac Welcome](assets/img/welcome.png)
+![Captura 01](assets/img/mi-primer-proyecto/blog/captura01.jpg)
 
 ## `http://localhost:4000/apidoc/API`
 
-![Insac APIDOC](assets/img/apidoc.png)
+![Captura 02](assets/img/mi-primer-proyecto/blog/captura02.jpg)

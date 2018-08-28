@@ -2,6 +2,8 @@
 
 Contiene archivos con extensión `.log`. Estos archivos se van creando automáticamente cuando se realizan peticiones.
 
+La ubicación de esta carpeta puede cambiarse con la variable de entorno `process.env.LOGS_PATH`
+
 ## Niveles de logs
 
 | Nombre    | Nivel | Descripción                |
