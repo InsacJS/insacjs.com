@@ -1,10 +1,11 @@
-# Archivo `ecosystem.json`
+# Archivo `ecosystem.config.json`
 
 Este archivo es utlizado por `PM2` para desplegar una aplicación de manera continua.
 
 ```txt
 app
-  └─ ecosystem.json
+  ├─ ecosystem.config.json
+  └─ ecosystem.config.json.example
 ```
 
 Modo de uso:
@@ -14,7 +15,7 @@ Modo de uso:
 npm install -g pm2
 
 # Despliegue de la aplicación
-pm2 start ecosystem.json
+pm2 start ecosystem.config.json
 ```
 
 **Ejemplo:**

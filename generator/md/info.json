@@ -6,10 +6,10 @@
       "icon"   : "library_books",
       "groups" : [
         { "key": "start", "name": "Primeros pasos" },
+        { "key": "archivo", "name": "Archivos principales" },
         { "key": "config", "name": "Archivos de configuración" },
         { "key": "resource", "name": "Archivos de un recurso" },
         { "key": "carpeta", "name": "Componentes" },
-        { "key": "archivo", "name": "Archivos" },
         { "key": "otros", "name": "Otras funciones" }
       ],
       "capitulos": [
@@ -22,6 +22,7 @@
         { "file": "config-logger",   "name": "Archivo logger.config.js",    "group": "config" },
         { "file": "config-response", "name": "Archivo response.config.js",  "group": "config" },
         { "file": "config-apidoc",   "name": "Archivo apidoc.config.js",    "group": "config" },
+        { "file": "ecosystem",    "name": "Archivo ecosystem.config.json",  "group": "config" },
         { "file": "config",       "name": "Carpeta config",                 "group": "carpeta" },
         { "file": "dao",          "name": "Carpeta dao",                    "group": "carpeta" },
         { "file": "hooks",        "name": "Carpeta hooks",                  "group": "carpeta" },
@@ -35,7 +36,6 @@
         { "file": "component",    "name": "Carpetas personaizadas",         "group": "carpeta" },
         { "file": "app",          "name": "Archivo app.js",                 "group": "archivo" },
         { "file": "package",      "name": "Archivo package.json",           "group": "archivo" },
-        { "file": "ecosystem",    "name": "Archivo ecosystem.json",         "group": "archivo" },
         { "file": "module",       "name": "Archivos *.module.js",           "group": "archivo" },
         { "file": "route",        "name": "Archivos *.route.js",            "group": "resource" },
         { "file": "input",        "name": "Archivos *.input.js",            "group": "resource" },

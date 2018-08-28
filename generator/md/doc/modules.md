@@ -43,11 +43,11 @@ app
 | `config`           | Contiene los archivos de configuración del módulo. Ver: [Configuración a nivel de módulos](./doc/config#configuracion-a-nivel-de-modulos)                                                                       |
 | `dao`            | Contiene los archivos dao que se utilizan para realizar operaciones con la base de datos. Ver: [Carpeta dao](./doc/dao#carpeta-dao) |
 | `hooks`   | Contiene archivos que se ejecutan antes y después de cargar el módulo. Ver: [Hooks a nivel de módulos](./doc/hooks#hooks-a-nivel-de-los-modulos)                                                   |
-| `models`         | Contiene todos los modelos. Ver: [Carpeta models](./doc/models) |
-| `resources`      | Contiene todos los recursos. Ver: [Carpeta resources](./doc/resources) |
-| `seeders`        | Contiene archivos seeders. Ver: [Carpeta seeders](./doc/seeders) |
-| `tools`          | Contiene archivos utilitarios. Ver: [Carpeta tools](./doc/tools) |
-| `auth.module.js` | Este archivo se encarga de instanciar al módulo. Ver: [Archivo *.module.js](./doc/module) |
+| `models`         | Contiene todos los modelos. Ver: [Carpeta models](./doc/models#carpeta-models) |
+| `resources`      | Contiene todos los recursos. Ver: [Carpeta resources](./doc/resources#carpeta-resources) |
+| `seeders`        | Contiene archivos seeders. Ver: [Carpeta seeders](./doc/seeders#carpeta-seeders) |
+| `tools`          | Contiene archivos utilitarios. Ver: [Carpeta tools](./doc/tools#carpeta-tools) |
+| `auth.module.js` | Este archivo se encarga de instanciar al módulo. Ver: [Archivo *.module.js](./doc/module#archivos-modulejs) |
 
 ## Modo de uso
 

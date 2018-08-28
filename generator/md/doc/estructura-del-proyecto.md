@@ -39,6 +39,8 @@ app
   │     └─ mocha.opts
   ├─ .eslintrc.js
   ├─ .gitignore
+  ├─ ecosystem.config.json
+  ├─ ecosystem.config.json.example
   ├─ index.js
   ├─ package.json
   ├─ README.md
@@ -63,6 +65,7 @@ app
 | `test`           | Esta carpeta contiene las pruebas unitarias y de integración de la aplcación. Ver: [Carpeta test](./doc/test#carpeta-test) |
 | ``.eslintrc.js`` | Este archivo es utilizado por `ESLint`, soportado por la mayoría de los editores de código. ESLint es una herramienta que identifica y reporta patrones y errores en código ECMAScript/JavaScrip. |
 | `.gitignore`     | Contiene información acerca de los archivos que serán ignorados por git al momento de subir los cambios al repositorio. |
+| `ecosystem.config.json` | Este archivo es utilizado por `PM2` para desplegar aplicaciones de manera continua. Ver: [Archivo ecosystem.config.js](./doc/ecosystem#archivo-ecosystemconfigjson) |
 | `index.js`       | Es el primer archivo que se ejecuta cuando se carga la aplicación.                                           |
 | `package.json`   | Contiene los scripts de ejecución e información acerca del proyecto y sus dependencias. Ver: [Archivo package.json](./doc/package#archivo-packagejson) |
 | `README.md`      | Contiene información sobre de la aplicación, requerimientos mínimos, guía de instalación, referencias, etc.  |

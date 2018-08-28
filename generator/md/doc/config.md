@@ -1,6 +1,6 @@
 # Carpeta `config`
 
-Contiene archivos con extensión `.config.js`. Algunos valores pueden ser modificados utilizando [Variables de entorno](./doc/env), dando prioridad a estas últimas.
+Contiene archivos con extensión `.config.js`. Algunos valores pueden ser modificados utilizando [Variables de entorno](./doc/env#variables-de-entorno), dando prioridad a estas últimas.
 
 ## Configuración a nivel de aplicación
 
@@ -24,11 +24,11 @@ app
 
 | Nombre               | Descripción                                                                                   |
 | -------------------- | --------------------------------------------------------------------------------------------- |
-| `database.config.js` | Configuración de la base de datos. Ver: [Archivo database.config.js](./doc/config-database) |
-| `server.config.js`   | Configuración del servidor. Ver: [Archivo server.config.js](./doc/config-server) |
-| `logger.config.js`   | Configuración de logger. Ver: [Archivo logger.config.js](./doc/config-logger) |
-| `response.config.js` | Configuración del formato de respuesta respuesta. Ver: [Archivo response.config.js](./doc/config-response) |
-| `apidoc.config.js`   | Configuración del apidoc. Ver: [Archivo apidoc.config.js](./doc/config-apidoc) |
+| `database.config.js` | Configuración de la base de datos. Ver: [Archivo database.config.js](./doc/config-database#archivo-databaseconfigjs) |
+| `server.config.js`   | Configuración del servidor. Ver: [Archivo server.config.js](./doc/config-server#archivo-serverconfigjs) |
+| `logger.config.js`   | Configuración de logger. Ver: [Archivo logger.config.js](./doc/config-logger#archivo-loggerconfigjs) |
+| `response.config.js` | Configuración del formato de respuesta respuesta. Ver: [Archivo response.config.js](./doc/config-response#archivo-responseconfigjs) |
+| `apidoc.config.js`   | Configuración del apidoc. Ver: [Archivo apidoc.config.js](./doc/config-apidoc#archivo-apidocconfigjs) |
 
 ## Configuración a nivel de módulos
 
