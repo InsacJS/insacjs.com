@@ -78,17 +78,17 @@ DAO._restore         = (t, options) => {}   : Promise
 
 ## Descripción de los parámetros
 
-| Parámetro  | Tipo          | Descripción                                      | Valor por defecto | Ejemplo                                      |
-| ---------- | ------------- | ------------------------------------------------ | ----------------- | -------------------------------------------- |
-| `t`        | `Transaction` | Transacción                                      | `null`            | `findOne(t)`                                 |
-| `data`     | `Object`      | Datos para crear o modificar.                    | `null`            | `create(null, { nombre: 'John' })`           |
-| `where`    | `Object`      | Opción de consulta where.                        | `null`            | `findOne(null, { id: 1 })`                   |
-| `not`      | `Object`      | Opción de consulta not.                          | `null`            | `findAll(null, null, { id: 1 })`             |
-| `include`  | `String[]`    | Associaciones a incluir.                         | `[]`              | `findAll(null, null, null, ['usuario.rol'])` |
-| `paranoid` | `Boolean`     | Indica si se excluirán los registros eliminados. | `true`            | `findAll(null, null, null, null, false)`     |
-| `options`  | `Object`      | Consulta Sequelize.                              | `null`            | `_findOne(null, { where: { id: 1 } }`        |
+| Parámetro  | Tipo          | Descripción                                      | Valor por defecto |
+| ---------- | ------------- | ------------------------------------------------ | ----------------- |
+| `t`        | `Transaction` | Transacción                                      | `null`            |
+| `data`     | `Object`      | Datos para crear o modificar.                    | `null`            |
+| `where`    | `Object`      | Opción de consulta where.                        | `null`            |
+| `not`      | `Object`      | Opción de consulta not.                          | `null`            |
+| `include`  | `String[]`    | Associaciones a incluir.                         | `[]`              |
+| `paranoid` | `Boolean`     | Indica si se excluirán los registros eliminados. | `true`            |
+| `options`  | `Object`      | Consulta Sequelize.                              | `null`            |
 
-Modo de uso: Sin transacciones
+**Ejemplo.-** Sin transacciones
 
 ```js
 const PERSONA  = await app.AUTH.dao.persona.findOne(null, { id: 1 })
@@ -102,7 +102,7 @@ const PERSONAS = await app.AUTH.dao.personas.findAll(null, null, null, ['usuario
 const USUARIOS = await app.AUTH.dao.personas.findAll(null, { nombre: 'John' }, null, ['rol'])
 ```
 
-Modo de uso: Con transacciones
+**Ejemplo.-** Con transacciones
 
 ```js
 await app.DB.sequelize.transaction(async (t) => {
@@ -118,7 +118,7 @@ await app.DB.sequelize.transaction(async (t) => {
 })
 ```
 
-Moo de uso: Funciones especiales
+**Ejempl.-** Funciones especiales
 
 ```js
 const OPTIONS = {

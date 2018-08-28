@@ -16,7 +16,7 @@ module.exports = (app) => {
 }
 ```
 
-Para crear un objeto de tipo `Field.group()`, revise la sección [FieldGroups](./doc/field#funcion-group)
+Para crear un objeto de tipo `Field.group()`, revise la sección [Objeto Field](./doc/field#funcion-group)
 
 **Nota.-** El flag `// <!-- [CLI] - [COMPONENT] --!> //` es utilizado por `insac-cli` para modificar el archivo.
 

@@ -59,7 +59,7 @@ module.exports = (sequelize, Sequelize) => {
 }
 ```
 
-Para definir los atributos de un modelo puede utilizar el [Objeto Field](./doc/field).
+Para definir los atributos de un modelo puede utilizar el [Objeto Field](./doc/field#objeto-field).
 
 ## Asociaciones
 

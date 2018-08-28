@@ -40,7 +40,7 @@ service.addModule('API')
 
 ## Función `addAction`
 
-Esta función permite ejecutar funciones en un evento determinado:
+Esta función permite ejecutar funciones en un evento determinado.
 
 **Ejemplo:**
 

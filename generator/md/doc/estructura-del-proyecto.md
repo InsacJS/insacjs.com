@@ -55,7 +55,7 @@ app
 | `logs`           | Contiene archivos de logs. Estos archivos se van creando automáticamente cuando se realizan peticiones. Ver: [Carpeta logs](./doc/logger#carpeta-logs) |
 | `node_modules`   | Contiene todas las dependencias que requiere el proyecto.                                                    |
 | `public`         | Esta carpeta es para almacenar ficheros estáticos, mismos que pueden ser accedidos desde el navegador cuando se ejecuta el servidor. |
-| `public.apidoc`  | Contiene el apidoc de aquellos módulos que tengan al menos un recurso.                                       |
+| `public/apidoc`  | Contiene el apidoc que se genera al ejecutar la aplicación.                             |
 | `src`            | Contiene todos los componentes de la aplicación.                                                             |
 | `src/config`     | Contiene todos los archivos de configuración a nivel de aplicación. Ver: [Carpeta config](./doc/config#carpeta-config)                                         |
 | `src/hooks`      | Contiene archivos que se ejecutan antes y después de cargar la aplicación. Ver: [Hooks a nivel de aplicación](./doc/hooks#hooks-a-nivel-de-aplicacion) |

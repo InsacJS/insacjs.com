@@ -1,7 +1,7 @@
 
 # Hola mundo
 
-Para preparar un proyecto básico, desde la terminal ejecuta los siguientes comandos:
+Para comenzar, ejecuta los siguientes comandos:
 
 ```bash
 # Crea la carpeta del proyecto
@@ -129,7 +129,7 @@ service.init().catch(e => {
 module.exports = service
 ```
 
-Después, ejecuta la aplicación:
+Ahora ya se puede ejecutar la aplicación:
 
 ```bash
 $ node index.js

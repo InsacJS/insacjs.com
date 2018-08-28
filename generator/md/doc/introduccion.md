@@ -27,7 +27,7 @@ A continuación de describen las diferentes tecnologías y herramientas mas impo
 | `Git`       | ^2.7     | Sistema de control de versiones distribuido de código abierto. |
 | `Eslint`    | ^4.19    | Herramienta de linting para JavaScript.                        |
 
-## Base de datos compatibles:
+## Soporta los siguientes gestores de base de datos:
 
 | Nombre        | Versión  |
 | ------------- | -------- |
@@ -36,7 +36,7 @@ A continuación de describen las diferentes tecnologías y herramientas mas impo
 | `MSSQLSERVER` | 2017     |
 | `SQLite`      | 3.24     |
 
-## Caracteristicas
+## Características
 
 Entre las características más importantes del framework se encuentran las siguientes:
 

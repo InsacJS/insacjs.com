@@ -41,8 +41,8 @@ libros
 
 Cada archivo contiene un objeto cuyas propiedades son las claves `KEY` asociadas a una ruta.
 
-- [Archivo *.controller.js](./doc/controller)
-- [Archivo *.input.js](./doc/input)
-- [Archivo *.middleware.js](./doc/middleware)
-- [Archivo *.output.js](./doc/output)
-- [Archivo *.route.js](./doc/route)
+- [Archivo *.controller.js](./doc/controller#archivo-controllerjs)
+- [Archivo *.input.js](./doc/input#archivo-inputjs)
+- [Archivo *.middleware.js](./doc/middleware#archivo-middlewarejs)
+- [Archivo *.output.js](./doc/output#archivo-outputjs)
+- [Archivo *.route.js](./doc/route#archivo-routejs)
