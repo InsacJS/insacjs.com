@@ -1,6 +1,6 @@
 # Mi Primer Proyecto
 
-Para este proyecto, se utilizará la herramienta `insac-cli`. Para saber más acerca del uso de esta herramienta, revise la sección [Programa insac-cli](./doc/cli#interfaz-de-linea-de-comandos-insac-cli).
+Para este proyecto, se utilizará el [Programa insac-cli](./doc/cli#interfaz-de-linea-de-comandos-insac-cli).
 
 ```bash
 npm install -g insac-cli

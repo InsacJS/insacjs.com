@@ -17,6 +17,7 @@
         { "file": "estructura-del-proyecto", "name": "Estructura del proyecto", "group": "start" },
         { "file": "hola-mundo",              "name": "Hola Mundo",              "group": "start" },
         { "file": "mi-primer-proyecto",      "name": "Mi primer proyecto",      "group": "start" },
+        { "file": "cli",                     "name": "Programa insac-cli",      "group": "start" },
         { "file": "config-database", "name": "Archivo database.config.js",  "group": "config" },
         { "file": "config-server",   "name": "Archivo server.config.js",    "group": "config" },
         { "file": "config-logger",   "name": "Archivo logger.config.js",    "group": "config" },
@@ -44,7 +45,6 @@
         { "file": "controller",   "name": "Archivos *.controller.js",       "group": "resource" },
         { "file": "field",        "name": "Objeto Field",                   "group": "otros" },
         { "file": "response",     "name": "Objeto Response",                "group": "otros" },
-        { "file": "cli",          "name": "Programa insac-cli",             "group": "otros" },
         { "file": "route-filter", "name": "Ruta con un Sistema de filtros", "group": "otros" },
         { "file": "filters",      "name": "Sistema de filtros",             "group": "otros" },
         { "file": "env",          "name": "Variables de entorno",           "group": "otros" }

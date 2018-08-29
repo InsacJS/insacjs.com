@@ -1,6 +1,8 @@
-# Interfaz de línea de comandos `insac-cli`
+# Interfaz de línea de comandos
 
-Esta herramienta permite la creación de nuevos proyectos, adición de nuevos componentes y genera recursos de tipo CRUD de una manera fácil y sencilla.
+Esta herramienta permite la creación de nuevos proyectos para el [Framework Insac JS](https://github.com/insacjs/insac), adición de nuevos componentes y genera recursos de tipo CRUD de una manera fácil y sencilla.
+
+La documentación se encuentra disponible en la página [https://insacjs.com](https://insacjs.com).
 
 ## Instalación
 
@@ -34,7 +36,7 @@ insac [opciones] [commando]
   gen:resource [options] <resourceName>  Genera un recurso (CRUD) con el código autogenerado.
 ```
 
-## Ejempos
+## Ejemplos
 
 ```bash
   $ insac new blog
