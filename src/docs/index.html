@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-ice="title">Home | Insac Framework</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
@@ -12,9 +13,10 @@
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
-  <a href="http://insacjs.com" style="display: flex; align-items: center"><img src="./image/insac.png" style="width:25px;"> &#xA0; &#xA0;Inicio</a>
+  <a href="https://insacjs.com" style="display: flex; align-items: center"> Inicio </a>
+  <a href="https://insacjs.com/doc/introduccion" style="display: flex; align-items: center"> Tutoriales </a>
   
-  <a href="identifiers.html">Referencia</a>
+  <a href="identifiers.html">Referencias</a>
   <a href="source.html">C&#xF3;digo fuente</a>
   
   <div class="search-box">
@@ -24,7 +26,7 @@
   </span>
     <ul class="search-result"></ul>
   </div>
-<a style="position:relative; top:3px;" href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+<a href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
@@ -83,9 +85,36 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p><img src="assets/insac-logo-256.png" alt="Logo Insac JS"></p>
-<p>Insac JS es un framework de creaci&#xF3;n de servicios web basado en lenguaje script que utiliza arquitectura REST.</p>
-<h2 id="filosof&#xED;a">Filosof&#xED;a</h2><p>El framework est&#xE1; enfocado en la organizaci&#xF3;n, automatizaci&#xF3;n y reutilizaci&#xF3;n de c&#xF3;digo.</p>
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p></p><h1>Framework de creaci&#xF3;n de servicios web</h1>
+
+<p></p>
+<p></p><p>
+  <img src="https://github.com/insacjs/insac/raw/master/assets/insac-logo-256.png">
+</p>
+
+<p></p>
+<p></p><p>
+  <a href="https://github.com/insacjs/insac/releases">
+      <img src="https://img.shields.io/github/release/insacjs/insac.svg">
+  </a>
+
+  <a href="https://npmcharts.com/compare/insac">
+    <img src="https://img.shields.io/npm/dm/insac.svg">
+  </a>
+
+  <a href="https://www.npmjs.com/package/insac">
+    <img src="https://img.shields.io/npm/v/insac.svg">
+  </a>
+
+  <a href="https://opensource.org/licenses/MIT">
+      <img src="https://img.shields.io/github/license/insacjs/insac.svg">
+  </a>
+</p>
+
+<p></p>
+<p>Insac JS es un framework de creaci&#xF3;n de servicios web basado en lenguaje script que utiliza arquitectura REST. Est&#xE1; enfocado en la organizaci&#xF3;n, automatizaci&#xF3;n y reutilizaci&#xF3;n de c&#xF3;digo.</p>
+<p>La documentaci&#xF3;n se encuentra disponible en la p&#xE1;gina <a href="https://insacjs.com">https://insacjs.com</a>.</p>
+<p>Para crear nuevos proyectos, utilice la <a href="https://github.com/insacjs/insac-cli">Interfaz de l&#xED;nea de comandos INSAC CLI</a></p>
 <h2 id="tecnolog&#xED;as-utilizadas">Tecnolog&#xED;as utilizadas</h2><p>El framework ha sido implementado utilizando el lenguaje JavaScript bajo el est&#xE1;ndar de programaci&#xF3;n ECMAScript 2017, esto por el potencial que alcanz&#xF3; el lenguaje gracias a NodeJS, un entorno de ejecuci&#xF3;n para JavaScript construido con el motor de JavaScript V8 de Chrome.</p>
 <p>NodeJS permite crear aplicaciones del lado del servidor, adem&#xE1;s de que es una excelente herramienta para crear servicios web gracias a su modelo de operaciones E/S sin bloqueo orientado a eventos, que lo hace liviano y eficiente.</p>
 <p>A continuaci&#xF3;n de describen las diferentes tecnolog&#xED;as y herramientas mas importantes con las que trabaja el framework:</p>
@@ -100,42 +129,47 @@
 <tbody>
 <tr>
 <td><code>NodeJS</code></td>
-<td>8.0</td>
+<td>^8.0</td>
 <td>Entorno de programaci&#xF3;n de JavaScript.</td>
 </tr>
 <tr>
+<td><code>MPM</code></td>
+<td>^6.3</td>
+<td>Gestor de paquetes de NodeJS.</td>
+</tr>
+<tr>
 <td><code>Express</code></td>
-<td>4.16</td>
+<td>^4.16</td>
 <td>Framework de NodeJS.</td>
 </tr>
 <tr>
 <td><code>Sequelize</code></td>
-<td>4.37</td>
+<td>^4.37</td>
 <td>Framework ORM de NodeJS.</td>
 </tr>
 <tr>
 <td><code>Yarn</code></td>
-<td>1.7</td>
+<td>^1.7</td>
 <td>Manejador de dependencias.</td>
 </tr>
 <tr>
 <td><code>PM2</code></td>
-<td>2.7</td>
+<td>^2.7</td>
 <td>Gestor avanzado de procesos de producci&#xF3;n para NodeJS.</td>
 </tr>
 <tr>
 <td><code>Git</code></td>
-<td>2.7</td>
+<td>^2.7</td>
 <td>Sistema de control de versiones distribuido de c&#xF3;digo abierto.</td>
 </tr>
 <tr>
 <td><code>Eslint</code></td>
-<td>4.19</td>
+<td>^4.19</td>
 <td>Herramienta de linting para JavaScript.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="base-de-datos-compatibles-">Base de datos compatibles:</h2><table>
+<h2 id="soporta-los-siguientes-gestores-de-base-de-datos-">Soporta los siguientes gestores de base de datos:</h2><table>
 <thead>
 <tr>
 <th>Nombre</th>
@@ -161,7 +195,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="caracteristicas">Caracteristicas</h2><p>Entre las caracter&#xED;sticas m&#xE1;s importantes del framework se encuentran las siguientes:</p>
+<h2 id="caracter&#xED;sticas">Caracter&#xED;sticas</h2><p>Entre las caracter&#xED;sticas m&#xE1;s importantes del framework se encuentran las siguientes:</p>
 <ul>
 <li><p><strong>Estructura de proyecto:</strong> Utiliza un sistema que permite identificar a los componentes de la aplicaci&#xF3;n y sus respectivas funciones a trav&#xE9;s del nombre y la extensi&#xF3;n de los ficheros.</p>
 </li>
@@ -175,6 +209,16 @@
 </li>
 <li><p><strong>Sistema de logs:</strong> Por defecto, se muestran mensajes en la terminal para monitorear todas las peticiones y &#xE9;stas se registran en ficheros de logs.</p>
 </li>
+</ul>
+<h2 id="referencias-externas">Referencias externas</h2><ul>
+<li><a href="https://nodejs.org/es/">Node JS</a></li>
+<li><a href="https://www.npmjs.com/">NPM</a></li>
+<li><a href="http://expressjs.com/es/">Express</a></li>
+<li><a href="http://docs.sequelizejs.com/">Sequelize</a></li>
+<li><a href="https://yarnpkg.com/es-ES/">Yarn</a></li>
+<li><a href="http://pm2.keymetrics.io/">PM2</a></li>
+<li><a href="https://git-scm.com/">GIT</a></li>
+<li><a href="https://eslint.org/">ESLint</a></li>
 </ul>
 <h2 id="ejemplo--">Ejemplo.-</h2><p>Para preparar un proyecto b&#xE1;sico, desde la terminal ejecuta los siguientes comandos:</p>
 <pre><code class="lang-bash"><code class="source-code prettyprint"># Crea la carpeta del proyecto
