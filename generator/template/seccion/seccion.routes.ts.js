@@ -6,12 +6,18 @@ module.exports = (data) => {
   const section = _.camelCase(_section)
   const Section = _.upperFirst(section)
   let routes = ``
+  let _first_cap = null
 
   for (let i in data.capitulos) {
     const _cap  = data.capitulos[i].file
     const cap = _.camelCase(_cap)
     const Cap = _.upperFirst(cap)
     routes += `      { path: '${_cap}', loadChildren: './${_cap}/${_cap}.module#${Cap}Module' },\n`
+    if (!_first_cap) _first_cap = _cap
+  }
+
+  if (_first_cap) {
+    routes += `      { path: '', redirectTo: '${_first_cap}', pathMatch: 'full' }\n`
   }
 
   let result = ``

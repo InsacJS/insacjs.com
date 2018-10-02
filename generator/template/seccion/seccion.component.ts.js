@@ -61,6 +61,8 @@ export class ${Section}Component implements OnInit {
       ) {
         this.loading = false
       }
+    }, err => {
+      this.loading = false
     })
   }
 

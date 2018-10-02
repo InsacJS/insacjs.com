@@ -1,5 +1,6 @@
 // Libraries
-import { Component, OnInit }  from '@angular/core'
+import { Component, OnInit }       from '@angular/core'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 @Component({
   selector    : 'app-index',
@@ -7,9 +8,15 @@ import { Component, OnInit }  from '@angular/core'
   styleUrls   : ['./index.component.scss']
 })
 export class IndexComponent {
-  loading = false;
+  loading = false
+  version = '3.0.0'
 
-  constructor () { }
+  constructor (private http: HttpClient) { }
 
-  ngOnInit () { }
+  ngOnInit () {
+    this.http.get('./assets/info.json').subscribe((data : any) => {
+      this.version = data.insacVersion
+    },
+    error => { })
+  }
 }

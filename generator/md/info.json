@@ -34,7 +34,7 @@
         { "file": "seeders",      "name": "Carpeta seeders",                "group": "carpeta" },
         { "file": "test",         "name": "Carpeta test",                   "group": "carpeta" },
         { "file": "tools",        "name": "Carpeta tools",                  "group": "carpeta" },
-        { "file": "component",    "name": "Carpetas personaizadas",         "group": "carpeta" },
+        { "file": "component",    "name": "Carpetas personalizadas",        "group": "carpeta" },
         { "file": "app",          "name": "Archivo app.js",                 "group": "archivo" },
         { "file": "package",      "name": "Archivo package.json",           "group": "archivo" },
         { "file": "module",       "name": "Archivos *.module.js",           "group": "archivo" },
