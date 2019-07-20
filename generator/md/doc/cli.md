@@ -2,7 +2,7 @@
 
 Esta herramienta permite la creación de nuevos proyectos para el [Framework Insac JS](https://github.com/insacjs/insac), adición de nuevos componentes y genera recursos de tipo CRUD de una manera fácil y sencilla.
 
-La documentación se encuentra disponible en la página [https://insacjs.com](https://insacjs.com).
+La documentación se encuentra disponible en la página [https://waquispe.github.io/insacjs](https://waquispe.github.io/insacjs).
 
 ## Instalación
 
