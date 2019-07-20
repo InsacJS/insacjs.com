@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-ice="title">lib/core/Database.js | Insac Framework</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Framework de creaci&#xF3;n de servicios web."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Insac Framework"><meta property="twitter:description" content="Framework de creaci&#xF3;n de servicios web."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="https://insacjs.github.io" style="display: flex; align-items: center"> Inicio </a>
+  <a href="https://insacjs.github.io/doc/introduccion" style="display: flex; align-items: center"> Tutoriales </a>
+  
+  <a href="identifiers.html">Referencias</a>
+  <a href="source.html">C&#xF3;digo fuente</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a href="https://github.com/insacjs/insac"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/Insac.js~Insac.html">Insac</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#config">config</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-APIDOC">APIDOC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PATH">PATH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-config">config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATABASE">DATABASE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LOGGER">LOGGER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RESPONSE">RESPONSE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SERVER">SERVER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Apidoc.js~Apidoc.html">Apidoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Dao.js~Dao.html">Dao</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Database.js~Database.html">Database</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/core/Module.js~Module.html">Module</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs">libs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/FieldCreator.js~FieldCreator.html">FieldCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseError.js~ResponseError.html">ResponseError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ResponseSuccess.js~ResponseSuccess.html">ResponseSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/ValidationError.js~ValidationError.html">ValidationError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-errors">libs/errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/BadRequestError.js~BadRequestError.html">BadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ConflictError.js~ConflictError.html">ConflictError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/ForbiddenError.js~ForbiddenError.html">ForbiddenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InternalServerError.js~InternalServerError.html">InternalServerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/InvalidTokenError.js~InvalidTokenError.html">InvalidTokenError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/NotFoundError.js~NotFoundError.html">NotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/PreconditionFailedError.js~PreconditionFailedError.html">PreconditionFailedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/errors/UnauthorizedError.js~UnauthorizedError.html">UnauthorizedError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#libs-successes">libs/successes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/CreatedSuccess.js~CreatedSuccess.html">CreatedSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/NoContentSuccess.js~NoContentSuccess.html">NoContentSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/lib/libs/successes/OkSuccess.js~OkSuccess.html">OkSuccess</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools">tools</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-errors">errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-successes">successes</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-fake">tools/fake</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomInt">randomInt</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tools-util">tools/util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cmd">cmd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyDir">copyDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-copyFile">copyFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-countFiles">countFiles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-find">find</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findAsync">findAsync</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isDir">isDir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFile">isFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFile">loadFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-metadata">metadata</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mkdir">mkdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-readFile">readFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeFile">removeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rmdir">rmdir</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-timer">timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toArray">toArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toJson">toJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-writeFile">writeFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGER_MAX_VALUE">INTEGER_MAX_VALUE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">lib/core/Database.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** @ignore */ const Sequelize   = require(&apos;sequelize&apos;)
+/** @ignore */ const path        = require(&apos;path&apos;)
+/** @ignore */ const _           = require(&apos;lodash&apos;)
+
+/** @ignore */ const SeedCreator = require(&apos;../libs/SeedCreator&apos;)
+
+/** @ignore */ const util        = require(&apos;../tools/util&apos;)
+
+/**
+* M&#xF3;dulo encargado de gestionar la base de datos.
+*/
+class Database {
+  /**
+  * Crea una instancia de la clase Database.
+  */
+  constructor () {
+    /**
+    * Modelos que no pertenecen a ningun esquema.
+    * @type {Function}
+    */
+    this.models = {}
+
+    /**
+    * Instancia sequelize.
+    * @type {Sequelize}
+    */
+    this.sequelize = null
+
+    /**
+    * Referencia hacia la clase Sequelize
+    * @type {Sequelize}
+    */
+    this.Sequelize = Sequelize
+  }
+
+  /**
+  * Inicializa las propiedades de la instancia.
+  * @param {!Function} app - Instancia del servidor express.
+  */
+  onInit (app) {
+    this.models = {}
+    this._verifyPackagesForDialect(app, app.config.DATABASE.params.dialect)
+    this.sequelize = this._createSequelizeInstance(app)
+  }
+
+  /**
+  * Importa un modelo Sequelize.
+  * @param {!Function} app      - Instancia del servidor express.
+  * @param {!Module}   MODULE   - Instancia del m&#xF3;dulo.
+  * @param {!String}   filePath - Ruta del modelo.
+  * @return {SequelizeModel}
+  */
+  importModel (app, MODULE, filePath) {
+    const MODULE_NAME        = MODULE.getName()
+    const MODEL              = this.sequelize.import(filePath)
+    const MODEL_SCHEMA       = MODEL.options.schema
+    MODEL.options.moduleName = MODULE_NAME
+    if (!MODEL_SCHEMA) {
+      app.DB.models[MODEL.name] = MODEL
+    }
+    if (MODEL_SCHEMA &amp;&amp; MODULE.getSchema() &amp;&amp; MODEL_SCHEMA !== MODULE.getSchema()) {
+      const data = `  Mueva el modelo al m&#xF3;dulo correspondiente o def&#xED;nalo sin la opci&#xF3;n schema.\n`
+      app.logger.appError(`El modelo &apos;${MODEL.name}&apos; est&#xE1; definido bajo el esquema &apos;${MODEL_SCHEMA}&apos;.`, data)
+      process.exit(1)
+    }
+    const SIZE = `${MODEL_SCHEMA ? `${MODEL_SCHEMA}.` : &apos;&apos;}${MODEL.name}`.length
+    if (SIZE &gt; MODULE._max) { MODULE._max = SIZE }
+    return MODEL
+  }
+
+  /**
+  * Asocia los modelos de un m&#xF3;dulo.
+  * @param {!Function} app    - Instancia del servidor express.
+  * @param {!Module}   MODULE - Instancia del m&#xF3;dulo.
+  */
+  associateModels (app, MODULE) {
+    Object.keys(MODULE.models).forEach((key) =&gt; {
+      if (&apos;associate&apos; in MODULE.models[key]) { MODULE.models[key].associate(app) }
+      updateForeignKeys(app, MODULE.models[key])
+    })
+  }
+
+  /**
+  * Crea una instancia de Sequelize con privilegios para crear bases de datos.
+  * @param {!Function} app - Instancia del servidor express.
+  * @return {Sequelize}
+  */
+  createRootInstance (app) {
+    const DIALECT = app.config.DATABASE.params.dialect
+    let database = null
+    switch (DIALECT) {
+      case &apos;postgres&apos; : database = &apos;postgres&apos;; break
+      case &apos;mysql&apos;    : database = null;       break
+      case &apos;mssql&apos;    : database = &apos;master&apos;;   break
+      case &apos;sqlite&apos;   : database = &apos;database&apos;; break
+      default: database = null
+    }
+    const username = app.config.DATABASE.username
+    const password = app.config.DATABASE.password
+    const params   = _.cloneDeep(app.config.DATABASE.params)
+    return new Sequelize(database, username, password, params)
+  }
+
+  /**
+  * Elimina una base de datos.
+  * @param {!Function} app - Instancia del servidor express.
+  */
+  async dropDatabase (app) {
+    const DATABASE = app.config.DATABASE.database
+    let sequelizeROOT
+    try {
+      sequelizeROOT = this.createRootInstance(app)
+      await sequelizeROOT.authenticate()
+      await sequelizeROOT.query(`DROP DATABASE ${DATABASE}`)
+      app.logger.appPrimary(&apos;DROP&apos;, `DATABASE ${DATABASE} ... ${app.logger.OK}`)
+      app.logger.appPrimary()
+    } catch (e) {
+      const DIALECT = app.config.DATABASE.params.dialect
+      const DATABASE_DOES_NOT_EXISTS = (
+        (DIALECT === &apos;postgres&apos; &amp;&amp; e.parent.code   === &apos;3D000&apos;)             ||
+        (DIALECT === &apos;mysql&apos;    &amp;&amp; e.parent.code   === &apos;ER_DB_DROP_EXISTS&apos;) ||
+        (DIALECT === &apos;mssql&apos;    &amp;&amp; e.parent.number === 3701)                ||
+        (DIALECT === &apos;sqlite&apos;   &amp;&amp; e.parent.code   === &apos;SQLITE_ERROR&apos;)
+      )
+      if (e.name === &apos;SequelizeDatabaseError&apos; &amp;&amp; DATABASE_DOES_NOT_EXISTS) {
+        app.logger.appPrimary(&apos;DROP&apos;, `DATABASE ${DATABASE} ... (No existe) ${app.logger.OK}`)
+        app.logger.appPrimary()
+      } else {
+        app.logger.appError(&apos;DROP&apos;, `DATABASE ${DATABASE} ... ${app.logger.FAIL}`)
+        app.logger.appPrimary()
+        throw e
+      }
+    } finally {
+      await sequelizeROOT.close()
+    }
+  }
+
+  /**
+  * Crea una base de datos.
+  * @param {!Function} app - Instancia del servidor express.
+  */
+  async createDatabase (app) {
+    const DATABASE = app.config.DATABASE.database
+    let sequelizeROOT
+    try {
+      sequelizeROOT = this.createRootInstance(app)
+      await sequelizeROOT.authenticate()
+      await sequelizeROOT.query(`CREATE DATABASE ${DATABASE}`)
+      app.logger.appPrimary(&apos;CREATE&apos;, `DATABASE ${DATABASE} ... ${app.logger.OK}`)
+      app.logger.appPrimary()
+    } catch (e) {
+      const DIALECT = app.config.DATABASE.params.dialect
+      const DATABASE_ALREADY_EXIST = (
+        (DIALECT === &apos;postgres&apos; &amp;&amp; e.parent.code   === &apos;42P04&apos;)               ||
+        (DIALECT === &apos;mysql&apos;    &amp;&amp; e.parent.code   === &apos;ER_DB_CREATE_EXISTS&apos;) ||
+        (DIALECT === &apos;mssql&apos;    &amp;&amp; e.parent.number === 1801)                  ||
+        (DIALECT === &apos;sqlite&apos;   &amp;&amp; e.parent.code   === &apos;SQLITE_ERROR&apos;)
+      )
+      if (e.name === &apos;SequelizeDatabaseError&apos; &amp;&amp; DATABASE_ALREADY_EXIST) {
+        app.logger.appPrimary(&apos;CREATE&apos;, `DATABASE ${DATABASE} ... (Ya existe) ${app.logger.OK}`)
+        app.logger.appPrimary()
+      } else {
+        app.logger.appError(&apos;CREATE&apos;, `DATABASE ${DATABASE} ... ${app.logger.FAIL}`)
+        app.logger.appPrimary()
+        throw e
+      }
+    } finally {
+      await sequelizeROOT.close()
+    }
+  }
+
+  /**
+  * Elimina un esquema de base de datos.
+  * @param {!Function} app    - Instancia del servidor express.
+  * @param {!Module}   MODULE - Instancia del m&#xF3;dulo.
+  */
+  async dropSchema (app, MODULE) {
+    const schema = MODULE.getSchema()
+    try {
+      if (await existSchema(app, schema)) {
+        await app.DB.sequelize.dropSchema(schema, { force: true })
+        app.logger.appPrimary(&apos;DROP&apos;, `SCHEMA ${schema} ... ${app.logger.OK}`)
+        app.logger.appPrimary()
+      } else {
+        app.logger.appPrimary(&apos;DROP&apos;, `SCHEMA ${schema} ... (No existe) ${app.logger.OK}`)
+        app.logger.appPrimary()
+      }
+    } catch (e) {
+      app.logger.appError(&apos;DROP&apos;, `SCHEMA ${schema} ... ${app.logger.FAIL}`)
+      app.logger.appPrimary()
+      throw e
+    }
+  }
+
+  /**
+  * Crea un esquema de base de datos.
+  * @param {!Function} app    - Instancia del servidor express.
+  * @param {!Module}   MODULE - Instancia del m&#xF3;dulo.
+  * @return {Promise}
+  */
+  async createSchema (app, MODULE) {
+    const schema = MODULE.getSchema()
+    try {
+      if (!await existSchema(app, schema)) {
+        await app.DB.sequelize.createSchema(schema, { force: true })
+        app.logger.appPrimary(&apos;CREATE&apos;, `SCHEMA ${schema} ... ${app.logger.OK}`)
+        app.logger.appPrimary()
+      } else {
+        app.logger.appPrimary(&apos;CREATE&apos;, `SCHEMA ${schema} ... (Ya existe) ${app.logger.OK}`)
+        app.logger.appPrimary()
+      }
+    } catch (e) {
+      app.logger.appError(&apos;CREATE&apos;, `SCHEMA ${schema} ... ${app.logger.FAIL}`)
+      app.logger.appPrimary()
+      throw e
+    }
+  }
+
+  /**
+  * Elimina las tablas que pertenecen a un determinado m&#xF3;dulo.
+  * @param {!Function} app    - Instancia del servidor express.
+  * @param {!Module}   MODULE - Instancia del m&#xF3;dulo.
+  */
+  async dropTables (app, MODULE) {
+    const loaded = []
+    async function _sync (MODEL) {
+      if (MODULE.getName() !== MODEL.options.moduleName) { return }
+      if (MODEL.associations) {
+        for (let i in MODEL.associations) {
+          const ASSOCIATION = MODEL.associations[i]
+          if (ASSOCIATION.associationType === &apos;BelongsTo&apos;) {
+            if (!loaded.includes(ASSOCIATION.target.name)) {
+              await _sync(ASSOCIATION.target)
+            }
+          }
+        }
+      }
+      await dropTable(app, MODEL)
+      loaded.push(MODEL.name)
+    }
+    for (let key in MODULE.models) {
+      if (!loaded.includes(key)) {
+        await _sync(MODULE.models[key])
+      }
+    }
+    app.logger.appPrimary()
+  }
+
+  /**
+  * Crea las tablas que pertenecen a un determinado m&#xF3;dulo.
+  * @param {!Function} app    - Instancia del servidor express.
+  * @param {!Module}   MODULE - Instancia del m&#xF3;dulo.
+  */
+  async createTables (app, MODULE) {
+    const loaded = []
+    async function _sync (MODEL) {
+      if (MODULE.getName() !== MODEL.options.moduleName) { return }
+      if (MODEL.associations) {
+        for (let i in MODEL.associations) {
+          const ASSOCIATION = MODEL.associations[i]
+          if (ASSOCIATION.associationType === &apos;BelongsTo&apos;) {
+            if (!loaded.includes(ASSOCIATION.target.name)) {
+              await _sync(ASSOCIATION.target)
+            }
+          }
+        }
+      }
+      await createTable(app, MODEL)
+      loaded.push(MODEL.name)
+    }
+    for (let key in MODULE.models) {
+      if (!loaded.includes(key)) {
+        await _sync(MODULE.models[key])
+      }
+    }
+    app.logger.appPrimary()
+  }
+
+  /**
+  * Crea los seeders que pertenecen a un determinado m&#xF3;dulo.
+  * @param {!Function} app    - Instancia del servidor express.
+  * @param {!Module}   MODULE - Instancia del m&#xF3;dulo.
+  */
+  async createSeeders (app, MODULE) {
+    if (app.config.SERVER.env === &apos;production&apos;) {
+      const SEEDERS_PATH = path.resolve(MODULE.config.modulePath, &apos;seeders/production&apos;)
+      if (util.isDir(SEEDERS_PATH)) await this._createSeeders(app, MODULE, SEEDERS_PATH)
+    } else {
+      const SEEDERS_PATH = path.resolve(MODULE.config.modulePath, &apos;seeders&apos;)
+      if (util.isDir(SEEDERS_PATH)) await this._createSeeders(app, MODULE, SEEDERS_PATH)
+    }
+  }
+
+  /**
+  * Crea una instancia de la clase Sequelize.
+  * @param {!Function} app - Instancia del servidor express.
+  * @return {Sequelize}
+  */
+  _createSequelizeInstance (app) {
+    try {
+      return new Sequelize(
+        app.config.DATABASE.database,
+        app.config.DATABASE.username,
+        app.config.DATABASE.password,
+        app.config.DATABASE.params
+      )
+    } catch (err) {
+      if (err.name === &apos;SequelizeConnectionError&apos;) {
+        app.logger.appError(&apos;No se pudo conectar con la base de datos.&apos;, err.message)
+        process.exit(1)
+      }
+      throw err
+    }
+  }
+
+  /**
+  * Verifica que todos los paquetes seg&#xFA;n el dialecto seleccionado, se encuentren instalados.
+  * @param {!Function} app     - Instancia del servidor express.
+  * @param {!String}   dialect - Nombre del dialecto de base de datos.
+  */
+  _verifyPackagesForDialect (app, dialect) {
+    const MSG = &apos;Cannot find module&apos;
+    let packageName
+    switch (dialect) {
+      case &apos;postgres&apos; : try { require(&apos;pg&apos;)      } catch (e) { if (e.message.includes(MSG)) packageName = &apos;pg&apos;      } break
+      case &apos;mysql&apos;    : try { require(&apos;mysql2&apos;)  } catch (e) { if (e.message.includes(MSG)) packageName = &apos;mysql2&apos;  } break
+      case &apos;mssql&apos;    : try { require(&apos;tedious&apos;) } catch (e) { if (e.message.includes(MSG)) packageName = &apos;tedious&apos; } break
+      case &apos;sqlite&apos;   : try { require(&apos;sqlite3&apos;) } catch (e) { if (e.message.includes(MSG)) packageName = &apos;sqlite3&apos; } break
+      default:
+        const data = `  Dialectos soportados: postgres, mysql, mssql y sqlite.\n`
+        app.logger.appError(null, `No existe el dialecto &apos;${dialect}&apos;.`, data)
+    }
+    if (packageName) {
+      const data = `  Ejecute el comando &quot;npm install --save ${packageName}&quot; para solucionar el problema.\n`
+      app.logger.appError(null, `Se requiere el m&#xF3;dulo &apos;${packageName}&apos;.`, data)
+    }
+  }
+
+  /**
+  * Instala los seeders de un m&#xF3;dulo.
+  * @param {!Function} app         - Instancia del servidor express.
+  * @param {!Module}   MODULE      - Instancia del modulo.
+  * @param {!String}   seedersPath - Ruta del directorio seeders.
+  * @return {Promise}
+  */
+  async _createSeeders (app, MODULE, seedersPath) {
+    const loaded     = []
+    await app.DB.sequelize.transaction(async (t) =&gt; {
+      async function _seed (modelName, filePath) {
+        const model = MODULE.models[modelName]
+        if (model.options.schema &amp;&amp; model.options.schema !== MODULE.config.schema) { return }
+        if (model.associations) {
+          for (let i in model.associations) {
+            if (model.associations[i].associationType === &apos;BelongsTo&apos;) {
+              if (!loaded.includes(model.associations[i].target.name)) {
+                await util.findAsync(seedersPath, &apos;.seed.js&apos;, async ({ fileName, filePath, dirName }) =&gt; {
+                  if (dirName !== &apos;production&apos; || app.config.SERVER.env === &apos;production&apos;) {
+                    if (fileName === model.associations[i].target.name) {
+                      await _seed(fileName, filePath)
+                    }
+                  }
+                })
+              }
+            }
+          }
+        }
+        loaded.push(modelName)
+        await createSeed(app, model, t, filePath)
+      }
+
+      await util.findAsync(seedersPath, &apos;.seed.js&apos;, async ({ fileName, filePath, dirName }) =&gt; {
+        if (dirName !== &apos;production&apos; || app.config.SERVER.env === &apos;production&apos;) {
+          if (!loaded.includes(fileName)) {
+            await _seed(fileName, filePath)
+          }
+        }
+      })
+    })
+  }
+}
+
+/**
+* @ignore
+* Indica si existe un determinado esquema de base de datos.
+* @param {!Function} app    - Instancia del servidor express.
+* @param {!String}   schema - Nombre del esquema de base de datos.
+* @return {Boolean}
+*/
+async function existSchema (app, schema) {
+  const DATABASE = app.config.DATABASE.database
+  const DIALECT  = app.config.DATABASE.params.dialect
+  const ALL_SCHEMAS = await app.DB.sequelize.showAllSchemas()
+  function existInPostgreSQL () {
+    return ALL_SCHEMAS.includes(schema)
+  }
+  function existInMSSQL () {
+    return ALL_SCHEMAS.includes(schema)
+  }
+  function existInMySql () {
+    for (let i in ALL_SCHEMAS) {
+      const obj = ALL_SCHEMAS[i]
+      const key = `Tables_in_${DATABASE}`
+      if (obj[key].startsWith(`${schema}.`)) return true
+    }
+  }
+  function existInSQLite () {
+    for (let i in ALL_SCHEMAS) {
+      const obj = ALL_SCHEMAS[i]
+      if (obj.startsWith(`${schema}.`)) return true
+    }
+  }
+  if (DIALECT === &apos;postgres&apos;) return existInPostgreSQL()
+  if (DIALECT === &apos;mssql&apos;)    return existInMSSQL()
+  if (DIALECT === &apos;mysql&apos;)    return existInMySql()
+  if (DIALECT === &apos;sqlite&apos;)   return existInSQLite()
+  return false
+}
+
+/**
+* @ignore
+* Indica si existe una tabla.
+* @param {!Function}       app   - Instancia del servidor express.
+* @param {!SequelizeModel} MODEL - Instancia de un modelo.
+* @return {Boolean}
+*/
+async function existTable (app, MODEL) {
+  try {
+    const schema = MODEL.options.schema ? `${MODEL.options.schema}.` : &apos;&apos;
+    await app.DB.sequelize.query(`SELECT 1 FROM ${schema}${MODEL.name}`)
+    return true
+  } catch (e) {
+    const DIALECT = app.config.DATABASE.params.dialect
+    const TABLE_DOES_NOT_EXISTS = (
+      (DIALECT === &apos;postgres&apos; &amp;&amp; e.parent.code   === &apos;42P01&apos;)            || // ok
+      (DIALECT === &apos;mysql&apos;    &amp;&amp; e.parent.code   === &apos;ER_NO_SUCH_TABLE&apos;) || // ok
+      (DIALECT === &apos;mssql&apos;    &amp;&amp; e.parent.number === 208)                ||
+      (DIALECT === &apos;sqlite&apos;   &amp;&amp; e.parent.code   === &apos;SQLITE_ERROR&apos;)
+    )
+    if (e.name === &apos;SequelizeDatabaseError&apos; &amp;&amp; TABLE_DOES_NOT_EXISTS) {
+      return false
+    }
+    throw e
+  }
+}
+
+/**
+* @ignore
+* Elimina una tabla.
+* @param {!Function}       app   - Instancia del servidor express.
+* @param {!SequelizeModel} MODEL - Instancia de un modelo.
+*/
+async function dropTable (app, MODEL) {
+  const MAX          = app[MODEL.options.moduleName]._max + 4
+  const schema       = MODEL.options.schema ? `${MODEL.options.schema}.` : &apos;&apos;
+  const tableNameLog = `${_.padEnd(`${schema}${MODEL.name} `, MAX, &apos;.&apos;)}`
+  try {
+    if (!await existTable(app, MODEL)) {
+      app.logger.appPrimary(&apos;DROP&apos;, `TABLE ${tableNameLog} (No existe) ${app.logger.OK}`)
+    } else {
+      await MODEL.drop({ force: true })
+      app.logger.appPrimary(&apos;DROP&apos;, `TABLE ${tableNameLog} ${app.logger.OK}`)
+    }
+  } catch (e) {
+    app.logger.appError(&apos;DROP&apos;, `TABLE ${tableNameLog} ${app.logger.FAIL}\n`)
+    throw e
+  }
+}
+
+/**
+* @ignore
+* Crea una tabla.
+* @param {!Function}       app   - Instancia del servidor express.
+* @param {!SequelizeModel} MODEL - Instancia de un modelo.
+*/
+async function createTable (app, MODEL) {
+  const MAX          = app[MODEL.options.moduleName]._max + 4
+  const schema       = MODEL.options.schema ? `${MODEL.options.schema}.` : &apos;&apos;
+  const tableNameLog = `${_.padEnd(`${schema}${MODEL.name} `, MAX, &apos;.&apos;)}`
+  try {
+    if (await existTable(app, MODEL)) {
+      app.logger.appPrimary(&apos;CREATE&apos;, `TABLE ${tableNameLog} (Ya existe) ${app.logger.OK}`)
+    } else {
+      await MODEL.sync({ force: true })
+      app.logger.appPrimary(&apos;CREATE&apos;, `TABLE ${tableNameLog} ${app.logger.OK}`)
+    }
+  } catch (e) {
+    app.logger.appError(&apos;CREATE&apos;, `TABLE ${tableNameLog} ${app.logger.FAIL}\n`)
+    throw e
+  }
+}
+
+/**
+* @ignore
+* Crea los registros de un fichero seed.
+* @param {!Function}            app      - Instancia del servidor express.
+* @param {!SequelizeModel}      MODEL    - Instancia de un modelo.
+* @param {SequelizeTransaction} t        - Transacci&#xF3;n creada por sequelize.
+* @param {!String}              filePath - Ruta del archivo seed.
+*/
+async function createSeed (app, MODEL, t, filePath) {
+  const MAX         = app[MODEL.options.moduleName]._max + 5
+  const DATA        = await util.loadFile(app, filePath)
+  const schemas     = getAllSetupSchemas(app)
+  const fileNameLog = _.padEnd(`${MODEL.name}.seed.js `, MAX, &apos;.&apos;)
+  try {
+    const result    = await SeedCreator.create(MODEL, DATA, { schemas, logger: app.logger, transaction: t })
+    const resultMsg = result.entries !== 1 ? `Se insertaron ${result.entries} registros` : `Se insert&#xF3; ${result.entries} registro`
+    app.logger.appPrimary(&apos;[resultado]&apos;, `${fileNameLog} (${resultMsg} en ${result.elapsedTime} seg.) ${app.logger.OK}\n`)
+  } catch (e) {
+    app.logger.appError(&apos;[resultado]&apos;, `${fileNameLog} ${app.logger.FAIL}\n`)
+    throw e
+  }
+}
+
+/**
+* @ignore
+* Actualiza las propiedades de las claves for&#xE1;neas.
+* @param {!Function}       app   - Instancia del servidor express.
+* @param {!SequelizeModel} MODEL - Instancia de un modelo.
+*/
+function updateForeignKeys (app, MODEL) {
+  Object.keys(MODEL.attributes).forEach(fieldName =&gt; {
+    const FIELD = MODEL.attributes[fieldName]
+    if (FIELD.references) {
+      const F_TARGET = FIELD.targetKey
+      const F_MODEL = FIELD.references.model
+      let F_MODEL_INSTANCE
+      if (typeof F_MODEL === &apos;string&apos;) {
+        F_MODEL_INSTANCE = app.DB.models[F_MODEL]
+      } else {
+        const F_SCHEMA = FIELD.references.model.schema
+        const F_TABLE  = FIELD.references.model.tableName
+        const F_MODULE = F_SCHEMA.toUpperCase()
+        F_MODEL_INSTANCE = app[F_MODULE].models[F_TABLE]
+      }
+      FIELD.validate = F_MODEL_INSTANCE.attributes[F_TARGET].validate
+      FIELD.comment  = FIELD.comment || F_MODEL_INSTANCE.attributes[F_TARGET].comment
+      FIELD.example  = FIELD.example || F_MODEL_INSTANCE.attributes[F_TARGET].example
+    }
+  })
+}
+
+/**
+* @ignore
+* Obtiene una lista de todos los esquemas que pueden ser instalados.
+* @param {!Function} app - Instancia del servidor express.
+* @return {String[]}
+*/
+function getAllSetupSchemas (app) {
+  const ALLOWED_SCHEMAS = []
+  app.modules.forEach(modName =&gt; {
+    if (app[modName] &amp;&amp; app[modName].config.setup &amp;&amp; app[modName].config.schema) {
+      ALLOWED_SCHEMAS.push(app[modName].config.schema)
+    }
+  })
+  return ALLOWED_SCHEMAS
+}
+
+module.exports = Database
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

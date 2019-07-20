@@ -1,0 +1,202 @@
+{
+  "coverage": "100%",
+  "expectCount": 385,
+  "actualCount": 385,
+  "files": {
+    "lib/Insac.js": {
+      "expectCount": 26,
+      "actualCount": 26,
+      "undocumentLines": []
+    },
+    "lib/config/apidoc.config.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    },
+    "lib/config/app.config.js": {
+      "expectCount": 10,
+      "actualCount": 10,
+      "undocumentLines": []
+    },
+    "lib/config/database.config.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "lib/config/logger.config.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "lib/config/response.config.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "lib/config/server.config.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "lib/core/Apidoc.js": {
+      "expectCount": 21,
+      "actualCount": 21,
+      "undocumentLines": []
+    },
+    "lib/core/Dao.js": {
+      "expectCount": 22,
+      "actualCount": 22,
+      "undocumentLines": []
+    },
+    "lib/core/Database.js": {
+      "expectCount": 31,
+      "actualCount": 31,
+      "undocumentLines": []
+    },
+    "lib/core/Logger.js": {
+      "expectCount": 39,
+      "actualCount": 39,
+      "undocumentLines": []
+    },
+    "lib/core/Module.js": {
+      "expectCount": 30,
+      "actualCount": 30,
+      "undocumentLines": []
+    },
+    "lib/hooks/app.after.hook.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "lib/hooks/app.before.hook.js": {
+      "expectCount": 9,
+      "actualCount": 9,
+      "undocumentLines": []
+    },
+    "lib/hooks/field.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "lib/libs/ApidocCreator.js": {
+      "expectCount": 16,
+      "actualCount": 16,
+      "undocumentLines": []
+    },
+    "lib/libs/FieldCreator.js": {
+      "expectCount": 31,
+      "actualCount": 31,
+      "undocumentLines": []
+    },
+    "lib/libs/InputDataValidator.js": {
+      "expectCount": 18,
+      "actualCount": 18,
+      "undocumentLines": []
+    },
+    "lib/libs/ResponseError.js": {
+      "expectCount": 9,
+      "actualCount": 9,
+      "undocumentLines": []
+    },
+    "lib/libs/ResponseHandler.js": {
+      "expectCount": 16,
+      "actualCount": 16,
+      "undocumentLines": []
+    },
+    "lib/libs/ResponseSuccess.js": {
+      "expectCount": 9,
+      "actualCount": 9,
+      "undocumentLines": []
+    },
+    "lib/libs/SeedCreator.js": {
+      "expectCount": 11,
+      "actualCount": 11,
+      "undocumentLines": []
+    },
+    "lib/libs/SequelizeOptions.js": {
+      "expectCount": 13,
+      "actualCount": 13,
+      "undocumentLines": []
+    },
+    "lib/libs/ValidationError.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    },
+    "lib/libs/errors/BadRequestError.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/libs/errors/ConflictError.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/libs/errors/ForbiddenError.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/libs/errors/InternalServerError.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/libs/errors/InvalidTokenError.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/libs/errors/NotFoundError.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/libs/errors/PreconditionFailedError.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/libs/errors/UnauthorizedError.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/libs/successes/CreatedSuccess.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/libs/successes/NoContentSuccess.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/libs/successes/OkSuccess.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "lib/tools/errors.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "lib/tools/fake/index.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "lib/tools/successes.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "lib/tools/util/index.js": {
+      "expectCount": 23,
+      "actualCount": 23,
+      "undocumentLines": []
+    }
+  }
+}

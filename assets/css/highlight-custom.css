@@ -1,0 +1,38 @@
+td.hljs-ln-numbers {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  text-align: center;
+  color: #ccc;
+  border-right: 1px solid #CCC;
+  vertical-align: top;
+  padding-right: 5px;
+}
+
+td.hljs-ln-code {
+  padding-left: 10px;
+  width: 100%;
+}
+
+.markdown-body .highlight pre, .markdown-body pre {
+  margin: 0 0 0 0;
+  padding: 14px;
+  border: solid lightgrey 1px;
+  margin-bottom: 15px;
+}
+
+.markdown-body table {
+  margin-bottom: 15px;
+}
+
+.markdown-body code {
+  word-break: normal;
+}
+
+.markdown-body {
+  padding: 20px;
+}
