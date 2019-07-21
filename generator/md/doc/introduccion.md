@@ -18,7 +18,7 @@ A continuación de describen las diferentes tecnologías y herramientas mas impo
 | Nombre      | Versión  | Descripción                                                    |
 | ----------- | -------- | -------------------------------------------------------------- |
 | `NodeJS`    | ^8.0     | Entorno de programación de JavaScript.                         |
-| `MPM`       | ^6.3     | Gestor de paquetes de NodeJS.                                  |
+| `NPM`       | ^6.3     | Gestor de paquetes de NodeJS.                                  |
 | `Express`   | ^4.16    | Framework de NodeJS.                                           |
 | `Sequelize` | ^4.37    | Framework ORM de NodeJS.                                       |
 | `Yarn`      | ^1.7     | Manejador de dependencias.                                     |

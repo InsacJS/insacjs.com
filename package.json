@@ -10,7 +10,7 @@
     "gen-start": "npm run gen && npm run build && npm run start-prod",
     "start": "ng serve",
     "start-prod": "NODE_ENV=production node server",
-    "build": "ng build --prod && node ./scripts/create-index",
+    "build": "ng build --prod --base-href \"https://insacjs.github.io/\" && node ./scripts/create-index",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
