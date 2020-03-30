@@ -22,10 +22,12 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "../node_modules/material-design-icons/iconfont/material-icons.css"
+        "../node_modules/material-design-icons/iconfont/material-icons.css",
+        "assets/css/prism.css"
       ],
       "scripts": [
-        "../node_modules/moment/min/moment.min.js"
+        "../node_modules/moment/min/moment.min.js",
+        "assets/js/prism.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
